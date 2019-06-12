@@ -1,0 +1,44 @@
+---- Driver_USART2 Matches (43 in 5 files) ----
+dataTrans_USART.c (D:\国顺资料\江工物联网项目\MBoard_project\Module\Transmitter_USART) line 3 : extern ARM_DRIVER_USART Driver_USART2;
+USART2Wirless_Init in dataTrans_USART.c (D:\国顺资料\江工物联网项目\MBoard_project\Module\Transmitter_USART) : 	Driver_USART2.Initialize(myUSART2_callback);
+USART2Wirless_Init in dataTrans_USART.c (D:\国顺资料\江工物联网项目\MBoard_project\Module\Transmitter_USART) : 	Driver_USART2.PowerControl(ARM_POWER_FULL);
+USART2Wirless_Init in dataTrans_USART.c (D:\国顺资料\江工物联网项目\MBoard_project\Module\Transmitter_USART) : 	Driver_USART2.Control(ARM_USART_MODE_ASYNCHRONOUS |
+USART2Wirless_Init in dataTrans_USART.c (D:\国顺资料\江工物联网项目\MBoard_project\Module\Transmitter_USART) : 	Driver_USART2.Control (ARM_USART_CONTROL_TX, 1);
+USART2Wirless_Init in dataTrans_USART.c (D:\国顺资料\江工物联网项目\MBoard_project\Module\Transmitter_USART) : 	Driver_USART2.Control (ARM_USART_CONTROL_RX, 1);
+USART2Wirless_Init in dataTrans_USART.c (D:\国顺资料\江工物联网项目\MBoard_project\Module\Transmitter_USART) : //	Driver_USART2.Send("i'm usart2 for wireless datstransfor\r\n", 38);
+ATCMD_INPUT in dataTrans_USART.c (D:\国顺资料\江工物联网项目\MBoard_project\Module\Transmitter_USART) : 		Driver_USART2.Send(CMD,strlen(CMD));
+ATCMD_INPUT in dataTrans_USART.c (D:\国顺资料\江工物联网项目\MBoard_project\Module\Transmitter_USART) : 		Driver_USART2.Receive(dataRXBUF,dataLen);
+USART2Wireless_wifiESP8266Init in dataTrans_USART.c (D:\国顺资料\江工物联网项目\MBoard_project\Module\Transmitter_USART) : 	Driver_USART2.Send("+++",3);osDelay(100);
+USART2Wireless_wifiESP8266Init in dataTrans_USART.c (D:\国顺资料\江工物联网项目\MBoard_project\Module\Transmitter_USART) : 	Driver_USART2.Send("+++\r\n",5);osDelay(100);
+USART2Wireless_wifiESP8266Init in dataTrans_USART.c (D:\国顺资料\江工物联网项目\MBoard_project\Module\Transmitter_USART) : 	Driver_USART2.Send("+++",3);osDelay(100);
+USART2Wireless_wifiESP8266Init in dataTrans_USART.c (D:\国顺资料\江工物联网项目\MBoard_project\Module\Transmitter_USART) : 	Driver_USART2.Send("+++\r\n",5);osDelay(100);
+UsartRx_Thread in dataTrans_USART.c (D:\国顺资料\江工物联网项目\MBoard_project\Module\Transmitter_USART) : 		Driver_USART2.Receive(recvbuff,23);
+UsartRx_Thread in dataTrans_USART.c (D:\国顺资料\江工物联网项目\MBoard_project\Module\Transmitter_USART) : 		recvbuff[25] = Driver_USART2.GetRxCount();
+UsartRx_Thread in dataTrans_USART.c (D:\国顺资料\江工物联网项目\MBoard_project\Module\Transmitter_USART) : 			//Driver_USART2.Send(recvbuff,25);
+UsartRx_Thread in dataTrans_USART.c (D:\国顺资料\江工物联网项目\MBoard_project\Module\Transmitter_USART) : 		Driver_USART2.Send(recvbuff,25);
+zigbee_sw in dataTrans_USART.c (D:\国顺资料\江工物联网项目\MBoard_project\Module\Transmitter_USART) : 					Driver_USART2.Send(sendbuff,17+2+2+1);
+zigbee_sw in dataTrans_USART.c (D:\国顺资料\江工物联网项目\MBoard_project\Module\Transmitter_USART) : 						Driver_USART2.Send(sendbuff,17+2+2+1);
+zigbee_sw in dataTrans_USART.c (D:\国顺资料\江工物联网项目\MBoard_project\Module\Transmitter_USART) : 					Driver_USART2.Receive(recvbuff,50);
+USARTWireless_Thread in dataTrans_USART.c (D:\国顺资料\江工物联网项目\MBoard_project\Module\Transmitter_USART) : 		Driver_USART2.Receive(dataTrans_RXBUF,frameDatatrans_totlen);	//接收指令长度数据
+USARTWireless_Thread in dataTrans_USART.c (D:\国顺资料\江工物联网项目\MBoard_project\Module\Transmitter_USART) : 							//Driver_USART2.Send(dataTrans_TXBUF,memp);
+USARTWireless_Thread in dataTrans_USART.c (D:\国顺资料\江工物联网项目\MBoard_project\Module\Transmitter_USART) : 							//Driver_USART2.Send(dataTrans_TXBUF,memp);
+USARTWireless_Thread in dataTrans_USART.c (D:\国顺资料\江工物联网项目\MBoard_project\Module\Transmitter_USART) : 							//Driver_USART2.Send(dataTrans_TXBUF,memp);
+USARTWireless_Thread in dataTrans_USART.c (D:\国顺资料\江工物联网项目\MBoard_project\Module\Transmitter_USART) : 							//Driver_USART2.Send(dataTrans_TXBUF,memp);
+USARTWireless_Thread in dataTrans_USART.c (D:\国顺资料\江工物联网项目\MBoard_project\Module\Transmitter_USART) : 							//Driver_USART2.Send(dataTrans_TXBUF,memp);
+USARTWireless_Thread in dataTrans_USART.c (D:\国顺资料\江工物联网项目\MBoard_project\Module\Transmitter_USART) : 							//Driver_USART2.Send(dataTrans_TXBUF,memp);
+USARTWireless_Thread in dataTrans_USART.c (D:\国顺资料\江工物联网项目\MBoard_project\Module\Transmitter_USART) : 							//Driver_USART2.Send(dataTrans_TXBUF,memp);
+USARTWireless_Thread in dataTrans_USART.c (D:\国顺资料\江工物联网项目\MBoard_project\Module\Transmitter_USART) : 							//Driver_USART2.Send(dataTrans_TXBUF,memp);
+USARTWireless_Thread in dataTrans_USART.c (D:\国顺资料\江工物联网项目\MBoard_project\Module\Transmitter_USART) : 							//Driver_USART2.Send(dataTrans_TXBUF,memp);
+USARTWireless_Thread in dataTrans_USART.c (D:\国顺资料\江工物联网项目\MBoard_project\Module\Transmitter_USART) : 							//Driver_USART2.Send(dataTrans_TXBUF,memp);
+USARTWireless_Thread in dataTrans_USART.c (D:\国顺资料\江工物联网项目\MBoard_project\Module\Transmitter_USART) : 							//Driver_USART2.Send(dataTrans_TXBUF,memp);
+USARTWireless_Thread in dataTrans_USART.c (D:\国顺资料\江工物联网项目\MBoard_project\Module\Transmitter_USART) : 							//Driver_USART2.Send(dataTrans_TXBUF,memp);
+USARTWireless_Thread in dataTrans_USART.c (D:\国顺资料\江工物联网项目\MBoard_project\Module\Transmitter_USART) : 							//Driver_USART2.Send(dataTrans_TXBUF,memp);
+USARTWireless_Thread in dataTrans_USART.c (D:\国顺资料\江工物联网项目\MBoard_project\Module\Transmitter_USART) : 							//Driver_USART2.Send(dataTrans_TXBUF,memp);
+USARTWireless_Thread in dataTrans_USART.c (D:\国顺资料\江工物联网项目\MBoard_project\Module\Transmitter_USART) : 							//Driver_USART2.Send(dataTrans_TXBUF,memp);
+USARTWireless_Thread in dataTrans_USART.c (D:\国顺资料\江工物联网项目\MBoard_project\Module\Transmitter_USART) : 							//Driver_USART2.Send(dataTrans_TXBUF,memp);
+USARTWireless_Thread in dataTrans_USART.c (D:\国顺资料\江工物联网项目\MBoard_project\Module\Transmitter_USART) : 							//Driver_USART2.Send(dataTrans_TXBUF,memp);
+Eguard.c (D:\国顺资料\江工物联网项目\MBoard_project\Module\Entrance_guard) line 4 : extern ARM_DRIVER_USART Driver_USART2;
+fingerID_CMDTX in fingerID.c (D:\国顺资料\江工物联网项目\MBoard_project\Module\Entrance_guard) : //					Driver_USART2.Send(&p_rec[9],1);	 /****调试语句*****/
+RTE_Device.h (D:\国顺资料\江工物联网项目\MBoard_project\Project\RTE\Device\STM32F103VC) line 198 : // <i> Configuration settings for Driver_USART2 in component ::CMSIS Driver:USART
+USART_STM32F10x.c (D:\国顺资料\江工物联网项目\MBoard_project\User\reWrite) line 24 :  * Driver:       Driver_USART1, Driver_USART2, Driver_USART3,
+USART_STM32F10x.c (D:\国顺资料\江工物联网项目\MBoard_project\User\reWrite) line 2204 : ARM_DRIVER_USART Driver_USART2 = {
