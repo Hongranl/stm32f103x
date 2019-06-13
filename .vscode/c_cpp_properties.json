@@ -3,7 +3,8 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "C:\\Keil_v5\\ARM\\Pack\\Keil\\STM32F1xx_DFP\\2.2.0/**"
             ],
             "defines": [
                 "_DEBUG",
