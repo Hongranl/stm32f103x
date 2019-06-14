@@ -1,0 +1,16 @@
+CAMtasticDXP Drill Report
+Serial Number:0000-00-00000
+Drill File: E:\2、GTA Project\2、Prj-going\2、江工-物联网\3、物联网智能家居体验间\1、研发资料\2、PCB\4、学习型红外转发器 GS-X-GXM01\学习型红外转发器 GS-X-GXM01-V1.0\【gerber】学习型红外转发器 GS-X-GXM01-V1.0\cam.drl
+Format: 2.3
+Units: English (Inch)
+Step & Repeat Codes Used: NO
+
+
+TOOL		SIZE		COUNT
+====		======		=====
+
+ 1 		0.0118		144
+ 2 		0.0315		17
+ 3 		0.0350		10
+ 4 		0.0354		3
+ 5 		0.0354		2

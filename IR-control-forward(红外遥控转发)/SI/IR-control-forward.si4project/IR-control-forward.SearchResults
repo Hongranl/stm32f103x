@@ -1,0 +1,1790 @@
+---- uint8 Matches (217 in 46 files) ----
+dataTrans_USART.c (D:\桌面\IR-control-forward(红外遥控转发)\Module\Transmitter_USART) line 8 : 
+osThreadId tid_UsartRx_Thread;
+uint8 gb_databuff[50];
+
+static bool online = false;
+static uint16 sendcount = 0;
+dataTrans_USART.c (D:\桌面\IR-control-forward(红外遥控转发)\Module\Transmitter_USART) line 14 : 
+static bool RX_FLG = false; //有效数据获取标志
+static uint8 recvbuff[100]={0};
+
+osThreadDef(USARTWireless_Thread,osPriorityNormal,1,1024);
+osThreadDef(UsartRx_Thread,osPriorityNormal,1,512);
+dataTrans_USART.c (D:\桌面\IR-control-forward(红外遥控转发)\Module\Transmitter_USART) line 33 : 
+ */
+uint8_t TRAN_crc8(uint8_t *buf,uint8_t len)
+{
+	uint8_t crc;
+	uint8_t i;
+
+	crc = 0;
+
+UsartRx_Thread in dataTrans_USART.c (D:\桌面\IR-control-forward(红外遥控转发)\Module\Transmitter_USART) : 
+{
+	uint8 recv_b[100]={0};
+
+	LED_MSGZigbee_OK = 0;
+	MSGZigbee_rest = 0;
+zigbee_sw in dataTrans_USART.c (D:\桌面\IR-control-forward(红外遥控转发)\Module\Transmitter_USART) : 
+{
+	uint8 sendbuff[100]={0};
+	
+	
+	if(led2_status == led2_b_flash)
+		{
+			uint8 i = 0;
+			for(;i < 200;i++ )
+			{
+				if (led2_status == led2_b_flash)
+zigbee_sw in dataTrans_USART.c (D:\桌面\IR-control-forward(红外遥控转发)\Module\Transmitter_USART) : 
+}
+uint8 zigbee_updata(uint8 EXmodID)
+{
+	uint8 sendbuff[100]={0};
+	osEvent  evt;
+    osStatus status;
+	
+USARTWireless_Thread in dataTrans_USART.c (D:\桌面\IR-control-forward(红外遥控转发)\Module\Transmitter_USART) : 
+			{
+				uint8  crc=0xfe;
+				memcpy(&recv_tranbuff,recvbuff+3,17);
+				crc = TRAN_crc8(recvbuff,19+recv_tranbuff.data_len);//17+recv_tranbuff.data_len+2
+
+dataTrans_USART.c (D:\桌面\IR-control-forward(红外遥控转发)\Module\Transmitter_USART) line 696 : 
+
+void wirelessThread_Active(uint8 status){
+	
+	if(status && led2_status == led2_r)
+	{	
+dataTrans_USART.h (D:\桌面\IR-control-forward(红外遥控转发)\Module\Transmitter_USART) line 40 : 
+
+extern uint8 gb_databuff[50];
+
+extern volatile bool gb_Exmod_key;
+
+dataTrans_USART.h (D:\桌面\IR-control-forward(红外遥控转发)\Module\Transmitter_USART) line 54 : 
+
+void wirelessThread_Active(uint8);
+
+#endif
+debugUart.c (D:\桌面\IR-control-forward(红外遥控转发)\Module\Debug_USART) line 2 : 
+
+const uint8_t TestCMD_PAGSIZE = 20;
+const uint8_t TestCMD_MAXSIZE = 80;
+
+const char *TestCMD[TestCMD_PAGSIZE] = {
+
+USARTDebug_Thread in debugUart.c (D:\桌面\IR-control-forward(红外遥控转发)\Module\Debug_USART) : 
+
+	const uint8_t cmdsize = TestCMD_MAXSIZE;
+	char cmd[cmdsize] = "abc";
+	uint8_t loop;
+	
+	osSignalWait(USARTDEBUG_THREAD_EN,osWaitForever);		//等待线程使能信号
+	osSignalClear(tid_USARTDebug_Thread,USARTDEBUG_THREAD_EN);	
+GTAWZ_JJ_02.build_log.htm (D:\桌面\IR-control-forward(红外遥控转发)\Project\Objects) line 30 : 
+compiling Bsp.c...
+..\Module\Transmitter_USART\dataTrans_USART.h(41): error:  #20: identifier "uint8" is undefined
+  extern uint8 gb_databuff[50];
+..\Module\Transmitter_USART\dataTrans_USART.h(55): error:  #92: identifier-list parameters may only be used in a function definition
+  void wirelessThread_Active(uint8);
+..\User\Bsp.c: 0 warnings, 2 errors
+compiling Tips.c...
+..\Module\Transmitter_USART\dataTrans_USART.h(41): error:  #20: identifier "uint8" is undefined
+  extern uint8 gb_databuff[50];
+..\Module\Transmitter_USART\dataTrans_USART.h(55): error:  #92: identifier-list parameters may only be used in a function definition
+  void wirelessThread_Active(uint8);
+..\Module\Tips.c: 0 warnings, 2 errors
+compiling Main.c...
+..\Module\Transmitter_USART\dataTrans_USART.h(41): error:  #20: identifier "uint8" is undefined
+  extern uint8 gb_databuff[50];
+..\Module\Transmitter_USART\dataTrans_USART.h(55): error:  #92: identifier-list parameters may only be used in a function definition
+  void wirelessThread_Active(uint8);
+..\User\Main.c: 0 warnings, 2 errors
+compiling stm32f10x_it.c...
+compiling delay.c...
+compiling intrrupt.c...
+..\Module\Transmitter_USART\dataTrans_USART.h(41): error:  #20: identifier "uint8" is undefined
+  extern uint8 gb_databuff[50];
+..\Module\Transmitter_USART\dataTrans_USART.h(55): error:  #92: identifier-list parameters may only be used in a function definition
+  void wirelessThread_Active(uint8);
+..\User\intrrupt.c: 0 warnings, 2 errors
+compiling Moudle_DEC.c...
+..\Module\Transmitter_USART\dataTrans_USART.h(41): error:  #20: identifier "uint8" is undefined
+  extern uint8 gb_databuff[50];
+..\Module\Transmitter_USART\dataTrans_USART.h(55): error:  #92: identifier-list parameters may only be used in a function definition
+  void wirelessThread_Active(uint8);
+..\Module\Moudle_DEC.c: 0 warnings, 2 errors
+compiling infraTrans.c...
+..\Module\Infra_Trans\infraTrans.c(403): error:  #20: identifier "gb_Exmod_key" is undefined
+GTAWZ_JJ_02.build_log.htm (D:\桌面\IR-control-forward(红外遥控转发)\Project\Objects) line 130 : 
+compiling dataTrans_USART.c...
+..\Module\Transmitter_USART\dataTrans_USART.h(41): error:  #20: identifier "uint8" is undefined
+  extern uint8 gb_databuff[50];
+..\Module\Transmitter_USART\dataTrans_USART.h(55): error:  #92: identifier-list parameters may only be used in a function definition
+  void wirelessThread_Active(uint8);
+..\Module\Transmitter_USART\dataTrans_USART.c(9): error:  #20: identifier "uint8" is undefined
+  uint8 gb_databuff[50];
+..\Module\Transmitter_USART\dataTrans_USART.c(12): error:  #20: identifier "uint16" is undefined
+  static uint16 sendcount = 0;
+..\Module\Transmitter_USART\dataTrans_USART.c(15): error:  #20: identifier "uint8" is undefined
+  static uint8 recvbuff[100]={0};
+..\Module\Transmitter_USART\dataTrans_USART.c(277): error:  #20: identifier "uint8" is undefined
+  	uint8 recv_b[100]={0};
+..\Module\Transmitter_USART\dataTrans_USART.c(328): error:  #20: identifier "uint8" is undefined
+  	uint8 sendbuff[100]={0};
+..\Module\Transmitter_USART\dataTrans_USART.c(333): error:  #20: identifier "uint8" is undefined
+  			uint8 i = 0;
+..\Module\Transmitter_USART\dataTrans_USART.c(396): error:  #20: identifier "uint8" is undefined
+  uint8 zigbee_updata(uint8 EXmodID)
+..\Module\Transmitter_USART\dataTrans_USART.c(396): error:  #20: identifier "uint8" is undefined
+  uint8 zigbee_updata(uint8 EXmodID)
+..\Module\Transmitter_USART\dataTrans_USART.c(398): error:  #20: identifier "uint8" is undefined
+  	uint8 sendbuff[100]={0};
+..\Module\Transmitter_USART\dataTrans_USART.c(464): error:  #20: identifier "EGUARD_MEAS" is undefined
+  						EGUARD_MEAS *rptr = NULL;
+..\Module\Transmitter_USART\dataTrans_USART.c(464): error:  #20: identifier "rptr" is undefined
+GTAWZ_JJ_02.build_log.htm (D:\桌面\IR-control-forward(红外遥控转发)\Project\Objects) line 186 : 
+  							do{status = osPoolFree(speakCM_pool, rptr);}while(status != osOK);	//内存释放
+..\Module\Transmitter_USART\dataTrans_USART.c(672): error:  #20: identifier "uint8" is undefined
+  				uint8  crc=0xfe;
+..\Module\Transmitter_USART\dataTrans_USART.c(620): warning:  #177-D: variable "evt"  was declared but never referenced
+  	osEvent  evt;
+..\Module\Transmitter_USART\dataTrans_USART.c(621): warning:  #177-D: variable "status"  was declared but never referenced
+GTAWZ_JJ_02.build_log.htm (D:\桌面\IR-control-forward(红外遥控转发)\Project\Objects) line 198 : 
+  	u8 RXdats_BUFtemp[dats_BUFtemp_len] = {0};	//接收核心数据包缓存
+..\Module\Transmitter_USART\dataTrans_USART.c(697): error:  #20: identifier "uint8" is undefined
+  void wirelessThread_Active(uint8 status){
+..\Module\Transmitter_USART\dataTrans_USART.c: 5 warnings, 30 errors
+compiling debugUart.c...
+..\Module\Transmitter_USART\dataTrans_USART.h(41): error:  #20: identifier "uint8" is undefined
+  extern uint8 gb_databuff[50];
+..\Module\Transmitter_USART\dataTrans_USART.h(55): error:  #92: identifier-list parameters may only be used in a function definition
+  void wirelessThread_Active(uint8);
+..\Module\Debug_USART\debugUart.c: 0 warnings, 2 errors
+compiling USART_STM32F10x.c...
+compiling I2C_STM32F10x.c...
+infraTrans.c (D:\桌面\IR-control-forward(红外遥控转发)\Module\Infra_Trans) line 6 : 
+static IFR_MEAS ifrCM_Attr;
+static uint8_t  ifrDevMOUDLE_ID;
+
+osThreadId tid_keyIFR_Thread;
+osThreadId tid_keyIFR_Thread_umdScan;
+infraTrans.c (D:\桌面\IR-control-forward(红外遥控转发)\Module\Infra_Trans) line 27 : 
+
+const uint8_t IFR_PER  = 2;		//电平采样分辨率 2us
+const uint8_t KEY_NUM = 11;
+bool measure_en = true;
+
+uint8_t tabHp,tabLp;		
+uint16_t HTtab[Tab_size];
+uint16_t LTtab[Tab_size];	//按键ifr载波信息缓存
+
+infraTrans.c (D:\桌面\IR-control-forward(红外遥控转发)\Module\Infra_Trans) line 37 : 
+uint16_t ifrKB_LTtab[KEY_NUM][Tab_size];
+uint8_t  ifrKB_tabHp[KEY_NUM],ifrKB_tabLp[KEY_NUM];	//按键ifr载波信息缓存组
+
+typedef void (* funkeyThread)(funKeyInit key_Init,Obj_keyStatus *orgKeyStatus,funKeyScan key_Scan,Obj_eventKey keyEvent,const char *Tips_head);
+
+infraTrans.c (D:\桌面\IR-control-forward(红外遥控转发)\Module\Infra_Trans) line 81 : 
+
+uint8_t IFR_kScan_A(void){
+
+	uint8_t key = 0;
+	
+	IFR_leyInit_X();
+	
+infraTrans.c (D:\桌面\IR-control-forward(红外遥控转发)\Module\Infra_Trans) line 127 : 
+
+uint8_t IFR_kScan_B(void){
+
+	IFR_leyInit_X();
+	
+infraTrans.c (D:\桌面\IR-control-forward(红外遥控转发)\Module\Infra_Trans) line 218 : 
+
+void IFR_Send(uint16_t HTab[],uint8_t Hp,uint16_t LTab[],uint8_t Lp){
+
+	const uint16_t MAX = 6000 / IFR_PER; //长时间保持信号补偿标准
+	uint8_t loop;
+	uint16_t temp;
+	
+//	char disp[20];							//对应数据位信号长度输出测试
+infraTrans.c (D:\桌面\IR-control-forward(红外遥控转发)\Module\Infra_Trans) line 257 : 
+
+uint8_t keyIFR_Scan(void) {
+
+	return IFR_kScan_B();
+}
+usr_sigin in infraTrans.c (D:\桌面\IR-control-forward(红外遥控转发)\Module\Infra_Trans) : 
+	uint16_t Ktemp;
+	uint8_t	 cnt;
+	
+	ifrCM_Attr.VAL_KEY = ifrvalK_NULL;
+	
+keyIFR_Thread_umdScan in infraTrans.c (D:\桌面\IR-control-forward(红外遥控转发)\Module\Infra_Trans) : 
+	
+	uint8_t ifrKey_temp;
+	
+	static IFR_MEAS ifrCM_Attr_tempDP;
+	
+infraTrans.h (D:\桌面\IR-control-forward(红外遥控转发)\Module\Infra_Trans) line 38 : 
+extern bool measure_en;
+extern uint8_t tabHp,tabLp;
+extern uint16_t HTtab[Tab_size];
+extern uint16_t LTtab[Tab_size];
+
+{anonIFR_kMSG} in infraTrans.h (D:\桌面\IR-control-forward(红外遥控转发)\Module\Infra_Trans) : 
+
+	uint8_t mADDR;
+}IFR_kMSG;
+
+extern osThreadId 	 tid_keyIFR_Thread;
+EXTI9_5_IRQHandler in intrrupt.c (D:\桌面\IR-control-forward(红外遥控转发)\User) : 
+			
+				const uint8_t IFR_PER  = 2;		//电平采样分辨率 2us
+				const uint8_t BUF_WARN = 200;	//缓存溢出警告值
+				
+				const uint16_t SIGLEN_MAX = 50000 / IFR_PER;  //一个电平信号维持最长时间限制
+				const uint16_t SIGLEN_MIN = 6000 / IFR_PER;  //一个电平信号维持最短时间限制
+				
+				static uint8_t Tab_Hp,Tab_Lp;
+				static uint16_t HT_Tab[Tab_size] = {0};
+				static uint16_t LT_Tab[Tab_size] = {0};
+				uint16_t time = 0;
+getKey in Key&Tips.c (D:\桌面\IR-control-forward(红外遥控转发)\Module\KEY&TIPS) : 
+	static	uint16_t	s_u16LastKey		= KEY_NULL;			//保留历史按键键值	
+	static	uint8_t	KeyKeepComfirm		= 0;					//长按后确认保持 确认所用时长计时
+	static	uint16_t	s_u16KeyTimeCount	= 0;				//长按时长定义（用来对KEY_TICK进行计数，根据这个计数值来确认是否属于长按）
+				uint16_t keyTemp				= KEY_NULL;		/*十六进制第一位：按键状态；	第二位：保持计数值；		第三位：键值；		第四位：连按计数值*/
+	
+key_Thread in Key&Tips.c (D:\桌面\IR-control-forward(红外遥控转发)\Module\KEY&TIPS) : 
+	static uint16_t keyVal;						//按键状态事件
+	static uint8_t	key_temp;					//按键键值缓冲
+	static uint8_t	kCount;						//按键计数值变量，长按保持计数和连按计数使用同一个变量，因为两个状态不会同时发生
+	static uint8_t	kCount_rec;			//历史计数值保存
+	
+	static osThreadId ID_Temp;					//当前进程ID缓存
+	static osEvent evt;
+	static uint8_t KEY_DEBUG_FLG = 0;
+
+	const	 uint8_t	tipsLen = 80;		//Tips打印字符串长度
+	static char	key_tempDisp;
+	static char	kCountDisp;
+	static char	kCount_recDisp;
+key_Thread in Key&Tips.c (D:\桌面\IR-control-forward(红外遥控转发)\Module\KEY&TIPS) : 
+				
+					key_temp = (uint8_t)((keyVal & 0x00f0) >> 4);
+if(KEY_DEBUG_FLG){/*Debug_log输出使能*/
+					strcat(tips,"按键");	
+					key_tempDisp = key_temp + '0';
+key_Thread in Key&Tips.c (D:\桌面\IR-control-forward(红外遥控转发)\Module\KEY&TIPS) : 
+				
+					kCount		= (uint8_t)((keyVal & 0x0f00) >> 8);  //获取计数值
+					kCount_rec	= kCount;
+if(KEY_DEBUG_FLG){/*Debug_log输出使能*/					
+					strcat(tips,"按键");	
+key_Thread in Key&Tips.c (D:\桌面\IR-control-forward(红外遥控转发)\Module\KEY&TIPS) : 
+				
+					key_temp = (uint8_t)((keyVal & 0x00f0) >> 4);
+if(KEY_DEBUG_FLG){/*Debug_log输出使能*/				
+					strcat(tips,"按键");	
+					key_tempDisp = key_temp + '0';
+key_Thread in Key&Tips.c (D:\桌面\IR-control-forward(红外遥控转发)\Module\KEY&TIPS) : 
+				
+					kCount 		= (uint8_t)((keyVal & 0x000f) >> 0);	//获取计数值
+					kCount_rec	= kCount + 1;
+if(KEY_DEBUG_FLG){/*Debug_log输出使能*/	
+					strcat(tips,"按键");	
+keyStatus in Key&Tips.h (D:\桌面\IR-control-forward(红外遥控转发)\Module\KEY&TIPS) : 
+
+    uint8_t 	keyOverFlg;			//按键事件结束标志
+    uint16_t	sKeyCount;			//连续短按	 计数值
+    uint16_t	sKeyKeep;			//长按并保持 计数值
+    uint8_t	keyCTflg;			//按键连按标志
+} Obj_keyStatus;
+
+typedef struct keyEvent {		//创建一个按键检测线程对象封装
+NVIC_Init in misc.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) : 
+    NVIC->ISER[NVIC_InitStruct->NVIC_IRQChannel >> 0x05] =
+      (uint32_t)0x01 << (NVIC_InitStruct->NVIC_IRQChannel & (uint8_t)0x1F);
+  }
+  else
+  {
+NVIC_Init in misc.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) : 
+    NVIC->ICER[NVIC_InitStruct->NVIC_IRQChannel >> 0x05] =
+      (uint32_t)0x01 << (NVIC_InitStruct->NVIC_IRQChannel & (uint8_t)0x1F);
+  }
+}
+
+misc.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 174 : 
+  */
+void NVIC_SystemLPConfig(uint8_t LowPowerMode, FunctionalState NewState)
+{
+  /* Check the parameters */
+  assert_param(IS_NVIC_LP(LowPowerMode));
+{anonNVIC_InitTypeDef} in misc.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) : 
+{
+  uint8_t NVIC_IRQChannel;                    /*!< Specifies the IRQ channel to be enabled or disabled.
+                                                   This parameter can be a value of @ref IRQn_Type 
+                                                   (For the complete STM32 Devices IRQ Channels list, please
+                                                    refer to stm32f10x.h file) */
+
+  uint8_t NVIC_IRQChannelPreemptionPriority;  /*!< Specifies the pre-emption priority for the IRQ channel
+                                                   specified in NVIC_IRQChannel. This parameter can be a value
+                                                   between 0 and 15 as described in the table @ref NVIC_Priority_Table */
+
+  uint8_t NVIC_IRQChannelSubPriority;         /*!< Specifies the subpriority level for the IRQ channel specified
+                                                   in NVIC_IRQChannel. This parameter can be a value
+                                                   between 0 and 15 as described in the table @ref NVIC_Priority_Table */
+
+misc.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 126 : 
+
+#define NVIC_LP_SEVONPEND            ((uint8_t)0x10)
+#define NVIC_LP_SLEEPDEEP            ((uint8_t)0x04)
+#define NVIC_LP_SLEEPONEXIT          ((uint8_t)0x02)
+#define IS_NVIC_LP(LP) (((LP) == NVIC_LP_SEVONPEND) || \
+                        ((LP) == NVIC_LP_SLEEPDEEP) || \
+                        ((LP) == NVIC_LP_SLEEPONEXIT))
+misc.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 198 : 
+void NVIC_SetVectorTable(uint32_t NVIC_VectTab, uint32_t Offset);
+void NVIC_SystemLPConfig(uint8_t LowPowerMode, FunctionalState NewState);
+void SysTick_CLKSourceConfig(uint32_t SysTick_CLKSource);
+
+#ifdef __cplusplus
+stm32f10x_adc.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 136 : 
+/* ADC JDRx registers offset */
+#define JDR_Offset                  ((uint8_t)0x28)
+
+/* ADC1 DR register base address */
+#define DR_ADDRESS                  ((uint32_t)0x4001244C)
+ADC_Init in stm32f10x_adc.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) : 
+  uint32_t tmpreg1 = 0;
+  uint8_t tmpreg2 = 0;
+  /* Check the parameters */
+  assert_param(IS_ADC_ALL_PERIPH(ADCx));
+  assert_param(IS_ADC_MODE(ADC_InitStruct->ADC_Mode));
+ADC_Init in stm32f10x_adc.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) : 
+  /* Set L bits according to ADC_NbrOfChannel value */
+  tmpreg2 |= (uint8_t) (ADC_InitStruct->ADC_NbrOfChannel - (uint8_t)1);
+  tmpreg1 |= (uint32_t)tmpreg2 << 20;
+  /* Write to ADCx SQR1 */
+  ADCx->SQR1 = tmpreg1;
+ADC_ITConfig in stm32f10x_adc.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) : 
+{
+  uint8_t itmask = 0;
+  /* Check the parameters */
+  assert_param(IS_ADC_ALL_PERIPH(ADCx));
+  assert_param(IS_FUNCTIONAL_STATE(NewState));
+ADC_ITConfig in stm32f10x_adc.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) : 
+  /* Get the ADC IT index */
+  itmask = (uint8_t)ADC_IT;
+  if (NewState != DISABLE)
+  {
+    /* Enable the selected ADC interrupts */
+stm32f10x_adc.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 508 : 
+  */
+void ADC_DiscModeChannelCountConfig(ADC_TypeDef* ADCx, uint8_t Number)
+{
+  uint32_t tmpreg1 = 0;
+  uint32_t tmpreg2 = 0;
+stm32f10x_adc.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 589 : 
+  */
+void ADC_RegularChannelConfig(ADC_TypeDef* ADCx, uint8_t ADC_Channel, uint8_t Rank, uint8_t ADC_SampleTime)
+{
+  uint32_t tmpreg1 = 0, tmpreg2 = 0;
+  /* Check the parameters */
+stm32f10x_adc.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 929 : 
+  */
+void ADC_InjectedChannelConfig(ADC_TypeDef* ADCx, uint8_t ADC_Channel, uint8_t Rank, uint8_t ADC_SampleTime)
+{
+  uint32_t tmpreg1 = 0, tmpreg2 = 0, tmpreg3 = 0;
+  /* Check the parameters */
+ADC_InjectedChannelConfig in stm32f10x_adc.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) : 
+  /* Calculate the mask to clear: ((Rank-1)+(4-JL-1)) */
+  tmpreg2 = JSQR_JSQ_Set << (5 * (uint8_t)((Rank + 3) - (tmpreg3 + 1)));
+  /* Clear the old JSQx bits for the selected rank */
+  tmpreg1 &= ~tmpreg2;
+  /* Calculate the mask to set: ((Rank-1)+(4-JL-1)) */
+  tmpreg2 = (uint32_t)ADC_Channel << (5 * (uint8_t)((Rank + 3) - (tmpreg3 + 1)));
+  /* Set the JSQx bits for the selected rank */
+  tmpreg1 |= tmpreg2;
+  /* Store the new register value */
+stm32f10x_adc.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 992 : 
+  */
+void ADC_InjectedSequencerLengthConfig(ADC_TypeDef* ADCx, uint8_t Length)
+{
+  uint32_t tmpreg1 = 0;
+  uint32_t tmpreg2 = 0;
+stm32f10x_adc.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 1024 : 
+  */
+void ADC_SetInjectedOffset(ADC_TypeDef* ADCx, uint8_t ADC_InjectedChannel, uint16_t Offset)
+{
+  __IO uint32_t tmp = 0;
+  
+stm32f10x_adc.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 1051 : 
+  */
+uint16_t ADC_GetInjectedConversionValue(ADC_TypeDef* ADCx, uint8_t ADC_InjectedChannel)
+{
+  __IO uint32_t tmp = 0;
+  
+stm32f10x_adc.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 1144 : 
+  */
+void ADC_AnalogWatchdogSingleChannelConfig(ADC_TypeDef* ADCx, uint8_t ADC_Channel)
+{
+  uint32_t tmpreg = 0;
+  /* Check the parameters */
+stm32f10x_adc.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 1194 : 
+  */
+FlagStatus ADC_GetFlagStatus(ADC_TypeDef* ADCx, uint8_t ADC_FLAG)
+{
+  FlagStatus bitstatus = RESET;
+  /* Check the parameters */
+ADC_GetFlagStatus in stm32f10x_adc.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) : 
+  /* Check the status of the specified ADC flag */
+  if ((ADCx->SR & ADC_FLAG) != (uint8_t)RESET)
+  {
+    /* ADC_FLAG is set */
+    bitstatus = SET;
+stm32f10x_adc.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 1227 : 
+  */
+void ADC_ClearFlag(ADC_TypeDef* ADCx, uint8_t ADC_FLAG)
+{
+  /* Check the parameters */
+  assert_param(IS_ADC_ALL_PERIPH(ADCx));
+ADC_GetITStatus in stm32f10x_adc.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) : 
+  /* Get the ADC_IT enable bit status */
+  enablestatus = (ADCx->CR1 & (uint8_t)ADC_IT) ;
+  /* Check the status of the specified ADC interrupt */
+  if (((ADCx->SR & itmask) != (uint32_t)RESET) && enablestatus)
+  {
+ADC_ClearITPendingBit in stm32f10x_adc.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) : 
+{
+  uint8_t itmask = 0;
+  /* Check the parameters */
+  assert_param(IS_ADC_ALL_PERIPH(ADCx));
+  assert_param(IS_ADC_IT(ADC_IT));
+  /* Get the ADC IT index */
+  itmask = (uint8_t)(ADC_IT >> 8);
+  /* Clear the selected ADC interrupt pending bits */
+  ADCx->SR = ~(uint32_t)itmask;
+}
+{anonADC_InitTypeDef} in stm32f10x_adc.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) : 
+
+  uint8_t ADC_NbrOfChannel;               /*!< Specifies the number of ADC channels that will be converted
+                                               using the sequencer for regular channel group.
+                                               This parameter must range from 1 to 16. */
+}ADC_InitTypeDef;
+stm32f10x_adc.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 173 : 
+
+#define ADC_Channel_0                               ((uint8_t)0x00)
+#define ADC_Channel_1                               ((uint8_t)0x01)
+#define ADC_Channel_2                               ((uint8_t)0x02)
+#define ADC_Channel_3                               ((uint8_t)0x03)
+#define ADC_Channel_4                               ((uint8_t)0x04)
+#define ADC_Channel_5                               ((uint8_t)0x05)
+#define ADC_Channel_6                               ((uint8_t)0x06)
+#define ADC_Channel_7                               ((uint8_t)0x07)
+#define ADC_Channel_8                               ((uint8_t)0x08)
+#define ADC_Channel_9                               ((uint8_t)0x09)
+#define ADC_Channel_10                              ((uint8_t)0x0A)
+#define ADC_Channel_11                              ((uint8_t)0x0B)
+#define ADC_Channel_12                              ((uint8_t)0x0C)
+#define ADC_Channel_13                              ((uint8_t)0x0D)
+#define ADC_Channel_14                              ((uint8_t)0x0E)
+#define ADC_Channel_15                              ((uint8_t)0x0F)
+#define ADC_Channel_16                              ((uint8_t)0x10)
+#define ADC_Channel_17                              ((uint8_t)0x11)
+
+#define ADC_Channel_TempSensor                      ((uint8_t)ADC_Channel_16)
+#define ADC_Channel_Vrefint                         ((uint8_t)ADC_Channel_17)
+
+#define IS_ADC_CHANNEL(CHANNEL) (((CHANNEL) == ADC_Channel_0) || ((CHANNEL) == ADC_Channel_1) || \
+                                 ((CHANNEL) == ADC_Channel_2) || ((CHANNEL) == ADC_Channel_3) || \
+stm32f10x_adc.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 212 : 
+
+#define ADC_SampleTime_1Cycles5                    ((uint8_t)0x00)
+#define ADC_SampleTime_7Cycles5                    ((uint8_t)0x01)
+#define ADC_SampleTime_13Cycles5                   ((uint8_t)0x02)
+#define ADC_SampleTime_28Cycles5                   ((uint8_t)0x03)
+#define ADC_SampleTime_41Cycles5                   ((uint8_t)0x04)
+#define ADC_SampleTime_55Cycles5                   ((uint8_t)0x05)
+#define ADC_SampleTime_71Cycles5                   ((uint8_t)0x06)
+#define ADC_SampleTime_239Cycles5                  ((uint8_t)0x07)
+#define IS_ADC_SAMPLE_TIME(TIME) (((TIME) == ADC_SampleTime_1Cycles5) || \
+                                  ((TIME) == ADC_SampleTime_7Cycles5) || \
+                                  ((TIME) == ADC_SampleTime_13Cycles5) || \
+stm32f10x_adc.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 273 : 
+
+#define ADC_InjectedChannel_1                       ((uint8_t)0x14)
+#define ADC_InjectedChannel_2                       ((uint8_t)0x18)
+#define ADC_InjectedChannel_3                       ((uint8_t)0x1C)
+#define ADC_InjectedChannel_4                       ((uint8_t)0x20)
+#define IS_ADC_INJECTED_CHANNEL(CHANNEL) (((CHANNEL) == ADC_InjectedChannel_1) || \
+                                          ((CHANNEL) == ADC_InjectedChannel_2) || \
+                                          ((CHANNEL) == ADC_InjectedChannel_3) || \
+stm32f10x_adc.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 328 : 
+
+#define ADC_FLAG_AWD                               ((uint8_t)0x01)
+#define ADC_FLAG_EOC                               ((uint8_t)0x02)
+#define ADC_FLAG_JEOC                              ((uint8_t)0x04)
+#define ADC_FLAG_JSTRT                             ((uint8_t)0x08)
+#define ADC_FLAG_STRT                              ((uint8_t)0x10)
+#define IS_ADC_CLEAR_FLAG(FLAG) ((((FLAG) & (uint8_t)0xE0) == 0x00) && ((FLAG) != 0x00))
+#define IS_ADC_GET_FLAG(FLAG) (((FLAG) == ADC_FLAG_AWD) || ((FLAG) == ADC_FLAG_EOC) || \
+                               ((FLAG) == ADC_FLAG_JEOC) || ((FLAG)== ADC_FLAG_JSTRT) || \
+                               ((FLAG) == ADC_FLAG_STRT))
+stm32f10x_adc.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 439 : 
+FlagStatus ADC_GetSoftwareStartConvStatus(ADC_TypeDef* ADCx);
+void ADC_DiscModeChannelCountConfig(ADC_TypeDef* ADCx, uint8_t Number);
+void ADC_DiscModeCmd(ADC_TypeDef* ADCx, FunctionalState NewState);
+void ADC_RegularChannelConfig(ADC_TypeDef* ADCx, uint8_t ADC_Channel, uint8_t Rank, uint8_t ADC_SampleTime);
+void ADC_ExternalTrigConvCmd(ADC_TypeDef* ADCx, FunctionalState NewState);
+uint16_t ADC_GetConversionValue(ADC_TypeDef* ADCx);
+uint32_t ADC_GetDualModeConversionValue(void);
+stm32f10x_adc.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 451 : 
+FlagStatus ADC_GetSoftwareStartInjectedConvCmdStatus(ADC_TypeDef* ADCx);
+void ADC_InjectedChannelConfig(ADC_TypeDef* ADCx, uint8_t ADC_Channel, uint8_t Rank, uint8_t ADC_SampleTime);
+void ADC_InjectedSequencerLengthConfig(ADC_TypeDef* ADCx, uint8_t Length);
+void ADC_SetInjectedOffset(ADC_TypeDef* ADCx, uint8_t ADC_InjectedChannel, uint16_t Offset);
+uint16_t ADC_GetInjectedConversionValue(ADC_TypeDef* ADCx, uint8_t ADC_InjectedChannel);
+void ADC_AnalogWatchdogCmd(ADC_TypeDef* ADCx, uint32_t ADC_AnalogWatchdog);
+void ADC_AnalogWatchdogThresholdsConfig(ADC_TypeDef* ADCx, uint16_t HighThreshold, uint16_t LowThreshold);
+void ADC_AnalogWatchdogSingleChannelConfig(ADC_TypeDef* ADCx, uint8_t ADC_Channel);
+void ADC_TempSensorVrefintCmd(FunctionalState NewState);
+FlagStatus ADC_GetFlagStatus(ADC_TypeDef* ADCx, uint8_t ADC_FLAG);
+void ADC_ClearFlag(ADC_TypeDef* ADCx, uint8_t ADC_FLAG);
+ITStatus ADC_GetITStatus(ADC_TypeDef* ADCx, uint16_t ADC_IT);
+void ADC_ClearITPendingBit(ADC_TypeDef* ADCx, uint16_t ADC_IT);
+
+stm32f10x_bkp.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 200 : 
+  */
+void BKP_SetRTCCalibrationValue(uint8_t CalibrationValue)
+{
+  uint16_t tmpreg = 0;
+  /* Check the parameters */
+stm32f10x_bkp.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 169 : 
+void BKP_RTCOutputConfig(uint16_t BKP_RTCOutputSource);
+void BKP_SetRTCCalibrationValue(uint8_t CalibrationValue);
+void BKP_WriteBackupRegister(uint16_t BKP_DR, uint16_t Data);
+uint16_t BKP_ReadBackupRegister(uint16_t BKP_DR);
+FlagStatus BKP_GetFlagStatus(void);
+stm32f10x_can.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 75 : 
+/* Mailboxes definition */
+#define CAN_TXMAILBOX_0                   ((uint8_t)0x00)
+#define CAN_TXMAILBOX_1                   ((uint8_t)0x01)
+#define CAN_TXMAILBOX_2                   ((uint8_t)0x02) 
+
+
+
+stm32f10x_can.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 153 : 
+  */
+uint8_t CAN_Init(CAN_TypeDef* CANx, CAN_InitTypeDef* CAN_InitStruct)
+{
+  uint8_t InitStatus = CAN_InitStatus_Failed;
+  uint32_t wait_ack = 0x00000000;
+  /* Check the parameters */
+  assert_param(IS_CAN_ALL_PERIPH(CANx));
+stm32f10x_can.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 427 : 
+  */
+void CAN_SlaveStartBank(uint8_t CAN_BankNumber) 
+{
+  /* Check the parameters */
+  assert_param(IS_CAN_BANKNUMBER(CAN_BankNumber));
+stm32f10x_can.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 514 : 
+  */
+uint8_t CAN_Transmit(CAN_TypeDef* CANx, CanTxMsg* TxMessage)
+{
+  uint8_t transmit_mailbox = 0;
+  /* Check the parameters */
+  assert_param(IS_CAN_ALL_PERIPH(CANx));
+  assert_param(IS_CAN_IDTYPE(TxMessage->IDE));
+CAN_Transmit in stm32f10x_can.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) : 
+    /* Set up the DLC */
+    TxMessage->DLC &= (uint8_t)0x0000000F;
+    CANx->sTxMailBox[transmit_mailbox].TDTR &= (uint32_t)0xFFFFFFF0;
+    CANx->sTxMailBox[transmit_mailbox].TDTR |= TxMessage->DLC;
+
+stm32f10x_can.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 588 : 
+  */
+uint8_t CAN_TransmitStatus(CAN_TypeDef* CANx, uint8_t TransmitMailbox)
+{
+  uint32_t state = 0;
+
+CAN_TransmitStatus in stm32f10x_can.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) : 
+  }
+  return (uint8_t) state;
+}
+
+/**
+stm32f10x_can.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 642 : 
+  */
+void CAN_CancelTransmit(CAN_TypeDef* CANx, uint8_t Mailbox)
+{
+  /* Check the parameters */
+  assert_param(IS_CAN_ALL_PERIPH(CANx));
+stm32f10x_can.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 670 : 
+  */
+void CAN_Receive(CAN_TypeDef* CANx, uint8_t FIFONumber, CanRxMsg* RxMessage)
+{
+  /* Check the parameters */
+  assert_param(IS_CAN_ALL_PERIPH(CANx));
+CAN_Receive in stm32f10x_can.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) : 
+  /* Get the Id */
+  RxMessage->IDE = (uint8_t)0x04 & CANx->sFIFOMailBox[FIFONumber].RIR;
+  if (RxMessage->IDE == CAN_Id_Standard)
+  {
+    RxMessage->StdId = (uint32_t)0x000007FF & (CANx->sFIFOMailBox[FIFONumber].RIR >> 21);
+CAN_Receive in stm32f10x_can.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) : 
+  
+  RxMessage->RTR = (uint8_t)0x02 & CANx->sFIFOMailBox[FIFONumber].RIR;
+  /* Get the DLC */
+  RxMessage->DLC = (uint8_t)0x0F & CANx->sFIFOMailBox[FIFONumber].RDTR;
+  /* Get the FMI */
+  RxMessage->FMI = (uint8_t)0xFF & (CANx->sFIFOMailBox[FIFONumber].RDTR >> 8);
+  /* Get the data field */
+  RxMessage->Data[0] = (uint8_t)0xFF & CANx->sFIFOMailBox[FIFONumber].RDLR;
+  RxMessage->Data[1] = (uint8_t)0xFF & (CANx->sFIFOMailBox[FIFONumber].RDLR >> 8);
+  RxMessage->Data[2] = (uint8_t)0xFF & (CANx->sFIFOMailBox[FIFONumber].RDLR >> 16);
+  RxMessage->Data[3] = (uint8_t)0xFF & (CANx->sFIFOMailBox[FIFONumber].RDLR >> 24);
+  RxMessage->Data[4] = (uint8_t)0xFF & CANx->sFIFOMailBox[FIFONumber].RDHR;
+  RxMessage->Data[5] = (uint8_t)0xFF & (CANx->sFIFOMailBox[FIFONumber].RDHR >> 8);
+  RxMessage->Data[6] = (uint8_t)0xFF & (CANx->sFIFOMailBox[FIFONumber].RDHR >> 16);
+  RxMessage->Data[7] = (uint8_t)0xFF & (CANx->sFIFOMailBox[FIFONumber].RDHR >> 24);
+  /* Release the FIFO */
+  /* Release FIFO0 */
+  if (FIFONumber == CAN_FIFO0)
+stm32f10x_can.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 719 : 
+  */
+void CAN_FIFORelease(CAN_TypeDef* CANx, uint8_t FIFONumber)
+{
+  /* Check the parameters */
+  assert_param(IS_CAN_ALL_PERIPH(CANx));
+stm32f10x_can.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 742 : 
+  */
+uint8_t CAN_MessagePending(CAN_TypeDef* CANx, uint8_t FIFONumber)
+{
+  uint8_t message_pending=0;
+  /* Check the parameters */
+  assert_param(IS_CAN_ALL_PERIPH(CANx));
+  assert_param(IS_CAN_FIFO(FIFONumber));
+CAN_MessagePending in stm32f10x_can.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) : 
+  {
+    message_pending = (uint8_t)(CANx->RF0R&(uint32_t)0x03);
+  }
+  else if (FIFONumber == CAN_FIFO1)
+  {
+    message_pending = (uint8_t)(CANx->RF1R&(uint32_t)0x03);
+  }
+  else
+  {
+stm32f10x_can.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 773 : 
+  */
+uint8_t CAN_OperatingModeRequest(CAN_TypeDef* CANx, uint8_t CAN_OperatingMode)
+{
+  uint8_t status = CAN_ModeStatus_Failed;
+  
+  /* Timeout for INAK or also for SLAK bits*/
+  uint32_t timeout = INAK_TIMEOUT; 
+CAN_OperatingModeRequest in stm32f10x_can.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) : 
+
+  return  (uint8_t) status;
+}
+
+/**
+stm32f10x_can.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 855 : 
+  */
+uint8_t CAN_Sleep(CAN_TypeDef* CANx)
+{
+  uint8_t sleepstatus = CAN_Sleep_Failed;
+  
+  /* Check the parameters */
+  assert_param(IS_CAN_ALL_PERIPH(CANx));
+CAN_Sleep in stm32f10x_can.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) : 
+  /* return sleep mode status */
+   return (uint8_t)sleepstatus;
+}
+
+/**
+stm32f10x_can.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 881 : 
+  */
+uint8_t CAN_WakeUp(CAN_TypeDef* CANx)
+{
+  uint32_t wait_slak = SLAK_TIMEOUT;
+  uint8_t wakeupstatus = CAN_WakeUp_Failed;
+  
+  /* Check the parameters */
+  assert_param(IS_CAN_ALL_PERIPH(CANx));
+CAN_WakeUp in stm32f10x_can.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) : 
+  /* return wakeup status */
+  return (uint8_t)wakeupstatus;
+}
+
+
+stm32f10x_can.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 921 : 
+ 
+uint8_t CAN_GetLastErrorCode(CAN_TypeDef* CANx)
+{
+  uint8_t errorcode=0;
+  
+  /* Check the parameters */
+  assert_param(IS_CAN_ALL_PERIPH(CANx));
+CAN_GetLastErrorCode in stm32f10x_can.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) : 
+  /* Get the error code*/
+  errorcode = (((uint8_t)CANx->ESR) & (uint8_t)CAN_ESR_LEC);
+  
+  /* Return the error code*/
+  return errorcode;
+stm32f10x_can.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 945 : 
+  */
+uint8_t CAN_GetReceiveErrorCounter(CAN_TypeDef* CANx)
+{
+  uint8_t counter=0;
+  
+  /* Check the parameters */
+  assert_param(IS_CAN_ALL_PERIPH(CANx));
+CAN_GetReceiveErrorCounter in stm32f10x_can.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) : 
+  /* Get the Receive Error Counter*/
+  counter = (uint8_t)((CANx->ESR & CAN_ESR_REC)>> 24);
+  
+  /* Return the Receive Error Counter*/
+  return counter;
+stm32f10x_can.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 965 : 
+  */
+uint8_t CAN_GetLSBTransmitErrorCounter(CAN_TypeDef* CANx)
+{
+  uint8_t counter=0;
+  
+  /* Check the parameters */
+  assert_param(IS_CAN_ALL_PERIPH(CANx));
+CAN_GetLSBTransmitErrorCounter in stm32f10x_can.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) : 
+  /* Get the LSB of the 9-bit CANx Transmit Error Counter(TEC) */
+  counter = (uint8_t)((CANx->ESR & CAN_ESR_TEC)>> 16);
+  
+  /* Return the LSB of the 9-bit CANx Transmit Error Counter(TEC) */
+  return counter;
+{anonCAN_InitTypeDef} in stm32f10x_can.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) : 
+  
+  uint8_t CAN_Mode;         /*!< Specifies the CAN operating mode.
+                                 This parameter can be a value of 
+                                @ref CAN_operating_mode */
+
+  uint8_t CAN_SJW;          /*!< Specifies the maximum number of time quanta 
+                                 the CAN hardware is allowed to lengthen or 
+                                 shorten a bit to perform resynchronization.
+                                 This parameter can be a value of 
+{anonCAN_InitTypeDef} in stm32f10x_can.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) : 
+
+  uint8_t CAN_BS1;          /*!< Specifies the number of time quanta in Bit 
+                                 Segment 1. This parameter can be a value of 
+                                 @ref CAN_time_quantum_in_bit_segment_1 */
+
+  uint8_t CAN_BS2;          /*!< Specifies the number of time quanta in Bit 
+                                 Segment 2.
+                                 This parameter can be a value of 
+                                 @ref CAN_time_quantum_in_bit_segment_2 */
+{anonCAN_FilterInitTypeDef} in stm32f10x_can.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) : 
+  
+  uint8_t CAN_FilterNumber;          /*!< Specifies the filter which will be initialized. It ranges from 0 to 13. */
+
+  uint8_t CAN_FilterMode;            /*!< Specifies the filter mode to be initialized.
+                                              This parameter can be a value of @ref CAN_filter_mode */
+
+  uint8_t CAN_FilterScale;           /*!< Specifies the filter scale.
+                                              This parameter can be a value of @ref CAN_filter_scale */
+
+  FunctionalState CAN_FilterActivation; /*!< Enable or disable the filter.
+{anonCanTxMsg} in stm32f10x_can.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) : 
+
+  uint8_t IDE;     /*!< Specifies the type of identifier for the message that 
+                        will be transmitted. This parameter can be a value 
+                        of @ref CAN_identifier_type */
+
+  uint8_t RTR;     /*!< Specifies the type of frame for the message that will 
+                        be transmitted. This parameter can be a value of 
+                        @ref CAN_remote_transmission_request */
+
+  uint8_t DLC;     /*!< Specifies the length of the frame that will be 
+                        transmitted. This parameter can be a value between 
+                        0 to 8 */
+
+  uint8_t Data[8]; /*!< Contains the data to be transmitted. It ranges from 0 
+                        to 0xFF. */
+} CanTxMsg;
+
+{anonCanRxMsg} in stm32f10x_can.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) : 
+
+  uint8_t IDE;     /*!< Specifies the type of identifier for the message that 
+                        will be received. This parameter can be a value of 
+                        @ref CAN_identifier_type */
+
+  uint8_t RTR;     /*!< Specifies the type of frame for the received message.
+                        This parameter can be a value of 
+                        @ref CAN_remote_transmission_request */
+
+  uint8_t DLC;     /*!< Specifies the length of the frame that will be received.
+                        This parameter can be a value between 0 to 8 */
+
+  uint8_t Data[8]; /*!< Contains the data to be received. It ranges from 0 to 
+                        0xFF. */
+
+  uint8_t FMI;     /*!< Specifies the index of the filter the message stored in 
+                        the mailbox passes through. This parameter can be a 
+                        value between 0 to 0xFF */
+} CanRxMsg;
+stm32f10x_can.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 211 : 
+
+#define CAN_InitStatus_Failed              ((uint8_t)0x00) /*!< CAN initialization failed */
+#define CAN_InitStatus_Success             ((uint8_t)0x01) /*!< CAN initialization OK */
+
+/**
+  * @}
+stm32f10x_can.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 222 : 
+
+#define CAN_Mode_Normal             ((uint8_t)0x00)  /*!< normal mode */
+#define CAN_Mode_LoopBack           ((uint8_t)0x01)  /*!< loopback mode */
+#define CAN_Mode_Silent             ((uint8_t)0x02)  /*!< silent mode */
+#define CAN_Mode_Silent_LoopBack    ((uint8_t)0x03)  /*!< loopback combined with silent mode */
+
+#define IS_CAN_MODE(MODE) (((MODE) == CAN_Mode_Normal) || \
+                           ((MODE) == CAN_Mode_LoopBack)|| \
+stm32f10x_can.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 240 : 
+  */  
+#define CAN_OperatingMode_Initialization  ((uint8_t)0x00) /*!< Initialization mode */
+#define CAN_OperatingMode_Normal          ((uint8_t)0x01) /*!< Normal mode */
+#define CAN_OperatingMode_Sleep           ((uint8_t)0x02) /*!< sleep mode */
+
+
+#define IS_CAN_OPERATING_MODE(MODE) (((MODE) == CAN_OperatingMode_Initialization) ||\
+stm32f10x_can.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 257 : 
+
+#define CAN_ModeStatus_Failed    ((uint8_t)0x00)                /*!< CAN entering the specific mode failed */
+#define CAN_ModeStatus_Success   ((uint8_t)!CAN_ModeStatus_Failed)   /*!< CAN entering the specific mode Succeed */
+
+
+/**
+stm32f10x_can.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 269 : 
+
+#define CAN_SJW_1tq                 ((uint8_t)0x00)  /*!< 1 time quantum */
+#define CAN_SJW_2tq                 ((uint8_t)0x01)  /*!< 2 time quantum */
+#define CAN_SJW_3tq                 ((uint8_t)0x02)  /*!< 3 time quantum */
+#define CAN_SJW_4tq                 ((uint8_t)0x03)  /*!< 4 time quantum */
+
+#define IS_CAN_SJW(SJW) (((SJW) == CAN_SJW_1tq) || ((SJW) == CAN_SJW_2tq)|| \
+                         ((SJW) == CAN_SJW_3tq) || ((SJW) == CAN_SJW_4tq))
+stm32f10x_can.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 284 : 
+
+#define CAN_BS1_1tq                 ((uint8_t)0x00)  /*!< 1 time quantum */
+#define CAN_BS1_2tq                 ((uint8_t)0x01)  /*!< 2 time quantum */
+#define CAN_BS1_3tq                 ((uint8_t)0x02)  /*!< 3 time quantum */
+#define CAN_BS1_4tq                 ((uint8_t)0x03)  /*!< 4 time quantum */
+#define CAN_BS1_5tq                 ((uint8_t)0x04)  /*!< 5 time quantum */
+#define CAN_BS1_6tq                 ((uint8_t)0x05)  /*!< 6 time quantum */
+#define CAN_BS1_7tq                 ((uint8_t)0x06)  /*!< 7 time quantum */
+#define CAN_BS1_8tq                 ((uint8_t)0x07)  /*!< 8 time quantum */
+#define CAN_BS1_9tq                 ((uint8_t)0x08)  /*!< 9 time quantum */
+#define CAN_BS1_10tq                ((uint8_t)0x09)  /*!< 10 time quantum */
+#define CAN_BS1_11tq                ((uint8_t)0x0A)  /*!< 11 time quantum */
+#define CAN_BS1_12tq                ((uint8_t)0x0B)  /*!< 12 time quantum */
+#define CAN_BS1_13tq                ((uint8_t)0x0C)  /*!< 13 time quantum */
+#define CAN_BS1_14tq                ((uint8_t)0x0D)  /*!< 14 time quantum */
+#define CAN_BS1_15tq                ((uint8_t)0x0E)  /*!< 15 time quantum */
+#define CAN_BS1_16tq                ((uint8_t)0x0F)  /*!< 16 time quantum */
+
+#define IS_CAN_BS1(BS1) ((BS1) <= CAN_BS1_16tq)
+/**
+stm32f10x_can.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 310 : 
+
+#define CAN_BS2_1tq                 ((uint8_t)0x00)  /*!< 1 time quantum */
+#define CAN_BS2_2tq                 ((uint8_t)0x01)  /*!< 2 time quantum */
+#define CAN_BS2_3tq                 ((uint8_t)0x02)  /*!< 3 time quantum */
+#define CAN_BS2_4tq                 ((uint8_t)0x03)  /*!< 4 time quantum */
+#define CAN_BS2_5tq                 ((uint8_t)0x04)  /*!< 5 time quantum */
+#define CAN_BS2_6tq                 ((uint8_t)0x05)  /*!< 6 time quantum */
+#define CAN_BS2_7tq                 ((uint8_t)0x06)  /*!< 7 time quantum */
+#define CAN_BS2_8tq                 ((uint8_t)0x07)  /*!< 8 time quantum */
+
+#define IS_CAN_BS2(BS2) ((BS2) <= CAN_BS2_8tq)
+
+stm32f10x_can.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 351 : 
+
+#define CAN_FilterMode_IdMask       ((uint8_t)0x00)  /*!< identifier/mask mode */
+#define CAN_FilterMode_IdList       ((uint8_t)0x01)  /*!< identifier list mode */
+
+#define IS_CAN_FILTER_MODE(MODE) (((MODE) == CAN_FilterMode_IdMask) || \
+                                  ((MODE) == CAN_FilterMode_IdList))
+stm32f10x_can.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 364 : 
+
+#define CAN_FilterScale_16bit       ((uint8_t)0x00) /*!< Two 16-bit filters */
+#define CAN_FilterScale_32bit       ((uint8_t)0x01) /*!< One 32-bit filter */
+
+#define IS_CAN_FILTER_SCALE(SCALE) (((SCALE) == CAN_FilterScale_16bit) || \
+                                    ((SCALE) == CAN_FilterScale_32bit))
+stm32f10x_can.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 378 : 
+
+#define CAN_Filter_FIFO0             ((uint8_t)0x00)  /*!< Filter FIFO 0 assignment for filter x */
+#define CAN_Filter_FIFO1             ((uint8_t)0x01)  /*!< Filter FIFO 1 assignment for filter x */
+#define IS_CAN_FILTER_FIFO(FIFO) (((FIFO) == CAN_FilterFIFO0) || \
+                                  ((FIFO) == CAN_FilterFIFO1))
+/**
+stm32f10x_can.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 398 : 
+
+#define IS_CAN_TRANSMITMAILBOX(TRANSMITMAILBOX) ((TRANSMITMAILBOX) <= ((uint8_t)0x02))
+#define IS_CAN_STDID(STDID)   ((STDID) <= ((uint32_t)0x7FF))
+#define IS_CAN_EXTID(EXTID)   ((EXTID) <= ((uint32_t)0x1FFFFFFF))
+#define IS_CAN_DLC(DLC)       ((DLC) <= ((uint8_t)0x08))
+
+/**
+  * @}
+stm32f10x_can.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 435 : 
+
+#define CAN_TxStatus_Failed         ((uint8_t)0x00)/*!< CAN transmission failed */
+#define CAN_TxStatus_Ok             ((uint8_t)0x01) /*!< CAN transmission succeeded */
+#define CAN_TxStatus_Pending        ((uint8_t)0x02) /*!< CAN transmission pending */
+#define CAN_TxStatus_NoMailBox      ((uint8_t)0x04) /*!< CAN cell did not provide an empty mailbox */
+
+/**
+  * @}
+stm32f10x_can.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 448 : 
+
+#define CAN_FIFO0                 ((uint8_t)0x00) /*!< CAN FIFO 0 used to receive */
+#define CAN_FIFO1                 ((uint8_t)0x01) /*!< CAN FIFO 1 used to receive */
+
+#define IS_CAN_FIFO(FIFO) (((FIFO) == CAN_FIFO0) || ((FIFO) == CAN_FIFO1))
+
+stm32f10x_can.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 461 : 
+
+#define CAN_Sleep_Failed     ((uint8_t)0x00) /*!< CAN did not enter the sleep mode */
+#define CAN_Sleep_Ok         ((uint8_t)0x01) /*!< CAN entered the sleep mode */
+
+/**
+  * @}
+stm32f10x_can.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 472 : 
+
+#define CAN_WakeUp_Failed        ((uint8_t)0x00) /*!< CAN did not leave the sleep mode */
+#define CAN_WakeUp_Ok            ((uint8_t)0x01) /*!< CAN leaved the sleep mode */
+
+/**
+  * @}
+stm32f10x_can.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 484 : 
+                                                                
+#define CAN_ErrorCode_NoErr           ((uint8_t)0x00) /*!< No Error */ 
+#define	CAN_ErrorCode_StuffErr        ((uint8_t)0x10) /*!< Stuff Error */ 
+#define	CAN_ErrorCode_FormErr         ((uint8_t)0x20) /*!< Form Error */ 
+#define	CAN_ErrorCode_ACKErr          ((uint8_t)0x30) /*!< Acknowledgment Error */ 
+#define	CAN_ErrorCode_BitRecessiveErr ((uint8_t)0x40) /*!< Bit Recessive Error */ 
+#define	CAN_ErrorCode_BitDominantErr  ((uint8_t)0x50) /*!< Bit Dominant Error */ 
+#define	CAN_ErrorCode_CRCErr          ((uint8_t)0x60) /*!< CRC Error  */ 
+#define	CAN_ErrorCode_SoftwareSetErr  ((uint8_t)0x70) /*!< Software Set Error */ 
+
+
+/**
+stm32f10x_can.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 644 : 
+/* Initialization and Configuration functions *********************************/ 
+uint8_t CAN_Init(CAN_TypeDef* CANx, CAN_InitTypeDef* CAN_InitStruct);
+void CAN_FilterInit(CAN_FilterInitTypeDef* CAN_FilterInitStruct);
+void CAN_StructInit(CAN_InitTypeDef* CAN_InitStruct);
+void CAN_SlaveStartBank(uint8_t CAN_BankNumber); 
+void CAN_DBGFreeze(CAN_TypeDef* CANx, FunctionalState NewState);
+void CAN_TTComModeCmd(CAN_TypeDef* CANx, FunctionalState NewState);
+
+/* Transmit functions *********************************************************/
+uint8_t CAN_Transmit(CAN_TypeDef* CANx, CanTxMsg* TxMessage);
+uint8_t CAN_TransmitStatus(CAN_TypeDef* CANx, uint8_t TransmitMailbox);
+void CAN_CancelTransmit(CAN_TypeDef* CANx, uint8_t Mailbox);
+
+/* Receive functions **********************************************************/
+void CAN_Receive(CAN_TypeDef* CANx, uint8_t FIFONumber, CanRxMsg* RxMessage);
+void CAN_FIFORelease(CAN_TypeDef* CANx, uint8_t FIFONumber);
+uint8_t CAN_MessagePending(CAN_TypeDef* CANx, uint8_t FIFONumber);
+
+
+/* Operation modes functions **************************************************/
+uint8_t CAN_OperatingModeRequest(CAN_TypeDef* CANx, uint8_t CAN_OperatingMode);
+uint8_t CAN_Sleep(CAN_TypeDef* CANx);
+uint8_t CAN_WakeUp(CAN_TypeDef* CANx);
+
+/* Error management functions *************************************************/
+uint8_t CAN_GetLastErrorCode(CAN_TypeDef* CANx);
+uint8_t CAN_GetReceiveErrorCounter(CAN_TypeDef* CANx);
+uint8_t CAN_GetLSBTransmitErrorCounter(CAN_TypeDef* CANx);
+
+/* Interrupts and flags management functions **********************************/
+void CAN_ITConfig(CAN_TypeDef* CANx, uint32_t CAN_IT, FunctionalState NewState);
+stm32f10x_cec.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 72 : 
+  
+#define CFGR_CLEAR_Mask            (uint8_t)(0xF3)        /* CFGR register Mask */
+#define FLAG_Mask                  ((uint32_t)0x00FFFFFF) /* CEC FLAG mask */
+ 
+/**
+stm32f10x_cec.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 198 : 
+  */
+void CEC_OwnAddressConfig(uint8_t CEC_OwnAddress)
+{
+  /* Check the parameters */
+  assert_param(IS_CEC_ADDRESS(CEC_OwnAddress));
+stm32f10x_cec.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 226 : 
+  */
+void CEC_SendDataByte(uint8_t Data)
+{  
+  /* Transmit Data */
+  CEC->TXD = Data ;
+stm32f10x_cec.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 238 : 
+  */
+uint8_t CEC_ReceiveDataByte(void)
+{
+  /* Receive Data */
+  return (uint8_t)(CEC->RXD);
+}
+
+/**
+stm32f10x_cec.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 371 : 
+  */
+ITStatus CEC_GetITStatus(uint8_t CEC_IT)
+{
+  ITStatus bitstatus = RESET;
+  uint32_t enablestatus = 0;
+CEC_GetITStatus in stm32f10x_cec.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) : 
+  /* Get the CEC IT enable bit status */
+  enablestatus = (CEC->CFGR & (uint8_t)CEC_CFGR_IE) ;
+  
+  /* Check the status of the specified CEC interrupt */
+  if (((CEC->CSR & CEC_IT) != (uint32_t)RESET) && enablestatus)
+stm32f10x_cec.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 180 : 
+void CEC_ITConfig(FunctionalState NewState);
+void CEC_OwnAddressConfig(uint8_t CEC_OwnAddress);
+void CEC_SetPrescaler(uint16_t CEC_Prescaler);
+void CEC_SendDataByte(uint8_t Data);
+uint8_t CEC_ReceiveDataByte(void);
+void CEC_StartOfMessage(void);
+void CEC_EndOfMessageCmd(FunctionalState NewState);
+FlagStatus CEC_GetFlagStatus(uint32_t CEC_FLAG);
+void CEC_ClearFlag(uint32_t CEC_FLAG);
+ITStatus CEC_GetITStatus(uint8_t CEC_IT);
+void CEC_ClearITPendingBit(uint16_t CEC_IT);
+
+#ifdef __cplusplus
+stm32f10x_conf.h (D:\桌面\IR-control-forward(红外遥控转发)\Project\RTE\Device\STM32F103VC) line 114 : 
+  */
+  #define assert_param(expr) ((expr) ? (void)0 : assert_failed((uint8_t *)__FILE__, __LINE__))
+/* Exported functions ------------------------------------------------------- */
+  void assert_failed(uint8_t* file, uint32_t line);
+#else
+  #define assert_param(expr) ((void)0)
+#endif /* USE_FULL_ASSERT */
+stm32f10x_crc.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 132 : 
+  */
+void CRC_SetIDRegister(uint8_t IDValue)
+{
+  CRC->IDR = IDValue;
+}
+stm32f10x_crc.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 142 : 
+  */
+uint8_t CRC_GetIDRegister(void)
+{
+  return (CRC->IDR);
+}
+stm32f10x_crc.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 73 : 
+uint32_t CRC_GetCRC(void);
+void CRC_SetIDRegister(uint8_t IDValue);
+uint8_t CRC_GetIDRegister(void);
+
+#ifdef __cplusplus
+}
+DAC_GetFlagStatus in stm32f10x_dac.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) : 
+  /* Check the status of the specified DAC flag */
+  if ((DAC->SR & (DAC_FLAG << DAC_Channel)) != (uint8_t)RESET)
+  {
+    /* DAC_FLAG is set */
+    bitstatus = SET;
+stm32f10x_flash.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 928 : 
+  */
+FLASH_Status FLASH_ProgramOptionByteData(uint32_t Address, uint8_t Data)
+{
+  FLASH_Status status = FLASH_COMPLETE;
+  /* Check the parameters */
+stm32f10x_flash.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 377 : 
+FLASH_Status FLASH_ProgramHalfWord(uint32_t Address, uint16_t Data);
+FLASH_Status FLASH_ProgramOptionByteData(uint32_t Address, uint8_t Data);
+FLASH_Status FLASH_EnableWriteProtection(uint32_t FLASH_Pages);
+FLASH_Status FLASH_ReadOutProtection(FunctionalState NewState);
+FLASH_Status FLASH_UserOptionByteConfig(uint16_t OB_IWDG, uint16_t OB_STOP, uint16_t OB_STDBY);
+stm32f10x_gpio.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 53 : 
+#define EVCR_OFFSET                 (AFIO_OFFSET + 0x00)
+#define EVOE_BitNumber              ((uint8_t)0x07)
+#define EVCR_EVOE_BB                (PERIPH_BB_BASE + (EVCR_OFFSET * 32) + (EVOE_BitNumber * 4))
+
+
+stm32f10x_gpio.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 280 : 
+  */
+uint8_t GPIO_ReadInputDataBit(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
+{
+  uint8_t bitstatus = 0x00;
+  
+  /* Check the parameters */
+  assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
+GPIO_ReadInputDataBit in stm32f10x_gpio.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) : 
+  {
+    bitstatus = (uint8_t)Bit_SET;
+  }
+  else
+  {
+    bitstatus = (uint8_t)Bit_RESET;
+  }
+  return bitstatus;
+}
+stm32f10x_gpio.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 319 : 
+  */
+uint8_t GPIO_ReadOutputDataBit(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
+{
+  uint8_t bitstatus = 0x00;
+  /* Check the parameters */
+  assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
+  assert_param(IS_GET_GPIO_PIN(GPIO_Pin)); 
+GPIO_ReadOutputDataBit in stm32f10x_gpio.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) : 
+  {
+    bitstatus = (uint8_t)Bit_SET;
+  }
+  else
+  {
+    bitstatus = (uint8_t)Bit_RESET;
+  }
+  return bitstatus;
+}
+stm32f10x_gpio.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 461 : 
+  */
+void GPIO_EventOutputConfig(uint8_t GPIO_PortSource, uint8_t GPIO_PinSource)
+{
+  uint32_t tmpreg = 0x00;
+  /* Check the parameters */
+stm32f10x_gpio.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 608 : 
+  */
+void GPIO_EXTILineConfig(uint8_t GPIO_PortSource, uint8_t GPIO_PinSource)
+{
+  uint32_t tmp = 0x00;
+  /* Check the parameters */
+GPIO_EXTILineConfig in stm32f10x_gpio.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) : 
+  
+  tmp = ((uint32_t)0x0F) << (0x04 * (GPIO_PinSource & (uint8_t)0x03));
+  AFIO->EXTICR[GPIO_PinSource >> 0x02] &= ~tmp;
+  AFIO->EXTICR[GPIO_PinSource >> 0x02] |= (((uint32_t)GPIO_PortSource) << (0x04 * (GPIO_PinSource & (uint8_t)0x03)));
+}
+
+/**
+stm32f10x_gpio.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 253 : 
+
+#define GPIO_PortSourceGPIOA       ((uint8_t)0x00)
+#define GPIO_PortSourceGPIOB       ((uint8_t)0x01)
+#define GPIO_PortSourceGPIOC       ((uint8_t)0x02)
+#define GPIO_PortSourceGPIOD       ((uint8_t)0x03)
+#define GPIO_PortSourceGPIOE       ((uint8_t)0x04)
+#define GPIO_PortSourceGPIOF       ((uint8_t)0x05)
+#define GPIO_PortSourceGPIOG       ((uint8_t)0x06)
+#define IS_GPIO_EVENTOUT_PORT_SOURCE(PORTSOURCE) (((PORTSOURCE) == GPIO_PortSourceGPIOA) || \
+                                                  ((PORTSOURCE) == GPIO_PortSourceGPIOB) || \
+                                                  ((PORTSOURCE) == GPIO_PortSourceGPIOC) || \
+stm32f10x_gpio.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 282 : 
+
+#define GPIO_PinSource0            ((uint8_t)0x00)
+#define GPIO_PinSource1            ((uint8_t)0x01)
+#define GPIO_PinSource2            ((uint8_t)0x02)
+#define GPIO_PinSource3            ((uint8_t)0x03)
+#define GPIO_PinSource4            ((uint8_t)0x04)
+#define GPIO_PinSource5            ((uint8_t)0x05)
+#define GPIO_PinSource6            ((uint8_t)0x06)
+#define GPIO_PinSource7            ((uint8_t)0x07)
+#define GPIO_PinSource8            ((uint8_t)0x08)
+#define GPIO_PinSource9            ((uint8_t)0x09)
+#define GPIO_PinSource10           ((uint8_t)0x0A)
+#define GPIO_PinSource11           ((uint8_t)0x0B)
+#define GPIO_PinSource12           ((uint8_t)0x0C)
+#define GPIO_PinSource13           ((uint8_t)0x0D)
+#define GPIO_PinSource14           ((uint8_t)0x0E)
+#define GPIO_PinSource15           ((uint8_t)0x0F)
+
+#define IS_GPIO_PIN_SOURCE(PINSOURCE) (((PINSOURCE) == GPIO_PinSource0) || \
+                                       ((PINSOURCE) == GPIO_PinSource1) || \
+stm32f10x_gpio.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 352 : 
+void GPIO_StructInit(GPIO_InitTypeDef* GPIO_InitStruct);
+uint8_t GPIO_ReadInputDataBit(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin);
+uint16_t GPIO_ReadInputData(GPIO_TypeDef* GPIOx);
+uint8_t GPIO_ReadOutputDataBit(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin);
+uint16_t GPIO_ReadOutputData(GPIO_TypeDef* GPIOx);
+void GPIO_SetBits(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin);
+void GPIO_ResetBits(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin);
+stm32f10x_gpio.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 361 : 
+void GPIO_PinLockConfig(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin);
+void GPIO_EventOutputConfig(uint8_t GPIO_PortSource, uint8_t GPIO_PinSource);
+void GPIO_EventOutputCmd(FunctionalState NewState);
+void GPIO_PinRemapConfig(uint32_t GPIO_Remap, FunctionalState NewState);
+void GPIO_EXTILineConfig(uint8_t GPIO_PortSource, uint8_t GPIO_PinSource);
+void GPIO_ETH_MediaInterfaceConfig(uint32_t GPIO_ETH_MediaInterface);
+
+#ifdef __cplusplus
+stm32f10x_i2c.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 464 : 
+  */
+void I2C_OwnAddress2Config(I2C_TypeDef* I2Cx, uint8_t Address)
+{
+  uint16_t tmpreg = 0;
+
+stm32f10x_i2c.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 569 : 
+  */
+void I2C_SendData(I2C_TypeDef* I2Cx, uint8_t Data)
+{
+  /* Check the parameters */
+  assert_param(IS_I2C_ALL_PERIPH(I2Cx));
+stm32f10x_i2c.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 582 : 
+  */
+uint8_t I2C_ReceiveData(I2C_TypeDef* I2Cx)
+{
+  /* Check the parameters */
+  assert_param(IS_I2C_ALL_PERIPH(I2Cx));
+  /* Return the data in the DR register */
+  return (uint8_t)I2Cx->DR;
+}
+
+/**
+stm32f10x_i2c.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 600 : 
+  */
+void I2C_Send7bitAddress(I2C_TypeDef* I2Cx, uint8_t Address, uint8_t I2C_Direction)
+{
+  /* Check the parameters */
+  assert_param(IS_I2C_ALL_PERIPH(I2Cx));
+stm32f10x_i2c.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 635 : 
+  */
+uint16_t I2C_ReadRegister(I2C_TypeDef* I2Cx, uint8_t I2C_Register)
+{
+  __IO uint32_t tmp = 0;
+
+stm32f10x_i2c.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 824 : 
+  */
+uint8_t I2C_GetPEC(I2C_TypeDef* I2Cx)
+{
+  /* Check the parameters */
+  assert_param(IS_I2C_ALL_PERIPH(I2Cx));
+stm32f10x_i2c.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 123 : 
+
+#define  I2C_Direction_Transmitter      ((uint8_t)0x00)
+#define  I2C_Direction_Receiver         ((uint8_t)0x01)
+#define IS_I2C_DIRECTION(DIRECTION) (((DIRECTION) == I2C_Direction_Transmitter) || \
+                                     ((DIRECTION) == I2C_Direction_Receiver))
+/**
+stm32f10x_i2c.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 147 : 
+
+#define I2C_Register_CR1                ((uint8_t)0x00)
+#define I2C_Register_CR2                ((uint8_t)0x04)
+#define I2C_Register_OAR1               ((uint8_t)0x08)
+#define I2C_Register_OAR2               ((uint8_t)0x0C)
+#define I2C_Register_DR                 ((uint8_t)0x10)
+#define I2C_Register_SR1                ((uint8_t)0x14)
+#define I2C_Register_SR2                ((uint8_t)0x18)
+#define I2C_Register_CCR                ((uint8_t)0x1C)
+#define I2C_Register_TRISE              ((uint8_t)0x20)
+#define IS_I2C_REGISTER(REGISTER) (((REGISTER) == I2C_Register_CR1) || \
+                                   ((REGISTER) == I2C_Register_CR2) || \
+                                   ((REGISTER) == I2C_Register_OAR1) || \
+stm32f10x_i2c.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 542 : 
+void I2C_AcknowledgeConfig(I2C_TypeDef* I2Cx, FunctionalState NewState);
+void I2C_OwnAddress2Config(I2C_TypeDef* I2Cx, uint8_t Address);
+void I2C_DualAddressCmd(I2C_TypeDef* I2Cx, FunctionalState NewState);
+void I2C_GeneralCallCmd(I2C_TypeDef* I2Cx, FunctionalState NewState);
+void I2C_ITConfig(I2C_TypeDef* I2Cx, uint16_t I2C_IT, FunctionalState NewState);
+void I2C_SendData(I2C_TypeDef* I2Cx, uint8_t Data);
+uint8_t I2C_ReceiveData(I2C_TypeDef* I2Cx);
+void I2C_Send7bitAddress(I2C_TypeDef* I2Cx, uint8_t Address, uint8_t I2C_Direction);
+uint16_t I2C_ReadRegister(I2C_TypeDef* I2Cx, uint8_t I2C_Register);
+void I2C_SoftwareResetCmd(I2C_TypeDef* I2Cx, FunctionalState NewState);
+void I2C_NACKPositionConfig(I2C_TypeDef* I2Cx, uint16_t I2C_NACKPosition);
+void I2C_SMBusAlertConfig(I2C_TypeDef* I2Cx, uint16_t I2C_SMBusAlert);
+stm32f10x_i2c.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 556 : 
+void I2C_CalculatePEC(I2C_TypeDef* I2Cx, FunctionalState NewState);
+uint8_t I2C_GetPEC(I2C_TypeDef* I2Cx);
+void I2C_ARPCmd(I2C_TypeDef* I2Cx, FunctionalState NewState);
+void I2C_StretchClockCmd(I2C_TypeDef* I2Cx, FunctionalState NewState);
+void I2C_FastModeDutyCycleConfig(I2C_TypeDef* I2Cx, uint16_t I2C_DutyCycle);
+stm32f10x_iwdg.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 111 : 
+  */
+void IWDG_SetPrescaler(uint8_t IWDG_Prescaler)
+{
+  /* Check the parameters */
+  assert_param(IS_IWDG_PRESCALER(IWDG_Prescaler));
+stm32f10x_iwdg.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 69 : 
+
+#define IWDG_Prescaler_4            ((uint8_t)0x00)
+#define IWDG_Prescaler_8            ((uint8_t)0x01)
+#define IWDG_Prescaler_16           ((uint8_t)0x02)
+#define IWDG_Prescaler_32           ((uint8_t)0x03)
+#define IWDG_Prescaler_64           ((uint8_t)0x04)
+#define IWDG_Prescaler_128          ((uint8_t)0x05)
+#define IWDG_Prescaler_256          ((uint8_t)0x06)
+#define IS_IWDG_PRESCALER(PRESCALER) (((PRESCALER) == IWDG_Prescaler_4)  || \
+                                      ((PRESCALER) == IWDG_Prescaler_8)  || \
+                                      ((PRESCALER) == IWDG_Prescaler_16) || \
+stm32f10x_iwdg.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 116 : 
+void IWDG_WriteAccessCmd(uint16_t IWDG_WriteAccess);
+void IWDG_SetPrescaler(uint8_t IWDG_Prescaler);
+void IWDG_SetReload(uint16_t Reload);
+void IWDG_ReloadCounter(void);
+void IWDG_Enable(void);
+stm32f10x_pwr.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 196 : 
+  */
+void PWR_EnterSTOPMode(uint32_t PWR_Regulator, uint8_t PWR_STOPEntry)
+{
+  uint32_t tmpreg = 0;
+  /* Check the parameters */
+stm32f10x_pwr.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 89 : 
+
+#define PWR_STOPEntry_WFI         ((uint8_t)0x01)
+#define PWR_STOPEntry_WFE         ((uint8_t)0x02)
+#define IS_PWR_STOP_ENTRY(ENTRY) (((ENTRY) == PWR_STOPEntry_WFI) || ((ENTRY) == PWR_STOPEntry_WFE))
+ 
+/**
+stm32f10x_pwr.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 133 : 
+void PWR_WakeUpPinCmd(FunctionalState NewState);
+void PWR_EnterSTOPMode(uint32_t PWR_Regulator, uint8_t PWR_STOPEntry);
+void PWR_EnterSTANDBYMode(void);
+FlagStatus PWR_GetFlagStatus(uint32_t PWR_FLAG);
+void PWR_ClearFlag(uint32_t PWR_FLAG);
+stm32f10x_rcc.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 162 : 
+/* RCC Flag Mask */
+#define FLAG_Mask                 ((uint8_t)0x1F)
+
+/* CIR register byte 2 (Bits[15:8]) base address */
+#define CIR_BYTE2_ADDRESS         ((uint32_t)0x40021009)
+stm32f10x_rcc.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 192 : 
+
+static __I uint8_t APBAHBPrescTable[16] = {0, 0, 0, 0, 1, 2, 3, 4, 1, 2, 3, 4, 6, 7, 8, 9};
+static __I uint8_t ADCPrescTable[4] = {2, 4, 6, 8};
+
+/**
+  * @}
+stm32f10x_rcc.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 333 : 
+  */
+void RCC_AdjustHSICalibrationValue(uint8_t HSICalibrationValue)
+{
+  uint32_t tmpreg = 0;
+  /* Check the parameters */
+stm32f10x_rcc.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 586 : 
+  */
+uint8_t RCC_GetSYSCLKSource(void)
+{
+  return ((uint8_t)(RCC->CFGR & CFGR_SWS_Mask));
+}
+
+/**
+stm32f10x_rcc.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 699 : 
+  */
+void RCC_ITConfig(uint8_t RCC_IT, FunctionalState NewState)
+{
+  /* Check the parameters */
+  assert_param(IS_RCC_IT(RCC_IT));
+RCC_ITConfig in stm32f10x_rcc.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) : 
+    /* Perform Byte access to RCC_CIR bits to enable the selected interrupts */
+    *(__IO uint8_t *) CIR_BYTE2_ADDRESS |= RCC_IT;
+  }
+  else
+  {
+    /* Perform Byte access to RCC_CIR bits to disable the selected interrupts */
+    *(__IO uint8_t *) CIR_BYTE2_ADDRESS &= (uint8_t)~RCC_IT;
+  }
+}
+
+stm32f10x_rcc.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 828 : 
+  */
+void RCC_LSEConfig(uint8_t RCC_LSE)
+{
+  /* Check the parameters */
+  assert_param(IS_RCC_LSE(RCC_LSE));
+RCC_LSEConfig in stm32f10x_rcc.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) : 
+  /* Reset LSEON bit */
+  *(__IO uint8_t *) BDCR_ADDRESS = RCC_LSE_OFF;
+  /* Reset LSEBYP bit */
+  *(__IO uint8_t *) BDCR_ADDRESS = RCC_LSE_OFF;
+  /* Configure LSE (RCC_LSE_OFF is already covered by the code section above) */
+  switch(RCC_LSE)
+  {
+RCC_LSEConfig in stm32f10x_rcc.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) : 
+      /* Set LSEON bit */
+      *(__IO uint8_t *) BDCR_ADDRESS = RCC_LSE_ON;
+      break;
+      
+    case RCC_LSE_Bypass:
+      /* Set LSEBYP and LSEON bits */
+      *(__IO uint8_t *) BDCR_ADDRESS = RCC_LSE_Bypass | RCC_LSE_ON;
+      break;            
+      
+    default:
+stm32f10x_rcc.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 1281 : 
+  */
+void RCC_MCOConfig(uint8_t RCC_MCO)
+{
+  /* Check the parameters */
+  assert_param(IS_RCC_MCO(RCC_MCO));
+RCC_MCOConfig in stm32f10x_rcc.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) : 
+  /* Perform Byte access to MCO bits to select the MCO source */
+  *(__IO uint8_t *) CFGR_BYTE4_ADDRESS = RCC_MCO;
+}
+
+/**
+stm32f10x_rcc.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 1325 : 
+  */
+FlagStatus RCC_GetFlagStatus(uint8_t RCC_FLAG)
+{
+  uint32_t tmp = 0;
+  uint32_t statusreg = 0;
+stm32f10x_rcc.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 1401 : 
+  */
+ITStatus RCC_GetITStatus(uint8_t RCC_IT)
+{
+  ITStatus bitstatus = RESET;
+  /* Check the parameters */
+stm32f10x_rcc.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 1447 : 
+  */
+void RCC_ClearITPendingBit(uint8_t RCC_IT)
+{
+  /* Check the parameters */
+  assert_param(IS_RCC_CLEAR_IT(RCC_IT));
+RCC_ClearITPendingBit in stm32f10x_rcc.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) : 
+     pending bits */
+  *(__IO uint8_t *) CIR_BYTE3_ADDRESS = RCC_IT;
+}
+
+/**
+stm32f10x_rcc.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 340 : 
+
+#define RCC_IT_LSIRDY                    ((uint8_t)0x01)
+#define RCC_IT_LSERDY                    ((uint8_t)0x02)
+#define RCC_IT_HSIRDY                    ((uint8_t)0x04)
+#define RCC_IT_HSERDY                    ((uint8_t)0x08)
+#define RCC_IT_PLLRDY                    ((uint8_t)0x10)
+#define RCC_IT_CSS                       ((uint8_t)0x80)
+
+#ifndef STM32F10X_CL
+ #define IS_RCC_IT(IT) ((((IT) & (uint8_t)0xE0) == 0x00) && ((IT) != 0x00))
+ #define IS_RCC_GET_IT(IT) (((IT) == RCC_IT_LSIRDY) || ((IT) == RCC_IT_LSERDY) || \
+                            ((IT) == RCC_IT_HSIRDY) || ((IT) == RCC_IT_HSERDY) || \
+                            ((IT) == RCC_IT_PLLRDY) || ((IT) == RCC_IT_CSS))
+ #define IS_RCC_CLEAR_IT(IT) ((((IT) & (uint8_t)0x60) == 0x00) && ((IT) != 0x00))
+#else
+ #define RCC_IT_PLL2RDY                  ((uint8_t)0x20)
+ #define RCC_IT_PLL3RDY                  ((uint8_t)0x40)
+ #define IS_RCC_IT(IT) ((((IT) & (uint8_t)0x80) == 0x00) && ((IT) != 0x00))
+ #define IS_RCC_GET_IT(IT) (((IT) == RCC_IT_LSIRDY) || ((IT) == RCC_IT_LSERDY) || \
+                            ((IT) == RCC_IT_HSIRDY) || ((IT) == RCC_IT_HSERDY) || \
+                            ((IT) == RCC_IT_PLLRDY) || ((IT) == RCC_IT_CSS) || \
+stm32f10x_rcc.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 374 : 
+
+ #define RCC_USBCLKSource_PLLCLK_1Div5   ((uint8_t)0x00)
+ #define RCC_USBCLKSource_PLLCLK_Div1    ((uint8_t)0x01)
+
+ #define IS_RCC_USBCLK_SOURCE(SOURCE) (((SOURCE) == RCC_USBCLKSource_PLLCLK_1Div5) || \
+                                      ((SOURCE) == RCC_USBCLKSource_PLLCLK_Div1))
+stm32f10x_rcc.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 386 : 
+  */
+ #define RCC_OTGFSCLKSource_PLLVCO_Div3    ((uint8_t)0x00)
+ #define RCC_OTGFSCLKSource_PLLVCO_Div2    ((uint8_t)0x01)
+
+ #define IS_RCC_OTGFSCLK_SOURCE(SOURCE) (((SOURCE) == RCC_OTGFSCLKSource_PLLVCO_Div3) || \
+                                         ((SOURCE) == RCC_OTGFSCLKSource_PLLVCO_Div2))
+stm32f10x_rcc.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 401 : 
+  */
+ #define RCC_I2S2CLKSource_SYSCLK        ((uint8_t)0x00)
+ #define RCC_I2S2CLKSource_PLL3_VCO      ((uint8_t)0x01)
+
+ #define IS_RCC_I2S2CLK_SOURCE(SOURCE) (((SOURCE) == RCC_I2S2CLKSource_SYSCLK) || \
+                                        ((SOURCE) == RCC_I2S2CLKSource_PLL3_VCO))
+stm32f10x_rcc.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 413 : 
+  */
+ #define RCC_I2S3CLKSource_SYSCLK        ((uint8_t)0x00)
+ #define RCC_I2S3CLKSource_PLL3_VCO      ((uint8_t)0x01)
+
+ #define IS_RCC_I2S3CLK_SOURCE(SOURCE) (((SOURCE) == RCC_I2S3CLKSource_SYSCLK) || \
+                                        ((SOURCE) == RCC_I2S3CLKSource_PLL3_VCO))    
+stm32f10x_rcc.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 442 : 
+
+#define RCC_LSE_OFF                      ((uint8_t)0x00)
+#define RCC_LSE_ON                       ((uint8_t)0x01)
+#define RCC_LSE_Bypass                   ((uint8_t)0x04)
+#define IS_RCC_LSE(LSE) (((LSE) == RCC_LSE_OFF) || ((LSE) == RCC_LSE_ON) || \
+                         ((LSE) == RCC_LSE_Bypass))
+/**
+stm32f10x_rcc.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 563 : 
+
+#define RCC_MCO_NoClock                  ((uint8_t)0x00)
+#define RCC_MCO_SYSCLK                   ((uint8_t)0x04)
+#define RCC_MCO_HSI                      ((uint8_t)0x05)
+#define RCC_MCO_HSE                      ((uint8_t)0x06)
+#define RCC_MCO_PLLCLK_Div2              ((uint8_t)0x07)
+
+#ifndef STM32F10X_CL
+ #define IS_RCC_MCO(MCO) (((MCO) == RCC_MCO_NoClock) || ((MCO) == RCC_MCO_HSI) || \
+stm32f10x_rcc.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 574 : 
+#else
+ #define RCC_MCO_PLL2CLK                 ((uint8_t)0x08)
+ #define RCC_MCO_PLL3CLK_Div2            ((uint8_t)0x09)
+ #define RCC_MCO_XT1                     ((uint8_t)0x0A)
+ #define RCC_MCO_PLL3CLK                 ((uint8_t)0x0B)
+
+ #define IS_RCC_MCO(MCO) (((MCO) == RCC_MCO_NoClock) || ((MCO) == RCC_MCO_HSI) || \
+                          ((MCO) == RCC_MCO_SYSCLK)  || ((MCO) == RCC_MCO_HSE) || \
+stm32f10x_rcc.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 594 : 
+
+#define RCC_FLAG_HSIRDY                  ((uint8_t)0x21)
+#define RCC_FLAG_HSERDY                  ((uint8_t)0x31)
+#define RCC_FLAG_PLLRDY                  ((uint8_t)0x39)
+#define RCC_FLAG_LSERDY                  ((uint8_t)0x41)
+#define RCC_FLAG_LSIRDY                  ((uint8_t)0x61)
+#define RCC_FLAG_PINRST                  ((uint8_t)0x7A)
+#define RCC_FLAG_PORRST                  ((uint8_t)0x7B)
+#define RCC_FLAG_SFTRST                  ((uint8_t)0x7C)
+#define RCC_FLAG_IWDGRST                 ((uint8_t)0x7D)
+#define RCC_FLAG_WWDGRST                 ((uint8_t)0x7E)
+#define RCC_FLAG_LPWRRST                 ((uint8_t)0x7F)
+
+#ifndef STM32F10X_CL
+ #define IS_RCC_FLAG(FLAG) (((FLAG) == RCC_FLAG_HSIRDY) || ((FLAG) == RCC_FLAG_HSERDY) || \
+stm32f10x_rcc.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 614 : 
+#else
+ #define RCC_FLAG_PLL2RDY                ((uint8_t)0x3B) 
+ #define RCC_FLAG_PLL3RDY                ((uint8_t)0x3D) 
+ #define IS_RCC_FLAG(FLAG) (((FLAG) == RCC_FLAG_HSIRDY) || ((FLAG) == RCC_FLAG_HSERDY) || \
+                            ((FLAG) == RCC_FLAG_PLLRDY) || ((FLAG) == RCC_FLAG_LSERDY) || \
+                            ((FLAG) == RCC_FLAG_PLL2RDY) || ((FLAG) == RCC_FLAG_PLL3RDY) || \
+stm32f10x_rcc.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 649 : 
+ErrorStatus RCC_WaitForHSEStartUp(void);
+void RCC_AdjustHSICalibrationValue(uint8_t HSICalibrationValue);
+void RCC_HSICmd(FunctionalState NewState);
+void RCC_PLLConfig(uint32_t RCC_PLLSource, uint32_t RCC_PLLMul);
+void RCC_PLLCmd(FunctionalState NewState);
+stm32f10x_rcc.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 667 : 
+void RCC_SYSCLKConfig(uint32_t RCC_SYSCLKSource);
+uint8_t RCC_GetSYSCLKSource(void);
+void RCC_HCLKConfig(uint32_t RCC_SYSCLK);
+void RCC_PCLK1Config(uint32_t RCC_HCLK);
+void RCC_PCLK2Config(uint32_t RCC_HCLK);
+void RCC_ITConfig(uint8_t RCC_IT, FunctionalState NewState);
+
+#ifndef STM32F10X_CL
+ void RCC_USBCLKConfig(uint32_t RCC_USBCLKSource);
+stm32f10x_rcc.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 686 : 
+
+void RCC_LSEConfig(uint8_t RCC_LSE);
+void RCC_LSICmd(FunctionalState NewState);
+void RCC_RTCCLKConfig(uint32_t RCC_RTCCLKSource);
+void RCC_RTCCLKCmd(FunctionalState NewState);
+stm32f10x_rcc.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 703 : 
+void RCC_ClockSecuritySystemCmd(FunctionalState NewState);
+void RCC_MCOConfig(uint8_t RCC_MCO);
+FlagStatus RCC_GetFlagStatus(uint8_t RCC_FLAG);
+void RCC_ClearFlag(void);
+ITStatus RCC_GetITStatus(uint8_t RCC_IT);
+void RCC_ClearITPendingBit(uint8_t RCC_IT);
+
+#ifdef __cplusplus
+}
+stm32f10x_sdio.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 396 : 
+  */
+uint8_t SDIO_GetCommandResponse(void)
+{
+  return (uint8_t)(SDIO->RESPCMD);
+}
+
+/**
+{anonSDIO_InitTypeDef} in stm32f10x_sdio.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) : 
+
+  uint8_t SDIO_ClockDiv;              /*!< Specifies the clock frequency of the SDIO controller.
+                                           This parameter can be a value between 0x00 and 0xFF. */
+                                           
+} SDIO_InitTypeDef;
+stm32f10x_sdio.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 492 : 
+void SDIO_CmdStructInit(SDIO_CmdInitTypeDef* SDIO_CmdInitStruct);
+uint8_t SDIO_GetCommandResponse(void);
+uint32_t SDIO_GetResponse(uint32_t SDIO_RESP);
+void SDIO_DataConfig(SDIO_DataInitTypeDef* SDIO_DataInitStruct);
+void SDIO_DataStructInit(SDIO_DataInitTypeDef* SDIO_DataInitStruct);
+stm32f10x_spi.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 481 : 
+  */
+void SPI_I2S_ITConfig(SPI_TypeDef* SPIx, uint8_t SPI_I2S_IT, FunctionalState NewState)
+{
+  uint16_t itpos = 0, itmask = 0 ;
+  /* Check the parameters */
+stm32f10x_spi.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 688 : 
+  */
+uint16_t SPI_GetCRC(SPI_TypeDef* SPIx, uint8_t SPI_CRC)
+{
+  uint16_t crcreg = 0;
+  /* Check the parameters */
+stm32f10x_spi.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 828 : 
+  */
+ITStatus SPI_I2S_GetITStatus(SPI_TypeDef* SPIx, uint8_t SPI_I2S_IT)
+{
+  ITStatus bitstatus = RESET;
+  uint16_t itpos = 0, itmask = 0, enablestatus = 0;
+stm32f10x_spi.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 882 : 
+  */
+void SPI_I2S_ClearITPendingBit(SPI_TypeDef* SPIx, uint8_t SPI_I2S_IT)
+{
+  uint16_t itpos = 0;
+  /* Check the parameters */
+stm32f10x_spi.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 358 : 
+
+#define SPI_CRC_Tx                      ((uint8_t)0x00)
+#define SPI_CRC_Rx                      ((uint8_t)0x01)
+#define IS_SPI_CRC(CRC) (((CRC) == SPI_CRC_Tx) || ((CRC) == SPI_CRC_Rx))
+/**
+  * @}
+stm32f10x_spi.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 381 : 
+
+#define SPI_I2S_IT_TXE                  ((uint8_t)0x71)
+#define SPI_I2S_IT_RXNE                 ((uint8_t)0x60)
+#define SPI_I2S_IT_ERR                  ((uint8_t)0x50)
+#define IS_SPI_I2S_CONFIG_IT(IT) (((IT) == SPI_I2S_IT_TXE) || \
+                                 ((IT) == SPI_I2S_IT_RXNE) || \
+                                 ((IT) == SPI_I2S_IT_ERR))
+#define SPI_I2S_IT_OVR                  ((uint8_t)0x56)
+#define SPI_IT_MODF                     ((uint8_t)0x55)
+#define SPI_IT_CRCERR                   ((uint8_t)0x54)
+#define I2S_IT_UDR                      ((uint8_t)0x53)
+#define IS_SPI_I2S_CLEAR_IT(IT) (((IT) == SPI_IT_CRCERR))
+#define IS_SPI_I2S_GET_IT(IT) (((IT) == SPI_I2S_IT_RXNE) || ((IT) == SPI_I2S_IT_TXE) || \
+                               ((IT) == I2S_IT_UDR) || ((IT) == SPI_IT_CRCERR) || \
+stm32f10x_spi.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 452 : 
+void I2S_Cmd(SPI_TypeDef* SPIx, FunctionalState NewState);
+void SPI_I2S_ITConfig(SPI_TypeDef* SPIx, uint8_t SPI_I2S_IT, FunctionalState NewState);
+void SPI_I2S_DMACmd(SPI_TypeDef* SPIx, uint16_t SPI_I2S_DMAReq, FunctionalState NewState);
+void SPI_I2S_SendData(SPI_TypeDef* SPIx, uint16_t Data);
+uint16_t SPI_I2S_ReceiveData(SPI_TypeDef* SPIx);
+stm32f10x_spi.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 461 : 
+void SPI_CalculateCRC(SPI_TypeDef* SPIx, FunctionalState NewState);
+uint16_t SPI_GetCRC(SPI_TypeDef* SPIx, uint8_t SPI_CRC);
+uint16_t SPI_GetCRCPolynomial(SPI_TypeDef* SPIx);
+void SPI_BiDirectionalLineConfig(SPI_TypeDef* SPIx, uint16_t SPI_Direction);
+FlagStatus SPI_I2S_GetFlagStatus(SPI_TypeDef* SPIx, uint16_t SPI_I2S_FLAG);
+void SPI_I2S_ClearFlag(SPI_TypeDef* SPIx, uint16_t SPI_I2S_FLAG);
+ITStatus SPI_I2S_GetITStatus(SPI_TypeDef* SPIx, uint8_t SPI_I2S_IT);
+void SPI_I2S_ClearITPendingBit(SPI_TypeDef* SPIx, uint8_t SPI_I2S_IT);
+
+#ifdef __cplusplus
+}
+{anonTIM_TimeBaseInitTypeDef} in stm32f10x_tim.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) : 
+
+  uint8_t TIM_RepetitionCounter;  /*!< Specifies the repetition counter value. Each time the RCR downcounter
+                                       reaches zero, an update event is generated and counting restarts
+                                       from the RCR value (N).
+                                       This means in PWM mode that (N+1) corresponds to:
+USART_Init in stm32f10x_usart.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) : 
+  {
+    tmpreg |= ((((fractionaldivider * 8) + 50) / 100)) & ((uint8_t)0x07);
+  }
+  else /* if ((USARTx->CR1 & CR1_OVER8_Set) == 0) */
+  {
+    tmpreg |= ((((fractionaldivider * 16) + 50) / 100)) & ((uint8_t)0x0F);
+  }
+  
+  /* Write to USART BRR */
+USART_ITConfig in stm32f10x_usart.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) : 
+  /* Get the USART register index */
+  usartreg = (((uint8_t)USART_IT) >> 0x05);
+
+  /* Get the interrupt position */
+  itpos = USART_IT & IT_Mask;
+stm32f10x_usart.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 475 : 
+  */
+void USART_SetAddress(USART_TypeDef* USARTx, uint8_t USART_Address)
+{
+  /* Check the parameters */
+  assert_param(IS_USART_ALL_PERIPH(USARTx));
+stm32f10x_usart.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 640 : 
+  */
+void USART_SetGuardTime(USART_TypeDef* USARTx, uint8_t USART_GuardTime)
+{    
+  /* Check the parameters */
+  assert_param(IS_USART_123_PERIPH(USARTx));
+stm32f10x_usart.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 660 : 
+  */
+void USART_SetPrescaler(USART_TypeDef* USARTx, uint8_t USART_Prescaler)
+{ 
+  /* Check the parameters */
+  assert_param(IS_USART_ALL_PERIPH(USARTx));
+USART_GetITStatus in stm32f10x_usart.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) : 
+  /* Get the USART register index */
+  usartreg = (((uint8_t)USART_IT) >> 0x05);
+  /* Get the interrupt position */
+  itmask = USART_IT & IT_Mask;
+  itmask = (uint32_t)0x01 << itmask;
+stm32f10x_usart.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 372 : 
+void USART_DMACmd(USART_TypeDef* USARTx, uint16_t USART_DMAReq, FunctionalState NewState);
+void USART_SetAddress(USART_TypeDef* USARTx, uint8_t USART_Address);
+void USART_WakeUpConfig(USART_TypeDef* USARTx, uint16_t USART_WakeUp);
+void USART_ReceiverWakeUpCmd(USART_TypeDef* USARTx, FunctionalState NewState);
+void USART_LINBreakDetectLengthConfig(USART_TypeDef* USARTx, uint16_t USART_LINBreakDetectLength);
+stm32f10x_usart.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 380 : 
+void USART_SendBreak(USART_TypeDef* USARTx);
+void USART_SetGuardTime(USART_TypeDef* USARTx, uint8_t USART_GuardTime);
+void USART_SetPrescaler(USART_TypeDef* USARTx, uint8_t USART_Prescaler);
+void USART_SmartCardCmd(USART_TypeDef* USARTx, FunctionalState NewState);
+void USART_SmartCardNACKCmd(USART_TypeDef* USARTx, FunctionalState NewState);
+void USART_HalfDuplexCmd(USART_TypeDef* USARTx, FunctionalState NewState);
+stm32f10x_wwdg.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 62 : 
+#define CFR_W_Mask        ((uint32_t)0xFFFFFF80)
+#define BIT_Mask          ((uint8_t)0x7F)
+
+/**
+  * @}
+stm32f10x_wwdg.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 136 : 
+  */
+void WWDG_SetWindowValue(uint8_t WindowValue)
+{
+  __IO uint32_t tmpreg = 0;
+
+stm32f10x_wwdg.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 169 : 
+  */
+void WWDG_SetCounter(uint8_t Counter)
+{
+  /* Check the parameters */
+  assert_param(IS_WWDG_COUNTER(Counter));
+stm32f10x_wwdg.c (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\src) line 184 : 
+  */
+void WWDG_Enable(uint8_t Counter)
+{
+  /* Check the parameters */
+  assert_param(IS_WWDG_COUNTER(Counter));
+stm32f10x_wwdg.h (D:\桌面\IR-control-forward(红外遥控转发)\KEIL5库文件不加入工程\inc) line 89 : 
+void WWDG_SetPrescaler(uint32_t WWDG_Prescaler);
+void WWDG_SetWindowValue(uint8_t WindowValue);
+void WWDG_EnableIT(void);
+void WWDG_SetCounter(uint8_t Counter);
+void WWDG_Enable(uint8_t Counter);
+FlagStatus WWDG_GetFlagStatus(void);
+void WWDG_ClearFlag(void);
+
+system_stm32f10x.c (D:\桌面\IR-control-forward(红外遥控转发)\Project\RTE\Device\STM32F103VC) line 166 : 
+
+__I uint8_t AHBPrescTable[16] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9};
+/**
+  * @}
+  */
+USART_Send in USART_STM32F10x.c (D:\桌面\IR-control-forward(红外遥控转发)\User\reWrite) : 
+  // Save transmit buffer info
+  usart->xfer->tx_buf = (uint8_t *)data;
+  usart->xfer->tx_num = num;
+  usart->xfer->tx_cnt = 0U;
+
+USART_Receive in USART_STM32F10x.c (D:\桌面\IR-control-forward(红外遥控转发)\User\reWrite) : 
+  // Save receive buffer info
+  usart->xfer->rx_buf = (uint8_t *)data;
+  usart->xfer->rx_cnt =  0U;
+
+  // Set RX busy flag
+USART_IRQHandler in USART_STM32F10x.c (D:\桌面\IR-control-forward(红外遥控转发)\User\reWrite) : 
+
+      *(usart->xfer->rx_buf++) = (uint8_t)data;
+
+      // If nine bit data, no parity
+      val = usart->reg->CR1;
+USART_IRQHandler in USART_STM32F10x.c (D:\桌面\IR-control-forward(红外遥控转发)\User\reWrite) : 
+          ((val & USART_CR1_M)   != 0U)) {
+        *(usart->xfer->rx_buf++) = (uint8_t)(data >> 8U);
+      }
+      usart->xfer->rx_cnt++;
+
