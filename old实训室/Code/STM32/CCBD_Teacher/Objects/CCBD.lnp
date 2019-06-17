@@ -1,0 +1,21 @@
+--cpu Cortex-M3
+".\objects\usermain.o"
+".\objects\bsp.o"
+".\objects\delay.o"
+".\objects\uart_datatransfer.o"
+".\objects\sourcecontrol.o"
+".\objects\usart_stm32f10x.o"
+"C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\RTOS\RTX\LIB\ARM\RTX_CM3.lib"
+".\objects\rtx_conf_cm.o"
+".\objects\can_stm32f10x.o"
+".\objects\misc.o"
+".\objects\stm32f10x_gpio.o"
+".\objects\stm32f10x_rcc.o"
+".\objects\stm32f10x_usart.o"
+".\objects\gpio_stm32f10x.o"
+".\objects\startup_stm32f10x_hd.o"
+".\objects\system_stm32f10x.o"
+--strict --scatter ".\Objects\CCBD.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Listings\CCBD.map" -o .\Objects\CCBD.axf

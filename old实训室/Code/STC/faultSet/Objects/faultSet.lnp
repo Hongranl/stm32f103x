@@ -1,0 +1,16 @@
+".\Objects\UserMain.obj",
+".\Objects\Bsp.obj",
+".\Objects\Debug.obj",
+".\Objects\485Trans_USART.obj",
+".\Objects\SPI_faultSet.obj",
+".\Objects\Beep.obj",
+".\Objects\delay.obj",
+".\Objects\EEPROM.obj",
+".\Objects\Exti.obj",
+".\Objects\GPIO.obj",
+".\Objects\Soft_UART.obj",
+".\Objects\timer.obj",
+".\Objects\USART.obj" 
+TO ".\Objects\faultSet" 
+
+PRINT(".\Listings\faultSet.map") REMOVEUNUSED 

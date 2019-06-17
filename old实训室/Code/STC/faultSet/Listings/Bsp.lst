@@ -1,0 +1,70 @@
+C51 COMPILER V9.54   BSP                                                                   03/08/2018 16:33:08 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE BSP
+OBJECT MODULE PLACED IN .\Objects\Bsp.obj
+COMPILER INVOKED BY: D:\Keil\Software\C51\BIN\C51.EXE User\Bsp.c OMF2 OPTIMIZE(8,SPEED) BROWSE INCDIR(..\faultSet;.\User
+                    -;.\Hardware;.\StdPeriph_Driver) DEBUG PRINT(.\Listings\Bsp.lst) OBJECT(.\Objects\Bsp.obj)
+
+line level    source
+
+   1          #include "Bsp.h"
+   2          
+   3          void ADDRGET_Init(void){                //硬件地址读取前初始化
+   4   1      
+   5   1              GPIO_InitTypeDef gpio_addr;
+   6   1              
+   7   1              gpio_addr.Mode = GPIO_PullUp;
+   8   1              gpio_addr.Pin  = GPIO_Pin_4 | GPIO_Pin_5 | GPIO_Pin_6 | GPIO_Pin_7;
+   9   1              
+  10   1              GPIO_Inilize(GPIO_P3,&gpio_addr);
+  11   1      }
+  12          
+  13          u8 Localaddr_get(void){         //硬件地址读取
+  14   1      
+  15   1              u8 addr = 0;
+  16   1              
+  17   1              addr |= P3 >> 7;
+  18   1              addr |= P3 >> 6;
+  19   1              addr |= P3 >> 5;
+  20   1              addr |= P3 >> 4;
+  21   1              
+  22   1              return addr;
+  23   1      }
+  24          
+  25          u8 LocalBDType_get(void){       //设故板本地类型获取
+  26   1      
+  27   1              u8 type = 0;
+  28   1              
+  29   1              EEPROM_read_n(0,&type,1);
+  30   1              return type;
+  31   1      }
+  32          
+  33          void Bsp_Init(void){
+  34   1      
+  35   1              ADDRGET_Init(); 
+  36   1              USART485Trans_Init();
+  37   1              USARTDebug_Init();
+  38   1              GPIO_SPI_Init();
+  39   1              GPIO_BEEP_Init();
+  40   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     86    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       3
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+C51 COMPILER V9.54   BSP                                                                   03/08/2018 16:33:08 PAGE 2   
+
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

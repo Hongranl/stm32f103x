@@ -1,0 +1,8 @@
+--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\HARDWARE\KEY -I ..\HARDWARE\HILINK -I ..\HARDWARE\DMA -I ..\HARDWARE\TIMER -I ..\HARDWARE\FLASH_25Q64 -I ..\HARDWARE\ds1302 -I ..\HARDWARE\CR95HF\inc -I ..\HARDWARE\CR95HF\src -I ..\SYSTEM\bitband -I ..\SYSTEM\iic -I ..\SYSTEM\adc -I ..\HARDWARE\HC_SR04 -I ..\HARDWARE\PERIPHERAL -I ..\HARDWARE\SHT1X -I ..\HARDWARE\LCD(1.44inches) -I ..\HARDWARE\TempMS
+-I.\RTE\Device\STM32F103RC
+-I.\RTE\_____________________
+-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include
+-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include
+-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0
+-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER
+-o ..\obj\usart2.o --omf_browse ..\obj\usart2.crf --depend ..\obj\usart2.d "..\SYSTEM\usart\usart2.c"

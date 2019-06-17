@@ -1,0 +1,49 @@
+C51 COMPILER V9.54   BEEP                                                                  03/08/2018 16:33:08 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE BEEP
+OBJECT MODULE PLACED IN .\Objects\Beep.obj
+COMPILER INVOKED BY: D:\Keil\Software\C51\BIN\C51.EXE Hardware\Beep.c OMF2 OPTIMIZE(8,SPEED) BROWSE INCDIR(..\faultSet;.
+                    -\User;.\Hardware;.\StdPeriph_Driver) DEBUG PRINT(.\Listings\Beep.lst) OBJECT(.\Objects\Beep.obj)
+
+line level    source
+
+   1          #include "Beep.h"
+   2          
+   3          void GPIO_BEEP_Init(void){
+   4   1      
+   5   1              GPIO_InitTypeDef gpio_BEEP;
+   6   1              
+   7   1              gpio_BEEP.Mode = GPIO_OUT_PP;
+   8   1              gpio_BEEP.Pin  = GPIO_Pin_7;
+   9   1              
+  10   1              GPIO_Inilize(GPIO_P1,&gpio_BEEP);
+  11   1              
+  12   1              BEEP = 0;
+  13   1      }
+  14          
+  15          void Beep_time(u8 timea,u8 timeb){
+  16   1      
+  17   1              BEEP = 1;
+  18   1              delay_ms(timea);
+  19   1              BEEP = 0;
+  20   1              delay_ms(timeb);
+  21   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     34    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       3
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,11 @@
+.\objects\uart_datatransfer.o: Member_Transfer\UART_dataTransfer.c
+.\objects\uart_datatransfer.o: Member_Transfer\USART_485_VAW_data.h
+.\objects\uart_datatransfer.o: Member_Transfer\USART_485_VAW_data.h
+.\objects\uart_datatransfer.o: Member_Transfer\USART_485_VAW_data.h
+.\objects\uart_datatransfer.o: Member_Transfer\USART_485_VAW_data.h
+.\objects\uart_datatransfer.o: Member_Transfer\USART_485_VAW_data.h
+.\objects\uart_datatransfer.o: Member_Transfer\USART_485_VAW_data.h
+.\objects\uart_datatransfer.o: Member_Transfer\USART_485_VAW_data.h
+.\objects\uart_datatransfer.o: Member_Transfer\USART_485_VAW_data.h
+.\objects\uart_datatransfer.o: Member_Transfer\USART_485_VAW_data.h
+.\objects\uart_datatransfer.o: Member_Transfer\USART_485_VAW_data.h

@@ -1,0 +1,8 @@
+---- CarSetTurnTimer Matches (7 in 3 files) ----
+CarRoad.c (hardware\follow):					CarSetTurnTimer = GetCarRoadSetTurnTimer(CarPosition)/5;		// 获取锁定转向时间
+Follow.c (hardware\follow):u16 CarSetTurnTimer;
+Follow.c (hardware\follow):	CarSetTurnTimer = 0;
+Follow.c (hardware\follow):		if(CarSetTurnTimer)
+Follow.c (hardware\follow):			CarSetTurnTimer--;
+Follow.c (hardware\follow):		if(CarSetTurnTimer == 0)//刷卡盲走不停车
+Follow.h (hardware\follow):extern u16 CarSetTurnTimer;

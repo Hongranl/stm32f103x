@@ -1,0 +1,223 @@
+---- KEY_RIGHT_RED(1)； Matches (18 in 4 files) ----
+ALL_Includes.h (D:\桌面\2L_LIGHT_86_stm8（幕帘控制 灯光控制YQ）) line 72 : 
+
+#define   KEY_RIGHT_RED(a)      LED5_PB4_Pin_OUT(a)
+#define   KEY_RIGHT_BLUE(a)     LED6_PA2_Pin_OUT(a)
+
+//#define   LED_ON                0
+//#define   LED_OFF               1
+ 
+ 
+#define   RLY1_PA3_Pin   (1 << 3)
+#define   RLY2_PC6_Pin   (1 << 6)
+#define   RLY3_PC7_Pin   (1 << 7) 
+
+#define   RLY1_PA3_Pin_OUT(a)     (a!=0)?( GPIOA->ODR |= RLY1_PA3_Pin ):( GPIOA->ODR &= ~RLY1_PA3_Pin ) 
+#define   RLY2_PC6_Pin_OUT(a)     (a!=0)?( GPIOC->ODR |= RLY2_PC6_Pin ):( GPIOC->ODR &= ~RLY2_PC6_Pin ) 
+LED_UP in LED_CON.c (D:\桌面\2L_LIGHT_86_stm8（幕帘控制 灯光控制YQ）) : 
+{
+  KEY_LEFT_BLUE(1); 
+  KEY_LEFT_RED(0);      //左键
+
+  KEY_MID_BLUE(0);   
+  KEY_MID_RED(1);       //中键
+
+  KEY_RIGHT_BLUE(0);   
+  KEY_RIGHT_RED(1);     //右键
+}
+
+/******* 停止键 *******/
+LED_PAUSE in LED_CON.c (D:\桌面\2L_LIGHT_86_stm8（幕帘控制 灯光控制YQ）) : 
+  KEY_LEFT_BLUE(0); 
+  KEY_LEFT_RED(1);      //左键
+
+  KEY_MID_BLUE(1);   
+  KEY_MID_RED(0);       //中键
+
+  KEY_RIGHT_BLUE(0);   
+  KEY_RIGHT_RED(1);     //右键
+}
+
+/******* 下降键 *******/
+LED_DOWN in LED_CON.c (D:\桌面\2L_LIGHT_86_stm8（幕帘控制 灯光控制YQ）) : 
+  KEY_LEFT_BLUE(0); 
+  KEY_LEFT_RED(1);      //左键
+
+  KEY_MID_BLUE(0);   
+  KEY_MID_RED(1);       //中键
+
+  KEY_RIGHT_BLUE(1);   
+  KEY_RIGHT_RED(0);     //右键
+}
+
+/******* 入网 *******/
+jiance_light_key in main.c (D:\桌面\2L_LIGHT_86_stm8（幕帘控制 灯光控制YQ）) : 
+	  {
+		    KEY_RIGHT_BLUE(1); 
+		    KEY_RIGHT_RED(0); 
+		  }
+	  else 
+	  {
+		    KEY_RIGHT_BLUE(0); 
+		    KEY_RIGHT_RED(1);  
+	  }
+        
+ /////////////////////////////////       
+jiance_light_key in main.c (D:\桌面\2L_LIGHT_86_stm8（幕帘控制 灯光控制YQ）) : 
+					            { 
+						              KEY_LEFT_BLUE(1); 
+						              KEY_LEFT_RED(0); 
+						              
+						              KEY_RIGHT_BLUE(0); 
+						              KEY_RIGHT_RED(0); 
+
+						              LED_time = 300;
+						              while( LED_time != 0 ); 
+jiance_light_key in main.c (D:\桌面\2L_LIGHT_86_stm8（幕帘控制 灯光控制YQ）) : 
+						              KEY_LEFT_BLUE(0); 
+						              KEY_LEFT_RED(1); 
+						              
+						              KEY_RIGHT_BLUE(1); 
+						              KEY_RIGHT_RED(0); 
+						              
+						              LED_time = 300;
+						              while( LED_time != 0 );
+jiance_light_key in main.c (D:\桌面\2L_LIGHT_86_stm8（幕帘控制 灯光控制YQ）) : 
+				            { 
+					              KEY_LEFT_BLUE(1); 
+					              KEY_LEFT_RED(1); 
+					              
+					              KEY_RIGHT_BLUE(1); 
+					              KEY_RIGHT_RED(1); 
+					              
+					              
+					              LED_time = 300;
+jiance_light_key in main.c (D:\桌面\2L_LIGHT_86_stm8（幕帘控制 灯光控制YQ）) : 
+					            { 
+						              KEY_LEFT_BLUE(1); 
+						              KEY_LEFT_RED(0); 
+						              
+						              KEY_RIGHT_BLUE(1); 
+						              KEY_RIGHT_RED(0); 
+
+						              LED_time = 300;
+						              while( LED_time != 0 ); 
+jiance_light_key in main.c (D:\桌面\2L_LIGHT_86_stm8（幕帘控制 灯光控制YQ）) : 
+						              KEY_LEFT_BLUE(0); 
+						              KEY_LEFT_RED(1); 
+						              
+						              KEY_RIGHT_BLUE(0); 
+						              KEY_RIGHT_RED(1); 
+						              
+						              LED_time = 300;
+						              while( LED_time != 0 );
+jiance_light_key in main.c (D:\桌面\2L_LIGHT_86_stm8（幕帘控制 灯光控制YQ）) : 
+					            join_flg = 0;
+					            dat[1] = leave_net; //退网
+
+					            KEY_MID_BLUE(1); 
+					            KEY_MID_RED(1);
+					            
+					            for(i=0;i<5;i++)
+					            { 
+						              KEY_LEFT_BLUE(1); 
+						              KEY_LEFT_RED(1); 
+						              
+						              KEY_RIGHT_BLUE(1); 
+						              KEY_RIGHT_RED(1);  
+						              
+						              LED_time = 300;
+						              while( LED_time != 0 ); 
+jiance_light_key in main.c (D:\桌面\2L_LIGHT_86_stm8（幕帘控制 灯光控制YQ）) : 
+		      
+		      KEY_RIGHT_BLUE(1); 
+		      KEY_RIGHT_RED(0);   //右边蓝灯亮
+		      
+		      RLY3_OUT(RLY_OFF);
+	    }
+jiance_light_key in main.c (D:\桌面\2L_LIGHT_86_stm8（幕帘控制 灯光控制YQ）) : 
+	    {  
+		      LIGHT_3_STATUS = 1;
+		      
+		      KEY_RIGHT_BLUE(0); 
+		      KEY_RIGHT_RED(1);  //右边红灯亮
+		      
+		      RLY3_OUT(RLY_ON);
+	    } 
+	    
+	    dat[1] = upload_info;  
+
+	    if(program_num == 2)
+	    {
+jiance in main.c (D:\桌面\2L_LIGHT_86_stm8（幕帘控制 灯光控制YQ）) : 
+						            KEY_MID_RED(0);
+						            KEY_RIGHT_RED(0);
+
+						            KEY_LEFT_BLUE(1);
+						            KEY_MID_BLUE(1);
+						            KEY_RIGHT_BLUE(1);
+
+						            LED_time = 300;
+						            while( LED_time != 0 ); 
+
+						            KEY_LEFT_RED(1); 
+						            KEY_MID_RED(0);  
+						            KEY_RIGHT_RED(1);
+
+						            KEY_LEFT_BLUE(0);  
+						            KEY_MID_BLUE(1);
+						            KEY_RIGHT_BLUE(0);
+
+						            LED_time = 300;
+IO_Init in main.c (D:\桌面\2L_LIGHT_86_stm8（幕帘控制 灯光控制YQ）) : 
+  {
+    case 1://默认是幕帘程序
+    {
+      KEY_LEFT_RED(1);
+      KEY_MID_RED(0);
+      KEY_RIGHT_RED(1);
+
+      KEY_LEFT_BLUE(0);
+      KEY_MID_BLUE(1);
+      KEY_RIGHT_BLUE(0);
+    }break;
+    
+IO_Init in main.c (D:\桌面\2L_LIGHT_86_stm8（幕帘控制 灯光控制YQ）) : 
+    {
+      KEY_LEFT_BLUE(1);    
+      KEY_MID_BLUE(1);   
+      KEY_RIGHT_BLUE(0);  
+
+      KEY_LEFT_RED(0);    
+      KEY_MID_RED(1);     
+      KEY_RIGHT_RED(1);  
+    }break; 
+    
+    case 3://3路86灯面板
+    {
+      KEY_LEFT_BLUE(1);    
+      KEY_MID_BLUE(0);   
+      KEY_RIGHT_BLUE(0);  
+
+      KEY_LEFT_RED(0);    
+      KEY_MID_RED(1);     
+      KEY_RIGHT_RED(1);     
+    }break;
+    
+    default: break; 
+Rs485_COMM_msg_process in uart.c (D:\桌面\2L_LIGHT_86_stm8（幕帘控制 灯光控制YQ）) : 
+                
+                KEY_RIGHT_BLUE(1); 
+                KEY_RIGHT_RED(0); 
+                
+                RLY3_OUT(RLY_OFF);
+              }
+Rs485_COMM_msg_process in uart.c (D:\桌面\2L_LIGHT_86_stm8（幕帘控制 灯光控制YQ）) : 
+              {
+                LIGHT_3_STATUS = 1;
+                
+                KEY_RIGHT_BLUE(0); 
+                KEY_RIGHT_RED(1); 
+                
+                RLY3_OUT(RLY_ON);
+              }

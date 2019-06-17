@@ -1,0 +1,173 @@
+---- printf Matches (200 in 7 files) ----
+CR95HF_FUC in CR95HF.c (D:\国顺资料\江工物联网项目\sensor_Module\USER) : 							sprintf(disp,"TT1:%s\r\n",UID);
+CR95HF_FUC in CR95HF.c (D:\国顺资料\江工物联网项目\sensor_Module\USER) : 							sprintf(disp,"TT2:%s\r\n",UID);
+CR95HF_FUC in CR95HF.c (D:\国顺资料\江工物联网项目\sensor_Module\USER) : 							sprintf(disp,"TT3:%s\r\n",UID);
+CR95HF_FUC in CR95HF.c (D:\国顺资料\江工物联网项目\sensor_Module\USER) : 							sprintf(disp,"TT4A:%s\r\n",UID);
+CR95HF_FUC in CR95HF.c (D:\国顺资料\江工物联网项目\sensor_Module\USER) : 							sprintf(disp,"TT4B:%s\r\n",UID);
+CR95HF_FUC in CR95HF.c (D:\国顺资料\江工物联网项目\sensor_Module\USER) : 							sprintf(disp,"TT5:%s\r\n",UID);
+GS-P1B-GXO01.htm (D:\国顺资料\江工物联网项目\sensor_Module\OBJ) line 92 :  <LI><a href="#[4a]">_sputc</a> from printfa.o(i._sputc) referenced from printfa.o(i.__0sprintf)
+GS-P1B-GXO01.htm (D:\国顺资料\江工物联网项目\sensor_Module\OBJ) line 93 :  <LI><a href="#[49]">fputc</a> from usart_cfg_1.o(.text) referenced from printfa.o(i.__0printf)
+GS-P1B-GXO01.htm (D:\国顺资料\江工物联网项目\sensor_Module\OBJ) line 134 : <LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+GS-P1B-GXO01.htm (D:\国顺资料\江工物联网项目\sensor_Module\OBJ) line 148 : <LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
+GS-P1B-GXO01.htm (D:\国顺资料\江工物联网项目\sensor_Module\OBJ) line 173 : <LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
+GS-P1B-GXO01.htm (D:\国顺资料\江工物联网项目\sensor_Module\OBJ) line 174 : <LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+GS-P1B-GXO01.htm (D:\国顺资料\江工物联网项目\sensor_Module\OBJ) line 225 : <LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+GS-P1B-GXO01.htm (D:\国顺资料\江工物联网项目\sensor_Module\OBJ) line 379 : <BR>[Address Reference Count : 1]<UL><LI> printfa.o(i.__0printf)
+GS-P1B-GXO01.htm (D:\国顺资料\江工物联网项目\sensor_Module\OBJ) line 555 : <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = debug_uart3_Rxbuff &rArr; __2printf
+GS-P1B-GXO01.htm (D:\国顺资料\江工物联网项目\sensor_Module\OBJ) line 557 : <BR>[Calls]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+GS-P1B-GXO01.htm (D:\国顺资料\江工物联网项目\sensor_Module\OBJ) line 620 : <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = debug_uart3_Sendbuff &rArr; __2printf
+GS-P1B-GXO01.htm (D:\国顺资料\江工物联网项目\sensor_Module\OBJ) line 622 : <BR>[Calls]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+GS-P1B-GXO01.htm (D:\国顺资料\江工物联网项目\sensor_Module\OBJ) line 628 : <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = zigbee_dma_send_buf &rArr; debug_uart3_Sendbuff &rArr; __2printf
+GS-P1B-GXO01.htm (D:\国顺资料\江工物联网项目\sensor_Module\OBJ) line 726 : <BR><BR>[Calls]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+GS-P1B-GXO01.htm (D:\国顺资料\江工物联网项目\sensor_Module\OBJ) line 739 : <LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+GS-P1B-GXO01.htm (D:\国顺资料\江工物联网项目\sensor_Module\OBJ) line 762 : <LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+GS-P1B-GXO01.htm (D:\国顺资料\江工物联网项目\sensor_Module\OBJ) line 2578 : <LI><a href="#[149]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
+GS-P1B-GXO01.htm (D:\国顺资料\江工物联网项目\sensor_Module\OBJ) line 2784 : <BR><BR>[Called By]<UL><LI><a href="#[149]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
+GS-P1B-GXO01.htm (D:\国顺资料\江工物联网项目\sensor_Module\OBJ) line 2874 : <P><STRONG><a name="[148]"></a>__0printf</STRONG> (Thumb, 22 bytes, Stack size 24 bytes, printfa.o(i.__0printf), UNUSED)
+GS-P1B-GXO01.htm (D:\国顺资料\江工物联网项目\sensor_Module\OBJ) line 2875 : <BR><BR>[Calls]<UL><LI><a href="#[149]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
+GS-P1B-GXO01.htm (D:\国顺资料\江工物联网项目\sensor_Module\OBJ) line 2878 : <P><STRONG><a name="[21b]"></a>__1printf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0printf), UNUSED)
+GS-P1B-GXO01.htm (D:\国顺资料\江工物联网项目\sensor_Module\OBJ) line 2880 : <P><STRONG><a name="[52]"></a>__2printf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0printf))
+GS-P1B-GXO01.htm (D:\国顺资料\江工物联网项目\sensor_Module\OBJ) line 2881 : <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = __2printf
+GS-P1B-GXO01.htm (D:\国顺资料\江工物联网项目\sensor_Module\OBJ) line 2893 : <P><STRONG><a name="[21c]"></a>__c89printf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0printf), UNUSED)
+GS-P1B-GXO01.htm (D:\国顺资料\江工物联网项目\sensor_Module\OBJ) line 2895 : <P><STRONG><a name="[21d]"></a>printf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0printf), UNUSED)
+GS-P1B-GXO01.htm (D:\国顺资料\江工物联网项目\sensor_Module\OBJ) line 2897 : <P><STRONG><a name="[14a]"></a>__0sprintf</STRONG> (Thumb, 34 bytes, Stack size 24 bytes, printfa.o(i.__0sprintf), UNUSED)
+GS-P1B-GXO01.htm (D:\国顺资料\江工物联网项目\sensor_Module\OBJ) line 2899 : <LI><a href="#[149]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
+GS-P1B-GXO01.htm (D:\国顺资料\江工物联网项目\sensor_Module\OBJ) line 2902 : <P><STRONG><a name="[21e]"></a>__1sprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0sprintf), UNUSED)
+GS-P1B-GXO01.htm (D:\国顺资料\江工物联网项目\sensor_Module\OBJ) line 2904 : <P><STRONG><a name="[56]"></a>__2sprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0sprintf))
+GS-P1B-GXO01.htm (D:\国顺资料\江工物联网项目\sensor_Module\OBJ) line 2905 : <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = __2sprintf
+GS-P1B-GXO01.htm (D:\国顺资料\江工物联网项目\sensor_Module\OBJ) line 2911 : <P><STRONG><a name="[21f]"></a>__c89sprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0sprintf), UNUSED)
+GS-P1B-GXO01.htm (D:\国顺资料\江工物联网项目\sensor_Module\OBJ) line 2913 : <P><STRONG><a name="[220]"></a>sprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0sprintf), UNUSED)
+GS-P1B-GXO01.htm (D:\国顺资料\江工物联网项目\sensor_Module\OBJ) line 3043 : <P><STRONG><a name="[150]"></a>_fp_digits</STRONG> (Thumb, 366 bytes, Stack size 64 bytes, printfa.o(i._fp_digits), UNUSED)
+GS-P1B-GXO01.htm (D:\国顺资料\江工物联网项目\sensor_Module\OBJ) line 3051 : <BR>[Called By]<UL><LI><a href="#[149]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
+GS-P1B-GXO01.htm (D:\国顺资料\江工物联网项目\sensor_Module\OBJ) line 3054 : <P><STRONG><a name="[149]"></a>_printf_core</STRONG> (Thumb, 1744 bytes, Stack size 136 bytes, printfa.o(i._printf_core), UNUSED)
+GS-P1B-GXO01.htm (D:\国顺资料\江工物联网项目\sensor_Module\OBJ) line 3057 : <LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_pre_padding
+GS-P1B-GXO01.htm (D:\国顺资料\江工物联网项目\sensor_Module\OBJ) line 3058 : <LI><a href="#[153]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_post_padding
+GS-P1B-GXO01.htm (D:\国顺资料\江工物联网项目\sensor_Module\OBJ) line 3061 : <BR>[Called By]<UL><LI><a href="#[14a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__0sprintf
+GS-P1B-GXO01.htm (D:\国顺资料\江工物联网项目\sensor_Module\OBJ) line 3062 : <LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__0printf
+GS-P1B-GXO01.htm (D:\国顺资料\江工物联网项目\sensor_Module\OBJ) line 3065 : <P><STRONG><a name="[153]"></a>_printf_post_padding</STRONG> (Thumb, 36 bytes, Stack size 24 bytes, printfa.o(i._printf_post_padding), UNUSED)
+GS-P1B-GXO01.htm (D:\国顺资料\江工物联网项目\sensor_Module\OBJ) line 3066 : <BR><BR>[Called By]<UL><LI><a href="#[149]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
+GS-P1B-GXO01.htm (D:\国顺资料\江工物联网项目\sensor_Module\OBJ) line 3069 : <P><STRONG><a name="[152]"></a>_printf_pre_padding</STRONG> (Thumb, 46 bytes, Stack size 24 bytes, printfa.o(i._printf_pre_padding), UNUSED)
+GS-P1B-GXO01.htm (D:\国顺资料\江工物联网项目\sensor_Module\OBJ) line 3070 : <BR><BR>[Called By]<UL><LI><a href="#[149]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
+GS-P1B-GXO01.htm (D:\国顺资料\江工物联网项目\sensor_Module\OBJ) line 3073 : <P><STRONG><a name="[4a]"></a>_sputc</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, printfa.o(i._sputc))
+GS-P1B-GXO01.htm (D:\国顺资料\江工物联网项目\sensor_Module\OBJ) line 3074 : <BR><BR>[Called By]<UL><LI><a href="#[14a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__0sprintf
+GS-P1B-GXO01.htm (D:\国顺资料\江工物联网项目\sensor_Module\OBJ) line 3076 : <BR>[Address Reference Count : 1]<UL><LI> printfa.o(i.__0sprintf)
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 565 : 						sprintf((char *)MSGID_Disp,"Z");
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 571 : 						sprintf((char *)MSGID_Disp,"W");
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 575 : 				default:sprintf((char *)MSGID_Disp,"-");
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 586 : 				sprintf((char *)EXTID_Disp,"NONE");
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 591 : 				sprintf((char *)EXTID_Disp,"0x%02X",Moudle_GTA.Extension_ID);
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 756 : 								sprintf(disp,"有火");
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 760 : 								sprintf(disp,"没火");
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 784 : 								sprintf(disp,"有人");
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 788 : 								sprintf(disp,"无人");
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 812 : //								sprintf(disp,"报警");
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 816 : //								sprintf(disp,"正常");
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 820 : 							sprintf(disp,"anaVAL:%d%%",rptr->anaDAT);
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 843 : 								sprintf(disp,"报警");
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 847 : 								sprintf(disp,"正常");
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 851 : 							sprintf(disp,"anaVAL:%d0mV",rptr->anaDAT);
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 874 : 							sprintf(disp,"%.2f",rptr->temp);
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 877 : 							sprintf(disp,"%.2f",rptr->hum);
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 901 : 								sprintf(disp,"有震动");
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 905 : 								sprintf(disp,"没震动");
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 926 : 							sprintf(disp,"%d %%",rptr->illumination);
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 966 : 							sprintf(disp,"%3.0f mA",CUR);
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 969 : 							sprintf(disp,"%.2f V",VOL);
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 972 : 							sprintf(disp,"%3.0f mA",CUR2);
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 976 : 							sprintf(disp,"%.2f V",VOL2);
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1026 : 										sprintf(disp,"ID: %d",rptr->DAT);			
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1038 : 										sprintf(disp,"%02X%02X%02X%02X",rptr->rfidDAT[0],rptr->rfidDAT[1],rptr->rfidDAT[2],rptr->rfidDAT[3]);			
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1128 : 								sprintf(disp,"%d",data_old.VAL_KEY);
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1134 : 									case kifrSTATUS_NONLRN:sprintf(disp,"   NULL");break;
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1136 : 									case kifrSTATUS_WAITK:sprintf(disp,"按键等待");break;
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1138 : 									case kifrSTATUS_WAITSG:sprintf(disp,"等待遥控");break;
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1140 : 									case kifrSTATUS_LRNOVR:sprintf(disp,"学习完毕");break;
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1142 : 									case kifrSTATUS_SGOUT:sprintf(disp,"信号输出");break;
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1144 : 									default:sprintf(disp,"   NULL");break;
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1188 : 										sprintf(disp,"%d",rptr->VAL_KEY);
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1194 : 											case kifrSTATUS_NONLRN:sprintf(disp,"   NULL");break;
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1196 : 											case kifrSTATUS_WAITK:sprintf(disp,"按键等待");break;
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1198 : 											case kifrSTATUS_WAITSG:sprintf(disp,"等待遥控");break;
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1200 : 											case kifrSTATUS_LRNOVR:sprintf(disp,"学习完毕");break;
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1202 : 											case kifrSTATUS_SGOUT:sprintf(disp,"信号输出");break;
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1204 : 											default:sprintf(disp,"   NULL");break;
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1256 : 									case true:	sprintf(disp,"开启"); break;
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1258 : 									case false:	sprintf(disp,"关闭"); break;
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1278 : 								sprintf(disp,"%d%%",data_old.pwmVAL);
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1352 : 											case true:	sprintf(disp,"开启"); break;
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1354 : 											case false:	sprintf(disp,"关闭"); break;
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1376 : 										sprintf(disp,"%d%%",rptr->pwmVAL);
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1436 : 									case true:	sprintf(disp,"开启"); break;
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1438 : 									case false:	sprintf(disp,"关闭"); break;
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1458 : 								sprintf(disp,"%d%%",data_old.pwmVAL);
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1532 : 											case true:	sprintf(disp,"开启"); break;
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1534 : 											case false:	sprintf(disp,"关闭"); break;
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1556 : 										sprintf(disp,"%d%%",rptr->pwmVAL);
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1594 : 							if(rptr->relay_con & 0x01)sprintf(disp,"开启");
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1595 : 							else sprintf(disp,"关闭");
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1598 : 							if(rptr->relay_con & 0x02)sprintf(disp,"开启");
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1599 : 							else sprintf(disp,"关闭");
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1621 : 							if(rptr->relay_con & 0x01)sprintf(disp,"开启");
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1622 : 							else sprintf(disp,"关闭");
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1625 : 							if(rptr->relay_con & 0x02)sprintf(disp,"开启");
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1626 : 							else sprintf(disp,"关闭");
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1648 : 							if(rptr->relay_con & 0x01)sprintf(disp,"开启");
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1649 : 							else sprintf(disp,"关闭");
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1652 : 							sprintf(disp,"I = %dA",rptr->Current);
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1675 : 								case CMD_CURTUP:	sprintf(disp,"上升");break;
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1677 : 								case CMD_CURTSTP:	sprintf(disp,"停止");break;
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1679 : 								case CMD_CURTDN:	sprintf(disp,"下降");break;
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1681 : 										default:    sprintf(disp,"  NULL");
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1708 : 								//sprintf(disp,"%.1f KWH",rptr->power_p /10);
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1709 : 								sprintf(disp,"%d.%.2dkw/h",rptr->power_p/100,(rptr->power_p)%100);
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1715 : 								sprintf(disp,"%d.%.1dV",rptr->power_v/10,rptr->power_v%10);
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1724 : 								sprintf(disp,"%d.%.3dA",rptr->power_i/1000,rptr->power_i%1000);
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1734 : //											sprintf(disp+(3*(i+(7 * j ))),"-%x",RS485_RX_BUF[i+(7*j)]);
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1764 : 								case 0:	sprintf(disp,"烟雾超限");break;
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1766 : 								case 1:	sprintf(disp,"燃气泄漏");break;
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1768 : 								case 2:	sprintf(disp,"火焰报警");break;
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1770 : 								case 3:	sprintf(disp,"插座超载");break;
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1772 : 								case 4:	sprintf(disp,"窗帘开");break;
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1774 : 								case 5:	sprintf(disp,"窗帘关");break;
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1776 : 								case 6:	sprintf(disp,"灯光已开");break;
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1778 : 								case 7:	sprintf(disp,"灯光已关");break;
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1780 : 								case 8:	sprintf(disp,"灯光调亮");break;
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1782 : 								case 9:sprintf(disp,"灯光调暗");break;
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1784 : 								case 10:sprintf(disp,"灯光最亮");break;
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1786 : 								case 11:sprintf(disp,"灯光最暗");break;
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1788 : 								case 12:sprintf(disp,"电视已开");break;
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1790 : 								case 13:sprintf(disp,"电视已关");break;
+LCD_144.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\LCD(1.44inches)) line 1792 : 								default:sprintf(disp,"一切正常");break;
+main in main.c (D:\国顺资料\江工物联网项目\sensor_Module\USER) : 			printf("入网按键生效！\n");
+updata in main.c (D:\国顺资料\江工物联网项目\sensor_Module\USER) : 	//printf("UPDATA");
+aiction in main.c (D:\国顺资料\江工物联网项目\sensor_Module\USER) : 					//printf("12345678");
+aiction in main.c (D:\国顺资料\江工物联网项目\sensor_Module\USER) : 					sprintf(disp, ":%d",(bool)PAout(15));
+aiction in main.c (D:\国顺资料\江工物联网项目\sensor_Module\USER) : 					sprintf(disp, ":%d",(bool)PAout(15));
+aiction in main.c (D:\国顺资料\江工物联网项目\sensor_Module\USER) : 					sprintf(disp, ":%.2d",(result/41));
+aiction in main.c (D:\国顺资料\江工物联网项目\sensor_Module\USER) : 					sprintf(disp, ":%.0f",temp_val_real);
+aiction in main.c (D:\国顺资料\江工物联网项目\sensor_Module\USER) : 					sprintf(disp, ":%.0f",humi_val_real);
+aiction in main.c (D:\国顺资料\江工物联网项目\sensor_Module\USER) : 					sprintf(disp, ":%d",(result/41));
+aiction in main.c (D:\国顺资料\江工物联网项目\sensor_Module\USER) : 					sprintf(disp, ":%.0f",SoilTemp);
+aiction in main.c (D:\国顺资料\江工物联网项目\sensor_Module\USER) : 					sprintf(disp, ":%.0f",SoilHum);
+aiction in main.c (D:\国顺资料\江工物联网项目\sensor_Module\USER) : 					sprintf(disp, "%.2f",WindSpeed);
+aiction in main.c (D:\国顺资料\江工物联网项目\sensor_Module\USER) : 						sprintf(disp, "%d",result);
+aiction in main.c (D:\国顺资料\江工物联网项目\sensor_Module\USER) : 					sprintf(disp, ":%d",99 - result/41);
+aiction in main.c (D:\国顺资料\江工物联网项目\sensor_Module\USER) : 					sprintf(disp, "%d.%.4d",result/1000,result%1000);
+ui_main_sw in main.c (D:\国顺资料\江工物联网项目\sensor_Module\USER) : 		sprintf(disp, ":%d",type);
+SHT1X.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\SHT1X) line 410 : //        printf("\nSHT10温室度测试程序!!!\n");
+SHT1X.c (D:\国顺资料\江工物联网项目\sensor_Module\HARDWARE\SHT1X) line 423 : //                printf("当前环境温度为:%2.1f℃，湿度为:%2.1f%%，露点温度为%2.1f℃\r\n", temp_val_real, humi_val_real, dew_point);
+debug_uart2_Sendbuff in usart2_android.c (D:\国顺资料\江工物联网项目\sensor_Module\SYSTEM\usart) : 	printf("uart2发送缓存--数据:\n");
+debug_uart2_Sendbuff in usart2_android.c (D:\国顺资料\江工物联网项目\sensor_Module\SYSTEM\usart) : 		printf("%3.2x",UART2_android_st.SDBuff[number][i]);
+debug_uart2_Sendbuff in usart2_android.c (D:\国顺资料\江工物联网项目\sensor_Module\SYSTEM\usart) : 	printf("\n");
+android_dma_send_buf in usart2_android.c (D:\国顺资料\江工物联网项目\sensor_Module\SYSTEM\usart) :     		//printf("return");
+android_dma_send_buf in usart2_android.c (D:\国顺资料\江工物联网项目\sensor_Module\SYSTEM\usart) : 			//printf(" 发送数据");
+android__msg_process in usart2_android.c (D:\国顺资料\江工物联网项目\sensor_Module\SYSTEM\usart) : 		   printf("安卓--->转发---->zigbee\n");
+debug_uart3_Rxbuff in usart3_zigbee.c (D:\国顺资料\江工物联网项目\sensor_Module\SYSTEM\usart) : 	printf("接收缓存--数据:\n");
+debug_uart3_Rxbuff in usart3_zigbee.c (D:\国顺资料\江工物联网项目\sensor_Module\SYSTEM\usart) : 		printf("%3.2x",UART3_zigbee_st.RXBuff[number][i]);
+debug_uart3_Rxbuff in usart3_zigbee.c (D:\国顺资料\江工物联网项目\sensor_Module\SYSTEM\usart) : 	printf("\n");
+debug_uart3_Sendbuff in usart3_zigbee.c (D:\国顺资料\江工物联网项目\sensor_Module\SYSTEM\usart) : 	printf("发送缓存--数据:\n");
+debug_uart3_Sendbuff in usart3_zigbee.c (D:\国顺资料\江工物联网项目\sensor_Module\SYSTEM\usart) : 		printf("%3.2x",UART3_zigbee_st.SDBuff[number][i]);
+debug_uart3_Sendbuff in usart3_zigbee.c (D:\国顺资料\江工物联网项目\sensor_Module\SYSTEM\usart) : 	printf("\n");
+---- printf Search Errors Encountered (1) ----
+The following 1 files could not be processed:
+D:\国顺资料\江工物联网项目\sensor_Module\USER\RTE\RTE_Components.h : File could not be opened.

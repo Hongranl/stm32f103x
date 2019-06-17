@@ -1,0 +1,6 @@
+Record=TopLevelDocument|FileName=总图.SchDoc
+Record=SheetSymbol|SourceDocument=总图.SchDoc|Designator= |SchDesignator= |FileName=继电器输出.SchDoc|SymbolType=Normal|RawFileName=继电器输出.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|SourceDocument=总图.SchDoc|Designator=KEY|SchDesignator=KEY|FileName=按键.SchDoc|SymbolType=Normal|RawFileName=按键.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|SourceDocument=总图.SchDoc|Designator=U_MCU|SchDesignator=U_MCU|FileName=MCU.SchDoc|SymbolType=Normal|RawFileName=MCU.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|SourceDocument=总图.SchDoc|Designator=U_Peripheral CONNECTORS|SchDesignator=U_Peripheral CONNECTORS|FileName=Peripheral CONNECTORS.SchDoc|SymbolType=Normal|RawFileName=Peripheral CONNECTORS.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|SourceDocument=总图.SchDoc|Designator=U_POWER|SchDesignator=U_POWER|FileName=POWER.SchDoc|SymbolType=Normal|RawFileName=POWER.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 

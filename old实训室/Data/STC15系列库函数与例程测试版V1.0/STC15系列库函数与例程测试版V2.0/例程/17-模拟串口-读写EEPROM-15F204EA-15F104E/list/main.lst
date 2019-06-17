@@ -1,0 +1,377 @@
+C51 COMPILER V9.54   MAIN                                                                  12/06/2017 14:19:22 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\list\main.obj
+COMPILER INVOKED BY: D:\Keil\Software\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\list\ma
+                    -in.lst) TABS(3) OBJECT(.\list\main.obj)
+
+line level    source
+
+   1          
+   2          /*------------------------------------------------------------------*/
+   3          /* --- STC MCU International Limited -------------------------------*/
+   4          /* --- STC 1T Series MCU RC Demo -----------------------------------*/
+   5          /* --- Mobile: (86)13922805190 -------------------------------------*/
+   6          /* --- Fax: 86-0513-55012956,55012947,55012969 ---------------------*/
+   7          /* --- Tel: 86-0513-55012928,55012929,55012966 ---------------------*/
+   8          /* --- Web: www.GXWMCU.com -----------------------------------------*/
+   9          /* --- QQ:  800003751 ----------------------------------------------*/
+  10          /* If you want to use the program or the program referenced in the  */
+  11          /* article, please specify in which data and procedures from STC    */
+  12          /*------------------------------------------------------------------*/
+  13          
+  14          
+  15          
+  16          /************* 本程序功能说明 **************
+  17          
+  18                      测试说明
+  19          
+  20          EEPROM通用测试程序, 对EEPROM做扇区擦除、写入2~64字节、读出2~64字节的操作。
+  21          
+  22          模拟串口波特率:  9600,8,N,1. 可以在配置文件"config.h"中修改.
+  23          
+  24          串口访问命令设置:
+  25          
+  26          以下的描述中的命令后的分号", ", 实际发送命令时不包括在内。
+  27          
+  28             E 0, E 12, E 120  --> 对EEPROM进行扇区擦除操作，数字为扇区号，十进制.
+  29             W 0, W 12, W 120  --> 对EEPROM进行扇区写入操作，数字为扇区号，十进制. 从扇区的开始地址写入。
+  30             R 0, R 12, R 120  --> 对EEPROM进行扇区读出操作，数字为扇区号，十进制. 从扇区的开始地址读出。
+  31             
+  32             E 0x1234, E 0x1af5, E 0x10AB  --> 对EEPROM进行扇区擦除操作，数字为开始地址，十六进制.
+  33             W 0x1234, W 0x1af5, W 0x10AB  --> 对EEPROM进行扇区写入操作，数字为开始地址，十六进制. 
+  34             R 0x1234, R 0x1af5, R 0x10AB  --> 对EEPROM进行扇区读出操作，数字为开始地址，十六进制. 
+  35          
+  36          注意：为了通用，程序不识别扇区是否有效，用户自己根据具体的型号来决定。
+  37          
+  38          */
+  39          
+  40          #include "config.h"
+  41          #include "EEPROM.h"
+  42          
+  43          
+  44          /************* 本地常量声明   **************/
+  45          u8 code  T_Strings[]={"去年今日此门中，人面桃花相映红。人面不知何处去，桃花依旧笑春风。"};
+  46          
+  47          #define Timer0_Reload      (65536 - MAIN_Fosc / BaudRate / 3)
+  48          #define RxLength     16    //模拟串口接收缓冲长度
+  49          #define StringLength 64    //要测试的EEPROM长度, 取值2~64, 因为数据是汉字编码,所以最好是偶数.
+  50          
+  51          
+  52          /************* 本地变量声明   **************/
+  53          u8 idata tmp[StringLength];
+  54          
+C51 COMPILER V9.54   MAIN                                                                  12/06/2017 14:19:22 PAGE 2   
+
+  55          sbit P_RXB = P3^0;         //定义模拟串口接收IO
+  56          sbit P_TXB = P3^1;         //定义模拟串口发送IO
+  57          
+  58          bit  TxBusyFlag;     //正在发送一个字节, 用户设置1开始发送, 发送完毕系统清自动0
+  59          bit   B_Rx_OK;       //接收完的标志位, 收到数据块系统设置1, 用户处理数据后必须清0
+  60          u8 Rx_Cnt;           //接收到的字节数, 用户处理数据后必须清0
+  61          u8  idata RxBuf[RxLength]; //接收缓冲
+  62          u8 TxSBUF;           //发送数据寄存器, 用户写入要发送的数据, 把TxBusyFlag设置为1,系统就会发送出去, 发送完成后系统
+             -把TxBusyFlag清0.
+  63          
+  64          //===== 下面这些为系统使用的常量或变量, 用户不可见，请勿修改 =============
+  65          
+  66          #define  RxBitLenth  9     //8个数据位+1个停止位
+  67          #define  TxBitLenth  9     //8个数据位+1个停止位
+  68          u8  TxShiftReg,RxShiftReg; //发送 接收 移位
+  69          u8  TxSample,RxSample;     //发送和接收检测 采样计数器(3倍速率检测)
+  70          u8  TxBitCnt,RxBitCnt;     //发送和接收的数据 位计数器
+  71          u8 RxTimeOut;     //接收超时计数
+  72          bit   RxStartFlag;         //正在接收一个字节(已收到起始位)
+  73          
+  74          //=====================================================================
+  75          
+  76          /************* 本地函数声明   **************/
+  77          void  TxString(u8 *p);
+  78          
+  79          
+  80          /*************  外部函数和变量声明 *****************/
+  81          
+  82          
+  83          
+  84          
+  85          //========================================================================
+  86          // 函数: void UART_INIT(void)
+  87          // 描述: UART模块的初始变量.
+  88          // 参数: 无.
+  89          // 返回: 无.
+  90          // 版本: V1.0, 2012-10-22
+  91          //========================================================================
+  92          void UART_INIT(void)
+  93          {
+  94   1         TxBusyFlag = 0;
+  95   1         RxStartFlag = 0;
+  96   1         TxSample = 3;
+  97   1         RxSample = 4;
+  98   1         RxTimeOut = 0;
+  99   1         B_Rx_OK = 0;
+ 100   1         Rx_Cnt = 0;
+ 101   1      }
+ 102          
+ 103          //========================================================================
+ 104          // 函数: u8 CheckData(u8 dat)
+ 105          // 描述: 将字符"0~9,A~F或a~f"转成十六进制.
+ 106          // 参数: dat: 要检测的字符.
+ 107          // 返回: 0x00~0x0F为正确. 0xFF为错误.
+ 108          // 版本: V1.0, 2012-10-22
+ 109          //========================================================================
+ 110          u8 CheckData(u8 dat)
+ 111          {
+ 112   1         if((dat >= '0') && (dat <= '9'))    return (dat-'0');
+ 113   1         if((dat >= 'A') && (dat <= 'F'))    return (dat-'A'+10);
+ 114   1         if((dat >= 'a') && (dat <= 'f'))    return (dat-'a'+10);
+ 115   1         return 0xff;
+C51 COMPILER V9.54   MAIN                                                                  12/06/2017 14:19:22 PAGE 3   
+
+ 116   1      }
+ 117          
+ 118          //========================================================================
+ 119          // 函数: u16   GetAddress(void)
+ 120          // 描述: 计算各种输入方式的地址.
+ 121          // 参数: 无.
+ 122          // 返回: 16位EEPROM地址.
+ 123          // 版本: V1.0, 2013-6-6
+ 124          //========================================================================
+ 125          u16   GetAddress(void)
+ 126          {
+ 127   1         u16   address;
+ 128   1         u8 i;
+ 129   1         
+ 130   1         address = 0;
+ 131   1         if(Rx_Cnt <  3)   return 65535;  //error
+ 132   1         if(Rx_Cnt <= 5)   //5个字节以内是扇区操作，十进制, 支持命令:   E 0, E 12, E 120
+ 133   1                     //                               W 0, W 12, W 120
+ 134   1                     //                               R 0, R 12, R 120
+ 135   1         {
+ 136   2            for(i=2; i<Rx_Cnt; i++)
+ 137   2            {
+ 138   3               if(CheckData(RxBuf[i]) > 9)   return 65535;  //error
+ 139   3               address = address * 10 + CheckData(RxBuf[i]);
+ 140   3            }
+ 141   2            if(address < 124) //限制在0~123扇区
+ 142   2            {
+ 143   3               address <<= 9;
+ 144   3               return (address);
+ 145   3            }
+ 146   2         }
+ 147   1         else if(Rx_Cnt == 8) //8个字节直接地址操作，十六进制, 支持命令: E 0x1234, W 0x12b3, R 0x0A00
+ 148   1         {
+ 149   2            if((RxBuf[2] == '0') && ((RxBuf[3] == 'x') || (RxBuf[3] == 'X')))
+ 150   2            {
+ 151   3               for(i=4; i<8; i++)
+ 152   3               {
+ 153   4                  if(CheckData(RxBuf[i]) > 0x0F)      return 65535;  //error
+ 154   4                  address = (address << 4) + CheckData(RxBuf[i]);
+ 155   4               }
+ 156   3               if(address < 63488)  return (address); //限制在0~123扇区
+ 157   3            }
+ 158   2         }
+ 159   1         
+ 160   1          return  65535;   //error
+ 161   1      }
+ 162          
+ 163          
+ 164          //========================================================================
+ 165          // 函数: void main(void)
+ 166          // 描述: 主程序.
+ 167          // 参数: 无.
+ 168          // 返回: 无.
+ 169          // 版本: V1.0, 2012-10-22
+ 170          //========================================================================
+ 171          void  TxByte(u8 dat)
+ 172          {
+ 173   1         TxSBUF = dat;     //要发送的数据写入发送缓冲
+ 174   1         TxBusyFlag = 1;         //启动发送
+ 175   1         while(TxBusyFlag);      //等待发送完成
+ 176   1      }
+ 177          
+C51 COMPILER V9.54   MAIN                                                                  12/06/2017 14:19:22 PAGE 4   
+
+ 178          //========================================================================
+ 179          // 函数: void main(void)
+ 180          // 描述: 主程序.
+ 181          // 参数: 无.
+ 182          // 返回: 无.
+ 183          // 版本: V1.0, 2012-10-22
+ 184          //========================================================================
+ 185          void main(void)
+ 186          {
+ 187   1         u8 i;
+ 188   1         u16 addr;
+ 189   1      
+ 190   1         InternalRAM_enable();
+ 191   1      // ExternalRAM_enable();
+ 192   1      
+ 193   1         Timer0_1T();
+ 194   1         Timer0_AsTimer();
+ 195   1         Timer0_16bitAutoReload();
+ 196   1         Timer0_Load(Timer0_Reload);
+ 197   1         Timer0_InterruptEnable();
+ 198   1         PT0 = 1; //定时器0高优先级中断
+ 199   1         Timer0_Run();
+ 200   1         EA = 1;                 //打开总中断               open global interrupt switch
+ 201   1      
+ 202   1         UART_INIT();            //UART模块的初始变量
+ 203   1         TxString("STC15F/L系列单片机EEPROM测试程序!\r\n"); //发送一串提示字符
+ 204   1         
+ 205   1         while (1)
+ 206   1         {
+ 207   2            if (B_Rx_OK)   //接收完的标志位, 收到数据块系统设置1, 用户处理数据后必须清0
+ 208   2            {
+ 209   3               if(Rx_Cnt > 0) //确认有数据
+ 210   3               {
+ 211   4            //    for(i=0; i<Rx_Cnt; i++) TxByte(RxBuf[i]); //把收到的数据原样返回,用于测试
+ 212   4      
+ 213   4                  if(RxBuf[1] == ' ')
+ 214   4                  {
+ 215   5                     addr = GetAddress();
+ 216   5                     if(addr < 63488)  //限制在0~123扇区
+ 217   5                     {
+ 218   6                        if(RxBuf[0] == 'E')  //PC请求擦除一个扇区
+ 219   6                        {
+ 220   7                           EEPROM_SectorErase(addr);
+ 221   7                           TxString("扇区擦除完成\r\n");
+ 222   7                        }
+ 223   6      
+ 224   6                        else if(RxBuf[0] == 'W')   //PC请求写入EEPROM 数据
+ 225   6                        {
+ 226   7                           EEPROM_write_n(addr,T_Strings,StringLength);
+ 227   7                           TxString("写入操作完成\r\n");
+ 228   7                        }
+ 229   6      
+ 230   6                        else if(RxBuf[0] == 'R')   //PC请求返回EEPROM数据
+ 231   6                        {
+ 232   7                           TxString("读出的数据如下：\r\n");
+ 233   7                           EEPROM_read_n(addr,tmp,StringLength);
+ 234   7                           for(i=0; i<StringLength; i++) TxByte(tmp[i]);   //将数据返回给串口
+ 235   7                           TxByte(0x0d);
+ 236   7                           TxByte(0x0a);
+ 237   7                        }
+ 238   6                        else  TxString("命令错误!\r\n");
+ 239   6                     }
+C51 COMPILER V9.54   MAIN                                                                  12/06/2017 14:19:22 PAGE 5   
+
+ 240   5                     else  TxString("命令错误!\r\n");
+ 241   5                  }
+ 242   4               }
+ 243   3               Rx_Cnt  = 0;   //清除字节数
+ 244   3               B_Rx_OK = 0;   //清除接收完成标志
+ 245   3            }
+ 246   2         }
+ 247   1      }
+ 248          
+ 249          //========================================================================
+ 250          // 函数: void  TxString(u8 *p)
+ 251          // 描述: 发送一个数据块, 遇到0结束.
+ 252          // 参数: *p: 数据块的指针.
+ 253          // 返回: 无.
+ 254          // 版本: V1.0, 2012-10-22
+ 255          //========================================================================
+ 256          void  TxString(u8 *p)
+ 257          {
+ 258   1         for( ; *p > 0; p++)
+ 259   1         {
+ 260   2            TxSBUF = *p;      //要发送的数据写入发送缓冲
+ 261   2            TxBusyFlag = 1;      //启动发送
+ 262   2            while(TxBusyFlag);   //等待发送完成
+ 263   2         }
+ 264   1      }
+ 265          
+ 266          
+ 267          //========================================================================
+ 268          // 函数: void tm0(void) interrupt 1
+ 269          // 描述: 定时器0中断程序, for UART 以波特率3倍的速度采样判断 开始位.
+ 270          // 参数: 无.
+ 271          // 返回: 无.
+ 272          // 版本: V1.0, 2012-10-22
+ 273          //========================================================================
+ 274          
+ 275          void tm0(void) interrupt 1
+ 276          {
+ 277   1         //====================== 模拟串口接收程序 ========================================
+ 278   1         if (RxStartFlag)        //已接收到起始位
+ 279   1         {
+ 280   2            if (--RxSample == 0)       //接收数据以定时器的1/3来接收
+ 281   2            {
+ 282   3               RxSample = 3;               //重置接收计数器  接收数据以定时器的1/3来接收  reset send baudrate counter
+ 283   3               if (--RxBitCnt == 0)    //接收完一帧数据
+ 284   3               {
+ 285   4                  RxStartFlag = 0;        //停止接收        stop receive
+ 286   4                  if(P_RXB && !B_Rx_OK)   //确认停止位正确,并且缓冲已空
+ 287   4                  {
+ 288   5                     RxBuf[Rx_Cnt] = RxShiftReg;     //存储数据到缓冲区 save the data to RBUF
+ 289   5                     if(++Rx_Cnt >= RxLength)   Rx_Cnt = 0; //溢出判断
+ 290   5                     RxTimeOut = 105;           //超时计数初值, 35个位的时间(对应5个字节), 参考MODBUS协议
+ 291   5                  }
+ 292   4               }
+ 293   3               else
+ 294   3               {
+ 295   4                  RxShiftReg >>= 1;         //把接收的单b数据 暂存到 RxShiftReg(接收缓冲)
+ 296   4                  if (P_RXB) RxShiftReg |= 0x80;  //shift RX data to RX buffer
+ 297   4               }
+ 298   3            }
+ 299   2         }
+ 300   1      
+ 301   1         else if (!P_RXB)     //判断是不是开始位 P_RXB=0;
+C51 COMPILER V9.54   MAIN                                                                  12/06/2017 14:19:22 PAGE 6   
+
+ 302   1         {
+ 303   2            RxStartFlag = 1;       //如果是则设置开始接收标志位   set start receive flag
+ 304   2            RxSample = 4;       //初始化接收波特率计数器          initial receive baudrate counter
+ 305   2            RxBitCnt = RxBitLenth;       //初始化接收的数据位数(8个数据位+1个停止位)    initial receive bit number (
+             -8 data bits + 1 stop bit)
+ 306   2         }
+ 307   1         if(RxTimeOut > 0) //接收超时处理
+ 308   1         {
+ 309   2            if(--RxTimeOut == 0) B_Rx_OK = 1;   //标志已收到一帧数据
+ 310   2         }
+ 311   1      
+ 312   1         //====================== 模拟串口发送程序 ========================================
+ 313   1         if (TxBusyFlag)         //发送开始标志位   judge whether sending
+ 314   1         {
+ 315   2            if (--TxSample == 0)       //发送数据以定时器的1/3来发送
+ 316   2            {
+ 317   3               TxSample = 3;           //重置发送计数器   reset send baudrate counter
+ 318   3               if (TxBitCnt == 0)         //发送计数器为0 表明单字节发送还没开始
+ 319   3               {
+ 320   4                  P_TXB = 0;        //发送开始位                  send start bit
+ 321   4                  TxShiftReg = TxSBUF;    //把缓冲的数据放到发送的buff     load data from TxSBUF to TxShiftReg
+ 322   4                  TxBitCnt = TxBitLenth;  //发送数据位数 (8数据位+1停止位) initial send bit number (8 data bits + 1 stop 
+             -bit)
+ 323   4               }
+ 324   3               else              //发送计数器为非0 正在发送数据
+ 325   3               {
+ 326   4                  if (--TxBitCnt == 0) //发送计数器减为0 表明单字节发送结束
+ 327   4                  {
+ 328   5                     P_TXB = 1;        //送停止位数据
+ 329   5                     TxBusyFlag = 0;   //发送停止位            stop send
+ 330   5                  }
+ 331   4                  else
+ 332   4                  {
+ 333   5                     TxShiftReg >>= 1;    //把最低位送到 CY(益处标志位) shift data to CY
+ 334   5                     P_TXB = CY;    //发送单b数据           write CY to TX port
+ 335   5                  }
+ 336   4               }
+ 337   3            }
+ 338   2         }
+ 339   1      }
+ 340          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    688    ----
+   CONSTANT SIZE    =    160    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      9       5
+   IDATA SIZE       =     80    ----
+   BIT SIZE         =      3    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

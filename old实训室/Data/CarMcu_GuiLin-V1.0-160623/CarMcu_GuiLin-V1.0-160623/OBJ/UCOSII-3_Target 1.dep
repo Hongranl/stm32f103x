@@ -1,0 +1,758 @@
+Dependencies for Project 'UCOSII-3', Target 'Target 1': (DO NOT MODIFY !)
+F (.\main.c)(0x5A2A320B)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE\24CXX -I ..\HARDWARE\IIC -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\TOUCH -I ..\HARDWARE\MotorDriver -I ..\HARDWARE\Follow -I ..\MALLOC -I ..\HARDWARE\SPI -I ..\HARDWARE\Voice-I E:\My_GTAProject\÷«ª€ µ—µ “\software\Data\CarMcu_GuiLin-V1.0-160623\CarMcu_GuiLin-V1.0-160623\USER\RTE-I D:\Keil\Software\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I D:\Keil\Software\ARM\CMSIS\Include-D__UVISION_VERSION="518" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
+I (..\UCOSII\CONFIG\includes.h)(0x56F9E4DC)
+I (D:\Keil\Software\ARM\ARMCC\include\stdio.h)(0x5A1F6BA0)
+I (D:\Keil\Software\ARM\ARMCC\include\string.h)(0x569DEA3A)
+I (D:\Keil\Software\ARM\ARMCC\include\ctype.h)(0x569DEA38)
+I (D:\Keil\Software\ARM\ARMCC\include\stdlib.h)(0x569DEA3A)
+I (D:\Keil\Software\ARM\ARMCC\include\stdarg.h)(0x569DEA3A)
+I (..\UCOSII\CORE\ucos_ii.h)(0x500F7C16)
+I (..\UCOSII\CONFIG\os_cfg.h)(0x5325A96E)
+I (..\UCOSII\PORT\os_cpu.h)(0x502E57CA)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (D:\Keil\Software\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (..\USER\system_stm32f10x.h)(0x4D783CAA)
+I (..\USER\stm32f10x_conf.h)(0x56A1DBB8)
+I (..\STM32F10x_FWLib\inc\stm32f10x_adc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_exti.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_spi.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_tim.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+I (..\HARDWARE\LED\LED.h)(0x56E13E24)
+I (..\SYSTEM\sys\sys.h)(0x576B6F72)
+I (..\SYSTEM\usart\usart.h)(0x56F9ED42)
+I (..\SYSTEM\delay\delay.h)(0x56F9E4B8)
+I (..\HARDWARE\SPI\spi.h)(0x56936C8E)
+I (..\HARDWARE\LCD\lcd.h)(0x56C6A720)
+I (cx.h)(0x57107A6E)
+I (adc.h)(0x56A08BDE)
+I (..\HARDWARE\MotorDriver\MotorDriver.h)(0x56FE0856)
+I (..\HARDWARE\Follow\Follow.h)(0x576B6F72)
+I (..\SYSTEM\usart\usart2.h)(0x56B1B334)
+I (..\SYSTEM\usart\usart3.h)(0x55ECEAD6)
+I (..\HARDWARE\Follow\CarRoad.h)(0x56FDF9D4)
+I (..\HARDWARE\Voice\Voice.h)(0x56FA192E)
+F (.\stm32f10x_it.c)(0x532D684A)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE\24CXX -I ..\HARDWARE\IIC -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\TOUCH -I ..\HARDWARE\MotorDriver -I ..\HARDWARE\Follow -I ..\MALLOC -I ..\HARDWARE\SPI -I ..\HARDWARE\Voice-I E:\My_GTAProject\÷«ª€ µ—µ “\software\Data\CarMcu_GuiLin-V1.0-160623\CarMcu_GuiLin-V1.0-160623\USER\RTE-I D:\Keil\Software\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I D:\Keil\Software\ARM\CMSIS\Include-D__UVISION_VERSION="518" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\stm32f10x_it.o --omf_browse ..\obj\stm32f10x_it.crf --depend ..\obj\stm32f10x_it.d)
+I (stm32f10x_it.h)(0x4D99A426)
+I (stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (D:\Keil\Software\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (system_stm32f10x.h)(0x4D783CAA)
+I (stm32f10x_conf.h)(0x56A1DBB8)
+I (..\STM32F10x_FWLib\inc\stm32f10x_adc.h)(0x4D783BB4)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_exti.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_spi.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_tim.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+F (.\system_stm32f10x.c)(0x4D99A426)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE\24CXX -I ..\HARDWARE\IIC -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\TOUCH -I ..\HARDWARE\MotorDriver -I ..\HARDWARE\Follow -I ..\MALLOC -I ..\HARDWARE\SPI -I ..\HARDWARE\Voice-I E:\My_GTAProject\÷«ª€ µ—µ “\software\Data\CarMcu_GuiLin-V1.0-160623\CarMcu_GuiLin-V1.0-160623\USER\RTE-I D:\Keil\Software\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I D:\Keil\Software\ARM\CMSIS\Include-D__UVISION_VERSION="518" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\system_stm32f10x.o --omf_browse ..\obj\system_stm32f10x.crf --depend ..\obj\system_stm32f10x.d)
+I (stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (D:\Keil\Software\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (system_stm32f10x.h)(0x4D783CAA)
+I (stm32f10x_conf.h)(0x56A1DBB8)
+I (..\STM32F10x_FWLib\inc\stm32f10x_adc.h)(0x4D783BB4)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_exti.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_spi.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_tim.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+F (..\HARDWARE\LED\led.c)(0x5705BA5C)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE\24CXX -I ..\HARDWARE\IIC -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\TOUCH -I ..\HARDWARE\MotorDriver -I ..\HARDWARE\Follow -I ..\MALLOC -I ..\HARDWARE\SPI -I ..\HARDWARE\Voice-I E:\My_GTAProject\÷«ª€ µ—µ “\software\Data\CarMcu_GuiLin-V1.0-160623\CarMcu_GuiLin-V1.0-160623\USER\RTE-I D:\Keil\Software\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I D:\Keil\Software\ARM\CMSIS\Include-D__UVISION_VERSION="518" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\led.o --omf_browse ..\obj\led.crf --depend ..\obj\led.d)
+I (..\HARDWARE\LED\led.h)(0x56E13E24)
+I (..\SYSTEM\sys\sys.h)(0x576B6F72)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (D:\Keil\Software\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (..\USER\system_stm32f10x.h)(0x4D783CAA)
+I (..\USER\stm32f10x_conf.h)(0x56A1DBB8)
+I (..\STM32F10x_FWLib\inc\stm32f10x_adc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_exti.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_spi.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_tim.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+F (..\HARDWARE\LCD\lcd.c)(0x56FDE7DC)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE\24CXX -I ..\HARDWARE\IIC -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\TOUCH -I ..\HARDWARE\MotorDriver -I ..\HARDWARE\Follow -I ..\MALLOC -I ..\HARDWARE\SPI -I ..\HARDWARE\Voice-I E:\My_GTAProject\÷«ª€ µ—µ “\software\Data\CarMcu_GuiLin-V1.0-160623\CarMcu_GuiLin-V1.0-160623\USER\RTE-I D:\Keil\Software\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I D:\Keil\Software\ARM\CMSIS\Include-D__UVISION_VERSION="518" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\lcd.o --omf_browse ..\obj\lcd.crf --depend ..\obj\lcd.d)
+I (..\HARDWARE\LCD\lcd.h)(0x56C6A720)
+I (..\SYSTEM\sys\sys.h)(0x576B6F72)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (D:\Keil\Software\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (..\USER\system_stm32f10x.h)(0x4D783CAA)
+I (..\USER\stm32f10x_conf.h)(0x56A1DBB8)
+I (..\STM32F10x_FWLib\inc\stm32f10x_adc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_exti.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_spi.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_tim.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+I (D:\Keil\Software\ARM\ARMCC\include\stdlib.h)(0x569DEA3A)
+I (..\HARDWARE\LCD\font.h)(0x56C6AE38)
+I (..\USER\adc.h)(0x56A08BDE)
+I (..\SYSTEM\delay\delay.h)(0x56F9E4B8)
+I (..\HARDWARE\SPI\spi.h)(0x56936C8E)
+F (..\HARDWARE\MotorDriver\MotorDriver.c)(0x56FE09E0)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE\24CXX -I ..\HARDWARE\IIC -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\TOUCH -I ..\HARDWARE\MotorDriver -I ..\HARDWARE\Follow -I ..\MALLOC -I ..\HARDWARE\SPI -I ..\HARDWARE\Voice-I E:\My_GTAProject\÷«ª€ µ—µ “\software\Data\CarMcu_GuiLin-V1.0-160623\CarMcu_GuiLin-V1.0-160623\USER\RTE-I D:\Keil\Software\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I D:\Keil\Software\ARM\CMSIS\Include-D__UVISION_VERSION="518" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\motordriver.o --omf_browse ..\obj\motordriver.crf --depend ..\obj\motordriver.d)
+I (..\HARDWARE\MotorDriver\MotorDriver.h)(0x56FE0856)
+I (..\SYSTEM\sys\sys.h)(0x576B6F72)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (D:\Keil\Software\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (..\USER\system_stm32f10x.h)(0x4D783CAA)
+I (..\USER\stm32f10x_conf.h)(0x56A1DBB8)
+I (..\STM32F10x_FWLib\inc\stm32f10x_adc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_exti.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_spi.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_tim.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+F (..\HARDWARE\Follow\Follow.c)(0x576B9739)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE\24CXX -I ..\HARDWARE\IIC -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\TOUCH -I ..\HARDWARE\MotorDriver -I ..\HARDWARE\Follow -I ..\MALLOC -I ..\HARDWARE\SPI -I ..\HARDWARE\Voice-I E:\My_GTAProject\÷«ª€ µ—µ “\software\Data\CarMcu_GuiLin-V1.0-160623\CarMcu_GuiLin-V1.0-160623\USER\RTE-I D:\Keil\Software\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I D:\Keil\Software\ARM\CMSIS\Include-D__UVISION_VERSION="518" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\follow.o --omf_browse ..\obj\follow.crf --depend ..\obj\follow.d)
+I (..\UCOSII\CONFIG\includes.h)(0x56F9E4DC)
+I (D:\Keil\Software\ARM\ARMCC\include\stdio.h)(0x5A1F6BA0)
+I (D:\Keil\Software\ARM\ARMCC\include\string.h)(0x569DEA3A)
+I (D:\Keil\Software\ARM\ARMCC\include\ctype.h)(0x569DEA38)
+I (D:\Keil\Software\ARM\ARMCC\include\stdlib.h)(0x569DEA3A)
+I (D:\Keil\Software\ARM\ARMCC\include\stdarg.h)(0x569DEA3A)
+I (..\UCOSII\CORE\ucos_ii.h)(0x500F7C16)
+I (..\UCOSII\CONFIG\os_cfg.h)(0x5325A96E)
+I (..\UCOSII\PORT\os_cpu.h)(0x502E57CA)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (D:\Keil\Software\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (..\USER\system_stm32f10x.h)(0x4D783CAA)
+I (..\USER\stm32f10x_conf.h)(0x56A1DBB8)
+I (..\STM32F10x_FWLib\inc\stm32f10x_adc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_exti.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_spi.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_tim.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+I (..\HARDWARE\Follow\Follow.h)(0x576B6F72)
+I (..\SYSTEM\sys\sys.h)(0x576B6F72)
+I (..\HARDWARE\MotorDriver\MotorDriver.h)(0x56FE0856)
+I (..\SYSTEM\usart\usart.h)(0x56F9ED42)
+I (..\USER\cx.h)(0x57107A6E)
+F (..\HARDWARE\SPI\spi.c)(0x56C6B7B6)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE\24CXX -I ..\HARDWARE\IIC -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\TOUCH -I ..\HARDWARE\MotorDriver -I ..\HARDWARE\Follow -I ..\MALLOC -I ..\HARDWARE\SPI -I ..\HARDWARE\Voice-I E:\My_GTAProject\÷«ª€ µ—µ “\software\Data\CarMcu_GuiLin-V1.0-160623\CarMcu_GuiLin-V1.0-160623\USER\RTE-I D:\Keil\Software\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I D:\Keil\Software\ARM\CMSIS\Include-D__UVISION_VERSION="518" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\spi.o --omf_browse ..\obj\spi.crf --depend ..\obj\spi.d)
+I (..\HARDWARE\SPI\spi.h)(0x56936C8E)
+I (..\SYSTEM\sys\sys.h)(0x576B6F72)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (D:\Keil\Software\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (..\USER\system_stm32f10x.h)(0x4D783CAA)
+I (..\USER\stm32f10x_conf.h)(0x56A1DBB8)
+I (..\STM32F10x_FWLib\inc\stm32f10x_adc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_exti.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_spi.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_tim.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+I (..\SYSTEM\usart\usart.h)(0x56F9ED42)
+I (D:\Keil\Software\ARM\ARMCC\include\stdio.h)(0x5A1F6BA0)
+F (.\adc.c)(0x56A096AE)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE\24CXX -I ..\HARDWARE\IIC -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\TOUCH -I ..\HARDWARE\MotorDriver -I ..\HARDWARE\Follow -I ..\MALLOC -I ..\HARDWARE\SPI -I ..\HARDWARE\Voice-I E:\My_GTAProject\÷«ª€ µ—µ “\software\Data\CarMcu_GuiLin-V1.0-160623\CarMcu_GuiLin-V1.0-160623\USER\RTE-I D:\Keil\Software\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I D:\Keil\Software\ARM\CMSIS\Include-D__UVISION_VERSION="518" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\adc.o --omf_browse ..\obj\adc.crf --depend ..\obj\adc.d)
+I (adc.h)(0x56A08BDE)
+I (stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (D:\Keil\Software\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (system_stm32f10x.h)(0x4D783CAA)
+I (stm32f10x_conf.h)(0x56A1DBB8)
+I (..\STM32F10x_FWLib\inc\stm32f10x_adc.h)(0x4D783BB4)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_exti.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_spi.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_tim.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+I (..\SYSTEM\delay\delay.h)(0x56F9E4B8)
+I (..\SYSTEM\sys\sys.h)(0x576B6F72)
+F (.\cx.c)(0x57198340)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE\24CXX -I ..\HARDWARE\IIC -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\TOUCH -I ..\HARDWARE\MotorDriver -I ..\HARDWARE\Follow -I ..\MALLOC -I ..\HARDWARE\SPI -I ..\HARDWARE\Voice-I E:\My_GTAProject\÷«ª€ µ—µ “\software\Data\CarMcu_GuiLin-V1.0-160623\CarMcu_GuiLin-V1.0-160623\USER\RTE-I D:\Keil\Software\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I D:\Keil\Software\ARM\CMSIS\Include-D__UVISION_VERSION="518" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\cx.o --omf_browse ..\obj\cx.crf --depend ..\obj\cx.d)
+I (stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (D:\Keil\Software\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (system_stm32f10x.h)(0x4D783CAA)
+I (stm32f10x_conf.h)(0x56A1DBB8)
+I (..\STM32F10x_FWLib\inc\stm32f10x_adc.h)(0x4D783BB4)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_exti.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_spi.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_tim.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+I (..\UCOSII\CONFIG\includes.h)(0x56F9E4DC)
+I (D:\Keil\Software\ARM\ARMCC\include\stdio.h)(0x5A1F6BA0)
+I (D:\Keil\Software\ARM\ARMCC\include\string.h)(0x569DEA3A)
+I (D:\Keil\Software\ARM\ARMCC\include\ctype.h)(0x569DEA38)
+I (D:\Keil\Software\ARM\ARMCC\include\stdlib.h)(0x569DEA3A)
+I (D:\Keil\Software\ARM\ARMCC\include\stdarg.h)(0x569DEA3A)
+I (..\UCOSII\CORE\ucos_ii.h)(0x500F7C16)
+I (..\UCOSII\CONFIG\os_cfg.h)(0x5325A96E)
+I (..\UCOSII\PORT\os_cpu.h)(0x502E57CA)
+I (..\SYSTEM\usart\usart.h)(0x56F9ED42)
+I (..\SYSTEM\sys\sys.h)(0x576B6F72)
+I (..\SYSTEM\delay\delay.h)(0x56F9E4B8)
+F (..\HARDWARE\Follow\CarRoad.c)(0x576A5BBB)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE\24CXX -I ..\HARDWARE\IIC -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\TOUCH -I ..\HARDWARE\MotorDriver -I ..\HARDWARE\Follow -I ..\MALLOC -I ..\HARDWARE\SPI -I ..\HARDWARE\Voice-I E:\My_GTAProject\÷«ª€ µ—µ “\software\Data\CarMcu_GuiLin-V1.0-160623\CarMcu_GuiLin-V1.0-160623\USER\RTE-I D:\Keil\Software\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I D:\Keil\Software\ARM\CMSIS\Include-D__UVISION_VERSION="518" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\carroad.o --omf_browse ..\obj\carroad.crf --depend ..\obj\carroad.d)
+I (..\UCOSII\CONFIG\includes.h)(0x56F9E4DC)
+I (D:\Keil\Software\ARM\ARMCC\include\stdio.h)(0x5A1F6BA0)
+I (D:\Keil\Software\ARM\ARMCC\include\string.h)(0x569DEA3A)
+I (D:\Keil\Software\ARM\ARMCC\include\ctype.h)(0x569DEA38)
+I (D:\Keil\Software\ARM\ARMCC\include\stdlib.h)(0x569DEA3A)
+I (D:\Keil\Software\ARM\ARMCC\include\stdarg.h)(0x569DEA3A)
+I (..\UCOSII\CORE\ucos_ii.h)(0x500F7C16)
+I (..\UCOSII\CONFIG\os_cfg.h)(0x5325A96E)
+I (..\UCOSII\PORT\os_cpu.h)(0x502E57CA)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (D:\Keil\Software\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (..\USER\system_stm32f10x.h)(0x4D783CAA)
+I (..\USER\stm32f10x_conf.h)(0x56A1DBB8)
+I (..\STM32F10x_FWLib\inc\stm32f10x_adc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_exti.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_spi.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_tim.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+I (..\HARDWARE\Follow\CarRoad.h)(0x56FDF9D4)
+I (..\SYSTEM\sys\sys.h)(0x576B6F72)
+I (..\HARDWARE\Follow\Follow.h)(0x576B6F72)
+I (..\HARDWARE\MotorDriver\MotorDriver.h)(0x56FE0856)
+I (..\HARDWARE\LED\led.h)(0x56E13E24)
+I (..\SYSTEM\usart\usart2.h)(0x56B1B334)
+I (..\SYSTEM\usart\usart3.h)(0x55ECEAD6)
+I (..\USER\cx.h)(0x57107A6E)
+I (..\HARDWARE\Voice\Voice.h)(0x56FA192E)
+F (..\HARDWARE\Voice\Voice.c)(0x56FE0E1A)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE\24CXX -I ..\HARDWARE\IIC -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\TOUCH -I ..\HARDWARE\MotorDriver -I ..\HARDWARE\Follow -I ..\MALLOC -I ..\HARDWARE\SPI -I ..\HARDWARE\Voice-I E:\My_GTAProject\÷«ª€ µ—µ “\software\Data\CarMcu_GuiLin-V1.0-160623\CarMcu_GuiLin-V1.0-160623\USER\RTE-I D:\Keil\Software\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I D:\Keil\Software\ARM\CMSIS\Include-D__UVISION_VERSION="518" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\voice.o --omf_browse ..\obj\voice.crf --depend ..\obj\voice.d)
+I (..\UCOSII\CONFIG\includes.h)(0x56F9E4DC)
+I (D:\Keil\Software\ARM\ARMCC\include\stdio.h)(0x5A1F6BA0)
+I (D:\Keil\Software\ARM\ARMCC\include\string.h)(0x569DEA3A)
+I (D:\Keil\Software\ARM\ARMCC\include\ctype.h)(0x569DEA38)
+I (D:\Keil\Software\ARM\ARMCC\include\stdlib.h)(0x569DEA3A)
+I (D:\Keil\Software\ARM\ARMCC\include\stdarg.h)(0x569DEA3A)
+I (..\UCOSII\CORE\ucos_ii.h)(0x500F7C16)
+I (..\UCOSII\CONFIG\os_cfg.h)(0x5325A96E)
+I (..\UCOSII\PORT\os_cpu.h)(0x502E57CA)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (D:\Keil\Software\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (..\USER\system_stm32f10x.h)(0x4D783CAA)
+I (..\USER\stm32f10x_conf.h)(0x56A1DBB8)
+I (..\STM32F10x_FWLib\inc\stm32f10x_adc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_exti.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_spi.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_tim.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+I (..\HARDWARE\Voice\Voice.h)(0x56FA192E)
+I (..\SYSTEM\sys\sys.h)(0x576B6F72)
+I (..\SYSTEM\usart\usart.h)(0x56F9ED42)
+F (..\SYSTEM\delay\delay.c)(0x56F9E4BC)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE\24CXX -I ..\HARDWARE\IIC -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\TOUCH -I ..\HARDWARE\MotorDriver -I ..\HARDWARE\Follow -I ..\MALLOC -I ..\HARDWARE\SPI -I ..\HARDWARE\Voice-I E:\My_GTAProject\÷«ª€ µ—µ “\software\Data\CarMcu_GuiLin-V1.0-160623\CarMcu_GuiLin-V1.0-160623\USER\RTE-I D:\Keil\Software\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I D:\Keil\Software\ARM\CMSIS\Include-D__UVISION_VERSION="518" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\delay.o --omf_browse ..\obj\delay.crf --depend ..\obj\delay.d)
+I (..\SYSTEM\delay\delay.h)(0x56F9E4B8)
+I (..\SYSTEM\sys\sys.h)(0x576B6F72)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (D:\Keil\Software\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (..\USER\system_stm32f10x.h)(0x4D783CAA)
+I (..\USER\stm32f10x_conf.h)(0x56A1DBB8)
+I (..\STM32F10x_FWLib\inc\stm32f10x_adc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_exti.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_spi.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_tim.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+I (..\UCOSII\CONFIG\includes.h)(0x56F9E4DC)
+I (D:\Keil\Software\ARM\ARMCC\include\stdio.h)(0x5A1F6BA0)
+I (D:\Keil\Software\ARM\ARMCC\include\string.h)(0x569DEA3A)
+I (D:\Keil\Software\ARM\ARMCC\include\ctype.h)(0x569DEA38)
+I (D:\Keil\Software\ARM\ARMCC\include\stdlib.h)(0x569DEA3A)
+I (D:\Keil\Software\ARM\ARMCC\include\stdarg.h)(0x569DEA3A)
+I (..\UCOSII\CORE\ucos_ii.h)(0x500F7C16)
+I (..\UCOSII\CONFIG\os_cfg.h)(0x5325A96E)
+I (..\UCOSII\PORT\os_cpu.h)(0x502E57CA)
+F (..\SYSTEM\sys\sys.c)(0x56FE41E4)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE\24CXX -I ..\HARDWARE\IIC -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\TOUCH -I ..\HARDWARE\MotorDriver -I ..\HARDWARE\Follow -I ..\MALLOC -I ..\HARDWARE\SPI -I ..\HARDWARE\Voice-I E:\My_GTAProject\÷«ª€ µ—µ “\software\Data\CarMcu_GuiLin-V1.0-160623\CarMcu_GuiLin-V1.0-160623\USER\RTE-I D:\Keil\Software\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I D:\Keil\Software\ARM\CMSIS\Include-D__UVISION_VERSION="518" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\sys.o --omf_browse ..\obj\sys.crf --depend ..\obj\sys.d)
+I (..\SYSTEM\sys\sys.h)(0x576B6F72)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (D:\Keil\Software\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (..\USER\system_stm32f10x.h)(0x4D783CAA)
+I (..\USER\stm32f10x_conf.h)(0x56A1DBB8)
+I (..\STM32F10x_FWLib\inc\stm32f10x_adc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_exti.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_spi.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_tim.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+F (..\SYSTEM\usart\usart.c)(0x56FA1AAA)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE\24CXX -I ..\HARDWARE\IIC -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\TOUCH -I ..\HARDWARE\MotorDriver -I ..\HARDWARE\Follow -I ..\MALLOC -I ..\HARDWARE\SPI -I ..\HARDWARE\Voice-I E:\My_GTAProject\÷«ª€ µ—µ “\software\Data\CarMcu_GuiLin-V1.0-160623\CarMcu_GuiLin-V1.0-160623\USER\RTE-I D:\Keil\Software\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I D:\Keil\Software\ARM\CMSIS\Include-D__UVISION_VERSION="518" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\usart.o --omf_browse ..\obj\usart.crf --depend ..\obj\usart.d)
+I (..\SYSTEM\sys\sys.h)(0x576B6F72)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (D:\Keil\Software\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (..\USER\system_stm32f10x.h)(0x4D783CAA)
+I (..\USER\stm32f10x_conf.h)(0x56A1DBB8)
+I (..\STM32F10x_FWLib\inc\stm32f10x_adc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_exti.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_spi.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_tim.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+I (..\SYSTEM\usart\usart.h)(0x56F9ED42)
+I (D:\Keil\Software\ARM\ARMCC\include\stdio.h)(0x5A1F6BA0)
+I (..\UCOSII\CONFIG\includes.h)(0x56F9E4DC)
+I (D:\Keil\Software\ARM\ARMCC\include\string.h)(0x569DEA3A)
+I (D:\Keil\Software\ARM\ARMCC\include\ctype.h)(0x569DEA38)
+I (D:\Keil\Software\ARM\ARMCC\include\stdlib.h)(0x569DEA3A)
+I (D:\Keil\Software\ARM\ARMCC\include\stdarg.h)(0x569DEA3A)
+I (..\UCOSII\CORE\ucos_ii.h)(0x500F7C16)
+I (..\UCOSII\CONFIG\os_cfg.h)(0x5325A96E)
+I (..\UCOSII\PORT\os_cpu.h)(0x502E57CA)
+F (..\SYSTEM\usart\usart2.c)(0x56FCE7E2)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE\24CXX -I ..\HARDWARE\IIC -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\TOUCH -I ..\HARDWARE\MotorDriver -I ..\HARDWARE\Follow -I ..\MALLOC -I ..\HARDWARE\SPI -I ..\HARDWARE\Voice-I E:\My_GTAProject\÷«ª€ µ—µ “\software\Data\CarMcu_GuiLin-V1.0-160623\CarMcu_GuiLin-V1.0-160623\USER\RTE-I D:\Keil\Software\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I D:\Keil\Software\ARM\CMSIS\Include-D__UVISION_VERSION="518" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\usart2.o --omf_browse ..\obj\usart2.crf --depend ..\obj\usart2.d)
+I (..\SYSTEM\sys\sys.h)(0x576B6F72)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (D:\Keil\Software\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (..\USER\system_stm32f10x.h)(0x4D783CAA)
+I (..\USER\stm32f10x_conf.h)(0x56A1DBB8)
+I (..\STM32F10x_FWLib\inc\stm32f10x_adc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_exti.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_spi.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_tim.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+I (..\SYSTEM\usart\usart2.h)(0x56B1B334)
+I (D:\Keil\Software\ARM\ARMCC\include\stdio.h)(0x5A1F6BA0)
+I (..\UCOSII\CONFIG\includes.h)(0x56F9E4DC)
+I (D:\Keil\Software\ARM\ARMCC\include\string.h)(0x569DEA3A)
+I (D:\Keil\Software\ARM\ARMCC\include\ctype.h)(0x569DEA38)
+I (D:\Keil\Software\ARM\ARMCC\include\stdlib.h)(0x569DEA3A)
+I (D:\Keil\Software\ARM\ARMCC\include\stdarg.h)(0x569DEA3A)
+I (..\UCOSII\CORE\ucos_ii.h)(0x500F7C16)
+I (..\UCOSII\CONFIG\os_cfg.h)(0x5325A96E)
+I (..\UCOSII\PORT\os_cpu.h)(0x502E57CA)
+F (..\SYSTEM\usart\usart3.c)(0x56F0E134)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE\24CXX -I ..\HARDWARE\IIC -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\TOUCH -I ..\HARDWARE\MotorDriver -I ..\HARDWARE\Follow -I ..\MALLOC -I ..\HARDWARE\SPI -I ..\HARDWARE\Voice-I E:\My_GTAProject\÷«ª€ µ—µ “\software\Data\CarMcu_GuiLin-V1.0-160623\CarMcu_GuiLin-V1.0-160623\USER\RTE-I D:\Keil\Software\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I D:\Keil\Software\ARM\CMSIS\Include-D__UVISION_VERSION="518" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\usart3.o --omf_browse ..\obj\usart3.crf --depend ..\obj\usart3.d)
+I (..\SYSTEM\sys\sys.h)(0x576B6F72)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (D:\Keil\Software\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (..\USER\system_stm32f10x.h)(0x4D783CAA)
+I (..\USER\stm32f10x_conf.h)(0x56A1DBB8)
+I (..\STM32F10x_FWLib\inc\stm32f10x_adc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_exti.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_spi.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_tim.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+I (..\SYSTEM\usart\usart3.h)(0x55ECEAD6)
+I (D:\Keil\Software\ARM\ARMCC\include\stdio.h)(0x5A1F6BA0)
+I (..\UCOSII\CONFIG\includes.h)(0x56F9E4DC)
+I (D:\Keil\Software\ARM\ARMCC\include\string.h)(0x569DEA3A)
+I (D:\Keil\Software\ARM\ARMCC\include\ctype.h)(0x569DEA38)
+I (D:\Keil\Software\ARM\ARMCC\include\stdlib.h)(0x569DEA3A)
+I (D:\Keil\Software\ARM\ARMCC\include\stdarg.h)(0x569DEA3A)
+I (..\UCOSII\CORE\ucos_ii.h)(0x500F7C16)
+I (..\UCOSII\CONFIG\os_cfg.h)(0x5325A96E)
+I (..\UCOSII\PORT\os_cpu.h)(0x502E57CA)
+F (..\CORE\core_cm3.c)(0x4C0C587E)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE\24CXX -I ..\HARDWARE\IIC -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\TOUCH -I ..\HARDWARE\MotorDriver -I ..\HARDWARE\Follow -I ..\MALLOC -I ..\HARDWARE\SPI -I ..\HARDWARE\Voice-I E:\My_GTAProject\÷«ª€ µ—µ “\software\Data\CarMcu_GuiLin-V1.0-160623\CarMcu_GuiLin-V1.0-160623\USER\RTE-I D:\Keil\Software\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I D:\Keil\Software\ARM\CMSIS\Include-D__UVISION_VERSION="518" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\core_cm3.o --omf_browse ..\obj\core_cm3.crf --depend ..\obj\core_cm3.d)
+I (D:\Keil\Software\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+F (..\CORE\startup_stm32f10x_hd.s)(0x4D783CDE)(--cpu Cortex-M3 -g --apcs=interwork -I E:\My_GTAProject\÷«ª€ µ—µ “\software\Data\CarMcu_GuiLin-V1.0-160623\CarMcu_GuiLin-V1.0-160623\USER\RTE-I D:\Keil\Software\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I D:\Keil\Software\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 518" --pd "STM32F10X_HD SETA 1"--list .\startup_stm32f10x_hd.lst --xref -o ..\obj\startup_stm32f10x_hd.o --depend ..\obj\startup_stm32f10x_hd.d)
+F (..\STM32F10x_FWLib\src\stm32f10x_gpio.c)(0x4D79EEC6)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE\24CXX -I ..\HARDWARE\IIC -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\TOUCH -I ..\HARDWARE\MotorDriver -I ..\HARDWARE\Follow -I ..\MALLOC -I ..\HARDWARE\SPI -I ..\HARDWARE\Voice-I E:\My_GTAProject\÷«ª€ µ—µ “\software\Data\CarMcu_GuiLin-V1.0-160623\CarMcu_GuiLin-V1.0-160623\USER\RTE-I D:\Keil\Software\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I D:\Keil\Software\ARM\CMSIS\Include-D__UVISION_VERSION="518" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\stm32f10x_gpio.o --omf_browse ..\obj\stm32f10x_gpio.crf --depend ..\obj\stm32f10x_gpio.d)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (D:\Keil\Software\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (..\USER\system_stm32f10x.h)(0x4D783CAA)
+I (..\USER\stm32f10x_conf.h)(0x56A1DBB8)
+I (..\STM32F10x_FWLib\inc\stm32f10x_adc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_exti.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_spi.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_tim.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+F (..\STM32F10x_FWLib\src\stm32f10x_rcc.c)(0x4D783BB4)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE\24CXX -I ..\HARDWARE\IIC -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\TOUCH -I ..\HARDWARE\MotorDriver -I ..\HARDWARE\Follow -I ..\MALLOC -I ..\HARDWARE\SPI -I ..\HARDWARE\Voice-I E:\My_GTAProject\÷«ª€ µ—µ “\software\Data\CarMcu_GuiLin-V1.0-160623\CarMcu_GuiLin-V1.0-160623\USER\RTE-I D:\Keil\Software\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I D:\Keil\Software\ARM\CMSIS\Include-D__UVISION_VERSION="518" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\stm32f10x_rcc.o --omf_browse ..\obj\stm32f10x_rcc.crf --depend ..\obj\stm32f10x_rcc.d)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (D:\Keil\Software\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (..\USER\system_stm32f10x.h)(0x4D783CAA)
+I (..\USER\stm32f10x_conf.h)(0x56A1DBB8)
+I (..\STM32F10x_FWLib\inc\stm32f10x_adc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_exti.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\STM32F10x_FWLib\inc\stm32f10x_spi.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_tim.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+F (..\STM32F10x_FWLib\src\stm32f10x_usart.c)(0x4D783BB4)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE\24CXX -I ..\HARDWARE\IIC -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\TOUCH -I ..\HARDWARE\MotorDriver -I ..\HARDWARE\Follow -I ..\MALLOC -I ..\HARDWARE\SPI -I ..\HARDWARE\Voice-I E:\My_GTAProject\÷«ª€ µ—µ “\software\Data\CarMcu_GuiLin-V1.0-160623\CarMcu_GuiLin-V1.0-160623\USER\RTE-I D:\Keil\Software\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I D:\Keil\Software\ARM\CMSIS\Include-D__UVISION_VERSION="518" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\stm32f10x_usart.o --omf_browse ..\obj\stm32f10x_usart.crf --depend ..\obj\stm32f10x_usart.d)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (D:\Keil\Software\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (..\USER\system_stm32f10x.h)(0x4D783CAA)
+I (..\USER\stm32f10x_conf.h)(0x56A1DBB8)
+I (..\STM32F10x_FWLib\inc\stm32f10x_adc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_exti.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_spi.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_tim.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+F (..\STM32F10x_FWLib\src\misc.c)(0x4D783BB4)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE\24CXX -I ..\HARDWARE\IIC -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\TOUCH -I ..\HARDWARE\MotorDriver -I ..\HARDWARE\Follow -I ..\MALLOC -I ..\HARDWARE\SPI -I ..\HARDWARE\Voice-I E:\My_GTAProject\÷«ª€ µ—µ “\software\Data\CarMcu_GuiLin-V1.0-160623\CarMcu_GuiLin-V1.0-160623\USER\RTE-I D:\Keil\Software\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I D:\Keil\Software\ARM\CMSIS\Include-D__UVISION_VERSION="518" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\misc.o --omf_browse ..\obj\misc.crf --depend ..\obj\misc.d)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (D:\Keil\Software\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (..\USER\system_stm32f10x.h)(0x4D783CAA)
+I (..\USER\stm32f10x_conf.h)(0x56A1DBB8)
+I (..\STM32F10x_FWLib\inc\stm32f10x_adc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_exti.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_spi.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_tim.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+F (..\STM32F10x_FWLib\src\stm32f10x_tim.c)(0x4D783BB4)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE\24CXX -I ..\HARDWARE\IIC -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\TOUCH -I ..\HARDWARE\MotorDriver -I ..\HARDWARE\Follow -I ..\MALLOC -I ..\HARDWARE\SPI -I ..\HARDWARE\Voice-I E:\My_GTAProject\÷«ª€ µ—µ “\software\Data\CarMcu_GuiLin-V1.0-160623\CarMcu_GuiLin-V1.0-160623\USER\RTE-I D:\Keil\Software\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I D:\Keil\Software\ARM\CMSIS\Include-D__UVISION_VERSION="518" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\stm32f10x_tim.o --omf_browse ..\obj\stm32f10x_tim.crf --depend ..\obj\stm32f10x_tim.d)
+I (..\STM32F10x_FWLib\inc\stm32f10x_tim.h)(0x4D783BB4)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (D:\Keil\Software\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (..\USER\system_stm32f10x.h)(0x4D783CAA)
+I (..\USER\stm32f10x_conf.h)(0x56A1DBB8)
+I (..\STM32F10x_FWLib\inc\stm32f10x_adc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_exti.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_spi.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+F (..\STM32F10x_FWLib\src\stm32f10x_adc.c)(0x4D783BB4)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE\24CXX -I ..\HARDWARE\IIC -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\TOUCH -I ..\HARDWARE\MotorDriver -I ..\HARDWARE\Follow -I ..\MALLOC -I ..\HARDWARE\SPI -I ..\HARDWARE\Voice-I E:\My_GTAProject\÷«ª€ µ—µ “\software\Data\CarMcu_GuiLin-V1.0-160623\CarMcu_GuiLin-V1.0-160623\USER\RTE-I D:\Keil\Software\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I D:\Keil\Software\ARM\CMSIS\Include-D__UVISION_VERSION="518" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\stm32f10x_adc.o --omf_browse ..\obj\stm32f10x_adc.crf --depend ..\obj\stm32f10x_adc.d)
+I (..\STM32F10x_FWLib\inc\stm32f10x_adc.h)(0x4D783BB4)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (D:\Keil\Software\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (..\USER\system_stm32f10x.h)(0x4D783CAA)
+I (..\USER\stm32f10x_conf.h)(0x56A1DBB8)
+I (..\STM32F10x_FWLib\inc\stm32f10x_exti.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_spi.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_tim.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+F (..\STM32F10x_FWLib\src\stm32f10x_spi.c)(0x4D783BB4)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE\24CXX -I ..\HARDWARE\IIC -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\TOUCH -I ..\HARDWARE\MotorDriver -I ..\HARDWARE\Follow -I ..\MALLOC -I ..\HARDWARE\SPI -I ..\HARDWARE\Voice-I E:\My_GTAProject\÷«ª€ µ—µ “\software\Data\CarMcu_GuiLin-V1.0-160623\CarMcu_GuiLin-V1.0-160623\USER\RTE-I D:\Keil\Software\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I D:\Keil\Software\ARM\CMSIS\Include-D__UVISION_VERSION="518" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\stm32f10x_spi.o --omf_browse ..\obj\stm32f10x_spi.crf --depend ..\obj\stm32f10x_spi.d)
+I (..\STM32F10x_FWLib\inc\stm32f10x_spi.h)(0x4D783BB4)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (D:\Keil\Software\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (..\USER\system_stm32f10x.h)(0x4D783CAA)
+I (..\USER\stm32f10x_conf.h)(0x56A1DBB8)
+I (..\STM32F10x_FWLib\inc\stm32f10x_adc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_exti.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_tim.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+F (..\STM32F10x_FWLib\src\stm32f10x_exti.c)(0x4D783BB4)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE\24CXX -I ..\HARDWARE\IIC -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\TOUCH -I ..\HARDWARE\MotorDriver -I ..\HARDWARE\Follow -I ..\MALLOC -I ..\HARDWARE\SPI -I ..\HARDWARE\Voice-I E:\My_GTAProject\÷«ª€ µ—µ “\software\Data\CarMcu_GuiLin-V1.0-160623\CarMcu_GuiLin-V1.0-160623\USER\RTE-I D:\Keil\Software\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I D:\Keil\Software\ARM\CMSIS\Include-D__UVISION_VERSION="518" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\stm32f10x_exti.o --omf_browse ..\obj\stm32f10x_exti.crf --depend ..\obj\stm32f10x_exti.d)
+I (..\STM32F10x_FWLib\inc\stm32f10x_exti.h)(0x4D783BB4)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (D:\Keil\Software\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (..\USER\system_stm32f10x.h)(0x4D783CAA)
+I (..\USER\stm32f10x_conf.h)(0x56A1DBB8)
+I (..\STM32F10x_FWLib\inc\stm32f10x_adc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_spi.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_tim.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+F (..\UCOSII\CORE\os_core.c)(0x500F7BBA)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE\24CXX -I ..\HARDWARE\IIC -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\TOUCH -I ..\HARDWARE\MotorDriver -I ..\HARDWARE\Follow -I ..\MALLOC -I ..\HARDWARE\SPI -I ..\HARDWARE\Voice-I E:\My_GTAProject\÷«ª€ µ—µ “\software\Data\CarMcu_GuiLin-V1.0-160623\CarMcu_GuiLin-V1.0-160623\USER\RTE-I D:\Keil\Software\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I D:\Keil\Software\ARM\CMSIS\Include-D__UVISION_VERSION="518" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\os_core.o --omf_browse ..\obj\os_core.crf --depend ..\obj\os_core.d)
+I (..\UCOSII\CONFIG\includes.h)(0x56F9E4DC)
+I (D:\Keil\Software\ARM\ARMCC\include\stdio.h)(0x5A1F6BA0)
+I (D:\Keil\Software\ARM\ARMCC\include\string.h)(0x569DEA3A)
+I (D:\Keil\Software\ARM\ARMCC\include\ctype.h)(0x569DEA38)
+I (D:\Keil\Software\ARM\ARMCC\include\stdlib.h)(0x569DEA3A)
+I (D:\Keil\Software\ARM\ARMCC\include\stdarg.h)(0x569DEA3A)
+I (..\UCOSII\CORE\ucos_ii.h)(0x500F7C16)
+I (..\UCOSII\CONFIG\os_cfg.h)(0x5325A96E)
+I (..\UCOSII\PORT\os_cpu.h)(0x502E57CA)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (D:\Keil\Software\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (..\USER\system_stm32f10x.h)(0x4D783CAA)
+I (..\USER\stm32f10x_conf.h)(0x56A1DBB8)
+I (..\STM32F10x_FWLib\inc\stm32f10x_adc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_exti.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_spi.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_tim.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+F (..\UCOSII\CORE\os_flag.c)(0x500F7B58)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE\24CXX -I ..\HARDWARE\IIC -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\TOUCH -I ..\HARDWARE\MotorDriver -I ..\HARDWARE\Follow -I ..\MALLOC -I ..\HARDWARE\SPI -I ..\HARDWARE\Voice-I E:\My_GTAProject\÷«ª€ µ—µ “\software\Data\CarMcu_GuiLin-V1.0-160623\CarMcu_GuiLin-V1.0-160623\USER\RTE-I D:\Keil\Software\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I D:\Keil\Software\ARM\CMSIS\Include-D__UVISION_VERSION="518" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\os_flag.o --omf_browse ..\obj\os_flag.crf --depend ..\obj\os_flag.d)
+I (..\UCOSII\CORE\ucos_ii.h)(0x500F7C16)
+I (..\UCOSII\CONFIG\includes.h)(0x56F9E4DC)
+I (D:\Keil\Software\ARM\ARMCC\include\stdio.h)(0x5A1F6BA0)
+I (D:\Keil\Software\ARM\ARMCC\include\string.h)(0x569DEA3A)
+I (D:\Keil\Software\ARM\ARMCC\include\ctype.h)(0x569DEA38)
+I (D:\Keil\Software\ARM\ARMCC\include\stdlib.h)(0x569DEA3A)
+I (D:\Keil\Software\ARM\ARMCC\include\stdarg.h)(0x569DEA3A)
+I (..\UCOSII\PORT\os_cpu.h)(0x502E57CA)
+I (..\UCOSII\CONFIG\os_cfg.h)(0x5325A96E)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (D:\Keil\Software\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (..\USER\system_stm32f10x.h)(0x4D783CAA)
+I (..\USER\stm32f10x_conf.h)(0x56A1DBB8)
+I (..\STM32F10x_FWLib\inc\stm32f10x_adc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_exti.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_spi.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_tim.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+F (..\UCOSII\CORE\os_mbox.c)(0x500F7B58)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE\24CXX -I ..\HARDWARE\IIC -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\TOUCH -I ..\HARDWARE\MotorDriver -I ..\HARDWARE\Follow -I ..\MALLOC -I ..\HARDWARE\SPI -I ..\HARDWARE\Voice-I E:\My_GTAProject\÷«ª€ µ—µ “\software\Data\CarMcu_GuiLin-V1.0-160623\CarMcu_GuiLin-V1.0-160623\USER\RTE-I D:\Keil\Software\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I D:\Keil\Software\ARM\CMSIS\Include-D__UVISION_VERSION="518" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\os_mbox.o --omf_browse ..\obj\os_mbox.crf --depend ..\obj\os_mbox.d)
+I (..\UCOSII\CORE\ucos_ii.h)(0x500F7C16)
+I (..\UCOSII\CONFIG\includes.h)(0x56F9E4DC)
+I (D:\Keil\Software\ARM\ARMCC\include\stdio.h)(0x5A1F6BA0)
+I (D:\Keil\Software\ARM\ARMCC\include\string.h)(0x569DEA3A)
+I (D:\Keil\Software\ARM\ARMCC\include\ctype.h)(0x569DEA38)
+I (D:\Keil\Software\ARM\ARMCC\include\stdlib.h)(0x569DEA3A)
+I (D:\Keil\Software\ARM\ARMCC\include\stdarg.h)(0x569DEA3A)
+I (..\UCOSII\PORT\os_cpu.h)(0x502E57CA)
+I (..\UCOSII\CONFIG\os_cfg.h)(0x5325A96E)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (D:\Keil\Software\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (..\USER\system_stm32f10x.h)(0x4D783CAA)
+I (..\USER\stm32f10x_conf.h)(0x56A1DBB8)
+I (..\STM32F10x_FWLib\inc\stm32f10x_adc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_exti.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_spi.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_tim.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+F (..\UCOSII\CORE\os_mem.c)(0x500F6FD0)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE\24CXX -I ..\HARDWARE\IIC -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\TOUCH -I ..\HARDWARE\MotorDriver -I ..\HARDWARE\Follow -I ..\MALLOC -I ..\HARDWARE\SPI -I ..\HARDWARE\Voice-I E:\My_GTAProject\÷«ª€ µ—µ “\software\Data\CarMcu_GuiLin-V1.0-160623\CarMcu_GuiLin-V1.0-160623\USER\RTE-I D:\Keil\Software\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I D:\Keil\Software\ARM\CMSIS\Include-D__UVISION_VERSION="518" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\os_mem.o --omf_browse ..\obj\os_mem.crf --depend ..\obj\os_mem.d)
+I (..\UCOSII\CONFIG\includes.h)(0x56F9E4DC)
+I (D:\Keil\Software\ARM\ARMCC\include\stdio.h)(0x5A1F6BA0)
+I (D:\Keil\Software\ARM\ARMCC\include\string.h)(0x569DEA3A)
+I (D:\Keil\Software\ARM\ARMCC\include\ctype.h)(0x569DEA38)
+I (D:\Keil\Software\ARM\ARMCC\include\stdlib.h)(0x569DEA3A)
+I (D:\Keil\Software\ARM\ARMCC\include\stdarg.h)(0x569DEA3A)
+I (..\UCOSII\CORE\ucos_ii.h)(0x500F7C16)
+I (..\UCOSII\CONFIG\os_cfg.h)(0x5325A96E)
+I (..\UCOSII\PORT\os_cpu.h)(0x502E57CA)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (D:\Keil\Software\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (..\USER\system_stm32f10x.h)(0x4D783CAA)
+I (..\USER\stm32f10x_conf.h)(0x56A1DBB8)
+I (..\STM32F10x_FWLib\inc\stm32f10x_adc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_exti.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_spi.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_tim.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+F (..\UCOSII\CORE\os_mutex.c)(0x500F7B58)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE\24CXX -I ..\HARDWARE\IIC -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\TOUCH -I ..\HARDWARE\MotorDriver -I ..\HARDWARE\Follow -I ..\MALLOC -I ..\HARDWARE\SPI -I ..\HARDWARE\Voice-I E:\My_GTAProject\÷«ª€ µ—µ “\software\Data\CarMcu_GuiLin-V1.0-160623\CarMcu_GuiLin-V1.0-160623\USER\RTE-I D:\Keil\Software\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I D:\Keil\Software\ARM\CMSIS\Include-D__UVISION_VERSION="518" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\os_mutex.o --omf_browse ..\obj\os_mutex.crf --depend ..\obj\os_mutex.d)
+I (..\UCOSII\CORE\ucos_ii.h)(0x500F7C16)
+I (..\UCOSII\CONFIG\includes.h)(0x56F9E4DC)
+I (D:\Keil\Software\ARM\ARMCC\include\stdio.h)(0x5A1F6BA0)
+I (D:\Keil\Software\ARM\ARMCC\include\string.h)(0x569DEA3A)
+I (D:\Keil\Software\ARM\ARMCC\include\ctype.h)(0x569DEA38)
+I (D:\Keil\Software\ARM\ARMCC\include\stdlib.h)(0x569DEA3A)
+I (D:\Keil\Software\ARM\ARMCC\include\stdarg.h)(0x569DEA3A)
+I (..\UCOSII\PORT\os_cpu.h)(0x502E57CA)
+I (..\UCOSII\CONFIG\os_cfg.h)(0x5325A96E)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (D:\Keil\Software\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (..\USER\system_stm32f10x.h)(0x4D783CAA)
+I (..\USER\stm32f10x_conf.h)(0x56A1DBB8)
+I (..\STM32F10x_FWLib\inc\stm32f10x_adc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_exti.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_spi.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_tim.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+F (..\UCOSII\CORE\os_q.c)(0x500F7B58)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE\24CXX -I ..\HARDWARE\IIC -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\TOUCH -I ..\HARDWARE\MotorDriver -I ..\HARDWARE\Follow -I ..\MALLOC -I ..\HARDWARE\SPI -I ..\HARDWARE\Voice-I E:\My_GTAProject\÷«ª€ µ—µ “\software\Data\CarMcu_GuiLin-V1.0-160623\CarMcu_GuiLin-V1.0-160623\USER\RTE-I D:\Keil\Software\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I D:\Keil\Software\ARM\CMSIS\Include-D__UVISION_VERSION="518" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\os_q.o --omf_browse ..\obj\os_q.crf --depend ..\obj\os_q.d)
+I (..\UCOSII\CORE\ucos_ii.h)(0x500F7C16)
+I (..\UCOSII\CONFIG\includes.h)(0x56F9E4DC)
+I (D:\Keil\Software\ARM\ARMCC\include\stdio.h)(0x5A1F6BA0)
+I (D:\Keil\Software\ARM\ARMCC\include\string.h)(0x569DEA3A)
+I (D:\Keil\Software\ARM\ARMCC\include\ctype.h)(0x569DEA38)
+I (D:\Keil\Software\ARM\ARMCC\include\stdlib.h)(0x569DEA3A)
+I (D:\Keil\Software\ARM\ARMCC\include\stdarg.h)(0x569DEA3A)
+I (..\UCOSII\PORT\os_cpu.h)(0x502E57CA)
+I (..\UCOSII\CONFIG\os_cfg.h)(0x5325A96E)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (D:\Keil\Software\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (..\USER\system_stm32f10x.h)(0x4D783CAA)
+I (..\USER\stm32f10x_conf.h)(0x56A1DBB8)
+I (..\STM32F10x_FWLib\inc\stm32f10x_adc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_exti.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_spi.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_tim.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+F (..\UCOSII\CORE\os_sem.c)(0x500F7B58)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE\24CXX -I ..\HARDWARE\IIC -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\TOUCH -I ..\HARDWARE\MotorDriver -I ..\HARDWARE\Follow -I ..\MALLOC -I ..\HARDWARE\SPI -I ..\HARDWARE\Voice-I E:\My_GTAProject\÷«ª€ µ—µ “\software\Data\CarMcu_GuiLin-V1.0-160623\CarMcu_GuiLin-V1.0-160623\USER\RTE-I D:\Keil\Software\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I D:\Keil\Software\ARM\CMSIS\Include-D__UVISION_VERSION="518" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\os_sem.o --omf_browse ..\obj\os_sem.crf --depend ..\obj\os_sem.d)
+I (..\UCOSII\CORE\ucos_ii.h)(0x500F7C16)
+I (..\UCOSII\CONFIG\includes.h)(0x56F9E4DC)
+I (D:\Keil\Software\ARM\ARMCC\include\stdio.h)(0x5A1F6BA0)
+I (D:\Keil\Software\ARM\ARMCC\include\string.h)(0x569DEA3A)
+I (D:\Keil\Software\ARM\ARMCC\include\ctype.h)(0x569DEA38)
+I (D:\Keil\Software\ARM\ARMCC\include\stdlib.h)(0x569DEA3A)
+I (D:\Keil\Software\ARM\ARMCC\include\stdarg.h)(0x569DEA3A)
+I (..\UCOSII\PORT\os_cpu.h)(0x502E57CA)
+I (..\UCOSII\CONFIG\os_cfg.h)(0x5325A96E)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (D:\Keil\Software\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (..\USER\system_stm32f10x.h)(0x4D783CAA)
+I (..\USER\stm32f10x_conf.h)(0x56A1DBB8)
+I (..\STM32F10x_FWLib\inc\stm32f10x_adc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_exti.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_spi.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_tim.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+F (..\UCOSII\CORE\os_task.c)(0x500F7B58)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE\24CXX -I ..\HARDWARE\IIC -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\TOUCH -I ..\HARDWARE\MotorDriver -I ..\HARDWARE\Follow -I ..\MALLOC -I ..\HARDWARE\SPI -I ..\HARDWARE\Voice-I E:\My_GTAProject\÷«ª€ µ—µ “\software\Data\CarMcu_GuiLin-V1.0-160623\CarMcu_GuiLin-V1.0-160623\USER\RTE-I D:\Keil\Software\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I D:\Keil\Software\ARM\CMSIS\Include-D__UVISION_VERSION="518" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\os_task.o --omf_browse ..\obj\os_task.crf --depend ..\obj\os_task.d)
+I (..\UCOSII\CORE\ucos_ii.h)(0x500F7C16)
+I (..\UCOSII\CONFIG\includes.h)(0x56F9E4DC)
+I (D:\Keil\Software\ARM\ARMCC\include\stdio.h)(0x5A1F6BA0)
+I (D:\Keil\Software\ARM\ARMCC\include\string.h)(0x569DEA3A)
+I (D:\Keil\Software\ARM\ARMCC\include\ctype.h)(0x569DEA38)
+I (D:\Keil\Software\ARM\ARMCC\include\stdlib.h)(0x569DEA3A)
+I (D:\Keil\Software\ARM\ARMCC\include\stdarg.h)(0x569DEA3A)
+I (..\UCOSII\PORT\os_cpu.h)(0x502E57CA)
+I (..\UCOSII\CONFIG\os_cfg.h)(0x5325A96E)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (D:\Keil\Software\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (..\USER\system_stm32f10x.h)(0x4D783CAA)
+I (..\USER\stm32f10x_conf.h)(0x56A1DBB8)
+I (..\STM32F10x_FWLib\inc\stm32f10x_adc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_exti.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_spi.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_tim.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+F (..\UCOSII\CORE\os_time.c)(0x500F7B58)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE\24CXX -I ..\HARDWARE\IIC -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\TOUCH -I ..\HARDWARE\MotorDriver -I ..\HARDWARE\Follow -I ..\MALLOC -I ..\HARDWARE\SPI -I ..\HARDWARE\Voice-I E:\My_GTAProject\÷«ª€ µ—µ “\software\Data\CarMcu_GuiLin-V1.0-160623\CarMcu_GuiLin-V1.0-160623\USER\RTE-I D:\Keil\Software\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I D:\Keil\Software\ARM\CMSIS\Include-D__UVISION_VERSION="518" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\os_time.o --omf_browse ..\obj\os_time.crf --depend ..\obj\os_time.d)
+I (..\UCOSII\CORE\ucos_ii.h)(0x500F7C16)
+I (..\UCOSII\CONFIG\includes.h)(0x56F9E4DC)
+I (D:\Keil\Software\ARM\ARMCC\include\stdio.h)(0x5A1F6BA0)
+I (D:\Keil\Software\ARM\ARMCC\include\string.h)(0x569DEA3A)
+I (D:\Keil\Software\ARM\ARMCC\include\ctype.h)(0x569DEA38)
+I (D:\Keil\Software\ARM\ARMCC\include\stdlib.h)(0x569DEA3A)
+I (D:\Keil\Software\ARM\ARMCC\include\stdarg.h)(0x569DEA3A)
+I (..\UCOSII\PORT\os_cpu.h)(0x502E57CA)
+I (..\UCOSII\CONFIG\os_cfg.h)(0x5325A96E)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (D:\Keil\Software\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (..\USER\system_stm32f10x.h)(0x4D783CAA)
+I (..\USER\stm32f10x_conf.h)(0x56A1DBB8)
+I (..\STM32F10x_FWLib\inc\stm32f10x_adc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_exti.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_spi.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_tim.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+F (..\UCOSII\CORE\os_tmr.c)(0x500F7B58)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE\24CXX -I ..\HARDWARE\IIC -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\TOUCH -I ..\HARDWARE\MotorDriver -I ..\HARDWARE\Follow -I ..\MALLOC -I ..\HARDWARE\SPI -I ..\HARDWARE\Voice-I E:\My_GTAProject\÷«ª€ µ—µ “\software\Data\CarMcu_GuiLin-V1.0-160623\CarMcu_GuiLin-V1.0-160623\USER\RTE-I D:\Keil\Software\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I D:\Keil\Software\ARM\CMSIS\Include-D__UVISION_VERSION="518" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\os_tmr.o --omf_browse ..\obj\os_tmr.crf --depend ..\obj\os_tmr.d)
+I (..\UCOSII\CORE\ucos_ii.h)(0x500F7C16)
+I (..\UCOSII\CONFIG\includes.h)(0x56F9E4DC)
+I (D:\Keil\Software\ARM\ARMCC\include\stdio.h)(0x5A1F6BA0)
+I (D:\Keil\Software\ARM\ARMCC\include\string.h)(0x569DEA3A)
+I (D:\Keil\Software\ARM\ARMCC\include\ctype.h)(0x569DEA38)
+I (D:\Keil\Software\ARM\ARMCC\include\stdlib.h)(0x569DEA3A)
+I (D:\Keil\Software\ARM\ARMCC\include\stdarg.h)(0x569DEA3A)
+I (..\UCOSII\PORT\os_cpu.h)(0x502E57CA)
+I (..\UCOSII\CONFIG\os_cfg.h)(0x5325A96E)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (D:\Keil\Software\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (..\USER\system_stm32f10x.h)(0x4D783CAA)
+I (..\USER\stm32f10x_conf.h)(0x56A1DBB8)
+I (..\STM32F10x_FWLib\inc\stm32f10x_adc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_exti.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_spi.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_tim.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+F (..\UCOSII\PORT\os_cpu_c.c)(0x500F73B8)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I ..\HARDWARE\LED -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\STM32F10x_FWLib\inc -I ..\CORE -I ..\UCOSII\CONFIG -I ..\UCOSII\CORE -I ..\UCOSII\PORT -I ..\HARDWARE\24CXX -I ..\HARDWARE\IIC -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\TOUCH -I ..\HARDWARE\MotorDriver -I ..\HARDWARE\Follow -I ..\MALLOC -I ..\HARDWARE\SPI -I ..\HARDWARE\Voice-I E:\My_GTAProject\÷«ª€ µ—µ “\software\Data\CarMcu_GuiLin-V1.0-160623\CarMcu_GuiLin-V1.0-160623\USER\RTE-I D:\Keil\Software\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I D:\Keil\Software\ARM\CMSIS\Include-D__UVISION_VERSION="518" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\os_cpu_c.o --omf_browse ..\obj\os_cpu_c.crf --depend ..\obj\os_cpu_c.d)
+I (..\UCOSII\CONFIG\includes.h)(0x56F9E4DC)
+I (D:\Keil\Software\ARM\ARMCC\include\stdio.h)(0x5A1F6BA0)
+I (D:\Keil\Software\ARM\ARMCC\include\string.h)(0x569DEA3A)
+I (D:\Keil\Software\ARM\ARMCC\include\ctype.h)(0x569DEA38)
+I (D:\Keil\Software\ARM\ARMCC\include\stdlib.h)(0x569DEA3A)
+I (D:\Keil\Software\ARM\ARMCC\include\stdarg.h)(0x569DEA3A)
+I (..\UCOSII\CORE\ucos_ii.h)(0x500F7C16)
+I (..\UCOSII\CONFIG\os_cfg.h)(0x5325A96E)
+I (..\UCOSII\PORT\os_cpu.h)(0x502E57CA)
+I (..\USER\stm32f10x.h)(0x4D783CB4)
+I (..\CORE\core_cm3.h)(0x4D523B58)
+I (D:\Keil\Software\ARM\ARMCC\include\stdint.h)(0x569DEA3A)
+I (..\USER\system_stm32f10x.h)(0x4D783CAA)
+I (..\USER\stm32f10x_conf.h)(0x56A1DBB8)
+I (..\STM32F10x_FWLib\inc\stm32f10x_adc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_exti.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
+I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_spi.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_tim.h)(0x4D783BB4)
+I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
+I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
+F (..\UCOSII\PORT\os_cpu.h)(0x502E57CA)()
+F (..\UCOSII\PORT\os_cpu_a.asm)(0x502E657E)(--cpu Cortex-M3 -g --apcs=interwork -I E:\My_GTAProject\÷«ª€ µ—µ “\software\Data\CarMcu_GuiLin-V1.0-160623\CarMcu_GuiLin-V1.0-160623\USER\RTE-I D:\Keil\Software\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I D:\Keil\Software\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 518" --pd "STM32F10X_HD SETA 1"--list .\os_cpu_a.lst --xref -o ..\obj\os_cpu_a.o --depend ..\obj\os_cpu_a.d)
+F (..\UCOSII\CONFIG\includes.h)(0x56F9E4DC)()
+F (..\UCOSII\CONFIG\os_cfg.h)(0x5325A96E)()

@@ -1,0 +1,17 @@
+..\obj\motordriver.o: ..\HARDWARE\MotorDriver\MotorDriver.c
+..\obj\motordriver.o: ..\HARDWARE\MotorDriver\MotorDriver.h
+..\obj\motordriver.o: ..\SYSTEM\sys\sys.h
+..\obj\motordriver.o: ..\USER\stm32f10x.h
+..\obj\motordriver.o: ..\CORE\core_cm3.h
+..\obj\motordriver.o: D:\Keil\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\motordriver.o: ..\USER\system_stm32f10x.h
+..\obj\motordriver.o: ..\USER\stm32f10x_conf.h
+..\obj\motordriver.o: ..\STM32F10x_FWLib\inc\stm32f10x_adc.h
+..\obj\motordriver.o: ..\USER\stm32f10x.h
+..\obj\motordriver.o: ..\STM32F10x_FWLib\inc\stm32f10x_exti.h
+..\obj\motordriver.o: ..\STM32F10x_FWLib\inc\stm32f10x_gpio.h
+..\obj\motordriver.o: ..\STM32F10x_FWLib\inc\stm32f10x_rcc.h
+..\obj\motordriver.o: ..\STM32F10x_FWLib\inc\stm32f10x_spi.h
+..\obj\motordriver.o: ..\STM32F10x_FWLib\inc\stm32f10x_tim.h
+..\obj\motordriver.o: ..\STM32F10x_FWLib\inc\stm32f10x_usart.h
+..\obj\motordriver.o: ..\STM32F10x_FWLib\inc\misc.h

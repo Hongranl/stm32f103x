@@ -1,0 +1,7 @@
+---- discRanging Matches (6 in 3 files) ----
+Cx.c (user):u16 discRanging;
+Cx.c (user):	discRanging = Ultr_Temp/5;
+Follow.c (hardware\follow):extern u16 discRanging;
+Follow.c (hardware\follow):		if(discRanging<100)	// 100mm ³¬Éù²¨¼ì²â
+Lcd.c (hardware\lcd):extern u16 discRanging;
+Lcd.c (hardware\lcd):	//LCD_ShowNum(star_x+2*32+26,75,discRanging,3,32);

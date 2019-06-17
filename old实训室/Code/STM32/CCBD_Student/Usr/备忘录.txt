@@ -1,0 +1,7 @@
+1.ST95HF官方例程移植笔记
+
+	1).将USB部分移除，其中引脚USB_DISCONNECT_PIN和INTERFACE_GPIO_CLK引脚是钟耦合到芯片硬件配置引脚，初始化时需要保留；
+	2).延时部分，除了将一般毫秒延时改为osDelay 系统延时，还需要将不可中断延时函数delayHighPriority_ms 也改为osDelay；
+	3).MCU向ST95HF的中断输出和ST95HF向MCU的中断输入引脚都必需配置完好，特别是#define伪指令处要衔接完整；
+	4).SPI通讯口更换时，注意时钟配置，SPI1是APB2时钟总线，SPI2和SPI3是APB1时钟总线，另外SPI3引脚会涉及特殊引脚，需要配置好；
+	5).初始化时串口输出断点标识初始完成情况，便于定位故障。
