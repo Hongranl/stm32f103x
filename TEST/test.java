@@ -5,8 +5,7 @@
 
         byte2float(b,0);
 
-        //gitsdadad 
-
+        //gitsdadad Culpa eiusmod elit officia est pariatur. Fugiat sit est sit dolore qui exercitation pariatur. Aute fugiat ipsum ex dolor est fugiat qui incididunt non officia id. Reprehenderit ipsum nostrud aliquip do tempor enim proident aliqua dolore cupidatat. Laboris occaecat elit 
     }
     public static float byte2float(byte[] b, int index) {
         int l;
