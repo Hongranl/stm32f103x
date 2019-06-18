@@ -1,5 +1,6 @@
 {
     "files.associations": {
         "bsp.h": "c"
-    }
+    },
+    "editor.tabSize": 8
 }
