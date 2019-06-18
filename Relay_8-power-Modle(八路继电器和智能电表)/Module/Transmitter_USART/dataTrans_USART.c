@@ -11,6 +11,7 @@ uint8 gb_databuff[50];
 
 
 static bool up_status = false;
+static u8 up_status_count = 0;
 
 static bool online = false;
 static u16 sendcount = 0;
@@ -177,9 +178,7 @@ void UsartRx_Thread(const void *argument	)
 				}
 				else if(recvbuff[19] == 1)
 				{
-					online = true;
-					up_status = true;
-					osSignalSet(tid_USARTWireless_Thread, 0x03);
+					
 					LED5 = 0;
 					delay_ms(50);
 					LED5 = 1;
@@ -189,6 +188,10 @@ void UsartRx_Thread(const void *argument	)
 					LED5 = 0;
 					delay_ms(50);
 					LED5 = !Relay5;
+					online = true;
+					up_status = true;
+					gb_Exmod_key = true;
+					osSignalSet(tid_USARTWireless_Thread, 0x03);
 				}
 			}
 			else if( recvbuff[18] == 5)
@@ -199,6 +202,7 @@ void UsartRx_Thread(const void *argument	)
 			else if( recvbuff[18] == 6)
 			{
 				gb_Exmod_key = true;
+				up_status = true;
 				delay_ms(5);
 				osSignalSet(tid_USARTWireless_Thread, 0x03);
 				
@@ -282,6 +286,7 @@ void zigbee_status_updata(u8 EXmodID)
 	sendbuff[20] = EXmodID;
 
 
+	
 	updataTRAN.data_len = 13+16;					
 	memcpy(sendbuff+4+updataTRAN.data_len,gb_databuff, 13);//17+updataTRAN.data_len-13
 	
@@ -294,6 +299,7 @@ void zigbee_status_updata(u8 EXmodID)
 	sendbuff[19+updataTRAN.data_len] = TRAN_crc8(sendbuff,19+updataTRAN.data_len);//17+data_len+2
 	Driver_USART5.Send(sendbuff,20+updataTRAN.data_len);//sendbuff,17+2+2+1
 	osSignalWait(0x01, 100);
+
 		
 	
 }
@@ -346,10 +352,7 @@ LEDstatus zigbee_sw(void)
 						sendbuff[17] = 0;
 						sendbuff[18] = 1;
 					}
-					if( i == 40)
-					{
-						//sendbuff[18] = 3;
-					}
+					
 					
 					sendbuff[17+2+2] = TRAN_crc8(sendbuff,17+2+2);
 
@@ -407,9 +410,15 @@ uint8 zigbee_updata(uint8 EXmodID)
 	sendbuff[20] = EXmodID;
 
 
-	updataTRAN.data_len = 13+16;					
-	memcpy(sendbuff+4+updataTRAN.data_len,gb_databuff, 13);//17+updataTRAN.data_len-13
+	if (up_status)
+		{
+			sendbuff[18] = 0x03;
+		}
+	updataTRAN.data_len = 13+16;
 	
+	memcpy(sendbuff+4+updataTRAN.data_len,gb_databuff, 13);//17+updataTRAN.data_len-13
+//	updataTRAN.data_len = 40+16;
+//	memcpy(sendbuff+updataTRAN.data_len+17-40,gb_databuff, 40);
 
 
 	memcpy(sendbuff+3,&updataTRAN,sizeof(TRAN_D_struct));
@@ -448,15 +457,24 @@ void USARTWireless_Thread(const void *argument){
 			{	
 
 				gb_Exmod_key = false;
-				zigbee_updata(Moudle_GTA.Extension_ID);
+				
+				
+					zigbee_updata(Moudle_GTA.Extension_ID);
 			}
 
 			if(up_status)
 			{	
-				up_status = false;
-				delay_ms(50);
+				if(up_status_count<10)
+				{
+					
+					up_status = false;
+					up_status_count = 9;
+					
+				}
 				zigbee_status_updata(Moudle_GTA.Extension_ID);
+				up_status_count--;
 			}
+			
 
 	}
 }

@@ -51,10 +51,10 @@ void RS485_Send_Data(unsigned char  *buf,unsigned char  len)
 	RS485_TX_EN=1;			//设置为发送模式
 	delay_ms(1);
   	Driver_USART3.Send(buf,len);	//数据发送
-	while(USART_GetFlagStatus(USART1,USART_FLAG_TC) != SET){};//等待发送结束
-
+	while(USART_GetFlagStatus(USART3,USART_FLAG_TC) != SET){};//等待发送结束
+	//osDelay(60);
+	//osSignalWait(0x01, 100);
 	RS485_TX_EN=0;
-	RS485_TX_EN=0;	
 		
  
 				//设置为接收模式	
@@ -62,7 +62,25 @@ void RS485_Send_Data(unsigned char  *buf,unsigned char  len)
 
 void SOURCE_USARTInitCallback(uint32_t event){
 
-	;
+	uint32_t TX_mask;
+	uint32_t RX_mask;
+  	TX_mask =ARM_USART_EVENT_TRANSFER_COMPLETE |
+	         ARM_USART_EVENT_SEND_COMPLETE     |
+	         ARM_USART_EVENT_TX_COMPLETE; 
+         	
+     RX_mask = ARM_USART_EVENT_RECEIVE_COMPLETE  |
+			   ARM_USART_EVENT_TRANSFER_COMPLETE |
+			   ARM_USART_EVENT_RX_TIMEOUT;
+  if (event & TX_mask) {
+    /* Success: Wakeup Thread |
+			   ARM_USART_EVENT_RX_TIMEOUT*/
+    osSignalSet(tid_sourceCM_Thread, 0x01);//接收完成，发送完成signal
+   
+  }
+  if (event & RX_mask) {
+    /* Success: Wakeup Thread */
+    osSignalSet(tid_sourceCM_Thread, 0x02);//接收完成，发送完成signal
+      	}
 }
 
 void USART3source_Init(u16 booter){
@@ -152,6 +170,13 @@ unsigned char bcd_to_hex(unsigned char data)
     return temp;
 }
 
+u8 swap(u8* a, u8* b)
+{
+  return  *b ^= *a ^= *b ^= *a;
+    
+   
+}
+
 
 void sourceCM_Thread(const void *argument){
 
@@ -176,8 +201,8 @@ void sourceCM_Thread(const void *argument){
 		
 	const bool UPLOAD_MODE = false;	//1：数据变化时才上传 0：周期定时上传
 	
-	const uint8_t upldPeriod = 10;	//数据上传周期因数（UPLOAD_MODE = false 时有效）
-	
+	const uint8_t upldPeriod = 5;	//数据上传周期因数（UPLOAD_MODE = false 时有效）
+	char count=3;
 //	static char flag=0;
 	uint8_t UPLDcnt = 0;
 	bool UPLD_EN = true;
@@ -201,40 +226,12 @@ void sourceCM_Thread(const void *argument){
 	USART3source_Init(2400);
 	
 	for(;;){
+
+	
 			float p=actuatorData.power_p/100.0;
 			float v=actuatorData.power_v/10.0;
 			float i=actuatorData.power_i/1000.0;
 
-			
-//				evt = osMessageGet(MsgBox_MTsourceCM, 100);
-//				if (evt.status == osEventMessage){		//等待消息指令
-//					
-//					rptr = evt.value.p;
-//					/*自定义本地线程接收数据处理↓↓↓↓↓↓↓↓↓↓↓↓*/
-//					if (rptr->source_addr == datsTransCMD_FLAG1)
-//					{
-//						actuatorData.Switch = rptr->Switch;
-//						//actuatorData.anaVal	= rptr->anaVal;
-//						flag=1;
-//		
-//						//Data_temp.Switch = actuatorData.Switch; 	//缓存区数据同步，避免下行数据回发
-//						//Data_temp.anaVal = actuatorData.anaVal;
-//					}
-//		
-//					do{status = osPoolFree(sourceCM_pool, rptr);}while(status != osOK); //内存释放
-//					rptr = NULL;
-//					
-//					//soceRELAY = actuatorData.Switch;//将actuatorData的值附给PA0
-//					
-//					/*执行完后立即发一次状态*/
-//					do{mptr = (sourceCM_MEAS *)osPoolCAlloc(sourceCM_pool);}while(mptr == NULL);	//无线数据传输消息推送
-//					mptr->power_p = actuatorData.power_p;
-//					mptr->power_v = actuatorData.power_v;
-//					mptr->power_i = actuatorData.power_i;
-//					osMessagePut(MsgBox_sourceCM, (uint32_t)mptr, 50);
-//				}	
-//				
-//				//actuatorData.anaVal = soceGet_Adc_Max(4,100);//清0，ADC
 				
 				if(!UPLOAD_MODE){	//选择上传触发模式
 				
@@ -248,24 +245,40 @@ void sourceCM_Thread(const void *argument){
 				//超时判断
 				if(UPLD_EN)
 				{
-					
+						u8 n=0;
 						UPLD_EN = false;
+						UPget_EN = true;
 
 						if(actuatorData.power_p == actuatorData.power_v 
 							|| actuatorData.power_v == actuatorData.power_i
 							|| actuatorData.power_p == actuatorData.power_i)
 						{
-							Exmod_rest = true;//数据错误，重启线程
+							if(count-- < 1)
+							{
+								//Exmod_rest = true;//数据错误，重启线程
+								memset(temp_id, 	0xAA , 6);
+								count = 3;
+							}
+								
 						}
 						else
 						{
+							;
 							gb_Exmod_key = true;
 							osSignalSet(tid_USARTWireless_Thread, 0x03);//接收完成，发送完成signal
 						}
-							
+
+						
 						memcpy(gb_databuff+1, &(p), 4);
 						memcpy(gb_databuff+4+1, &(v), 4);
 						memcpy(gb_databuff+8+1, &(i), 4);
+						for (n = 0; n < 3; ++n)
+							{
+								swap((gb_databuff+1+(n*4)),(gb_databuff+1+3+(n*4)));
+								swap((gb_databuff+1+1+(n*4)),(gb_databuff+1+2+(n*4)));
+							}
+						
+					
 						
 				}
 				
@@ -277,35 +290,14 @@ void sourceCM_Thread(const void *argument){
  						Data_tempDP.power_p = actuatorData.power_p;
  						Data_tempDP.power_v = actuatorData.power_v;
  						Data_tempDP.power_i = actuatorData.power_i;
-
-//						gb_Exmod_key = true;
-//						memcpy(gb_databuff, &(p), 4);
-//						memcpy(gb_databuff+4, &(v), 4);
-//						memcpy(gb_databuff+8, &(i), 4);
-//						
-//						do{mptr = (sourceCM_MEAS *)osPoolCAlloc(sourceCM_pool);}while(mptr == NULL);	//1.44寸液晶显示消息推送
-//						if(flag==1){mptr->source_addr = datsTransCMD_FLAG1;}
-//						
-//						mptr->power_p = actuatorData.power_p;
-// 						mptr->power_v = actuatorData.power_v;
-// 						mptr->power_i = actuatorData.power_i;
-//						osMessagePut(MsgBox_DPsourceCM, (uint32_t)mptr, 100);
-						osDelay(10);
-						
-				   }
-			
-//				if(Pcnt < dpPeriod){osDelay(10);Pcnt ++;}
-//				else{
-//				
-//					Pcnt = 0;
-//					memset(disp,0,dpSize * sizeof(char));
-//					sprintf(disp,"★-------------☆\n\r开关状态 : %d\n模拟量：%d\n\n\r", actuatorData.Switch,actuatorData.anaVal);			
-//					//Driver_USART3.Send(disp,strlen(disp));
-//					osDelay(20);
-//				}
+					}
 				
-//				osDelay(10);
-
+//
+//while (1)
+//	{
+//	RS485_Send_Data(read_id, 12);
+//	osDelay(1000);
+//	}
 
 		//未获取ID
 		
@@ -314,12 +306,14 @@ void sourceCM_Thread(const void *argument){
 			RS485_Send_Data(read_id, 12);
 			
 			Driver_USART3.Receive(RS485_RX_BUF,64);		
-			osDelay(300);
-			
+			osSignalWait(0x02, 300);
+//			gb_databuff[0]=0xff;
+//			memcpy(gb_databuff+1, (RS485_RX_BUF), 20);gb_Exmod_key = true;osSignalSet(tid_USARTWireless_Thread, 0x03);
 			if(read_data2id(RS485_RX_BUF, temp_id) == 1 )
 			{
 				memcpy(temp_id, 	RS485_RX_BUF+5 , 6);
 				memcpy(send_buff+1, RS485_RX_BUF+5 , 6);//给ID到发送缓存
+				
 				
 				}
 			osDelay(500);
@@ -328,15 +322,20 @@ void sourceCM_Thread(const void *argument){
 		{
 
 			UPget_EN = false;
+
+
+			delay_ms(500);
 			//获取电能
 			memcpy(send_buff+10,  strpower_kwh , 4);			
 			send_buff[14] = ADD_CHECK_8b(send_buff,14);
 			RS485_Send_Data(send_buff, 16);			
 			
+
 			Driver_USART3.Receive(RS485_RX_BUF,64);	
-			osDelay(300);
+			osSignalWait(0x02, 500);
 			
-			
+//			gb_databuff[0]=0xee;
+//			memcpy(gb_databuff+1, (RS485_RX_BUF), 30);gb_Exmod_key = true;osSignalSet(tid_USARTWireless_Thread, 0x03);
 			
 			len_b = RS485_RX_BUF[13]+16;
 			osDelay(20);
@@ -353,7 +352,7 @@ void sourceCM_Thread(const void *argument){
 			}
 			
 		
-			
+			delay_ms(500);memset(RS485_RX_BUF, 0, 64);
 			
 			//获取电压
 			memcpy(send_buff+10,  strpower_v, 4);
@@ -361,7 +360,10 @@ void sourceCM_Thread(const void *argument){
 			RS485_Send_Data(send_buff, 16);
 			
 			Driver_USART3.Receive(RS485_RX_BUF,64);	
-			osDelay(300);
+			osSignalWait(0x02, 500);
+			
+//			gb_databuff[0]=0xcc;
+//			memcpy(gb_databuff+1, &(actuatorData), 18);gb_Exmod_key = true;osSignalSet(tid_USARTWireless_Thread, 0x03);
 			
 			len_b = RS485_RX_BUF[13]+16;
 			if(RS485_RX_BUF[len_b-2] == ADD_CHECK_8b(RS485_RX_BUF+4,len_b-6) 
@@ -374,15 +376,19 @@ void sourceCM_Thread(const void *argument){
 										bcd_to_hex(RS485_RX_BUF[22] - 0x33)*100000000;
 				
 			}
+				delay_ms(500);memset(RS485_RX_BUF, 0, 64);
 			//获取电流
 			memcpy(send_buff+10,  strpower_a , 4);
 			send_buff[14] = ADD_CHECK_8b(send_buff,14);
 			RS485_Send_Data(send_buff, 16);
-			
-			
+
+
 			Driver_USART3.Receive(RS485_RX_BUF,64);	
-			osDelay(500);
-			
+			osSignalWait(0x02, 500);
+//
+//			gb_databuff[0]=0xdd;
+//			memcpy(gb_databuff+1, (RS485_RX_BUF), 30);gb_Exmod_key = true;osSignalSet(tid_USARTWireless_Thread, 0x03);
+//			
 			len_b = RS485_RX_BUF[13]+16;
 			if(RS485_RX_BUF[len_b-2] == ADD_CHECK_8b(RS485_RX_BUF+4,len_b-6) 
 				&& RS485_RX_BUF[18] >= 0x33 && RS485_RX_BUF[19] >= 0x33 && RS485_RX_BUF[20] >= 0x33)
@@ -395,8 +401,8 @@ void sourceCM_Thread(const void *argument){
 				
 			}
 		}
-		//memset(RS485_RX_BUF, 0, 64);//可有可无，串口缓存里面始终都在
-		delay_ms(200);
+		memset(RS485_RX_BUF, 0, 64);//可有可无，串口缓存里面始终都在
+		delay_ms(500);
 
 
 	}

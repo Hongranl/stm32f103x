@@ -27,7 +27,7 @@
 #define  SYS_CLOCK        16
 #define  TIM4_PERIOD      124
 
-
+u8 hold_down = 0;
 u8 Data_Len = 0;
 
 u8 uart_rx_flg = 0;
@@ -217,11 +217,15 @@ if((get_adc(1) > 850) || (fire_check != gb_sensor_data[1]) || (gb_countdown_uart
 
 				gb_countdown_uart = 6000;
 				
-				
+				hold_down++;//³õÊ¼»¯ÑÓÊ±60Ãë
 				if((buff > 850)  || (fire_check == 1) )
 				{
-				
-					BEEP_s(1);
+                                  if(hold_down>9)
+                                  {
+                                      BEEP_s(1);
+                                      hold_down = 9;
+                                  }
+					
 					
 
 				}

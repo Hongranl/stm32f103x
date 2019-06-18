@@ -573,7 +573,7 @@ u8 key_scan(void)
 void keyMboard_Thread(const void *argument){
 	u8 relay_status=0;
 	u8 relay_status_pre=0xff;
-	unsigned int time_out_count = 0xffff;
+	unsigned int time_out_count = 0xff;
 	//临时使用按键程序
 	while(1)
 	{
@@ -596,7 +596,7 @@ void keyMboard_Thread(const void *argument){
 
 		if(!time_out_count--)
 		{
-			time_out_count = 0xffff;
+			time_out_count = 0x2ff;
 			gb_Exmod_key = true;
 			
 			osSignalSet(tid_USARTWireless_Thread, 0x03);

@@ -129,8 +129,8 @@ typedef enum
 	net_online
 
 }NETstatus;
-#define sensor_md_BODY
-//煤气报警器和人体检测
+//#define sensor_md_BODY
+
 #define Pin(P) (1<<P)
 
 //SENSOR传感器使能，（定义:使用人体，反之使用煤气报警）
