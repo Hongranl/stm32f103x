@@ -1,3 +1,7 @@
 {
-        "docthis.authorName": "ranhongliang"
+        
+        "files.associations": {
+                "usmart.h": "c",
+                "usmart_str.h": "c"
+        }
 }

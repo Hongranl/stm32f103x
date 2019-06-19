@@ -4,18 +4,18 @@
 //函数，当检测到模块插入时根据不同PCB编码激活对应的驱动进程，
 //当检查到模块拔出时，终结对应进程；
 Moudle_attr Moudle_GTA;
-bool Exmod_rest =false;
-
+bool Exmod_rest = false;
 
 osThreadId tid_MBDEC_Thread;
-osThreadDef(MBDEC_Thread,osPriorityNormal,1,512);
+osThreadDef(MBDEC_Thread, osPriorityNormal, 1, 512);
 
-extern ARM_DRIVER_USART Driver_USART1;		//设备驱动库串口一设备声明
+extern ARM_DRIVER_USART Driver_USART1; //设备驱动库串口一设备声明
 
-void stdDeInit(void){
+void stdDeInit(void)
+{
 
 	TIM_BDTRInitTypeDef TIM_BDTRStruct;
-	
+
 	TIM_BDTRStructInit(&TIM_BDTRStruct);
 
 	EXTI_DeInit();
@@ -23,45 +23,45 @@ void stdDeInit(void){
 	ADC_DeInit(ADC1);
 }
 
-void MoudleDEC_ioInit(void){		//模块检测脚初始化
+void MoudleDEC_ioInit(void)
+{ //模块检测脚初始化
 
 	GPIO_InitTypeDef GPIO_InitStructure;
 
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD	| RCC_APB2Periph_GPIOE, ENABLE );	  //使能ADC1通道时钟
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD | RCC_APB2Periph_GPIOE, ENABLE); //使能ADC1通道时钟
 
-	GPIO_InitStructure.GPIO_Pin |= 0xfff8;				//硬件ID检测引脚初始化
+	GPIO_InitStructure.GPIO_Pin |= 0xfff8; //硬件ID检测引脚初始化
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;	
-	GPIO_Init(GPIOD, &GPIO_InitStructure);
-	
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_5;		//Moudle_Check引脚初始化
+	GPIO_Init(GPIOD, &GPIO_InitStructure);
+
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_5; //Moudle_Check引脚初始化
 	GPIO_Init(GPIOE, &GPIO_InitStructure);
 
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;		//ExtMOD引脚初始化
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0; //ExtMOD引脚初始化
 	GPIO_Init(GPIOD, &GPIO_InitStructure);
-
-	
-	
 }
 
-void MBDEC_Thread(const void *argument){	//循环检测
+void MBDEC_Thread(const void *argument)
+{ //循环检测
 	u16 ID_temp;
 
 	bool M_CHG = true;
 
 	//led2_status = led2_r;
-	ID_temp = MID_EXEC_raley8_power ;
+	ID_temp = MID_EXEC_raley8_power;
 	Moudle_GTA.Extension_ID = (u8)ID_temp;
-	for(;;){
+	for (;;)
+	{
 		if (M_CHG)
-			{
-				//keyIFRActive();
-				sourceCMThread_Active();
-				M_CHG= false;
-			}
-		if(Exmod_rest)
+		{
+			//keyIFRActive();
+			sourceCMThread_Active();
+			M_CHG = false;
+		}
+		if (Exmod_rest)
 		{
 			M_CHG = true;
 
@@ -73,8 +73,9 @@ void MBDEC_Thread(const void *argument){	//循环检测
 	}
 }
 
-void MoudleDEC_Init(void){	//模块检测进程激活
-	
+void MoudleDEC_Init(void)
+{ //模块检测进程激活
+
 	//MoudleDEC_ioInit();
-	tid_MBDEC_Thread = osThreadCreate(osThread(MBDEC_Thread),NULL);
+	tid_MBDEC_Thread = osThreadCreate(osThread(MBDEC_Thread), NULL);
 }
