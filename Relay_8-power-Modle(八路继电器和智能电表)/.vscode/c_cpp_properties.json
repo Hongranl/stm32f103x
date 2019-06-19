@@ -3,7 +3,10 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "C:/Keil_v5/ARM/ARMCC/**",
+                "C:/Keil_v5/ARM/Pack/ARM/CMSIS/5.3.0/CMSIS/**",
+                "C:/Keil_v5/ARM/Pack/Keil/STM32F1xx_DFP/2.2.0/**"
             ],
             "defines": [
                 "_DEBUG",
