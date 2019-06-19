@@ -1,3 +1,16 @@
+/*---------------------------------------------------------------------------
+ *
+ * Copyright (C),2014-2019, guoshun Tech. Co., Ltd.
+ *
+ * @Project:    智能实训台项目
+ * @Version:    V 0.2 
+ * @Module:     curtainCM
+ * @Author:     RanHongLiang
+ * @Date:       2019-06-19 21:02:41
+ * @Description: 
+ *————
+ *---------------------------------------------------------------------------*/
+
 #include "curtainCM.h"//窗帘控制驱动进程函数；
 
 static curtainCM_MEAS curtainATTR;
@@ -78,14 +91,7 @@ void curtainCM_Thread(const void *argument){
 			do{status = osPoolFree(curtainCM_pool, rptr);}while(status != osOK);	//内存释放
 			rptr = NULL;
 		}
-//		if(!curtainENABLE){			
-//			
-//			delay_ms(30);
-//			if(!curtainENABLE )
-//				actuatorData.valACT  = CMD_CURTmax;
-//			else
-//				actuatorData.valACT  = 0;
-//		}
+
 
 		
 			if(!curtKeySTP){			

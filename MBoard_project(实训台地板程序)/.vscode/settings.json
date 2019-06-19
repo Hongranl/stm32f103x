@@ -1,0 +1,9 @@
+{
+        "files.associations": {
+                "bsp.h": "c",
+                "sourcecm.h": "c",
+                "datatrans_usart.h": "c",
+                "analogms.h": "c",
+                "io_map.h": "c"
+        }
+}
