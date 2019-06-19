@@ -8,17 +8,18 @@
  * @Author:     RanHongLiang
  * @Date:       2019-06-19 21:02:41
  * @Description: 
- *————
+ *	窗帘控制驱动进程
+ *	采用电流采集电路作为限位条件
  *---------------------------------------------------------------------------*/
 
-#include "curtainCM.h"//窗帘控制驱动进程函数；
+#include "curtainCM.h"
 
 static curtainCM_MEAS curtainATTR;
 
 extern ARM_DRIVER_USART Driver_USART1;		//设备驱动库串口一设备声明
 
-osThreadId tid_curtainCM_Thread;
-osThreadDef(curtainCM_Thread,osPriorityNormal,1,512);
+osThreadId tid_curtainCM_Thread;			//线程ID
+osThreadDef(curtainCM_Thread,osPriorityNormal,1,512);	//Create a Thread Definition with function, priority, and stack requirements.
 			 
 osPoolId  curtainCM_pool;								 
 osPoolDef(curtainCM_pool, 10, curtainCM_MEAS);                  // 内存池定义
@@ -29,49 +30,63 @@ osMessageQDef(MsgBox_MTcurtainCM, 2, &curtainCM_MEAS);          // 消息队列定义,
 osMessageQId  MsgBox_DPcurtainCM;
 osMessageQDef(MsgBox_DPcurtainCM, 2, &curtainCM_MEAS);          // 消息队列定义，用于模块线程向显示模块线程
 
+/**************************************
+* @description: 初始化LED、KEY、INPUT(电平采集)
+* @param:  void
+* @return: void
+************************************/
 void curtainCM_ioInit(void){
 
 	GPIO_InitTypeDef GPIO_InitStructure;
 
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA | RCC_APB2Periph_GPIOB | RCC_APB2Periph_GPIOC, ENABLE );	                
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9 | GPIO_Pin_10| GPIO_Pin_11;	//输入
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA | RCC_APB2Periph_GPIOB | RCC_APB2Periph_GPIOC, ENABLE );	 
+
+	//KEY               
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9 | GPIO_Pin_10| GPIO_Pin_11;	
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;		
 	GPIO_Init(GPIOB, &GPIO_InitStructure);	
-	
-	GPIO_InitStructure.GPIO_Pin =  GPIO_Pin_12| GPIO_Pin_13| GPIO_Pin_14;	//输出
+	//LED
+	GPIO_InitStructure.GPIO_Pin =  GPIO_Pin_12| GPIO_Pin_13| GPIO_Pin_14;	
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
 	GPIO_Init(GPIOB, &GPIO_InitStructure);	
 
 	
 	curtconSTP = 1;	
-
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_10;	//输入
+	//限位电流、电平采集引脚
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_10;	
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;		
 	GPIO_Init(GPIOA, &GPIO_InitStructure);		
 	
 }
-
+/**************************************
+* @description:模块初始化函数 
+* @param 
+* @return: 
+************************************/
 void curtainCM_Init(void){
 
 	curtainCM_ioInit();
 }
-
+/**************************************
+* @description:模块线程函数，定时采集，定时触发上传信号
+* @param：创建时设定值->argument
+* @return: 
+************************************/
 void curtainCM_Thread(const void *argument){
 	
 	osEvent  evt;
-    osStatus status;
+    	osStatus status;
 	
 	const uint8_t dpSize = 50;
 	const uint8_t dpPeriod = 40;
+
 	char  disp[dpSize];
 	uint8_t Pcnt;
 	uint8_t Kcnt;
-
 	uint8_t Maxcnt = 0;
-	
-	
+
 	static curtainCM_MEAS actuatorData;
 	static curtainCM_MEAS Data_DPtemp;
 	
@@ -79,79 +94,85 @@ void curtainCM_Thread(const void *argument){
 	curtainCM_MEAS *rptr = NULL;
 	
 	for(;;){
-	
+		/*自定义本地线程接收数据处理↓↓↓↓↓↓↓↓↓↓↓↓*/
 		evt = osMessageGet(MsgBox_MTcurtainCM, 100);
 		if (evt.status == osEventMessage){		//等待消息指令
 			
 			rptr = evt.value.p;
-			/*自定义本地线程接收数据处理↓↓↓↓↓↓↓↓↓↓↓↓*/
-			
+
 			actuatorData.valACT = rptr->valACT;
 			
 			do{status = osPoolFree(curtainCM_pool, rptr);}while(status != osOK);	//内存释放
 			rptr = NULL;
 		}
 
-
+		//-----------------查询按键状态------------------------
+		if(!curtKeySTP){			
 		
-			if(!curtKeySTP){			
-			
 			Kcnt = 100;
 			while(!curtKeySTP && Kcnt)
 				{
 					osDelay(20);Kcnt --;
 				}
 			actuatorData.valACT  = CMD_CURTSTP;
+		}
+		else if(!curtKeyUP){			
+			
+			Kcnt = 100;
+			while(!curtKeyUP && Kcnt){
+				osDelay(20);Kcnt --;
 			}
-			else if(!curtKeyUP){			
-				
-				Kcnt = 100;
-				while(!curtKeyUP && Kcnt){
-					osDelay(20);Kcnt --;
-				}
-				actuatorData.valACT  = CMD_CURTUP;
+			actuatorData.valACT  = CMD_CURTUP;
+		}
+		else if(!curtKeyDN){			
+			
+			Kcnt = 100;
+			while(!curtKeyDN && Kcnt){
+				osDelay(20);Kcnt --;
 			}
-			else if(!curtKeyDN){			
-				
-				Kcnt = 100;
-				while(!curtKeyDN && Kcnt){
-					osDelay(20);Kcnt --;
-				}
-				actuatorData.valACT  = CMD_CURTDN;
-			}
+			actuatorData.valACT  = CMD_CURTDN;
+		}
+	
 		
-		
-		 
+		 //-----------------输出按键状态------------------------
 		if(Data_DPtemp.valACT != actuatorData.valACT)
 			switch(actuatorData.valACT){
 			
-				case CMD_CURTUP:	curtconSTP = 1;curtconDN = 0; delay_ms(20);curtconUP  = 1;delay_ms(50);	break;
+				case CMD_CURTUP:	
+						curtconSTP = 1;
+						curtconDN = 0; 
+						delay_ms(20);
+						curtconUP  = 1;
+						delay_ms(50);	
+					break;
 				
 				case CMD_CURTSTP:	
 					{
-						curtconSTP = 0; 
-						
-								curtconUP = 0;
-								curtconDN = 0;
-							
-						delay_ms(100);	
-						//curtconSTP = 1;
-						
-						break;
-
+						curtconSTP = 0; 				
+						curtconUP = 0;
+						curtconDN = 0;
+					
+						delay_ms(100);							
+					break;
 					}
 					
-				case CMD_CURTDN:	curtconSTP = 1;curtconUP = 0; delay_ms(20);	curtconDN  = 1;	delay_ms(50);break;
+				case CMD_CURTDN:	
+						curtconSTP = 1;
+						curtconUP = 0; 
+						delay_ms(20);	
+						curtconDN  = 1;	
+						delay_ms(50);
+					break;			
 				
 				default: 
-					curtconUP = 0;
-					curtconDN = 0;
-					curtconSTP = 1;
+						curtconUP = 0;
+						curtconDN = 0;
+						curtconSTP = 1;
 
-				break;
+					break;
 				
 			}
-			
+			 //-----------------限位电流、电平检测------------------------
 			if(actuatorData.valACT == CMD_CURTDN ||  
 				actuatorData.valACT == CMD_CURTUP)
 			{
@@ -173,7 +194,7 @@ void curtainCM_Thread(const void *argument){
 				}
 					
 			}
-		
+		//------------显示改变消息推送------------------
 		if(Data_DPtemp.valACT != actuatorData.valACT){
 		
 			Data_DPtemp.valACT = actuatorData.valACT;
@@ -186,7 +207,7 @@ void curtainCM_Thread(const void *argument){
 		
 	
 		
-		
+		//---------------定时上传-------------------
 		if(Pcnt < dpPeriod){
 			
 			osDelay(20);
@@ -207,7 +228,11 @@ void curtainCM_Thread(const void *argument){
 		osDelay(10);
 	}
 }
-
+/**************************************
+* @description: 线程创建接口函数
+* @param：
+* @return: 
+************************************/
 void curtainCMThread_Active(void){
 
 	static bool memInit_flg = false;

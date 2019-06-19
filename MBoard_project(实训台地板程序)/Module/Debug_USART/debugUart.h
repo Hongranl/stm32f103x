@@ -1,3 +1,16 @@
+/*---------------------------------------------------------------------------
+ *
+ * Copyright (C),2014-2019, guoshun Tech. Co., Ltd.
+ *
+ * @Project:    智能实训台项目
+ * @Version:    V 0.2 
+ * @Module:     debugUart
+ * @Author:     RanHongLiang
+ * @Date:       2019-06-19 21:55:03
+ * @Description: 
+ *	调试模块，可用于调试输出
+ *	注：未使用
+ *---------------------------------------------------------------------------*/
 #ifndef DEBUG_USART_H
 #define DEBUG_USART_H
 

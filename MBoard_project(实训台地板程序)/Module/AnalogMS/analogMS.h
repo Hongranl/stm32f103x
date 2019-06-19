@@ -1,3 +1,16 @@
+/*---------------------------------------------------------------------------
+ *
+ * Copyright (C),2014-2019, guoshun Tech. Co., Ltd.
+ *
+ * @Project:    智能实训台项目
+ * @Version:    V 0.2 
+ * @Module:     analogMS
+ * @Author:     RanHongLiang
+ * @Date:       2019-06-19 21:53:15
+ * @Description: 
+ *————
+ *---------------------------------------------------------------------------*/
+
 #ifndef ANALOG_MS_H
 #define ANALOG_MS_H
 

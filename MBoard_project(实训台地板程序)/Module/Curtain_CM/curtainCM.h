@@ -29,7 +29,7 @@
 //ÏÞÎ»
 #define curtainENABLE	PAin(10)
 
-
+//×´Ì¬
 #define CMD_CURTUP	0x01
 #define CMD_CURTSTP	0x02
 #define CMD_CURTDN	0x03
@@ -38,8 +38,6 @@
 
 #define  valACT_NULL	100
 
-#define curtIOCHG_Kin()		{GPIOA->CRL&=0XFFFFF00F;GPIOB->CRL |= 0x00000440;}	
-#define curtIOCHG_DB()		{curtain_logInit();}
 
 typedef struct{
 	

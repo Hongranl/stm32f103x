@@ -1,3 +1,16 @@
+/*---------------------------------------------------------------------------
+ *
+ * Copyright (C),2014-2019, guoshun Tech. Co., Ltd.
+ *
+ * @Project:    智能实训台项目
+ * @Version:    V 0.2 
+ * @Module:     doorLock
+ * @Author:     RanHongLiang
+ * @Date:       2019-06-19 22:03:04
+ * @Description: 
+ *————门磁控制驱动进程
+ *---------------------------------------------------------------------------*/
+
 #include "doorLock.h"//门磁控制驱动进程函数；
 
 extern ARM_DRIVER_USART Driver_USART1;		//设备驱动库串口一设备声明

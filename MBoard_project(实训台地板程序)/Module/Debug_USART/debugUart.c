@@ -1,3 +1,17 @@
+/*---------------------------------------------------------------------------
+ *
+ * Copyright (C),2014-2019, guoshun Tech. Co., Ltd.
+ *
+ * @Project:    智能实训台项目
+ * @Version:    V 0.2 
+ * @Module:     debugUart
+ * @Author:     RanHongLiang
+ * @Date:       2019-06-19 21:55:03
+ * @Description: 
+ *	调试模块，可用于调试输出
+ *	注：未使用
+ *---------------------------------------------------------------------------*/
+
 #include "debugUart.h"//调试信息串口输出进程；
 
 const uint8_t TestCMD_PAGSIZE = 20;
@@ -48,7 +62,11 @@ void funDB_keyIFR_OFF(void){ // 关闭红外转发扩展板按键Debug_log
 
 	osSignalSet (tid_keyIFR_Thread, KEY_DEBUG_OFF);
 }
-
+/**************************************
+* @description: 初始化 Driver_USART1
+* @param:  void
+* @return: void
+************************************/
 void USART1Debug_Init(void){
 
 	/*Initialize the USART driver */
@@ -68,26 +86,20 @@ void USART1Debug_Init(void){
 
 	Driver_USART1.Send("i'm usart1 for debug log\r\n", 26);
 }
-
+/**************************************
+* @description: 串口事件回调，发送完成、接受完成、溢出、超时事件触发
+* @param:  void
+* @return: void
+************************************/
 void myUSART1_callback(uint32_t event)
 {
-//  uint32_t mask;
-//  mask = ARM_USART_EVENT_RECEIVE_COMPLETE  |
-//         ARM_USART_EVENT_TRANSFER_COMPLETE |
-//         ARM_USART_EVENT_SEND_COMPLETE     |
-//         ARM_USART_EVENT_TX_COMPLETE       ;
-//  if (event & mask) {
-////    /* Success: Wakeup Thread */
-////    osSignalSet(tid_myUART_Thread, 0x01);
-//  }
-//  if (event & ARM_USART_EVENT_RX_TIMEOUT) {
-//    __breakpoint(0);  /* Error: Call debugger or replace with custom error handling */
-//  }
-//  if (event & (ARM_USART_EVENT_RX_OVERFLOW | ARM_USART_EVENT_TX_UNDERFLOW)) {
-//    __breakpoint(0);  /* Error: Call debugger or replace with custom error handling */
-//  }
+;
 }
-
+/**************************************
+* @description:模块线程函数，未使用
+* @param：创建时设定值->argument
+* @return: 
+************************************/
 void USARTDebug_Thread(const void *argument){
 
 	const uint8_t cmdsize = TestCMD_MAXSIZE;
@@ -116,12 +128,20 @@ void USARTDebug_Thread(const void *argument){
 		}
 	}
 }
-
+/**************************************
+* @description:模块初始化函数 
+* @param 
+* @return: 
+************************************/
 void USART_debugInit(void){
 
 	USART1Debug_Init();
 }
-
+/**************************************
+* @description: 线程创建接口函数
+* @param：
+* @return: 
+************************************/
 void debugThread_Active(void){
 	
 	USART_debugInit();
