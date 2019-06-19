@@ -2,6 +2,7 @@
         
         "files.associations": {
                 "usmart.h": "c",
-                "usmart_str.h": "c"
+                "usmart_str.h": "c",
+                "includes.h": "c"
         }
 }
