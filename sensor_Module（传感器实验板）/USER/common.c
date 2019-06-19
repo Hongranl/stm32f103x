@@ -16,7 +16,7 @@
   * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
   *
   * <h2><center>&copy; COPYRIGHT 2014 STMicroelectronics</center></h2>
-  */ 
+  */
 
 /* Includes ------------------------------------------------------------------*/
 #include "common.h"
@@ -31,7 +31,6 @@
  * @brief      This file contain function link to STM32 memory management  
  */
 
-
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
@@ -39,12 +38,11 @@
 pFunction Jump_To_Application;
 uint32_t JumpAddress;
 uint32_t BlockNbr = 0, UserMemoryMask = 0;
-uint32_t FwSize=0;
+uint32_t FwSize = 0;
 __IO uint32_t FlashProtection = 0;
 
 extern uint32_t FlashDestination;
-extern uint32_t 			CRCFile;
-
+extern uint32_t CRCFile;
 
 /* Private function prototypes -----------------------------------------------*/
 #if 0
@@ -128,7 +126,6 @@ static void FLASH_DisableWriteProtectionPages(void)
   * @}
   */
 
-
 /** @addtogroup common_Public_Functions
  * 	@{
  */
@@ -152,12 +149,11 @@ uint32_t FLASH_PagesMask(__IO uint32_t Size)
     pagenumber = size / PAGE_SIZE;
   }
   return pagenumber;
-
 }
 
 uint16_t random(uint16_t min, uint16_t max)
 {
-	return (((SysTick->VAL)%(max - min + 1)) + min);
+  return (((SysTick->VAL) % (max - min + 1)) + min);
 }
 
 /**
