@@ -11,6 +11,8 @@ void Hex2Char( u8* pDataIn, u16 NumberOfByte, char* pString );
   * @retval None
   */
   
+
+  
 void Hex2Char( u8* pDataIn, u16 NumberOfByte, char* pString )
 {
 	u8 data;
