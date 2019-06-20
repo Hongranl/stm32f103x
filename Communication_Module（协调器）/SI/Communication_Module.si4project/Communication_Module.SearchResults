@@ -1,2 +1,0 @@
----- usart3_and Matches (1 in 1 files) ----
-usart_cfg.h (D:\国顺资料\江工物联网项目\Communication_Module\SYSTEM\usart) line 6 : #include "usart3_android.h"  
