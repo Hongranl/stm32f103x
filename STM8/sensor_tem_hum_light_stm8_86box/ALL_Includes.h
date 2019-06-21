@@ -139,7 +139,7 @@ typedef enum
 #define tem_hum_light
 
 #define Pin(P) (1 << P)
-
+//TODO: 这是一个未声明的分支
 // SENSOR传感器使能，（定义:使用人体，反之使用煤气报警）
 #ifdef sensor_md_BODY
 
