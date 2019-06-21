@@ -261,9 +261,9 @@ u8 Rs485_COMM_msg_process(char *tab)
       {
         dat[1] = notify_net_status;
 #ifdef sensor_md_BODY
-        dat[3] = DTN_86_SENSOR_body;
+        dat[3] = SENSOR_body;
         TRAN_info1.source_dev_num =
-            (DTN_86_SENSOR_body << 8 | DTN_86_SENSOR_body >> 8);
+            (SENSOR_body << 8 | SENSOR_body >> 8);
 
         TRAN_info1.data_len = 16 + 1;
 
@@ -310,9 +310,9 @@ u8 Rs485_COMM_msg_process(char *tab)
       dat[1] = upload_info; //
 
 #ifdef sensor_md_BODY
-      dat[3] = DTN_86_SENSOR_body;
+      dat[3] = SENSOR_body;
       TRAN_info1.source_dev_num =
-          (DTN_86_SENSOR_body << 8 | DTN_86_SENSOR_body >> 8);
+          (SENSOR_body << 8 | SENSOR_body >> 8);
 
       TRAN_info1.data_len = 16 + 1;
 

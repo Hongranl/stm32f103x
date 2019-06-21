@@ -1,25 +1,20 @@
-/**
-  ******************************************************************************
-  * @file    
-  * @author  
-  * @version 
-  * @date    
-  * @brief   
-  ******************************************************************************
-  * 传感器模块-86盒
-  *
-  * 
-  * 
-  * 
-  * 
-  * 
-  * 
-  *
-  * 
-  ******************************************************************************
-***/
-
-/* Includes ------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------
+ *
+ * Copyright (C),2014-2019, guoshun Tech. Co., Ltd.
+ *
+ * @Project:    智能实训室项目
+ * @Version:    V 0.2 
+ * @Module:     main
+ * @Author:     RanHongLiang
+ * @Date:       2019-06-20 14:52:41
+ * @Description: 
+ *	智能插座，
+ *	重启时：蓝灯闪烁表示已入网，红灯闪烁表示未入网。
+ *	正常运行时：
+ * 		单次按键切换状态，长按按键3S进入网络切换状态
+ * 		灯亮即电源指示，蓝灯表示通电未输出市电，红灯反之。
+ * 		（红灯闪烁，为切换网络状态，蓝灯闪烁为以入网）
+ *---------------------------------------------------------------------------*/
 
 #include "ALL_Includes.h"
 
@@ -93,14 +88,6 @@ void check_sensor(void);
 u16 get_adc(u8 times);
 void HAL_GetUID(uint32_t *UID);
 
-/* Private functions ---------------------------------------------------------*/
-/* Public functions ----------------------------------------------------------*/
-
-/**
-  * @brief  Main program.
-  * @param  None
-  * @retval None
-  */
 void main(void)
 {
 	All_Config();
@@ -157,11 +144,11 @@ void check_sensor(void)
 
 			memset(dat + 8, 0, 8);
 
-			TRAN_info1.source_dev_num = (DTN_86_SENSOR_body << 8 | DTN_86_SENSOR_body >> 8);
+			TRAN_info1.source_dev_num = (SENSOR_body << 8 | SENSOR_body >> 8);
 
 			TRAN_info1.data_len = 16 + 1;
 
-			dat[3] = DTN_86_SENSOR_body; //
+			dat[3] = SENSOR_body; //
 
 			dat[8 + 8] = body_check;
 			gb_sensor_data[0] = body_check;

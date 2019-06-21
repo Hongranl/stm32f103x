@@ -1,0 +1,10 @@
+{
+        "files.associations": {
+                "all_includes.h": "c",
+                "stm8s.h": "c"
+        },
+        "clang-format.assumeFilename": "-style=file",
+        "clang-format.language.cpp.style": "file",
+        "clang-format.language.c.style": "file",
+        "clang-format.language.typescript.fallbackStyle": ""
+}
