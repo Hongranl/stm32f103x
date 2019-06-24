@@ -13,9 +13,9 @@
 #include <ctype.h>
 #include <string.h>
 
-#include "SHT1X.h"
-#include "lightMS.h" //光照强度检测驱动进程函数；
-#include "tempMS.h"
+//#include "SHT1X.h"
+//#include "lightMS.h" //光照强度检测驱动进程函数；
+//#include "tempMS.h"
 
 #ifndef BIT
 #define BIT(x) (1 << (x))
@@ -114,6 +114,7 @@
 #define DTN_86_power_outlet 0x3C  //设备号   智能插座
 
 #define SENSOR_tem_LEN 0x1c //温湿度模块-数据长度
+#define power_outlet_LEN 0x11 //智能插座模块-数据长度
 
 #define READ_REG(REG) ((REG))
 #define UID_BASE 0X4865
@@ -179,9 +180,16 @@ typedef enum
         (a == 1) ? (GPIOD->ODR &= ~GPIO_PIN_2) : (GPIOD->ODR |= GPIO_PIN_2)
 #define LED_b(a) \
         (a == 1) ? (GPIOD->ODR &= ~GPIO_PIN_3) : (GPIOD->ODR |= GPIO_PIN_3)
+#define Z_rest(a) \
+        (a == 0) ? (GPIOD->ODR &= ~GPIO_PIN_4) : (GPIOD->ODR |= GPIO_PIN_4)
+#define Rly(a) \
+        (a == 0) ? (GPIOC->ODR &= ~GPIO_PIN_7) : (GPIOC->ODR |= GPIO_PIN_7)
+#define Rly_Vlue \
+        (((GPIOC->ODR & GPIO_PIN_7) != 0) ? 1 : 0)
 #endif
 extern NETstatus gb_Status;
 extern NETstatus gb_Status_pre;
+extern u16 gb_init_countdown;
 extern u16 gb_countdown;
 extern u16 gb_countdown_uart;
 extern uint32_t SystemCnt;

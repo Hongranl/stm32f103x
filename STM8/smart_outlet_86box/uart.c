@@ -245,10 +245,13 @@ u8 Rs485_COMM_msg_process(char *tab)
       case  notify_net_status:  //查询入网状态
       {
         join_flg = fuc_dat[2]; 
-		if(fuc_dat[2] == 1)
-			gb_Status 	  = net_online;
-		if(gb_Status == net_wait)
-			gb_countdown =0;
+
+        if(fuc_dat[2] == 1)
+          gb_Status = net_online;
+
+        if(gb_Status == net_wait)
+          gb_countdown =0;
+          
         if(join_flg)
         {
           dat[1]= notify_net_status;
@@ -260,7 +263,7 @@ u8 Rs485_COMM_msg_process(char *tab)
 
 		  dat[8+8] = body_check; 
 		  
-#else	
+//#else	
 		  dat[3] = DTN_86_SENSOR_MQ;
           TRAN_info1.source_dev_num = ( DTN_86_SENSOR_MQ << 8 | DTN_86_SENSOR_MQ >> 8 );     
 
@@ -277,12 +280,43 @@ u8 Rs485_COMM_msg_process(char *tab)
 		  dat[8+8+1] = fire_check; 
 
 #endif
+#ifdef power_outlet
+          dat[3] = DTN_86_power_outlet;
+          TRAN_info1.source_dev_num = ( DTN_86_power_outlet << 8 | DTN_86_power_outlet >> 8 );     
+
+          TRAN_info1.data_len = power_outlet_LEN   ; 
+
+		    dat[8+8] = Rly_Vlue; 
+		  
+#endif
           Rs485_COMM_SD_load_buf( 0xAAAA,0xBBBB, &TRAN_info1, dat ,TRAN_info1.data_len );	
          
         }
         
       }break; 
-      
+       case control_info :    //收到控制命令  返回
+      {    
+
+#ifdef power_outlet
+
+        Rly(fuc_dat[16]);
+        LED_b(0);
+        LED_r(0);
+        Rly_Vlue ? LED_r(1) : LED_b(1);
+
+        dat[1] = upload_info; //
+
+          dat[3] = DTN_86_power_outlet;
+          TRAN_info1.source_dev_num = ( DTN_86_power_outlet << 8 | DTN_86_power_outlet >> 8 );     
+
+          TRAN_info1.data_len = power_outlet_LEN   ; 
+
+		    dat[8+8] = Rly_Vlue; 
+
+        Rs485_COMM_SD_load_buf( 0xAAAA,0xBBBB,&TRAN_info1,dat,TRAN_info1.data_len );
+#endif      
+      ; 
+      }break;
       case query_dev_info :    //收到查询命令  返回
       {    
         dat[1] = upload_info; //
@@ -295,7 +329,7 @@ u8 Rs485_COMM_msg_process(char *tab)
 		
 				  dat[8+8] = body_check; 
 				  
-#else	
+//#else	
 				  dat[3] = DTN_86_SENSOR_MQ;
 				  TRAN_info1.source_dev_num = ( DTN_86_SENSOR_MQ << 8 | DTN_86_SENSOR_MQ >> 8 );	 
 		
@@ -312,7 +346,15 @@ u8 Rs485_COMM_msg_process(char *tab)
 				  dat[8+8+1] = fire_check; 
 		
 #endif
+#ifdef power_outlet
+          dat[3] = DTN_86_power_outlet;
+          TRAN_info1.source_dev_num = ( DTN_86_power_outlet << 8 | DTN_86_power_outlet >> 8 );     
 
+          TRAN_info1.data_len = power_outlet_LEN   ; 
+
+		    dat[8+8] = Rly_Vlue; 
+		  
+#endif
         
         Rs485_COMM_SD_load_buf( 0xAAAA,0xBBBB,&TRAN_info1,dat,TRAN_info1.data_len );
       

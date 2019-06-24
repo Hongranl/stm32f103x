@@ -494,6 +494,7 @@ INTERRUPT_HANDLER(TIM6_UPD_OVF_TRG_IRQHandler, 23)
     (gb_countdown == 0) ? (gb_countdown = gb_countdown) : (gb_countdown--);
 	 (gb_countdown_uart == 0) ? (gb_countdown_uart = gb_countdown_uart) : (gb_countdown_uart--);
 	
+  (gb_init_countdown == 0) ? (gb_init_countdown = gb_init_countdown) : (gb_init_countdown--);
     if(uart_rx_flg)
     {
        UART_NO_DAT_TIME++;

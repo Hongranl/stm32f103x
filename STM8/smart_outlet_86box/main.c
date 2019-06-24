@@ -64,6 +64,7 @@ TRAN_D_struct TRAN_info1;
 NETstatus gb_Status = net_error;
 NETstatus gb_Status_pre = net_error;
 u16 gb_countdown = 0;
+u16 gb_init_countdown = 0;
 u16 gb_countdown_uart = 0;
 u16 gb_sensor_data[2];
 
@@ -254,7 +255,39 @@ void check_sensor(void)
 	}
 
 #endif
+#ifdef power_outlet
 
+	if (gb_countdown_uart < 1)
+	{
+		u8 dat[30] = {0};
+
+		gb_countdown_uart = 6000;
+
+		dat[0] = 0;
+		dat[1] = upload_info;
+		dat[2] = 0;
+
+		dat[4] = (u8)MCU_UID[0];
+		dat[5] = (u8)(MCU_UID[0] >> 8);
+		dat[6] = (u8)(MCU_UID[0] >> 16);
+		dat[7] = (u8)(MCU_UID[0] >> 24);
+
+		memset(dat + 8, 0, 8);
+
+		TRAN_info1.source_dev_num = (DTN_86_power_outlet << 8 | DTN_86_power_outlet >> 8);
+
+		TRAN_info1.data_len = power_outlet_LEN;
+
+		///------------------通用数据-------------------------------------------------///
+		dat[3] = DTN_86_power_outlet; //
+
+		memset(dat + 16, 0, 1);
+		
+		dat[16] = Rly_Vlue;
+		Rs485_COMM_SD_load_buf(0xAAAA, 0xBBBB, &TRAN_info1, dat, TRAN_info1.data_len);
+	}
+
+#endif
 	;
 }
 
@@ -265,8 +298,18 @@ void check_key(void)
 	{
 
 		delay_ms(20);
-		while (KEY && i++ < 100)
+		while (KEY && ++i < 100)
 			delay_ms(50);
+		if (i < 3)
+		{
+			
+#ifdef power_outlet	
+			Rly(!Rly_Vlue);
+			LED_b(0);
+			LED_r(0);
+			Rly_Vlue ? LED_r(1) : LED_b(1);
+#endif
+		}
 		if (i > 90)
 		{
 			TRAN_info1.data_len = 2;
@@ -296,7 +339,7 @@ void check_key(void)
 
 void net_led_status(void)
 {
-
+#ifdef tem_hum_light
 	if (gb_Status == net_wait)
 	{
 
@@ -322,6 +365,81 @@ void net_led_status(void)
 	{ //if(gb_Status_pre != net_online)
 		LED(1);
 	}
+#endif
+#ifdef sensor_md_BODY
+	if (gb_Status == net_wait)
+	{
+
+		if (gb_countdown > 1)
+		{
+			LED(0);
+			delay_ms(300);
+			LED(1);
+			delay_ms(300);
+		}
+		else //超时---->>>>>>未入网
+		{
+			gb_Status = net_error;
+			LED(0);
+		}
+	}
+	else if (gb_Status == net_error)
+	{
+		//if(gb_Status_pre != net_error)
+		LED(0);
+	}
+	else if (gb_Status == net_online)
+	{ //if(gb_Status_pre != net_online)
+		LED(1);
+	}
+#endif
+#ifdef power_outlet	
+	//这里未修改为宏定义，需要手动编写
+	if (gb_Status == net_wait)
+	{
+
+		if (gb_countdown > 1)
+		{
+			LED_b(0);
+			LED_r(0);
+			delay_ms(300);
+			LED_r(1);
+			delay_ms(300);
+		}
+		else //超时---->>>>>>未入网
+		{
+			gb_Status = net_error;
+			LED_b(0);
+			LED_r(0);
+			Rly_Vlue ? LED_r(1) : LED_b(1);
+			
+		}
+	}
+	else if (gb_Status == net_error)
+	{
+		u8 i = 0;
+		LED_b(0);
+		for ( ; i < 7; i++)
+		{
+			LED_r(i%2);
+			delay_ms(200);
+		}
+		LED_r(0);
+		
+	}
+	else if (gb_Status == net_online)
+	{ 
+		u8 i = 0;
+		LED_r(0);
+		for ( ; i < 7; i++)
+		{
+			LED_b(i%2);
+			delay_ms(200);
+		}
+		LED_b(0);
+	}
+#endif
+	;
 }
 
 u8 chcek_run_status(u8 status)
@@ -779,6 +897,13 @@ void All_Config(void)
 	TIM4->CR1 |= TIM4_CR1_CEN;
 
 	enableInterrupts();
+#ifdef power_outlet
+	gb_init_countdown = 6000*5;
+	while (gb_init_countdown) {
+		net_led_status();
+		Rs485_COMM_uart_fuc();
+	}
+#endif
 }
 
 void JDQ_WINDOW_UP(void)
@@ -1104,6 +1229,8 @@ void IO_Init(void)
 	ADC1_StartConversion();
 	BEEP_s(0);
 
+	LED(0);
+
 #endif
 
 #ifdef tem_hum_light
@@ -1113,6 +1240,28 @@ void IO_Init(void)
 	//led1
 	GPIOC->DDR |= Pin(7); //输出模式
 	GPIOC->CR1 |= Pin(7); //推挽输出
+	LED(0);
+#endif
+
+#ifdef power_outlet
+
+	//KEY
+	GPIOA->DDR &= ~GPIO_PIN_1; //输入模式
+	//led_r
+	GPIOD->DDR |= GPIO_PIN_2; //输出模式
+	GPIOD->CR1 |= GPIO_PIN_2; //推挽输出
+	//led_b
+	GPIOD->DDR |= GPIO_PIN_3; //输出模式
+	GPIOD->CR1 |= GPIO_PIN_3; //推挽输出
+	//z_rest
+	GPIOD->DDR |= GPIO_PIN_4; //输出模式
+	GPIOD->CR1 |= GPIO_PIN_4; //推挽输出
+	//Rly
+	GPIOC->DDR |= GPIO_PIN_7; //输出模式
+	GPIOC->CR1 |= GPIO_PIN_7; //推挽输出
+	LED_r(0);
+	LED_b(0);
+	Rly(0);
 #endif
 
 	//串口-TX
@@ -1122,7 +1271,7 @@ void IO_Init(void)
 	//串口-RX
 	GPIOD->DDR &= ~BIT(6); //输入模式
 
-	LED(0);
+	
 }
 
 /**
