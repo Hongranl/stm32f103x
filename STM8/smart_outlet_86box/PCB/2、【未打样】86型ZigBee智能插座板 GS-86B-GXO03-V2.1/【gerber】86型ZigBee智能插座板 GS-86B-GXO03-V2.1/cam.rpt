@@ -1,0 +1,16 @@
+CAMtasticDXP Drill Report
+Serial Number:0000-00-00000
+Drill File: E:\2、GTA项目及开发资料\10、智能产品\1、PCB库\6、【PCB】86型ZigBee智能插座板 GS-86B-GXO03\2、【未打样】86型ZigBee智能插座板 GS-86B-GXO03-V2.0\【gerber】86型ZigBee智能插座板 GS-86B-GXO03-V2.1\cam.drl
+Format: 2.3
+Units: English (Inch)
+Step & Repeat Codes Used: NO
+
+
+TOOL		SIZE		COUNT
+====		======		=====
+
+ 1 		0.0118		103
+ 3 		0.0350		9
+ 5 		0.0362		4
+ 6 		0.0394		6
+ 8 		0.0472		2

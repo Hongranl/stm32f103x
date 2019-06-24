@@ -118,15 +118,16 @@
 #define READ_REG(REG) ((REG))
 #define UID_BASE 0X4865
 
-    typedef enum {
-            join_sw = 1,       // 入网开关
-            leave_net,         // 退网命令
-            notify_net_status, // 通知入网状态
-            upload_info,       // 上传信息到Android
-            control_info,      // 控制设备
-            query_dev_info     // 查询设备信息
+typedef enum
+{
+        join_sw = 1,       // 入网开关
+        leave_net,         // 退网命令
+        notify_net_status, // 通知入网状态
+        upload_info,       // 上传信息到Android
+        control_info,      // 控制设备
+        query_dev_info     // 查询设备信息
 
-    } dev_cmd;
+} dev_cmd;
 
 typedef enum
 {
@@ -137,7 +138,7 @@ typedef enum
 } NETstatus;
 //#define sensor_md_BODY
 #define tem_hum_light
-
+//#define power_outlet
 #define Pin(P) (1 << P)
 //TODO: 这是一个未声明的分支
 // SENSOR传感器使能，（定义:使用人体，反之使用煤气报警）
@@ -161,7 +162,7 @@ typedef enum
         (a == 0) ? (GPIOC->ODR &= ~Pin(7)) : (GPIOC->ODR |= Pin(7))
 
 #endif
-
+// 定义使用温湿度和光照强敌模块！
 #ifdef tem_hum_light
 
 #define KEY (((GPIOC->IDR & Pin(6)) == 0) ? 1 : 0)

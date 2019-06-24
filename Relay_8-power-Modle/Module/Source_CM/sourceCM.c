@@ -59,30 +59,7 @@ void RS485_Send_Data(unsigned char *buf, unsigned char len)
 	RS485_TX_EN = 0;
 
 	//设置为接收模式
-	//设置为接收模式
-	//设置为接收模式
-	//设置为接收模式
-	//设置为接收模式
-	//设置为接收模式
-	//设置为接收模式
-	//设置为接收模式
-	//设置为接收模式
-	//设置为接收模式
-	//设置为接收模式
-	//设置为接收模式
-	//设置为接收模式
-	//设置为接收模式
-	//设置为接收模式
-	//设置为接收模式
-	//设置为接收模式
-	//设置为接收模式
-	//设置为接收模式
-	//设置为接收模式
-	//设置为接收模式
-	//设置为接收模式
-	//设置为接收模式
-				//设置为接收模式	
-	//设置为接收模式
+
 }
 
 void SOURCE_USARTInitCallback(uint32_t event)
@@ -93,31 +70,6 @@ void SOURCE_USARTInitCallback(uint32_t event)
 	TX_mask = ARM_USART_EVENT_TRANSFER_COMPLETE |
 		  ARM_USART_EVENT_SEND_COMPLETE |
 		  ARM_USART_EVENT_TX_COMPLETE;
-	         ARM_USART_EVENT_TX_COMPLETE; 
-		  ARM_USART_EVENT_TX_COMPLETE;
-	ARM_USART_EVENT_TX_COMPLETE;
-	ARM_USART_EVENT_TX_COMPLETE;
-	ARM_USART_EVENT_TX_COMPLETE;
-	ARM_USART_EVENT_TX_COMPLETE;
-	ARM_USART_EVENT_TX_COMPLETE;
-	ARM_USART_EVENT_TX_COMPLETE;
-	ARM_USART_EVENT_TX_COMPLETE;
-	ARM_USART_EVENT_TX_COMPLETE;
-	ARM_USART_EVENT_TX_COMPLETE;
-	ARM_USART_EVENT_TX_COMPLETE;
-	ARM_USART_EVENT_TX_COMPLETE;
-	ARM_USART_EVENT_TX_COMPLETE;
-	ARM_USART_EVENT_TX_COMPLETE;
-	ARM_USART_EVENT_TX_COMPLETE;
-	ARM_USART_EVENT_TX_COMPLETE;
-	ARM_USART_EVENT_TX_COMPLETE;
-	ARM_USART_EVENT_TX_COMPLETE;
-	ARM_USART_EVENT_TX_COMPLETE;
-	ARM_USART_EVENT_TX_COMPLETE;
-	ARM_USART_EVENT_TX_COMPLETE;
-	ARM_USART_EVENT_TX_COMPLETE;
-	ARM_USART_EVENT_TX_COMPLETE;
-
 	RX_mask = ARM_USART_EVENT_RECEIVE_COMPLETE |
 		  ARM_USART_EVENT_TRANSFER_COMPLETE |
 		  ARM_USART_EVENT_RX_TIMEOUT;
@@ -326,56 +278,8 @@ void sourceCM_Thread(const void *argument)
 		}
 
 		if (Data_tempDP.power_p != actuatorData.power_p ||
-		    Data_tempDP.power_v != actuatorData.power_v ||
-		    Data_tempDP.power_v != actuatorData.power_v ||
-		    Data_tempDP.power_v != actuatorData.power_v ||
-		    Data_tempDP.power_v != actuatorData.power_v ||
-		    Data_tempDP.power_v != actuatorData.power_v ||
-		    Data_tempDP.power_v != actuatorData.power_v ||
-		    Data_tempDP.power_v != actuatorData.power_v ||
-		    Data_tempDP.power_v != actuatorData.power_v ||
-		    Data_tempDP.power_v != actuatorData.power_v ||
-		    Data_tempDP.power_v != actuatorData.power_v ||
-		    Data_tempDP.power_v != actuatorData.power_v ||
-		    Data_tempDP.power_v != actuatorData.power_v ||
-		    Data_tempDP.power_v != actuatorData.power_v ||
-		    Data_tempDP.power_v != actuatorData.power_v ||
-		    Data_tempDP.power_v != actuatorData.power_v ||
-		    Data_tempDP.power_v != actuatorData.power_v ||
-		    Data_tempDP.power_v != actuatorData.power_v ||
-		    Data_tempDP.power_v != actuatorData.power_v ||
-		    Data_tempDP.power_v != actuatorData.power_v ||
-		    Data_tempDP.power_v != actuatorData.power_v ||
-		    Data_tempDP.power_v != actuatorData.power_v ||
-		    Data_tempDP.power_v != actuatorData.power_v ||
-		    Data_tempDP.power_v != actuatorData.power_v ||
-					Data_tempDP.power_v != actuatorData.power_v || 
-		    Data_tempDP.power_v != actuatorData.power_v ||
-		    Data_tempDP.power_i != actuatorData.power_i)
-					Data_tempDP.power_i != actuatorData.power_i)					
-		    Data_tempDP.power_i != actuatorData.power_i)
-					Data_tempDP.power_i != actuatorData.power_i)					
-		    Data_tempDP.power_i != actuatorData.power_i)
-					Data_tempDP.power_i != actuatorData.power_i)					
-		    Data_tempDP.power_i != actuatorData.power_i)
-					Data_tempDP.power_i != actuatorData.power_i)					
-		    Data_tempDP.power_i != actuatorData.power_i)
-					Data_tempDP.power_i != actuatorData.power_i)					
-		    Data_tempDP.power_i != actuatorData.power_i)
-					Data_tempDP.power_i != actuatorData.power_i)					
-		    Data_tempDP.power_i != actuatorData.power_i)
-					Data_tempDP.power_i != actuatorData.power_i)					
-		    Data_tempDP.power_i != actuatorData.power_i)
-					Data_tempDP.power_i != actuatorData.power_i)					
-		    Data_tempDP.power_i != actuatorData.power_i)
-					Data_tempDP.power_i != actuatorData.power_i)					
-		    Data_tempDP.power_i != actuatorData.power_i)
-					Data_tempDP.power_i != actuatorData.power_i)					
-		    Data_tempDP.power_i != actuatorData.power_i)
-					Data_tempDP.power_i != actuatorData.power_i)					
-		    Data_tempDP.power_i != actuatorData.power_i)
-					Data_tempDP.power_i != actuatorData.power_i)					
-		    Data_tempDP.power_i != actuatorData.power_i)
+		    Data_tempDP.power_v != actuatorData.power_v ||		    
+		    Data_tempDP.power_i != actuatorData.power_i)				
 					{
 
 						Data_tempDP.power_p = actuatorData.power_p;
@@ -470,31 +374,6 @@ void sourceCM_Thread(const void *argument)
 			//
 			//			gb_databuff[0]=0xdd;
 			//			memcpy(gb_databuff+1, (RS485_RX_BUF), 30);gb_Exmod_key = true;osSignalSet(tid_USARTWireless_Thread, 0x03);
-			//
-//			
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
-			//
 			len_b = RS485_RX_BUF[13] + 16;
 			if (RS485_RX_BUF[len_b - 2] == ADD_CHECK_8b(RS485_RX_BUF + 4, len_b - 6) && RS485_RX_BUF[18] >= 0x33 && RS485_RX_BUF[19] >= 0x33 && RS485_RX_BUF[20] >= 0x33)
 			{

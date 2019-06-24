@@ -1,4 +1,20 @@
-/* Includes ------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------
+ *
+ * Copyright (C),2014-2019, guoshun Tech. Co., Ltd.
+ *
+ * @Project:    智能实训室项目
+ * @Version:    V 0.2 
+ * @Module:     main
+ * @Author:     RanHongLiang
+ * @Date:       2019-06-20 14:52:41
+ * @Description: 
+ *	智能插座，
+ *	重启时：蓝灯闪烁表示已入网，红灯闪烁表示未入网。
+ *	正常运行时：
+ * 		单次按键切换状态，长按按键3S进入网络切换状态
+ * 		灯亮即电源指示，蓝灯表示通电未输出市电，红灯反之。
+ * 		（红灯闪烁，为切换网络状态，蓝灯闪烁为以入网）
+ *---------------------------------------------------------------------------*/
 
 #include "ALL_Includes.h"
 
@@ -6,7 +22,6 @@
 #define SYS_CLOCK 16
 #define TIM4_PERIOD 124
 
-u8 hold_down = 0;
 u8 Data_Len = 0;
 
 u8 uart_rx_flg = 0;
@@ -18,7 +33,7 @@ u16 motor_ck_time = 0;
 u16 LED_time = 0;
 
 u16 alarm_time = 0;
-//ssss
+
 u8 join_flg = 0; //入网状态
 
 uint32_t ad_ck_0_num = 0;
@@ -42,6 +57,7 @@ u8 LIGHT_3_STATUS = 0;
 
 //
 u8 maxcnt = 0;
+uint32_t SystemCnt = 0; //系统运行时间(ms)
 
 TRAN_D_struct TRAN_info1;
 
@@ -70,15 +86,8 @@ void check_key(void);
 void net_led_status(void);
 void check_sensor(void);
 u16 get_adc(u8 times);
+void HAL_GetUID(uint32_t *UID);
 
-/* Private functions ---------------------------------------------------------*/
-/* Public functions ----------------------------------------------------------*/
-
-/**
-  * @brief  Main program.
-  * @param  None
-  * @retval None
-  */
 void main(void)
 {
 	All_Config();
@@ -96,7 +105,12 @@ void main(void)
 	TRAN_info1.source_addr[3] = (u8)(MCU_UID[0] >> 24);
 
 	TRAN_info1.TYPE_NUM = 3; //数据格式号: 第三套数据格式  用于ZIGBEE（非标准）  设备端
-
+				 //  GPIO_Init(SHT10_SCK_PORT, SHT10_SCK_PIN,GPIO_MODE_OUT_PP_HIGH_FAST);
+				 //    while(1)
+				 //    	{ SHT10_Dly();
+				 //                SHT10_SCK_H();
+				 //                SHT10_Dly();
+				 //                SHT10_SCK_L();}
 	while (1)
 	{
 		check_key();
@@ -130,11 +144,11 @@ void check_sensor(void)
 
 			memset(dat + 8, 0, 8);
 
-			TRAN_info1.source_dev_num = (DTN_86_SENSOR_body << 8 | DTN_86_SENSOR_body >> 8);
+			TRAN_info1.source_dev_num = (SENSOR_body << 8 | SENSOR_body >> 8);
 
 			TRAN_info1.data_len = 16 + 1;
 
-			dat[3] = DTN_86_SENSOR_body; //
+			dat[3] = SENSOR_body; //
 
 			dat[8 + 8] = body_check;
 			gb_sensor_data[0] = body_check;
@@ -145,7 +159,7 @@ void check_sensor(void)
 		}
 	}
 
-#else
+	//#else
 	//有改变就上传,
 	if ((get_adc(1) > 850) || (fire_check != gb_sensor_data[1]) || (gb_countdown_uart < 1))
 	{
@@ -186,14 +200,10 @@ void check_sensor(void)
 
 			gb_countdown_uart = 6000;
 
-			hold_down++; //初始化延时60秒
 			if ((buff > 850) || (fire_check == 1))
 			{
-				if (hold_down > 9)
-				{
-					BEEP_s(1);
-					hold_down = 9;
-				}
+
+				BEEP_s(1);
 			}
 			else
 				BEEP_s(0);
@@ -203,6 +213,49 @@ void check_sensor(void)
 	}
 
 #endif
+#ifdef tem_hum_light
+
+	if (gb_countdown_uart < 1)
+	{
+		u8 dat[30] = {0};
+
+		gb_countdown_uart = 6000;
+
+		dat[0] = 0;
+		dat[1] = upload_info;
+		dat[2] = 0;
+
+		dat[4] = (u8)MCU_UID[0];
+		dat[5] = (u8)(MCU_UID[0] >> 8);
+		dat[6] = (u8)(MCU_UID[0] >> 16);
+		dat[7] = (u8)(MCU_UID[0] >> 24);
+
+		memset(dat + 8, 0, 8);
+
+		TRAN_info1.source_dev_num = (SENSOR_tem_hum_light << 8 | SENSOR_tem_hum_light >> 8);
+
+		TRAN_info1.data_len = SENSOR_tem_LEN;
+
+		///------------------通用数据-------------------------------------------------///
+		dat[3] = SENSOR_tem_hum_light; //
+
+		memset(dat + 16, 0, 12);
+		tempMS_Thread(dat + 0x10);
+		lightMS_Thread(dat + 0x18);
+		//				SHT1X_Config();
+		//				dat[24] = SHT1X_GetValue(&tem,&hum,&temp_real,&hum_real);
+		//
+		//
+		//				//f =CLK_GetClockFreq();
+		//				memcpy(dat+16,&tem,2);
+		//				memcpy(dat+20,&hum,2);
+
+		Rs485_COMM_SD_load_buf(0xAAAA, 0xBBBB, &TRAN_info1, dat, TRAN_info1.data_len);
+	}
+
+#endif
+
+	;
 }
 
 void check_key(void)
@@ -317,6 +370,13 @@ u16 get_adc(u8 times)
 	}
 
 	return ad_value / times;
+}
+
+void HAL_GetUID(uint32_t *UID)
+{
+	UID[0] = (uint32_t)(READ_REG(*((uint32_t *)UID_BASE)));
+	UID[1] = (uint32_t)(READ_REG(*((uint32_t *)(UID_BASE + 4U))));
+	UID[2] = (uint32_t)(READ_REG(*((uint32_t *)(UID_BASE + 8U))));
 }
 
 void jiance_light_key(void)
@@ -709,6 +769,8 @@ void All_Config(void)
 	UART1_ITConfig(UART1_IT_RXNE_OR, ENABLE);
 	UART1_Cmd(ENABLE);
 
+	HAL_GetUID(MCU_UID);
+
 	TIM4->PSCR = (uint8_t)(TIM4_PRESCALER_128);
 	/* Set the Autoreload value */
 	TIM4->ARR = (uint8_t)(TIM4_PERIOD);
@@ -1018,7 +1080,7 @@ void IO_Init(void)
 	GPIOA->DDR &= ~Pin(1); //输入模式
 	GPIOA->DDR &= ~Pin(2); //输入模式
 
-#else
+	//#else
 
 	//mq5煤气传感器，fire火焰传感器
 	GPIOA->DDR |= Pin(3); //输出模式
@@ -1044,11 +1106,20 @@ void IO_Init(void)
 
 #endif
 
-	//串口
+#ifdef tem_hum_light
+
+	//KEY
+	GPIOC->DDR &= ~Pin(6); //输入模式
+	//led1
+	GPIOC->DDR |= Pin(7); //输出模式
+	GPIOC->CR1 |= Pin(7); //推挽输出
+#endif
+
+	//串口-TX
 	GPIOD->DDR |= BIT(5); //输出模式
 	GPIOD->CR1 |= BIT(5); //推挽输出
 
-	//串口
+	//串口-RX
 	GPIOD->DDR &= ~BIT(6); //输入模式
 
 	LED(0);
