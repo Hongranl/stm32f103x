@@ -489,8 +489,7 @@ INTERRUPT_HANDLER(TIM6_UPD_OVF_TRG_IRQHandler, 23)
  
     Rs485_COMM_uart_timeout_fution();
    
-    (motor_ck_time==0)?(motor_ck_time=motor_ck_time):(motor_ck_time--);
-    (LED_time==0)?(LED_time=LED_time):(LED_time--);
+   
     (gb_countdown == 0) ? (gb_countdown = gb_countdown) : (gb_countdown--);
 	 (gb_countdown_uart == 0) ? (gb_countdown_uart = gb_countdown_uart) : (gb_countdown_uart--);
 	
@@ -509,8 +508,8 @@ INTERRUPT_HANDLER(TIM6_UPD_OVF_TRG_IRQHandler, 23)
      }
     } 
     
-    sampling_time++; 
-    alarm_time++; 
+   
+    
  }
 #endif /*STM8S903*/
 

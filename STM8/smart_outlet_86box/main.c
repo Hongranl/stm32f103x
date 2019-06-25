@@ -21,74 +21,96 @@
 //定义CPU内部时钟
 #define SYS_CLOCK 16
 #define TIM4_PERIOD 124
-
+//数据长度，go to->INTERRUPT_HANDLER()
 u8 Data_Len = 0;
-
+//接收标志，go to->INTERRUPT_HANDLER()
 u8 uart_rx_flg = 0;
-
-u8 curtain_status = 2;
-
-u16 motor_ck_time = 0;
-
-u16 LED_time = 0;
-
-u16 alarm_time = 0;
-
-u8 join_flg = 0; //入网状态
-
-uint32_t ad_ck_0_num = 0;
-
+//入网状态
+u8 join_flg = 0; 
+//mcu的板载唯一ID
 uint32_t MCU_UID[3];
-
+//按键状态
 u8 key_status = 2;
-
-u8 sampling_in_flg = 0;
-
+//串口数据计时
 u16 UART_NO_DAT_TIME = 0;
-
-u16 sampling_time = 0;
-u16 sampling_status = 0;
-
-u8 program_num = 0;
-
-u8 LIGHT_1_STATUS = 0;
-u8 LIGHT_2_STATUS = 0;
-u8 LIGHT_3_STATUS = 0;
-
-//
-u8 maxcnt = 0;
-uint32_t SystemCnt = 0; //系统运行时间(ms)
-
+//系统运行时间(ms)
+uint32_t SystemCnt = 0; 
+//消息结构体
 TRAN_D_struct TRAN_info1;
-
+//网络状态变量
 NETstatus gb_Status = net_error;
+//上一个网络状态变量
 NETstatus gb_Status_pre = net_error;
+//全局倒计时
 u16 gb_countdown = 0;
+//初始化倒计时
 u16 gb_init_countdown = 0;
+//串口倒计时，超时发送
 u16 gb_countdown_uart = 0;
+//全局传感器数据
 u16 gb_sensor_data[2];
 
+
+/**************************************
+* @description: uS(微秒)延时函数
+* @param 类型：u16 范围： 0~65535
+* @return: 无
+************************************/
 void Delay(uint16_t nCount);
-
+/**************************************
+* @description: 初始化处理函数，包括IO 、串口、 ADC等
+* @param 无
+* @return: 无
+************************************/
 void All_Config(void);
+/**************************************
+* @description: GPIO和ADC初始化
+* @param 无
+* @return: 无
+************************************/
 void IO_Init(void);
-
+/**************************************
+* @description: TIM4初始化，用于程序的全局倒计时计数
+* @param 无
+* @return: 无
+************************************/
 void TIM4_Config(void);
-
-void jiance(void);
-void jiance_light_key(void);
-
-void JDQ_WINDOW_PAUSE(void);
-void JDQ_WINDOW_UP(void);
-void JDQ_WINDOW_DOWN(void);
-
-u8 chcek_run_status(u8);
+/**************************************
+* @description: 按键值改变检测函数，长按切换网络状态，短按切换工作状态
+* @param 无
+* @return: 无
+************************************/
 void check_key(void);
+/**************************************
+* @description: 网络状态LED指示函数
+* @param 无
+* @return: 无
+************************************/
 void net_led_status(void);
+/**************************************
+* @description: 传感器状态检测，有改变就上传
+* @param 无
+* @return: 无
+************************************/
 void check_sensor(void);
-u16 get_adc(u8 times);
+/**************************************
+* @description: MCU的板载ID获取，存放在传入的指针变量中
+* @param u32的指针参数
+* @return: 无
+************************************/
 void HAL_GetUID(uint32_t *UID);
+/**************************************
+* @description: 获取当前继电器状态，并且输出对应的LED状态
+* @param {type} 
+* @return: 
+************************************/
+void put_raly2led_status(void);
 
+/**************************************
+* @description: 主函数，程序的启动的入口
+* @param 无 
+* @return: 无
+************************************/
 void main(void)
 {
 	All_Config();
@@ -123,6 +145,7 @@ void main(void)
 }
 void check_sensor(void)
 {
+
 #ifdef sensor_md_BODY
 
 	//有改变就上传
@@ -261,7 +284,7 @@ void check_sensor(void)
 	{
 		u8 dat[30] = {0};
 
-		gb_countdown_uart = 6000;
+		gb_countdown_uart = 6000*5;
 
 		dat[0] = 0;
 		dat[1] = upload_info;
@@ -293,24 +316,25 @@ void check_sensor(void)
 
 void check_key(void)
 {
-	u8 i = 0, dat[2];
+	u16 i = 0;
+	u8 dat[2];
 	if (KEY)
 	{
 
-		delay_ms(20);
-		while (KEY && ++i < 100)
-			delay_ms(50);
-		if (i < 3)
+		delay_ms(10);
+		while (KEY && (++i < 500))
+			delay_ms(10);
+		if (i > 0 && i < 100)
 		{
 			
 #ifdef power_outlet	
+			 
 			Rly(!Rly_Vlue);
-			LED_b(0);
-			LED_r(0);
-			Rly_Vlue ? LED_r(1) : LED_b(1);
+			put_raly2led_status();
+			gb_countdown_uart = 0;//改变即上传
 #endif
 		}
-		if (i > 90)
+		if (i > 400)
 		{
 			TRAN_info1.data_len = 2;
 
@@ -394,7 +418,7 @@ void net_led_status(void)
 	}
 #endif
 #ifdef power_outlet	
-	//这里未修改为宏定义，需要手动编写
+	
 	if (gb_Status == net_wait)
 	{
 
@@ -409,26 +433,24 @@ void net_led_status(void)
 		else //超时---->>>>>>未入网
 		{
 			gb_Status = net_error;
-			LED_b(0);
-			LED_r(0);
-			Rly_Vlue ? LED_r(1) : LED_b(1);
+			put_raly2led_status();
 			
 		}
 	}
-	else if (gb_Status == net_error)
+	else if (gb_Status == net_error && gb_Status_pre != gb_Status)
 	{
 		u8 i = 0;
-		LED_b(0);
+		 LED_b(0);
 		for ( ; i < 7; i++)
 		{
 			LED_r(i%2);
 			delay_ms(200);
 		}
-		LED_r(0);
-		
+		put_raly2led_status();
 	}
-	else if (gb_Status == net_online)
+	else if (gb_Status == net_online && gb_Status_pre != gb_Status)
 	{ 
+		
 		u8 i = 0;
 		LED_r(0);
 		for ( ; i < 7; i++)
@@ -436,58 +458,17 @@ void net_led_status(void)
 			LED_b(i%2);
 			delay_ms(200);
 		}
-		LED_b(0);
+		put_raly2led_status();
 	}
 #endif
+	gb_Status_pre = gb_Status;
 	;
 }
-
-u8 chcek_run_status(u8 status)
+void put_raly2led_status(void)
 {
-
-	if (status != 2)
-	{
-		if (chcek_run != 0)
-		{
-			delay_ms(11);
-			if (chcek_run != 0) //仍未启动
-				maxcnt++;
-			else
-			{
-				maxcnt = 0;
-				//KEY_MID_BLUE(1);
-				//delay_ms(1100);
-			}
-
-			if (maxcnt > 9)
-			{
-				maxcnt = 0;
-				//curtain_status = 2;
-				return 2;
-			}
-		}
-	}
-
-	return status;
-}
-
-u16 get_adc(u8 times)
-{
-
-	u8 n;
-	u32 ad_value = 0;
-	// ADC1->CR1  =0x00;    // fADC = fMASTER/2，复位即进入低功耗模式
-
-	for (n = 0; n < times; ++n)
-	{
-
-		ad_value += ADC1_GetConversionValue();
-		;
-
-		delay_ms(2);
-	}
-
-	return ad_value / times;
+	LED_b(0);
+	LED_r(0);
+	Rly_Vlue ? LED_r(1) : LED_b(1);
 }
 
 void HAL_GetUID(uint32_t *UID)
@@ -495,385 +476,6 @@ void HAL_GetUID(uint32_t *UID)
 	UID[0] = (uint32_t)(READ_REG(*((uint32_t *)UID_BASE)));
 	UID[1] = (uint32_t)(READ_REG(*((uint32_t *)(UID_BASE + 4U))));
 	UID[2] = (uint32_t)(READ_REG(*((uint32_t *)(UID_BASE + 8U))));
-}
-
-void jiance_light_key(void)
-{
-	u8 i = 0, dat[40];
-
-	dat[0] = 0;
-	dat[2] = 0; //
-
-	dat[4] = (u8)MCU_UID[0];
-	dat[5] = (u8)(MCU_UID[0] >> 8);
-	dat[6] = (u8)(MCU_UID[0] >> 16);
-	dat[7] = (u8)(MCU_UID[0] >> 24);
-
-	memset(dat + 8, 0, 8);
-
-	if (LIGHT_1_STATUS == 0)
-	{
-		KEY_LEFT_BLUE(1);
-		//KEY_LEFT_RED(0);
-		KEY_LEFT_RED(0);
-		//KEY_LEFT_BLUE(1);
-	}
-	else
-	{
-		KEY_LEFT_BLUE(0);
-		KEY_LEFT_RED(1);
-	}
-
-	if (program_num != 2)
-	{
-		if (LIGHT_2_STATUS == 0)
-		{
-			KEY_MID_BLUE(1);
-			KEY_MID_RED(0);
-		}
-		else
-		{
-			KEY_MID_BLUE(0);
-			KEY_MID_RED(1);
-		}
-	}
-	else
-	{
-		KEY_MID_BLUE(0);
-		KEY_MID_RED(0);
-	}
-
-	if (LIGHT_3_STATUS == 0)
-	{
-		KEY_RIGHT_BLUE(1);
-		KEY_RIGHT_RED(0);
-	}
-	else
-	{
-		KEY_RIGHT_BLUE(0);
-		KEY_RIGHT_RED(1);
-	}
-
-	/////////////////////////////////
-	if (KEY_1L == 0)
-	{
-		alarm_time = 0;
-		while (KEY_1L == 0)
-		{
-			if (KEY_3L == 0)
-			{
-				//判断时间//来执行入网 退网
-				if (alarm_time >= 3500)
-				{
-					//长按5S后，触发一次入网或退网
-
-					TRAN_info1.data_len = 2;
-
-					dat[0] = 0;
-					if (join_flg == 0) //如果长按5S  入网开关开，中间的灯闪5次
-					{
-						join_flg = 1;
-						dat[1] = join_sw; // //入网开关
-						KEY_MID_BLUE(0);
-						KEY_MID_RED(0);
-
-						for (i = 0; i < 5; i++)
-						{
-							KEY_LEFT_BLUE(1);
-							KEY_LEFT_RED(0);
-
-							KEY_RIGHT_BLUE(0);
-							KEY_RIGHT_RED(0);
-
-							LED_time = 300;
-							while (LED_time != 0)
-								;
-
-							KEY_LEFT_BLUE(0);
-							KEY_LEFT_RED(1);
-
-							KEY_RIGHT_BLUE(1);
-							KEY_RIGHT_RED(0);
-
-							LED_time = 300;
-							while (LED_time != 0)
-								;
-						}
-					}
-					else //如果长按5S  入网开关关，左右两边的灯闪5次
-					{
-						join_flg = 0;
-						dat[1] = leave_net; //
-
-						KEY_MID_BLUE(0);
-						KEY_MID_RED(0);
-
-						for (i = 0; i < 5; i++)
-						{
-							KEY_LEFT_BLUE(1);
-							KEY_LEFT_RED(1);
-
-							KEY_RIGHT_BLUE(1);
-							KEY_RIGHT_RED(1);
-
-							LED_time = 300;
-							while (LED_time != 0)
-								;
-
-							KEY_LEFT_BLUE(0);
-							KEY_LEFT_RED(0);
-
-							KEY_RIGHT_BLUE(0);
-							KEY_RIGHT_RED(0);
-
-							LED_time = 300;
-							while (LED_time != 0)
-								;
-						}
-					}
-					Rs485_COMM_SD_load_buf(0xAAAA, 0xBBBB, &TRAN_info1, dat, TRAN_info1.data_len);
-					return;
-				}
-			}
-		}
-
-		if (LIGHT_1_STATUS != 0)
-		{
-			LIGHT_1_STATUS = 0;
-
-			KEY_LEFT_BLUE(1);
-			KEY_LEFT_RED(0);
-
-			RLY1_OUT(RLY_OFF);
-		}
-		else
-		{
-			LIGHT_1_STATUS = 1;
-
-			KEY_LEFT_BLUE(0);
-			KEY_LEFT_RED(1);
-
-			RLY1_OUT(RLY_ON);
-		}
-
-		dat[1] = upload_info;
-
-		if (program_num == 2)
-		{
-
-			TRAN_info1.source_dev_num = (DTN_86_LIGHT_2 << 8 | DTN_86_LIGHT_2 >> 8);
-
-			TRAN_info1.data_len = 16 + 3;
-
-			dat[3] = DTN_86_LIGHT_2; //
-
-			dat[8 + 8] = 2; //1 2 3  表示路数
-
-			dat[8 + 8 + 1] = LIGHT_1_STATUS;
-			dat[8 + 8 + 2] = LIGHT_3_STATUS;
-		}
-		if (program_num == 3)
-		{
-
-			TRAN_info1.source_dev_num = (DTN_86_LIGHT_3 << 8 | DTN_86_LIGHT_3 >> 8);
-
-			TRAN_info1.data_len = 16 + 4;
-
-			dat[3] = DTN_86_LIGHT_3; //
-
-			dat[8 + 8] = 3; //1 2 3  表示路数
-
-			dat[8 + 8 + 1] = LIGHT_1_STATUS;
-			dat[8 + 8 + 2] = LIGHT_2_STATUS;
-			dat[8 + 8 + 3] = LIGHT_3_STATUS;
-		}
-
-		Rs485_COMM_SD_load_buf(0xAAAA, 0xBBBB, &TRAN_info1, dat, TRAN_info1.data_len);
-	}
-
-	if (KEY_2L == 0 && program_num == 3)
-	{
-		while (KEY_2L == 0)
-			;
-
-		if (LIGHT_2_STATUS != 0)
-		{
-			LIGHT_2_STATUS = 0;
-
-			KEY_MID_BLUE(1);
-			KEY_MID_RED(0);
-
-			RLY2_OUT(RLY_OFF);
-		}
-		else
-		{
-			LIGHT_2_STATUS = 1;
-
-			KEY_MID_BLUE(0);
-			KEY_MID_RED(1);
-
-			RLY2_OUT(RLY_ON);
-		}
-		dat[1] = upload_info;
-
-		TRAN_info1.source_dev_num = (DTN_86_LIGHT_3 << 8 | DTN_86_LIGHT_3 >> 8);
-		TRAN_info1.data_len = 16 + 4;
-
-		dat[3] = DTN_86_LIGHT_3; //
-
-		dat[8 + 8] = 3; //1 2 3  表示路数
-
-		dat[8 + 8 + 1] = LIGHT_1_STATUS;
-		dat[8 + 8 + 2] = LIGHT_2_STATUS;
-		dat[8 + 8 + 3] = LIGHT_3_STATUS;
-
-		Rs485_COMM_SD_load_buf(0xAAAA, 0xBBBB, &TRAN_info1, dat, TRAN_info1.data_len);
-	}
-
-	if (KEY_3L == 0)
-	{
-		while (KEY_3L == 0)
-		{
-			if (KEY_1L == 0)
-			{
-				//判断时间  来执行入网 退网
-
-				if (alarm_time >= 3500)
-				{
-
-					//长按5S后，触发一次入网或退网
-
-					TRAN_info1.data_len = 2;
-
-					dat[0] = 0;
-
-					if (join_flg == 0) //如果长按5S  入网开关开，中间的灯闪5次
-					{
-						join_flg = 1;
-
-						dat[1] = join_sw; //入网
-
-						KEY_MID_BLUE(0);
-						KEY_MID_RED(0);
-
-						for (i = 0; i < 5; i++)
-						{
-							KEY_LEFT_BLUE(1);
-							KEY_LEFT_RED(0);
-
-							KEY_RIGHT_BLUE(1);
-							KEY_RIGHT_RED(0);
-
-							LED_time = 300;
-							while (LED_time != 0)
-								;
-
-							KEY_LEFT_BLUE(0);
-							KEY_LEFT_RED(1);
-
-							KEY_RIGHT_BLUE(0);
-							KEY_RIGHT_RED(1);
-
-							LED_time = 300;
-							while (LED_time != 0)
-								;
-						}
-					}
-					else //如果长按5S  入网开关关，左右两边的灯闪5次
-					{
-						join_flg = 0;
-						dat[1] = leave_net; //退网
-
-						KEY_MID_BLUE(1);
-						KEY_MID_RED(1);
-
-						for (i = 0; i < 5; i++)
-						{
-							KEY_LEFT_BLUE(1);
-							KEY_LEFT_RED(1);
-
-							KEY_RIGHT_BLUE(1);
-							KEY_RIGHT_RED(1);
-
-							LED_time = 300;
-							while (LED_time != 0)
-								;
-
-							KEY_LEFT_BLUE(0);
-							KEY_LEFT_RED(0);
-
-							KEY_RIGHT_BLUE(0);
-							KEY_RIGHT_RED(0);
-
-							LED_time = 300;
-							while (LED_time != 0)
-								;
-						}
-					}
-					Rs485_COMM_SD_load_buf(0xAAAA, 0xBBBB, &TRAN_info1, dat, TRAN_info1.data_len);
-					return;
-				}
-			}
-		}
-
-		if (LIGHT_3_STATUS != 0)
-		{
-			LIGHT_3_STATUS = 0;
-
-			KEY_RIGHT_BLUE(1);
-			KEY_RIGHT_RED(0); //右边蓝灯亮
-
-			RLY3_OUT(RLY_OFF);
-		}
-		else
-		{
-			LIGHT_3_STATUS = 1;
-
-			KEY_RIGHT_BLUE(0);
-			KEY_RIGHT_RED(1); //右边红灯亮
-
-			RLY3_OUT(RLY_ON);
-		}
-
-		dat[1] = upload_info;
-
-		if (program_num == 2)
-		{
-			TRAN_info1.source_dev_num = (DTN_86_LIGHT_2 << 8 | DTN_86_LIGHT_2 >> 8);
-			TRAN_info1.data_len = 16 + 3;
-
-			dat[3] = DTN_86_LIGHT_2; //
-
-			dat[8 + 8] = 2; //1 2 3  表示路数
-
-			dat[8 + 8 + 1] = LIGHT_1_STATUS;
-			dat[8 + 8 + 2] = LIGHT_3_STATUS;
-		}
-		if (program_num == 3)
-		{
-			TRAN_info1.source_dev_num = (DTN_86_LIGHT_3 << 8 | DTN_86_LIGHT_3 >> 8);
-			TRAN_info1.data_len = 16 + 4;
-
-			dat[3] = DTN_86_LIGHT_3; //
-
-			dat[8 + 8] = 3; //1 2 3  表示路数
-
-			dat[8 + 8 + 1] = LIGHT_1_STATUS;
-			dat[8 + 8 + 2] = LIGHT_2_STATUS;
-			dat[8 + 8 + 3] = LIGHT_3_STATUS;
-		}
-
-		Rs485_COMM_SD_load_buf(0xAAAA, 0xBBBB, &TRAN_info1, dat, TRAN_info1.data_len);
-	}
-}
-
-/**
-  * @brief  Configure TIM4 to generate an update interrupt each 1ms 
-  * @param  None
-  * @retval None
-  */
-void TIM4_Config(void)
-{
 }
 
 void All_Config(void)
@@ -898,301 +500,46 @@ void All_Config(void)
 
 	enableInterrupts();
 #ifdef power_outlet
-	gb_init_countdown = 6000*5;
+
+	gb_init_countdown = 5000;
+	Z_rest(0);
+	delay_ms(20);
+	Z_rest(1);
+
 	while (gb_init_countdown) {
-		net_led_status();
+		
+		if (gb_Status == net_error )
+		{
+			u8 i = 0;
+			
+			for ( ; i < 7; i++)
+			{
+				LED_r(i%2);
+				delay_ms(200);
+			}
+			
+		}
+		else if (gb_Status == net_online )
+		{ 
+			
+			u8 i = 0;
+			
+			for ( ; i < 7; i++)
+			{
+				LED_b(i%2);
+				delay_ms(200);
+			}
+
+			gb_Status_pre = gb_Status;
+			gb_init_countdown = 0;
+		}
 		Rs485_COMM_uart_fuc();
 	}
+
+	put_raly2led_status();
 #endif
 }
 
-void JDQ_WINDOW_UP(void)
-{
-	RLY1_OUT(RLY_OFF);
-	RLY2_OUT(RLY_ON);
-}
-
-void JDQ_WINDOW_DOWN(void)
-{
-	RLY1_OUT(RLY_ON);
-	RLY2_OUT(RLY_OFF);
-}
-
-void JDQ_WINDOW_PAUSE(void)
-{
-	RLY1_OUT(RLY_OFF);
-	RLY2_OUT(RLY_OFF);
-}
-
-void jiance(void)
-{
-	u8 i = 0;
-	u8 re = 0;
-	u8 dat[50];
-
-	dat[0] = 0;
-	dat[1] = upload_info; //
-
-	dat[2] = 0;  //
-	dat[3] = 51; //   设备类型号 可以去掉
-
-	dat[4] = (u8)MCU_UID[0];
-	dat[5] = (u8)(MCU_UID[0] >> 8);
-	dat[6] = (u8)(MCU_UID[0] >> 16);
-	dat[7] = (u8)(MCU_UID[0] >> 24);
-
-	memset(dat + 8, 0, 8);
-
-	TRAN_info1.source_dev_num = (DTN_curtain << 8 | DTN_curtain >> 8);
-
-	//check run status
-
-	re = chcek_run_status(curtain_status);
-
-	if (re == 2)
-	{
-		if (curtain_status != 2)
-		{
-			TRAN_info1.data_len = 17;
-
-			dat[1] = upload_info; //
-			dat[2] = 0;	   //
-			dat[3] = DTN_curtain; //   设备号
-
-			dat[8 + 8] = 2; // 1个字节，1上 0下，2暂停
-
-			curtain_status = 2;
-			Rs485_COMM_SD_load_buf(0xAAAA, 0xBBBB, &TRAN_info1, dat, TRAN_info1.data_len); //发送命令
-												       // delay_ms(1000);
-		}
-
-		LED_PAUSE();
-
-		JDQ_WINDOW_PAUSE();
-		key_status = 2;
-
-		if (curtain_status != 2)
-		{
-			TRAN_info1.data_len = 17;
-			dat[8 + 8] = 2; //1个字节，1上 0下，2暂停
-			curtain_status = 2;
-			Rs485_COMM_SD_load_buf(0xAAAA, 0xBBBB, &TRAN_info1, dat, TRAN_info1.data_len);
-			// delay_ms(1000);
-		}
-	}
-
-	//	  if( SAMPING_PD2_Pin_RD != 0 )  //如果超过50MS  说明是停止运行的
-	//	  {
-	//		    if( sampling_time > 300 )
-	//		    {
-	//			      sampling_time = 300;
-	//			      sampling_in_flg = 0;  //停止
-	//		    }
-	//	  }
-	//	  else
-	//	  {
-	//		    sampling_time = 0;
-	//		    sampling_in_flg = 1;
-	//		    motor_ck_time = 500;
-	//	  }
-	//
-	//	  if( motor_ck_time == 0 )
-	//	  {
-	//		    if( sampling_in_flg == 0 )
-	//		    {
-	//			      if(curtain_status != 2)
-	//			      {
-	//				        TRAN_info1.data_len = 17 ;
-	//
-	//				        dat[1] = upload_info; //
-	//				        dat[2] = 0;  //
-	//				        dat[3] = DTN_curtain; //   设备号
-	//
-	//				        dat[8+8] = 2; // 1个字节，1上 0下，2暂停
-	//
-	//				        curtain_status = 2;
-	//				        Rs485_COMM_SD_load_buf( 0xAAAA,0xBBBB, &TRAN_info1 , dat ,TRAN_info1.data_len );  //发送命令
-	//			        	// delay_ms(1000);
-	//			      }
-	//
-	//			      LED_PAUSE();
-	//
-	//			      JDQ_WINDOW_PAUSE();
-	//
-	//			      if( curtain_status != 2 )
-	//			      {
-	//				        TRAN_info1.data_len = 17   ;
-	//				        dat[8+8] = 2; //1个字节，1上 0下，2暂停
-	//				        curtain_status = 2;
-	//				        Rs485_COMM_SD_load_buf( 0xAAAA,0xBBBB, &TRAN_info1 , dat ,TRAN_info1.data_len );
-	//				        // delay_ms(1000);
-	//			      }
-	//		    }
-	//	  }
-	//
-	if (DOWN_IN == 0)
-	{
-		Delay(5000);
-
-		if (DOWN_IN == 0)
-		{
-			alarm_time = 0;
-			motor_ck_time = 1500;
-
-			sampling_time = 0;
-
-			LED_DOWN();
-
-			JDQ_WINDOW_DOWN();
-
-			if (key_status != 0)
-			{
-				TRAN_info1.data_len = 17;
-
-				dat[2] = 0;	   //
-				dat[3] = DTN_curtain; //   设备号
-
-				dat[8 + 8] = 0; //1个字节，1上 0下，2暂停
-				curtain_status = 0;
-				Rs485_COMM_SD_load_buf(0xAAAA, 0xBBBB, &TRAN_info1, dat, TRAN_info1.data_len);
-			}
-			key_status = 0; //down
-		}
-	}
-	else if (PAUSE_IN == 0)
-	{
-		Delay(5000);
-
-		if (PAUSE_IN == 0)
-		{
-
-			LED_PAUSE();
-
-			JDQ_WINDOW_PAUSE();
-
-			if (alarm_time >= 3500) //长按5S后，触发一次入网或退网
-			{
-				TRAN_info1.data_len = 2;
-
-				dat[0] = 0;
-				dat[2] = 0;	   //
-				dat[3] = DTN_curtain; //   设备号
-
-				if (join_flg == 0) //如果长按5S  入网开关开，中间的灯闪5次
-				{
-					join_flg = 1;
-
-					dat[1] = join_sw; // 入网开关
-
-					//LED_JOIN();
-					for (i = 0; i < 5; i++)
-					{
-						KEY_MID_RED(1);
-						KEY_MID_BLUE(0);
-
-						LED_time = 300;
-						while (LED_time != 0)
-							;
-
-						KEY_MID_RED(0);
-						KEY_MID_BLUE(1);
-
-						LED_time = 300;
-						while (LED_time != 0)
-							;
-					}
-				}
-				else //如果长按5S  入网开关关，左右两边的灯闪5次
-				{
-					join_flg = 0;
-					dat[1] = leave_net; //退网
-
-					// LED_JOIN(join_flg);
-
-					for (i = 0; i < 5; i++)
-					{
-						KEY_LEFT_RED(0);
-						KEY_MID_RED(0);
-						KEY_RIGHT_RED(0);
-
-						KEY_LEFT_BLUE(1);
-						KEY_MID_BLUE(1);
-						KEY_RIGHT_BLUE(1);
-
-						LED_time = 300;
-						while (LED_time != 0)
-							;
-
-						KEY_LEFT_RED(1);
-						KEY_MID_RED(0);
-						KEY_RIGHT_RED(1);
-
-						KEY_LEFT_BLUE(0);
-						KEY_MID_BLUE(1);
-						KEY_RIGHT_BLUE(0);
-
-						LED_time = 300;
-						while (LED_time != 0)
-							;
-					}
-				}
-
-				Rs485_COMM_SD_load_buf(0xAAAA, 0xBBBB, &TRAN_info1, dat, TRAN_info1.data_len);
-
-				alarm_time = 0;
-			}
-			else
-			{
-				if (key_status != 2)
-				{
-					TRAN_info1.data_len = 17;
-
-					dat[2] = 0;	   //
-					dat[3] = DTN_curtain; //   设备号
-
-					dat[8 + 8] = 2; //1个字节，1上 0下，2暂停
-
-					curtain_status = 2;
-					Rs485_COMM_SD_load_buf(0xAAAA, 0xBBBB, &TRAN_info1, dat, TRAN_info1.data_len);
-				}
-				key_status = 2;
-			}
-		}
-	}
-	else if (UP_IN == 0)
-	{
-		Delay(5000);
-		if (UP_IN == 0)
-		{
-			alarm_time = 0;
-			motor_ck_time = 1500;
-
-			sampling_time = 0;
-
-			LED_UP(); //上升灯状态
-
-			JDQ_WINDOW_UP();
-
-			if (key_status != 1)
-			{
-				TRAN_info1.data_len = 17;
-
-				dat[2] = 0;	   //
-				dat[3] = DTN_curtain; //   设备号
-
-				dat[8 + 8] = 1; //1个字节，1上 0下，2暂停
-				curtain_status = 1;
-				Rs485_COMM_SD_load_buf(0xAAAA, 0xBBBB, &TRAN_info1, dat, TRAN_info1.data_len);
-			}
-
-			key_status = 1; //up
-		}
-	}
-	else
-	{
-		alarm_time = 0;
-	}
-}
 
 void IO_Init(void)
 {
@@ -1261,7 +608,9 @@ void IO_Init(void)
 	GPIOC->CR1 |= GPIO_PIN_7; //推挽输出
 	LED_r(0);
 	LED_b(0);
+	Z_rest(1);
 	Rly(0);
+	
 #endif
 
 	//串口-TX
@@ -1274,11 +623,6 @@ void IO_Init(void)
 	
 }
 
-/**
-  * @brief Delay
-  * @param nCount
-  * @retval None
-  */
 void Delay(uint16_t nCount)
 {
 	/* Decrement nCount value */
@@ -1287,13 +631,6 @@ void Delay(uint16_t nCount)
 		nCount--;
 	}
 }
-
-/**
-  * 毫秒延时
-  *
-  *
-  *
-  */
 
 void delay_ms(uint16_t nCount)
 {
@@ -1329,9 +666,3 @@ void assert_failed(uint8_t *file, uint32_t line)
 	}
 }
 #endif
-
-/**
-  * @}
-  */
-
-/******************* (C) COPYRIGHT 2011 STMicroelectronics *****END OF FILE****/

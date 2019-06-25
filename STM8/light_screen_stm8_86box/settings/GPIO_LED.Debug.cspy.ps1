@@ -23,9 +23,9 @@ param([String]$debugfile = "");
 
 if ($debugfile -eq "")
 {
-& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "D:\桌面\2L_LIGHT_86_stm8（幕帘控制 灯光控制YQ）\settings\GPIO_LED.Debug.general.xcl" --backend -f "D:\桌面\2L_LIGHT_86_stm8（幕帘控制 灯光控制YQ）\settings\GPIO_LED.Debug.driver.xcl" 
+& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "D:\Desktop\stm32f103x\STM8\light_screen_stm8_86box\settings\GPIO_LED.Debug.general.xcl" --backend -f "D:\Desktop\stm32f103x\STM8\light_screen_stm8_86box\settings\GPIO_LED.Debug.driver.xcl" 
 }
 else
 {
-& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "D:\桌面\2L_LIGHT_86_stm8（幕帘控制 灯光控制YQ）\settings\GPIO_LED.Debug.general.xcl" --debug_file=$debugfile --backend -f "D:\桌面\2L_LIGHT_86_stm8（幕帘控制 灯光控制YQ）\settings\GPIO_LED.Debug.driver.xcl" 
+& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\common\bin\cspybat" -f "D:\Desktop\stm32f103x\STM8\light_screen_stm8_86box\settings\GPIO_LED.Debug.general.xcl" --debug_file=$debugfile --backend -f "D:\Desktop\stm32f103x\STM8\light_screen_stm8_86box\settings\GPIO_LED.Debug.driver.xcl" 
 }

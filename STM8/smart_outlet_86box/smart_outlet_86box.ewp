@@ -488,7 +488,7 @@
                 </option>
                 <option>
                     <name>OOCOutputFile</name>
-                    <state>sensor_86box.hex</state>
+                    <state>smart_outlet_86box.hex</state>
                 </option>
                 <option>
                     <name>OOCCommandLineProducer</name>
@@ -1618,12 +1618,6 @@
     </group>
     <file>
         <name>$PROJ_DIR$\ALL_Includes.h</name>
-    </file>
-    <file>
-        <name>$PROJ_DIR$\LED_CON.c</name>
-    </file>
-    <file>
-        <name>$PROJ_DIR$\LED_CON.h</name>
     </file>
     <file>
         <name>$PROJ_DIR$\main.c</name>

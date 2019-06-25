@@ -6,7 +6,17 @@ Uart_struct    UART1_zigbee_st;
 
 u16    send_urt_time=0;
 
+/**************************************
+* @description:  检查缓存命令是否有效
+* @param ：接收缓存指针
+* @return: FALSE or TRUE
+************************************/
 u8       Rs485_COMM_CHECK_BUF_VALID(u8 *p);
+/**************************************
+* @description:  检查缓存命令是否有效
+* @param ：接收缓存指针
+* @return: FALSE or TRUE
+************************************/
 uint8_t  Rs485_COMM_crc8(uint8_t *buf,uint8_t len);
 void    Rs485_COMM_uart_timeout_fution(void) ;
 void    Rs485_COMM_UART_RX_load_buf(u8* buf,u8 len,u8  transid);
@@ -15,15 +25,15 @@ void    Rs485_COMM_SD_load_buf2(  u8 * urt_buf ,u8  len   );
 void    Rs485_COMM_SD_load_buf(u16 d_head,u16 d_tail, TRAN_D_struct  * TRAN_info , u8 * urt_buf ,u8  len );
 void    Rs485_COMM_uart_fuc(void) ;
 u8       Rs485_COMM_msg_process(char *tab);  
-
-void send_uart_data(u8*  da, u16 len   );
-
 /*********************************************
 函数功能： 串口发送
 输入参数： da: 数据  u16 len:长度
 输出参数： 无
 备    注： 
 *********************************************/
+void send_uart_data(u8*  da, u16 len   );
+
+
 void send_uart_data(u8*  da, u16 len   )
 {
   u16  i=0;
@@ -37,12 +47,7 @@ void send_uart_data(u8*  da, u16 len   )
   }
 }
 
-/*********************************************
-函数功能： 检查缓存命令是否有效
-输入参数： 
-输出参数： 
-备    注： 
-*********************************************/
+
 u8  Rs485_COMM_CHECK_BUF_VALID(u8 *p) 
 {  
   u8  i = 0;
@@ -246,11 +251,14 @@ u8 Rs485_COMM_msg_process(char *tab)
       {
         join_flg = fuc_dat[2]; 
 
-        if(fuc_dat[2] == 1)
-          gb_Status = net_online;
+        if(join_flg)
+            gb_Status = net_online;
 
         if(gb_Status == net_wait)
-          gb_countdown =0;
+        {
+          gb_countdown =0;         
+        }
+          
           
         if(join_flg)
         {
