@@ -1,0 +1,57 @@
+---- USART_DMACmd Matches (9 in 5 files) ----
+GS-P1B-GXO01.htm (D:\国顺资料\智能实训室项目\10、下位机\5、power manage -NEW1（电源管理器）\OBJ) line 317 : 
+<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ITConfig
+<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_DMACmd
+<LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Cmd
+<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
+<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHBPeriphClockCmd
+GS-P1B-GXO01.htm (D:\国顺资料\智能实训室项目\10、下位机\5、power manage -NEW1（电源管理器）\OBJ) line 337 : 
+<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ITConfig
+<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_DMACmd
+<LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Cmd
+<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
+<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
+GS-P1B-GXO01.htm (D:\国顺资料\智能实训室项目\10、下位机\5、power manage -NEW1（电源管理器）\OBJ) line 988 : 
+
+<P><STRONG><a name="[6a]"></a>USART_DMACmd</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f10x_usart.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart2_init
+<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart1_init
+</UL>
+stm32f10x_usart.c (D:\国顺资料\智能实训室项目\10、下位机\5、power manage -NEW1（电源管理器）\STM32F10x_FWLib\src) line 447 : 
+  */
+void USART_DMACmd(USART_TypeDef* USARTx, uint16_t USART_DMAReq, FunctionalState NewState)
+{
+  /* Check the parameters */
+  assert_param(IS_USART_ALL_PERIPH(USARTx));
+stm32f10x_usart.h (D:\国顺资料\智能实训室项目\10、下位机\5、power manage -NEW1（电源管理器）\STM32F10x_FWLib\inc) line 371 : 
+void USART_ITConfig(USART_TypeDef* USARTx, uint16_t USART_IT, FunctionalState NewState);
+void USART_DMACmd(USART_TypeDef* USARTx, uint16_t USART_DMAReq, FunctionalState NewState);
+void USART_SetAddress(USART_TypeDef* USARTx, uint8_t USART_Address);
+void USART_WakeUpConfig(USART_TypeDef* USARTx, uint16_t USART_WakeUp);
+void USART_ReceiverWakeUpCmd(USART_TypeDef* USARTx, FunctionalState NewState);
+RS485_dma_send_buf in usart3_rs485.c (D:\国顺资料\智能实训室项目\10、下位机\5、power manage -NEW1（电源管理器）\SYSTEM\usart) : 
+		   	MYDMA_Config( RS485_DMA_TX_CH,(u32)&USART3->DR,(u32)UART3_rs485_st.SDcun,UART_SD_LEN,DMA_DIR_PeripheralDST,DMA_Mode_Normal);//DMA1通道4,外设为串口1,存储器为UART1_SDBuff,长度USART1_SD_LEN. 
+        USART_DMACmd(USART3,USART_DMAReq_Tx,ENABLE); //使能串口4的DMA发送 接收  
+				MYDMATX_Enable(RS485_DMA_TX_CH,strlen((char*)UART3_rs485_st.SDcun));		
+					
+			  UART3_rs485_st.ALL_tc_flg=FALSE;//如果在这里 有要传送的 就是FLASE  不然直接显示TRUE  然后uart_dma_send_buf里可以开启 				 
+RS485_dma_send_buf in usart3_rs485.c (D:\国顺资料\智能实训室项目\10、下位机\5、power manage -NEW1（电源管理器）\SYSTEM\usart) : 
+         	 
+						  USART_DMACmd(USART3,USART_DMAReq_Tx,ENABLE); //使能串口4的DMA发送 接收  
+			      	MYDMATX_Enable(RS485_DMA_TX_CH,strlen((char*)UART3_rs485_st.SDcun));		
+									
+							UART3_rs485_st.uart_SD_lun =cun_sd_lun; // 暂存
+uart1_init in usart_cfg.c (D:\国顺资料\智能实训室项目\10、下位机\5、power manage -NEW1（电源管理器）\SYSTEM\usart) : 
+ 
+	 USART_DMACmd(USART1,USART_DMAReq_Tx,ENABLE); //使能串口4的DMA发送 接收  
+   USART_DMACmd(USART1,USART_DMAReq_Rx,ENABLE); 
+	
+	
+    MYDMA_Config( UART1_DMA_TX_CH,(u32)&USART1->DR,(u32)UART1_RS485_V_I_st.SDcun,UART_SD_LEN,DMA_DIR_PeripheralDST,DMA_Mode_Normal);//DMA1通道4,外设为串口1,存储器为UART1_SDBuff,长度USART1_SD_LEN. 
+uart2_init in usart_cfg.c (D:\国顺资料\智能实训室项目\10、下位机\5、power manage -NEW1（电源管理器）\SYSTEM\usart) : 
+	
+	USART_DMACmd(USART2,USART_DMAReq_Tx,ENABLE); //使能串口4的DMA发送 接收  
+  USART_DMACmd(USART2,USART_DMAReq_Rx,ENABLE); 
+	
+	
+  MYDMA_Config( RS485_COMM_DMA_TX_CH,(u32)&USART2->DR,(u32)UART2_RS485_COMM_st.SDcun,UART_SD_LEN ,DMA_DIR_PeripheralDST,DMA_Mode_Normal);//DMA1通道4,外设为串口1,存储器为UART1_SDBuff,长度USART1_SD_LEN. 
