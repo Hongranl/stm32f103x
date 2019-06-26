@@ -301,9 +301,9 @@ void RS485_uart_fuc(void)
 
 u8  RS485__msg_process(u8 *tab)  
 {
-	TRAN_D_struct   TRAN_info1,TRAN_info2;
+	TRAN_D_struct   TRAN_info1;//,TRAN_info2;
 	u8              fuc_dat[UART_RX_LEN];
-	u8              dat[UART_RX_LEN];
+//	u8              dat[UART_RX_LEN];
 
 	memcpy(&TRAN_info1 , (u8*)tab+3,sizeof(TRAN_D_struct));
 	memcpy(fuc_dat , (u8*)tab+17,TRAN_info1.data_len);	  
