@@ -109,7 +109,7 @@ int main(void)
 
 	TIM2_Int_Init(9,72);//72M/72   1000Khz的计数频率，计数到9为10us 
 
-	IWDG_Config();
+	IWDG_Config(IWDG_Prescaler_64,625);
 
 	Interrupts_Config(); 
 
@@ -124,5 +124,6 @@ int main(void)
 		// key_fuc();
 		//RS485_uart_fuc( ); 
 		RS485_dma_send_buf();
+		IWDG_Feed();
 	}
 }
