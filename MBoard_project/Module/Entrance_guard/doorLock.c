@@ -17,7 +17,12 @@ extern ARM_DRIVER_USART Driver_USART1;		//设备驱动库串口一设备声明
 
 osThreadId tid_doorLock_Thread;
 osThreadDef(doorLock_Thread,osPriorityNormal,1,512);
-
+/*---------------------------------------------------------------------------
+ *
+ * @Description:门磁控制GPIO初始化，GPIOA->GPIO_Pin_0
+ * @Param:      
+ * @Return:     
+ *---------------------------------------------------------------------------*/
 void doorLock_Init(void){
 
 	GPIO_InitTypeDef  GPIO_InitStructure;
@@ -31,7 +36,12 @@ void doorLock_Init(void){
 	
 	PAout(0) = 1;
 }
-
+/*---------------------------------------------------------------------------
+ *
+ * @Description:门磁处理线程，包括超时上传状态，改变上传状态，接收云端控制命令
+ * @Param:      线程初始化参数
+ * @Return:     
+ *---------------------------------------------------------------------------*/
 void doorLock_Thread(const void *argument){
 
 	osEvent  evt;
@@ -118,7 +128,12 @@ void doorLock_Thread(const void *argument){
 		osDelay(20);
 	}
 }
-
+/*---------------------------------------------------------------------------
+ *
+ * @Description:门磁线程启动API
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void doorLockThread_Active(void){
 
 	doorLock_Init();

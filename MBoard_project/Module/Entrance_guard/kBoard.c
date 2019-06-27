@@ -1,3 +1,17 @@
+/*---------------------------------------------------------------------------
+ *
+ * Copyright (C),2014-2019, guoshun Tech. Co., Ltd.
+ *
+ * @Project:    智能实训台项目
+ * @Version:    V 0.2 
+ * @Module:     kBoard
+ * @Author:     RanHongLiang
+ * @Date:       2019-06-27 11:25:03
+ * @Description: 
+ *————矩阵键盘驱动进程函数；
+ *	既是门禁中按键密码输入
+ * ---------------------------------------------------------------------------*/
+
 #include "kBoard.h"//矩阵键盘驱动进程函数；
 
 extern ARM_DRIVER_USART Driver_USART1;		//设备驱动库串口一设备声明
@@ -8,7 +22,12 @@ uint8_t  key;
 
 osThreadId tid_kBoard_Thread;
 osThreadDef(kBoard_Thread,osPriorityNormal,1,512);
-
+/*---------------------------------------------------------------------------
+ *
+ * @Description:按键初始化，行输出，列输入
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void KEY_RInit(void) //IO初始化
 { 
 	GPIO_InitTypeDef  GPIO_InitStructure;
@@ -29,7 +48,12 @@ void KEY_RInit(void) //IO初始化
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_7;		
 	GPIO_Init(GPIOC, &GPIO_InitStructure);		
 }
-
+/*---------------------------------------------------------------------------
+ *
+ * @Description:按键初始化，行输入，列输出
+ * @Param:      
+ * @Return:     
+ *---------------------------------------------------------------------------*/
 void KEY_CInit(void) //IO初始化
 { 
 	GPIO_InitTypeDef  GPIO_InitStructure;
@@ -50,7 +74,12 @@ void KEY_CInit(void) //IO初始化
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_7;		
 	GPIO_Init(GPIOC, &GPIO_InitStructure);		
 }
-
+/*---------------------------------------------------------------------------
+ *
+ * @Description:按键扫描
+ * @Param:      
+ * @Return:     返回按键值
+ *---------------------------------------------------------------------------*/
 uint8_t Eguard_KBScanA(void){ 	
 	
 	uint8_t  key;
@@ -100,7 +129,12 @@ uint8_t Eguard_KBScanA(void){
 
 	return key;	    //键值入显示缓存
  }
-
+/*---------------------------------------------------------------------------
+ *
+ * @Description:按键扫描
+ * @Param:      
+ * @Return:     返回按键值
+ *---------------------------------------------------------------------------*/
 uint8_t Eguard_KBScanB(void)
 {   
 	KEY_RInit();
@@ -113,7 +147,12 @@ uint8_t Eguard_KBScanB(void)
 		return Eguard_KBScanA();	
 	}else return valKB_NULL;
 }
-
+/*---------------------------------------------------------------------------
+ *
+ * @Description:按键扫描
+ * @Param:      
+ * @Return:     返回按键值
+ *---------------------------------------------------------------------------*/
 uint8_t Eguard_KBScanC(void){
 
 	u8 key_val;
@@ -133,11 +172,13 @@ uint8_t Eguard_KBScanC(void){
 			 osDelay(10);
 			 val_old = key_val;
 			 return key_val;
-		}else{							//无按键，更新历史值为NULL
+		}
+		else{							//无按键，更新历史值为NULL
 		
 			 val_old = valKB_NULL;
 		}
-	}else{								
+	}
+	else{								
 	
 		if(val_old == K_FUN_PGUP){		//键值重复保持处理
 		
@@ -152,7 +193,12 @@ uint8_t Eguard_KBScanC(void){
 	
 	return valKB_NULL;
 }
-
+/*---------------------------------------------------------------------------
+ *
+ * @Description:按键扫描
+ * @Param:      
+ * @Return:     返回按键值
+ *---------------------------------------------------------------------------*/
 u8 Eguard_KBvalget(void){
 
 	static bool klong_FLG = false; 
@@ -195,12 +241,22 @@ u8 Eguard_KBvalget(void){
 		
 	return valKB_NULL;
 }
-
+/*---------------------------------------------------------------------------
+ *
+ * @Description:按键初始化接口
+ * @Param:      
+ * @Return:     
+ *---------------------------------------------------------------------------*/
 void kBoard_Init(void){
 
 	;
 }
-
+/*---------------------------------------------------------------------------
+ *
+ * @Description:按键扫描线程，包括密码处理，密码验证，
+ * @Param:      线程外部传参
+ * @Return:     
+ *---------------------------------------------------------------------------*/
 void kBoard_Thread(const void *argument){
 
 	const u8 PSD_LEN = 9;
@@ -227,7 +283,8 @@ void kBoard_Thread(const void *argument){
 			
 				if(PSD_ptr < PSD_LEN - 1)Eguard_Password[PSD_ptr ++] = key_val + '0';
 				tips_beep(2,50,3);
-			}else{
+			}
+			else{
 			
 				switch(key_val){
 				
@@ -308,13 +365,15 @@ void kBoard_Thread(const void *argument){
 			osMessagePut(MsgBox_DPEGUD, (uint32_t)mptr, osWaitForever);
 		}
 		
-//		sprintf(disp,"%d\r\n",key_val);
-//		Driver_USART1.Send(disp,strlen(disp));
-		
 		osDelay(10);
 	}
 }
-
+/*---------------------------------------------------------------------------
+ *
+ * @Description:按键线程API
+ * @Param:      
+ * @Return:     
+ *---------------------------------------------------------------------------*/
 void kBoardThread_Active(void){
 
 	kBoard_Init();

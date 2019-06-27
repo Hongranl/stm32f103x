@@ -1,3 +1,16 @@
+/*---------------------------------------------------------------------------
+ *
+ * Copyright (C),2014-2019, guoshun Tech. Co., Ltd.
+ *
+ * @Project:    智能实训台项目
+ * @Version:    V 0.2 
+ * @Module:     Eguard
+ * @Author:     RanHongLiang
+ * @Date:       2019-06-27 09:03:43
+ * @Description: 
+ *————
+ *---------------------------------------------------------------------------*/
+
 #ifndef	_EGUARD_H_
 #define	_EGUARD_H_
 
@@ -16,7 +29,7 @@
 #include "Driver_USART.h"
 #include "delay.h"
 #include <dataTrans_USART.h>
-
+/****线程特定数据，结构体*****/
 typedef struct{
 
 	u8 CMD;

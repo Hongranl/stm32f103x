@@ -38,7 +38,7 @@
 
 #define  valACT_NULL	100
 
-
+/****线程特定数据，结构体*****/
 typedef struct{
 	
 	uint8_t valACT;

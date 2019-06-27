@@ -1,19 +1,36 @@
-#include "stmflash.h"//文件内包括掉电存储区，falsh读写函数；
+/*---------------------------------------------------------------------------
+ *
+ * Copyright (C),2014-2019, guoshun Tech. Co., Ltd.
+ *
+ * @Project:    智能实训台项目
+ * @Version:    V 0.2 
+ * @Module:     stmflash
+ * @Author:     RanHongLiang
+ * @Date:       2019-06-26 16:32:14
+ * @Description: 
+ *————Flash操作封装接口
+ *	实现Flash的读写操作
+ * ---------------------------------------------------------------------------*/
+#include "stmflash.h"
 
-//////////////////////////////////////////////////////////////////////////////////
- 
-//读取指定地址的半字(16位数据)
-//faddr:读地址(此地址必须为2的倍数!!)
-//返回值:对应数据.
+/*---------------------------------------------------------------------------
+ *
+ * @Description:读取指定地址的半字(16位数据)
+ * @Param:      faddr:读地址(此地址必须为2的倍数!!)
+ * @Return:     返回值:对应数据.
+ *---------------------------------------------------------------------------*/
 u16 STMFLASH_ReadHalfWord(u32 faddr)
 {
 	return *(vu16*)faddr; 
 }
 #if STM32_FLASH_WREN	//如果使能了写   
-//不检查的写入
-//WriteAddr:起始地址
-//pBuffer:数据指针
-//NumToWrite:半字(16位)数   
+
+/*---------------------------------------------------------------------------
+ *
+ * @Description:不检查的写入
+ * @Param:      WriteAddr:起始地址;pBuffer:数据指针;NumToWrite:半字(16位)数   
+ * @Return:     
+ *---------------------------------------------------------------------------*/
 void STMFLASH_Write_NoCheck(u32 WriteAddr,u16 *pBuffer,u16 NumToWrite)   
 { 			 		 
 	u16 i;
@@ -23,16 +40,18 @@ void STMFLASH_Write_NoCheck(u32 WriteAddr,u16 *pBuffer,u16 NumToWrite)
 	    WriteAddr+=2;//地址增加2.
 	}  
 } 
-//从指定地址开始写入指定长度的数据
-//WriteAddr:起始地址(此地址必须为2的倍数!!)
-//pBuffer:数据指针
-//NumToWrite:半字(16位)数(就是要写入的16位数据的个数.)
 #if STM32_FLASH_SIZE<256
 #define STM_SECTOR_SIZE 1024 //字节
 #else 
 #define STM_SECTOR_SIZE	2048
 #endif		 
 u16 STMFLASH_BUF[STM_SECTOR_SIZE/2];//最多是2K字节
+/*---------------------------------------------------------------------------
+ *
+ * @Description:从指定地址开始写入指定长度的数据
+ * @Param:      WriteAddr:起始地址(此地址必须为2的倍数!!);pBuffer:数据指针;NumToWrite:半字(16位)数(就是要写入的16位数据的个数.)
+ * @Return:     
+ *---------------------------------------------------------------------------*/
 void STMFLASH_Write(u32 WriteAddr,u16 *pBuffer,u16 NumToWrite)	
 {
 	u32 secpos;	   //扇区地址
@@ -79,10 +98,12 @@ void STMFLASH_Write(u32 WriteAddr,u16 *pBuffer,u16 NumToWrite)
 }
 #endif
 
-//从指定地址开始读出指定长度的数据
-//ReadAddr:起始地址
-//pBuffer:数据指针
-//NumToWrite:半字(16位)数
+/*---------------------------------------------------------------------------
+ *
+ * @Description:从指定地址开始读出指定长度的数据
+ * @Param:      ReadAddr:起始地址;pBuffer:数据指针;NumToWrite:半字(16位)数
+ * @Return:     
+ *---------------------------------------------------------------------------*/
 void STMFLASH_Read(u32 ReadAddr,u16 *pBuffer,u16 NumToRead)   	
 {
 	u16 i;
@@ -93,8 +114,13 @@ void STMFLASH_Read(u32 ReadAddr,u16 *pBuffer,u16 NumToRead)
 	}
 }
 
-//WriteAddr:起始地址
-//WriteData:要写入的数据
+
+/*---------------------------------------------------------------------------
+ *
+ * @Description:test func
+ * @Param:      WriteAddr:起始地址;WriteData:要写入的数据
+ * @Return:     
+ *---------------------------------------------------------------------------*/
 void Test_Write(u32 WriteAddr,u16 WriteData)   	
 {
 	STMFLASH_Write(WriteAddr,&WriteData,1);//写入一个字 

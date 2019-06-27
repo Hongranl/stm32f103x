@@ -1,3 +1,17 @@
+/*---------------------------------------------------------------------------
+ *
+ * Copyright (C),2014-2019, guoshun Tech. Co., Ltd.
+ *
+ * @Project:    智能实训台项目
+ * @Version:    V 0.2 
+ * @Module:     doorLock
+ * @Author:     RanHongLiang
+ * @Date:       2019-06-27 09:02:43
+ * @Description: 
+ *————
+ *---------------------------------------------------------------------------*/
+
+
 #ifndef _DOORLOCK_H_
 #define _DOORLOCK_H_
 

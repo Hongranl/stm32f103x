@@ -1,3 +1,16 @@
+/*---------------------------------------------------------------------------
+ *
+ * Copyright (C),2014-2019, guoshun Tech. Co., Ltd.
+ *
+ * @Project:    智能实训台项目
+ * @Version:    V 0.2 
+ * @Module:     kBoard
+ * @Author:     RanHongLiang
+ * @Date:       2019-06-27 11:39:37
+ * @Description: 
+ *————
+ *---------------------------------------------------------------------------*/
+
 #ifndef _KBOARD_H_
 #define _KBOARD_H_
 

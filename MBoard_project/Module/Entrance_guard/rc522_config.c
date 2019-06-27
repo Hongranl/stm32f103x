@@ -1,8 +1,27 @@
+/*---------------------------------------------------------------------------
+ *
+ * Copyright (C),2014-2019, guoshun Tech. Co., Ltd.
+ *
+ * @Project:    ???????
+ * @Version:    V 0.2 
+ * @Module:     rc522_config
+ * @Author:     RanHongLiang
+ * @Date:       2019-06-27 11:40:09
+ * @Description: 
+ *————RF-ID????GPIO?????????????
+ *---------------------------------------------------------------------------*/
+
+
 #include "rc522_config.h"//RFID µ×²ãÇý¶¯ÅäÖÃ¿âº¯Êý£»
 #include "stm32f10x.h"
 
 static void             RC522_SPI_Config             ( void );
-
+/*---------------------------------------------------------------------------
+ *
+ * @Description:RC522???API
+ * @Param:      
+ * @Return:     
+ *---------------------------------------------------------------------------*/
 void RC522_Init ( void )
 {
 	RC522_SPI_Config ();
@@ -11,7 +30,12 @@ void RC522_Init ( void )
 	
 	macRC522_CS_Disable();
 }
-
+/*---------------------------------------------------------------------------
+ *
+ * @Description:??IC?SPI?????? RC522_SPI_Config
+ * @Param:      
+ * @Return:     
+ *---------------------------------------------------------------------------*/
 static void RC522_SPI_Config ( void )
 {
   /* SPI_InitTypeDef  SPI_InitStructure */

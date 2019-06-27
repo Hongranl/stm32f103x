@@ -1,33 +1,16 @@
 #include <Bsp.h> //文件内包括延时函数初始化及Debug串口输出初始化；
-
-/*
-*********************************************************************************************************
-*                                               BSP_Init()
-*
-* Description : Initialize the Board Support Package (BSP).
-*
-* Argument(s) : none.
-*
-* Return(s)   : none.
-*
-* Caller(s)   : Application.
-*
-* Note(s)     : (1) This function SHOULD be called before any other BSP function is called.
-*
-*               (2) CPU instruction / data tracing requires the use of the following pins :
-*                   (a) (1) Aysynchronous     :  PB[3]
-*                       (2) Synchronous 1-bit :  PE[3:2]
-*                       (3) Synchronous 2-bit :  PE[4:2]
-*                       (4) Synchronous 4-bit :  PE[6:2]
-*
-*                   (b) The uC-Eval board MAY utilize the following pins depending on the application :
-*                       (1) PE[5], MII_INT
-*                       (1) PE[6], SDCard_Detection
-*
-*                   (c) The application may wish to adjust the trace bus width depending on I/O
-*                       requirements.
-*********************************************************************************************************
-*/
+/*---------------------------------------------------------------------------
+ *
+ * Copyright (C),2014-2019, guoshun Tech. Co., Ltd.
+ *
+ * @Project:    智能实训台项目
+ * @Version:    V 0.2 
+ * @Module:     Bsp
+ * @Author:     RanHongLiang
+ * @Date:       2019-06-26 13:16:27
+ * @Description: 
+ *————BSP_Init()，板级支持设置初始化
+ *---------------------------------------------------------------------------*/
 
 void BSP_Init(void)
 {

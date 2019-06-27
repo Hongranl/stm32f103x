@@ -1,3 +1,17 @@
+/*---------------------------------------------------------------------------
+ *
+ * Copyright (C),2014-2019, guoshun Tech. Co., Ltd.
+ *
+ * @Project:    智能实训台项目
+ * @Version:    V 0.2 
+ * @Module:     fingerID
+ * @Author:     RanHongLiang
+ * @Date:       2019-06-27 11:24:48
+ * @Description: 
+ *————
+ *---------------------------------------------------------------------------*/
+
+
 #ifndef _FINGERID_H_
 #define _FINGERID_H_
 
