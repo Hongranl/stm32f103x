@@ -1,3 +1,16 @@
+/*---------------------------------------------------------------------------
+ *
+ * Copyright (C),2014-2019, guoshun Tech. Co., Ltd.
+ *
+ * @Project:    智能实训台项目
+ * @Version:    V 0.2 
+ * @Module:     infraTrans
+ * @Author:     RanHongLiang
+ * @Date:       2019-07-03 09:53:52
+ * @Description: 
+ *————红外学习模块部分声明
+ *---------------------------------------------------------------------------*/
+
 #ifndef	_INFRATRANS_H_
 #define	_INFRATRANS_H_
 

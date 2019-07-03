@@ -1,3 +1,16 @@
+/*---------------------------------------------------------------------------
+ *
+ * Copyright (C),2014-2019, guoshun Tech. Co., Ltd.
+ *
+ * @Project:    智能实训台项目
+ * @Version:    V 0.2 
+ * @Module:     gasMS
+ * @Author:     RanHongLiang
+ * @Date:       2019-07-03 08:58:00
+ * @Description: 
+ *————可燃气体检测模块
+ *---------------------------------------------------------------------------*/
+
 #ifndef GAS_MS_H
 #define GAS_MS_H
 
@@ -10,7 +23,7 @@
 #include "Driver_USART.h"
 
 #include "debugUart.h"
-
+//未使用引脚
 #define GAS_DATA	PBin(8);
 
 typedef struct{

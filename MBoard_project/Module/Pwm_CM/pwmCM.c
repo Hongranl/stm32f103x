@@ -1,3 +1,16 @@
+/*---------------------------------------------------------------------------
+ *
+ * Copyright (C),2014-2019, guoshun Tech. Co., Ltd.
+ *
+ * @Project:    智能实训台项目
+ * @Version:    V 0.2 
+ * @Module:     pwmCM
+ * @Author:     RanHongLiang
+ * @Date:       2019-07-03 11:57:41
+ * @Description: 
+ *————PWM灯光控制模块
+ *---------------------------------------------------------------------------*/
+
 #include "pwmCM.h"//灯光控制驱动进程函数；
 
 extern ARM_DRIVER_USART Driver_USART1;		//设备驱动库串口一设备声明

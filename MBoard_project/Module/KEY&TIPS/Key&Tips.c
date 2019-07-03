@@ -1,3 +1,17 @@
+/*---------------------------------------------------------------------------
+ *
+ * Copyright (C),2014-2019, guoshun Tech. Co., Ltd.
+ *
+ * @Project:    智能实训台项目
+ * @Version:    V 0.2 
+ * @Module:     Key&Tips
+ * @Author:     RanHongLiang
+ * @Date:       2019-07-03 09:54:25
+ * @Description: 
+ *————底板按键检测进程函数及其按键回调函数，
+ *	由于实际环境，只采用按键检测，其余回调和按键功能暂做后续扩展
+ * ---------------------------------------------------------------------------*/
+
 #include <Key&Tips.h>//底板按键检测进程函数及其按键回调函数；
 #include <stdio.h>
 #include <string.h>
@@ -10,7 +24,12 @@ osThreadDef(keyMboard_Thread,osPriorityAboveNormal,1,2048);	//按键监测主进程定义
 
 typedef void (* funkeyThread)(funKeyInit key_Init,Obj_keyStatus *orgKeyStatus,funKeyScan key_Scan,Obj_eventKey keyEvent,const char *Tips_head);
 
-/***按键外设初始化***/
+
+/*---------------------------------------------------------------------------
+ * @Description:按键GPIO 初始化
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void keyInit(void){	
 
 	GPIO_InitTypeDef GPIO_InitStructure;
@@ -23,7 +42,12 @@ void keyInit(void){
 	GPIO_Init(GPIOC, &GPIO_InitStructure);
 }
 
-/***按键键值读取***/
+
+/*---------------------------------------------------------------------------
+ * @Description:按键键值读取
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
  uint16_t keyScan(void){
 
 	if(!K1)return KEY_VALUE_1;		//键值1
@@ -31,7 +55,12 @@ void keyInit(void){
 	return KEY_NULL;				//无按键
 }
 
-/***按键检测状态机***/
+
+/*---------------------------------------------------------------------------
+ * @Description:按键检测状态机
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 static uint16_t getKey(Obj_keyStatus *orgKeyStatus,funKeyScan keyScan){
 
 	static	uint16_t s_u16KeyState 		= KEY_STATE_INIT;		//状态机检测状态，初始化状态
@@ -155,7 +184,13 @@ static uint16_t getKey(Obj_keyStatus *orgKeyStatus,funKeyScan keyScan){
 	return keyTemp;	//返回按键状态和键值
 }
 
-/*按键初始化函数，按键状态缓存结构体，按键扫描函数，按键触发事件函数表，按键提示信息头*/
+
+/*---------------------------------------------------------------------------
+ * @Description:暂未使用，按键线程
+ * @Param:      key_Init 按键初始化函数,orgKeyStatus 按键状态缓存结构体,
+ * 		key_Scan 按键扫描函数,keyEvent 按键触发事件函数表,Tips_head 按键提示信息头
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void key_Thread(	funKeyInit 		key_Init,		
 					Obj_keyStatus 	*orgKeyStatus,
 					funKeyScan 		key_Scan,		
@@ -331,7 +366,11 @@ if(KEY_DEBUG_FLG){/*Debug_log输出使能*/
 		osDelay(KEY_TICK);
 	}
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:暂未使用，按键回调
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void eventK23(void){
 	
 	switch(Moudle_GTA.Extension_ID){
@@ -365,7 +404,11 @@ void eventK23(void){
 		default:break;
 	}
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:暂未使用，按键回调
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void eventK24(void){
 
 	switch(Moudle_GTA.Extension_ID){
@@ -399,7 +442,11 @@ void eventK24(void){
 		default:break;
 	}
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:暂未使用，按键回调
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void eventK25(void){
 
 	switch(Moudle_GTA.Extension_ID){
@@ -421,7 +468,12 @@ void eventK25(void){
 	}
 }
 
-/***按键监测主进程***/
+
+/*---------------------------------------------------------------------------
+ * @Description:按键监测主进程
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void keyMboard_Thread(const void *argument){
 
 	while(1)
@@ -458,7 +510,11 @@ void keyMboard_Thread(const void *argument){
 //
 //	key_ThreadMB(keyInit,&myKeyStatus,keyScan,myKeyEvent,Tips_Head);	
 }
-	
+/*---------------------------------------------------------------------------
+ * @Description:按键接口API
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/	
 void keyMboardActive(void){
 	
 	tid_keyMboard_Thread = osThreadCreate(osThread(keyMboard_Thread),NULL);

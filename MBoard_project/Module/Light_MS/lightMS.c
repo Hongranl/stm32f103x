@@ -1,3 +1,17 @@
+/*---------------------------------------------------------------------------
+ *
+ * Copyright (C),2014-2019, guoshun Tech. Co., Ltd.
+ *
+ * @Project:    智能实训台项目
+ * @Version:    V 0.2 
+ * @Module:     lightMS
+ * @Author:     RanHongLiang
+ * @Date:       2019-07-03 11:33:56
+ * @Description: 
+ *————光照强度检测模块
+ *---------------------------------------------------------------------------*/
+
+
 #include "lightMS.h"//光照强度检测驱动进程函数；
 
 extern ARM_DRIVER_USART Driver_USART1;		//设备驱动库串口一设备声明
@@ -14,7 +28,11 @@ osMessageQDef(MsgBox_MTlightMS, 2, &lightMS_MEAS);          // 消息队列定义,用于
 osMessageQId  MsgBox_DPlightMS;
 
 osMessageQDef(MsgBox_DPlightMS, 2, &lightMS_MEAS);          // 消息队列定义，用于模块线程向显示模块线程
-
+/*---------------------------------------------------------------------------
+ * @Description:  GPIO 初始化
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void cdsIO_Init(void){
 	
 	GPIO_InitTypeDef  GPIO_InitStructure;
@@ -26,7 +44,11 @@ void cdsIO_Init(void){
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;		 //IO口速度为50MHz
 	GPIO_Init(GPIOA, &GPIO_InitStructure);		
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:ADC初始化
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void cdsADC_Init(void){
 
 	ADC_InitTypeDef ADC_InitStructure; 
@@ -67,7 +89,11 @@ void cdsADC_Init(void){
  
 //	ADC_SoftwareStartConvCmd(ADC1, ENABLE);		//使能指定的ADC1的软件转换启动功能
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:获得ADC值
+ * @Param:      ch:通道值 0~3
+ * @Return:     返回unsigned short电压数值
+ *---------------------------------------------------------------------------*/
 u16 cdsGet_Adc(u8 ch)   
 {
   	//设置指定ADC的规则组通道，一个序列，采样时间
@@ -79,7 +105,11 @@ u16 cdsGet_Adc(u8 ch)
 
 	return ADC_GetConversionValue(ADC1);	//返回最近一次ADC1规则组的转换结果
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:获得ADC值，读取指定次数，求均值
+ * @Param:       ch:通道值 0~3，times读取次数
+ * @Return:     返回unsigned short电压数值
+ *---------------------------------------------------------------------------*/
 u16 cdsGet_Adc_Average(u8 ch,u8 times)
 {
 	u32 temp_val=0;
@@ -92,7 +122,11 @@ u16 cdsGet_Adc_Average(u8 ch,u8 times)
 	return temp_val/times;
 } 
 
-//IO初始化
+/*---------------------------------------------------------------------------
+ * @Description:  tsl2561初始化GPIO
+ * @Param:      无
+ * @Return:     无 
+ *---------------------------------------------------------------------------*/
 void tsl2561IO_Init(void)
 {
  
@@ -107,7 +141,11 @@ void tsl2561IO_Init(void)
 
  GPIO_SetBits(GPIOB,GPIO_Pin_6|GPIO_Pin_7); 	
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:  tsl2561初始化
+ * @Param:      无
+ * @Return:     无 
+ *---------------------------------------------------------------------------*/
 void TSL2561_Init(void)
 {
 	tsl2561IO_Init();
@@ -118,7 +156,11 @@ void TSL2561_Init(void)
 	delay_ms(100);
 	TSL2561_Write(TIMING,0x02);
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:  tsl2561启动
+ * @Param:      无
+ * @Return:     无 
+ *---------------------------------------------------------------------------*/
 void tsl2561_start(void)
 {
 	TSLSDA_OUT();     //sda
@@ -129,7 +171,11 @@ void tsl2561_start(void)
 	delay_us(4);
 	TSLIIC_SCL=0;//
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:  tsl2561停止
+ * @Param:      无
+ * @Return:     无 
+ *---------------------------------------------------------------------------*/
 void stop(void)
 {
 	TSLSDA_OUT();//sda
@@ -140,7 +186,11 @@ void stop(void)
 	TSLIIC_SDA=1;//
 	delay_us(4);							   	
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:  tsl2561 重新加载
+ * @Param:      无
+ * @Return:     无 
+ *---------------------------------------------------------------------------*/
 void respons(void)
 {
 	TSLIIC_SCL=0;
@@ -151,7 +201,11 @@ void respons(void)
 	delay_us(2);
 	TSLIIC_SCL=0;
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:  tsl2561  写一个字节
+ * @Param:      byte
+ * @Return:     无 
+ *---------------------------------------------------------------------------*/
 void write_byte(uint8 value)
 {
     uint8_t t;   
@@ -172,7 +226,11 @@ void write_byte(uint8 value)
 		delay_us(2);
     }	 
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:  tsl2561  读一个字节
+ * @Param:      无
+ * @Return:      byte
+ *---------------------------------------------------------------------------*/
 uint8 read_byte(void)
 {
 	unsigned char i,receive=0;
@@ -192,7 +250,11 @@ uint8 read_byte(void)
 	return receive;
 }
 
-
+/*---------------------------------------------------------------------------
+ * @Description:  tsl2561  写命令
+ * @Param:      command 命令，data 数据
+ * @Return:     无 
+ *---------------------------------------------------------------------------*/
 void TSL2561_Write(uint8 command,uint8 data)
 {
 	tsl2561_start();
@@ -205,7 +267,11 @@ void TSL2561_Write(uint8 command,uint8 data)
 	stop();
 }
 
-
+/*---------------------------------------------------------------------------
+ * @Description:tsl2561  读取数据
+ * @Param:      command 命令
+ * @Return:     返回一个字节数据
+ *---------------------------------------------------------------------------*/
 uint8 TSL2561_Read(uint8 command)
 {
 	uint8 data;
@@ -222,7 +288,11 @@ uint8 TSL2561_Read(uint8 command)
 	stop();
 	return data;
 }
-
+/*---------------------------------------------------------------------------
+ * @Description: 读取TSL2561数据
+ * @Param:      无
+ * @Return:     返回数据
+ *---------------------------------------------------------------------------*/
 uint32 Read_Light(void)
 {
 //	uint16 Channel0,Channel1;
@@ -240,7 +310,11 @@ uint32 Read_Light(void)
 	
 	return 0;
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:把TSL2561读取的数据转换为Lux
+ * @Param:      ch0  数据1，ch1  数据2
+ * @Return:     返回光强Lux
+ *---------------------------------------------------------------------------*/
 uint32_t calculateLux(uint16_t ch0, uint16_t ch1)
 {
 		uint32_t chScale;
@@ -306,14 +380,22 @@ uint32_t calculateLux(uint16_t ch0, uint16_t ch1)
 		lux_temp = temp >> TSL2561_LUX_LUXSCALE;			// strip off fractional portion
 		return lux_temp;		  							// Signal I2C had no errors
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:模块初始化
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void lightMS_Init(void){
 
 //	TSL2561_Init();
 	cdsADC_Init();
 	cdsIO_Init();
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:光照强度模块线程
+ * @Param:      创建线程初始化传参
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void lightMS_Thread(const void *argument){
 
 	osEvent  evt;
@@ -405,7 +487,11 @@ void lightMS_Thread(const void *argument){
 		osDelay(10);
 	}
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:模块启动接口API
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void lightMSThread_Active(void){
 	
 	static bool memInit_flg = false;
