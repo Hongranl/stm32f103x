@@ -8,7 +8,7 @@
  * @Author:     RanHongLiang
  * @Date:       2019-07-03 11:57:41
  * @Description: 
- *————PWM灯光控制模块
+ *————PWM灯光控制模块       
  *---------------------------------------------------------------------------*/
 
 #include "pwmCM.h"//灯光控制驱动进程函数；
@@ -42,7 +42,11 @@ osPoolId  memID_pwmCMsigK_pool;
 osPoolDef(pwmCMsigK_pool, 4, pwmCM_kMSG);              // 按键消息内存池定义
 osMessageQId  MsgBox_pwmCMsigK;
 osMessageQDef(MsgBox_pwmCMsigK, 2, &pwmCM_kMSG);        // 消息队列定义，用于底板按键信号读取
-
+/*---------------------------------------------------------------------------
+ * @Description:PWM初始化，对应的IO和定时器
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void pwmCM_pwmInit(void)
 {
 	TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure; 
@@ -74,9 +78,11 @@ void pwmCM_pwmInit(void)
 	
 	
 }
-
-
-
+/*---------------------------------------------------------------------------
+ * @Description:PWM初始化，对应的IO和定时器
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void pwmCM_ioInit(void)
 {
     GPIO_InitTypeDef GPIO_InitStructure;
@@ -103,13 +109,21 @@ void pwmCM_ioInit(void)
     GPIO_Init(GPIOA, &GPIO_InitStructure);
 	
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:PWM模块初始化
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void pwmCM_Init(void){
 
 	pwmCM_ioInit();
 	pwmCM_pwmInit();
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void DC11detectA_Thread(const void *argument){	//主检测线程
 	
 	osEvent  evt;
