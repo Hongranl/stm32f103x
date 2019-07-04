@@ -120,7 +120,7 @@ void pwmCM_Init(void){
 	pwmCM_pwmInit();
 }
 /*---------------------------------------------------------------------------
- * @Description:
+ * @Description:PWM主线程检测，调速，上传，远程控制
  * @Param:      无
  * @Return:     无
  *---------------------------------------------------------------------------*/
@@ -174,8 +174,6 @@ void DC11detectA_Thread(const void *argument){	//主检测线程
 		}
 		
 		if(!EC11_SW){while(!EC11_SW)osDelay(20);pwmDevAttr.Switch = !pwmDevAttr.Switch;}	//旋钮开关
-		//if(!LIGHTCM_K1){while(!LIGHTCM_K1)osDelay(20);pwmDevAttr.Switch = true;}		//按键开关
-		//if(!LIGHTCM_K2){while(!LIGHTCM_K2)osDelay(20);pwmDevAttr.Switch = false;}	//按键开关
 		
 		if(pwmDevAttr.Switch && !pwmDevAttr.pwmVAL)pwmDevAttr.pwmVAL = 1; //开关打开占空比不能为零
 		if(pwmDevMOUDLE_ID == pwmDevMID_unvarLight ||	//不可调光灯，强制处理参数
@@ -248,11 +246,6 @@ void DC11detectA_Thread(const void *argument){	//主检测线程
 			gb_Exmod_key = true;
 			gb_databuff[0] =  pwmDevAttr.Switch;
 			gb_databuff[1] = pwmDevAttr.pwmVAL;
-//			do{mptr = (pwmCM_MEAS *)osPoolCAlloc(pwmCM_pool);}while(mptr == NULL);	//无线数据传输消息推送
-//			mptr->Mod_addr = pwmDevMOUDLE_ID;
-//			mptr->Switch   = pwmDevAttr.Switch;
-//			mptr->pwmVAL   = pwmDevAttr.pwmVAL;
-//			osMessagePut(MsgBox_pwmCM, (uint32_t)mptr, 100);
 		}
 
 		TIM_SetCompare2(TIM2,pwmDevAttr.pwmVAL * 2);	//占空比生效
@@ -260,10 +253,13 @@ void DC11detectA_Thread(const void *argument){	//主检测线程
 	}
 }
 
-
+/*---------------------------------------------------------------------------
+ * @Description:编码旋转开关，检测线程
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void DC11detectB_Thread(const void *argument){	//占空比调制线程
 
-//	char disp[30];
 	
 	static bool action;
 	static u8 Knob_STUSold;
@@ -282,9 +278,6 @@ void DC11detectB_Thread(const void *argument){	//占空比调制线程
 			
 			action = false;
 			
-//			sprintf(disp, "%d", Knob_STUSold);
-//			Driver_USART1.Send(disp,strlen(disp));
-//			osDelay(100);
 		}else 
 		if(!action){
 			
@@ -309,7 +302,11 @@ void DC11detectB_Thread(const void *argument){	//占空比调制线程
 		osDelay(10);
 	}
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:PWM主线程用于显示
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void pwmCM_Thread(const void *argument){	//主线程(仅做显示)
 	
 	osEvent  evt;
@@ -359,14 +356,22 @@ void pwmCM_Thread(const void *argument){	//主线程(仅做显示)
 		osDelay(10);
 	}
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:pwm模块所有线程退出，外部接口
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void pwmCM_Terminate(void){
 
 	osThreadTerminate(tid_curtainCM_Thread); 
 	osThreadTerminate(tid_DC11detectA_Thread); 
 	osThreadTerminate(tid_DC11detectB_Thread); 
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:pwm模块线程启动
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void pwmCMThread_Active(void){
 	
 	static bool memInit_flg = false;

@@ -1,5 +1,18 @@
-#ifndef LIGHT_CM_H
-#define LIGHT_CM_H
+/*---------------------------------------------------------------------------
+ *
+ * Copyright (C),2014-2019, guoshun Tech. Co., Ltd.
+ *
+ * @Project:    智能实训台项目
+ * @Version:    V 0.2 
+ * @Module:     pwmCM
+ * @Author:     RanHongLiang
+ * @Date:       2019-07-04 15:58:52
+ * @Description: 
+ *————pwm定义以及部分声明
+ *---------------------------------------------------------------------------*/
+
+#ifndef __PWM_CM_H__
+#define __PWM_CM_H__
 
 #include "IO_Map.h"
 #include "delay.h"
@@ -14,8 +27,6 @@
 #include "debugUart.h"
 
 #define	 EC11_SW		PBin(14)
-//#define	 LIGHTCM_K1 	PBin(10)
-//#define	 LIGHTCM_K2 	PBin(11)
 
 #define  KNOB_A		PBin(12)
 #define  KNOB_B		PBin(13)
