@@ -5,6 +5,8 @@
         "-g",
         "${file}",
         "-o",
+        "-fexec-charset=GBK",
+        "-finput-charset=UTF-8",
         "${fileBasenameNoExtension}.exe"
     ], // 编译命令参数
     "problemMatcher": {
