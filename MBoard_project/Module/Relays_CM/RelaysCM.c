@@ -1,3 +1,16 @@
+/*---------------------------------------------------------------------------
+ *
+ * Copyright (C),2014-2019, guoshun Tech. Co., Ltd.
+ *
+ * @Project:    智能实训台项目
+ * @Version:    V 0.2 
+ * @Module:     RelaysCM
+ * @Author:     RanHongLiang
+ * @Date:       2019-07-10 15:02:30
+ * @Description: 
+ * ————两路继电器模块，包括数据上传、同步控制
+ * ---------------------------------------------------------------------------*/
+
 #include "RelaysCM.h"//两路继电器驱动进程函数；
 
 extern ARM_DRIVER_USART Driver_USART1;		//设备驱动库串口一设备声明
@@ -13,7 +26,11 @@ osMessageQId  MsgBox_MTRelaysCM;
 osMessageQDef(MsgBox_MTRelaysCM, 2, &RelaysCM_MEAS);          // 消息队列定义,用于无线通讯线程向模块线程
 osMessageQId  MsgBox_DPRelaysCM;
 osMessageQDef(MsgBox_DPRelaysCM, 2, &RelaysCM_MEAS);          // 消息队列定义，用于模块线程向显示模块线程
-
+/*---------------------------------------------------------------------------
+ * @Description:模块初始化
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void RelaysCM_Init(void){
 
 	GPIO_InitTypeDef GPIO_InitStructure;
@@ -27,7 +44,11 @@ void RelaysCM_Init(void){
 	
 	PAout(0) = PAout(1) = 0;
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:模块线程，接收控制信号
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void RelaysCM_Thread(const void *argument){
 
 	osEvent  evt;
@@ -90,7 +111,11 @@ void RelaysCM_Thread(const void *argument){
 		delay_ms(10);
 	}
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:模块启动API
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void RelaysCMThread_Active(void){
 
 	RelaysCM_Init();

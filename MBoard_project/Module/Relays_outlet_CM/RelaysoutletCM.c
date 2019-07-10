@@ -1,4 +1,18 @@
-#include "RelaysoutletCM.h"//Á½Â·¼ÌµçÆ÷Çý¶¯½ø³Ìº¯Êý£»
+/*---------------------------------------------------------------------------
+ *
+ * Copyright (C),2014-2019, guoshun Tech. Co., Ltd.
+ *
+ * @Project:    ÖÇÄÜÊµÑµÌ¨ÏîÄ¿
+ * @Version:    V 0.2 
+ * @Module:     RelaysoutletCM
+ * @Author:     RanHongLiang
+ * @Date:       2019-07-10 15:37:44
+ * @Description: 
+ * ¡ª¡ª¡ª¡ªÖÇÄÜ²å×ùÄ£¿é£¬°üÀ¨µçÔ´¿ØÖÆ£¬µçÁ÷¼ì²â£¬×´Ì¬ÉÏ´«£¬Í¬²½¿ØÖÆ
+ * ---------------------------------------------------------------------------*/
+
+
+#include "RelaysoutletCM.h"//Ò»Â·¼ÌµçÆ÷Çý¶¯½ø³Ìº¯Êý£»
 
 extern ARM_DRIVER_USART Driver_USART1;		//Éè±¸Çý¶¯¿â´®¿ÚÒ»Éè±¸ÉùÃ÷
 
@@ -15,7 +29,11 @@ osMessageQDef(MsgBox_MTRelaysoutletCM, 2, &RelaysoutletCM_MEAS);          // ÏûÏ
 osMessageQId  MsgBox_DPRelaysoutletCM;
 osMessageQDef(MsgBox_DPRelaysoutletCM, 2, &RelaysoutletCM_MEAS);          // ÏûÏ¢¶ÓÁÐ¶¨Òå£¬ÓÃÓÚÄ£¿éÏß³ÌÏòÏÔÊ¾Ä£¿éÏß³Ì
 static	unsigned char light1_vlue ;
-
+/*---------------------------------------------------------------------------
+ * @Description:Ä£¿é³õÊ¼»¯£¬Ä£Äâio
+ * @Param:      ÎÞ
+ * @Return:     ÎÞ
+ *---------------------------------------------------------------------------*/
 void RelaysoutletCM_AIOinit(void){
 
 	ADC_InitTypeDef ADC_InitStructure; 
@@ -56,8 +74,12 @@ void RelaysoutletCM_AIOinit(void){
  
 //	ADC_SoftwareStartConvCmd(ADC1, ENABLE);		//Ê¹ÄÜÖ¸¶¨µÄADC1µÄÈí¼þ×ª»»Æô¶¯¹¦ÄÜ
 }
-//»ñµÃADCÖµ
-//ch:Í¨µÀÖµ 0~3
+
+/*---------------------------------------------------------------------------
+ * @Description:»ñµÃADCÖµ
+ * @Param:      ch:Í¨µÀÖµ 0~3
+ * @Return:     
+ *---------------------------------------------------------------------------*/
 uint16_t Get_Adc(uint8_t ch)   
 {
   	//ÉèÖÃÖ¸¶¨ADCµÄ¹æÔò×éÍ¨µÀ£¬Ò»¸öÐòÁÐ£¬²ÉÑùÊ±¼ä
@@ -69,7 +91,11 @@ uint16_t Get_Adc(uint8_t ch)
 
 	return ADC_GetConversionValue(ADC1);	//·µ»Ø×î½üÒ»´ÎADC1¹æÔò×éµÄ×ª»»½á¹û
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:»ñµÃtimes´Î£¬Æ½¾ùADCÖµ
+ * @Param:      ch:Í¨µÀÖµ 0~3
+ * @Return:     
+ *---------------------------------------------------------------------------*/
 uint32_t Get_Adc_Average(uint8_t ch,uint8_t times)
 {
 	u32 temp_val=0;
@@ -91,7 +117,11 @@ uint32_t Get_Adc_Average(uint8_t ch,uint8_t times)
 	}
 	return temp_val/times;
 } 	
-
+/*---------------------------------------------------------------------------
+ * @Description:
+ * @Param:      ÎÞ
+ * @Return:     ÎÞ
+ *---------------------------------------------------------------------------*/
 void RelaysoutletCM_Init(void){
 
 	GPIO_InitTypeDef GPIO_InitStructure;

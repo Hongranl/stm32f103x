@@ -1,3 +1,16 @@
+/*---------------------------------------------------------------------------
+ *
+ * Copyright (C),2014-2019, guoshun Tech. Co., Ltd.
+ *
+ * @Project:    智能实训台项目
+ * @Version:    V 0.2 
+ * @Module:     RelayslightCM
+ * @Author:     RanHongLiang
+ * @Date:       2019-07-10 15:25:27
+ * @Description: 
+ * ————两路灯光控制模块，包括按键控制，状态上传，数据
+ * ---------------------------------------------------------------------------*/
+
 #include "RelayslightCM.h"//两路继电器驱动进程函数；
 
 extern ARM_DRIVER_USART Driver_USART1;		//设备驱动库串口一设备声明
@@ -14,7 +27,11 @@ osMessageQId  MsgBox_MTRelayslightCM;
 osMessageQDef(MsgBox_MTRelayslightCM, 2, &RelayslightCM_MEAS);          // 消息队列定义,用于无线通讯线程向模块线程
 osMessageQId  MsgBox_DPRelayslightCM;
 osMessageQDef(MsgBox_DPRelayslightCM, 2, &RelayslightCM_MEAS);          // 消息队列定义，用于模块线程向显示模块线程
-
+/*---------------------------------------------------------------------------
+ * @Description:模块初始化，包括两个按键，两个继电器
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void RelayslightCM_Init(void){
 
 	GPIO_InitTypeDef GPIO_InitStructure;
@@ -32,7 +49,11 @@ void RelayslightCM_Init(void){
 	light1 = 0;
 	light2 = 0;
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:模块线程，包括按键处理，状态上传，同步控制
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void RelayslightCM_Thread(const void *argument){
 
 	osEvent  evt;
@@ -128,7 +149,11 @@ void RelayslightCM_Thread(const void *argument){
 		delay_ms(20);
 	}
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:模块启动API
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void RelayslightCMThread_Active(void){
 
 	RelayslightCM_Init();

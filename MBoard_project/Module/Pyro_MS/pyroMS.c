@@ -27,7 +27,11 @@ osMessageQId  MsgBox_MTpyroMS;
 osMessageQDef(MsgBox_MTpyroMS, 2, &pyroMS_MEAS);          // 消息队列定义,用于无线通讯线程向模块线程
 osMessageQId  MsgBox_DPpyroMS;
 osMessageQDef(MsgBox_DPpyroMS, 2, &pyroMS_MEAS);          // 消息队列定义，用于模块线程向显示模块线程
-
+/*---------------------------------------------------------------------------
+ * @Description:电平检测IO
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 pyroDIO_Init(void){
 
 	GPIO_InitTypeDef  GPIO_InitStructure;
@@ -39,12 +43,20 @@ pyroDIO_Init(void){
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;		 //IO口速度为50MHz
 	GPIO_Init(GPIOB, &GPIO_InitStructure);		
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:模块初始化
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void pyroMS_Init(void){
 
 	pyroDIO_Init();
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:主线程，包括数据定时上传、触发上传
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void pyroMS_Thread(const void *argument){
 	
 	osEvent  evt;
@@ -135,7 +147,11 @@ void pyroMS_Thread(const void *argument){
 		osDelay(10);
 	}
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:模块启动API
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void pyroMSThread_Active(void){
 
 	static bool memInit_flg = false;

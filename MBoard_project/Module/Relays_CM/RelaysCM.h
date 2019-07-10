@@ -1,3 +1,16 @@
+/*---------------------------------------------------------------------------
+ *
+ * Copyright (C),2014-2019, guoshun Tech. Co., Ltd.
+ *
+ * @Project:    ???????
+ * @Version:    V 0.2 
+ * @Module:     RelaysCM
+ * @Author:     RanHongLiang
+ * @Date:       2019-07-10 15:24:57
+ * @Description: 
+ * ————???????
+ * ---------------------------------------------------------------------------*/
+
 #ifndef RELAYS_CM_H
 #define RELAYS_CM_H
 
