@@ -1,17 +1,9 @@
-/*---------------------------------------------------------------------------
- *
- * Copyright (C),2014-2019, guoshun Tech. Co., Ltd.
- *
- * @Project:    智能实训室项目
- * @Version:    V 0.2 
- * @Module:     main
- * @Author:     RanHongLiang
- * @Date:       2019-07-05 14:09:28
- * @Description: 
- * ————实训室讲台面板按键与读卡程序
- * ---------------------------------------------------------------------------*/
-
-
+/*************************************
+  配套 RFID读卡器板-GS-X-GRE02-V1.0  
+	2019-03-13
+	杨青
+	
+****************************************/
 #include "global.h"
 
 u32  ANDROID_DEST_ADDR = 0;
@@ -34,7 +26,7 @@ u16              join_LED_S = 0;
 u16              send_urt_time = 0;
 
 u16              PC_ON_TIME = 0;
- 
+extern u8  key_tab[16]; 
 
 u8  main_CHECK_BUF_VALID(u8 *p) 
 {  
@@ -102,10 +94,10 @@ void IWDG_Feed(void)
 
  int main(void)
 {  
-	TRAN_D_struct   TRAN_info1;
+	
 
 	u8 M_tagfounds = 1;
-
+	u16 buff[2] = {0};
 	delay_init();	        	 //延时函数初始化	  
 	NVIC_Configuration(); 	 //设置NVIC中断分组2:2位抢占优先级，2位响应优先级
 
@@ -118,8 +110,33 @@ void IWDG_Feed(void)
 	
 	TIM2_Int_Init(9,72);//72M/72   1000Khz的计数频率，计数到9为10us 
 
-	LED_DAT[0] = 0x00;
-	LED_DAT[1] = 0x00;
+
+	buff[0] = 0x0000;
+	STMFLASH_Read( 0x08010000,buff,2);
+	if( buff[0] == 0x1234)
+	{	
+		
+		STMFLASH_Read(0x08010000,buff,2);
+		memcpy(LED_DAT,buff+1,2);
+		
+		key_tab[0] = (bool)(LED_DAT[1] & L_R1C1);
+		key_tab[1] = (bool)(LED_DAT[1] & L_R1C2);
+		key_tab[2] = (bool)(LED_DAT[1] & L_R1C3);
+		key_tab[3] = (bool)(LED_DAT[1] & L_R1C4);
+		key_tab[4] = (bool)(LED_DAT[1] & L_R2C1);
+		key_tab[5] = (bool)(LED_DAT[1] & L_R2C2);
+		key_tab[6] = (bool)(LED_DAT[1] & L_R2C3);
+	}
+	else
+	{
+		buff[0] = 0x1234;
+		STMFLASH_Write(0x08010000,buff,2);
+		LED_DAT[1] = 0x00;
+	}
+
+	
+	
+	//LED_DAT[1] = 0xff;
 	write_595_LED( LED_DAT,2);
 	
 	IWDG_Config(IWDG_Prescaler_64,625);
@@ -129,13 +146,16 @@ void IWDG_Feed(void)
 	
 	while(1)
 	{  
-		// 	disable_all_uart_interupt(   ); 
+		//disable_all_uart_interupt(); 
 		CR95HF_FUC( M_tagfounds );    //刷卡的  drv95HF_SPIPollingCommand 
 		(M_tagfounds>=TRACK_NFCTYPE5)?( M_tagfounds=TRACK_NFCTYPE1 ):( M_tagfounds*=2  );
-		// enable_all_uart_interupt(   );
+		//enable_all_uart_interupt();
 		key_fuc();
 
-		RS485_uart_fuc(); 
+		memcpy(buff+1,LED_DAT,2);
+		STMFLASH_Write(0x08010000,buff,2);
+
+		RS485_uart_fuc();
 		RS485_dma_send_buf();
 		IWDG_Feed();
 		if( key_tab[5] == 1 )//=1 正在开机  ，LED闪

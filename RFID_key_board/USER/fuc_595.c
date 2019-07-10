@@ -9,9 +9,9 @@
 
  void  write_595_LED( u8  *dat,int  len )
 {
-    u8   c;
-	  int  i=0;
-    u8  da ;
+	u8   c;
+	int  i=0;
+	u8  da ;
 
   
 	for(i=len-1;i>=0;i--)

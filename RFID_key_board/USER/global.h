@@ -38,6 +38,7 @@
 #include "stm32f10x_exti.h"
 #include "stm32f10x_adc.h"
 #include "stm32f10x_iwdg.h"
+#include "stmflash.h"
 #include "led.h"
 #include "delay.h"
 #include "key.h"
