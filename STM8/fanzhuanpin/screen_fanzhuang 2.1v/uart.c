@@ -224,11 +224,11 @@ u8 Rs485_COMM_msg_process(u8 *tab)
     {
       case  0x0a:     //控制翻转屏
       
-      /*  if( fuc_dat[2]==screen_on)//执行，显示器开机  
+        if( fuc_dat[2]==screen_on)//执行，显示器开机  
       { 
         screen_sw_mode  =screen_on ;  
 
-        dat_595|= RLY1_595Pin; //取电
+        dat_595 &=~ RLY1_595Pin; //取电
         write_595( &dat_595 ,1 ); 
 
         screen_relay_on_time=1000;//1S 后开屏
@@ -238,70 +238,71 @@ u8 Rs485_COMM_msg_process(u8 *tab)
       { 
         screen_sw_mode=screen_off; 
         //关闭屏 
-        dat_595&=~SCREEN_ON_595Pin; //0  是开
+        dat_595|=SCREEN_ON_595Pin; //0  是开
         write_595( &dat_595 ,1 );
         Delay (100);
-        dat_595|= SCREEN_ON_595Pin; //1  是 
+        dat_595 &= ~  SCREEN_ON_595Pin; //1  是 
         write_595( &dat_595 ,1 );
 
         //等待3s 后断电
         screen_relay_off_time=1000;//3S后 继电器关 
 
-      } */
+      } 
          
       if( fuc_dat[3] == motor_up )//翻转屏上升
       {
-        //dat_595 &= ~RLY2_595Pin;  
-        //dat_595 &= ~RLY3_595Pin; 
-        //write_595( &dat_595 ,1 );
-        //Delay(50000); 
-        //Delay(50000); 
-        //Delay(50000); 
-        //dat_595 |= RLY3_595Pin; 
-        //dat_595 &=~RLY2_595Pin;
-       // dat_595 &=~LED2_595Pin; // 
-       // dat_595 |= LED3_595Pin; //
-       // write_595( &dat_595 ,1 );
+        dat_595 |=RLY2_595Pin;  
+        dat_595 |=RLY3_595Pin; 
+        write_595( &dat_595 ,1 );
+        Delay(50000); 
+        Delay(50000); 
+        Delay(50000); 
+        dat_595 |= RLY3_595Pin; 
+        dat_595 &=~RLY2_595Pin;
 
-        //motor_status = motor_up; 
-       // motor_running_status = motor_up;
+       dat_595 &=~LED2_595Pin; // 
+       dat_595 |= LED3_595Pin; //
+       write_595( &dat_595 ,1 );
+
+        motor_status = motor_up; 
+       motor_running_status = motor_up;
         UART_RX_CMD = UART_RX_CMD_motor_up;
         
       }
       
       if( fuc_dat[3] == motor_down )//翻转屏下降 
       {
-       // dat_595 &=~RLY2_595Pin;  
-       // dat_595 &=~RLY3_595Pin; 
+       dat_595 |=RLY2_595Pin;  
+       dat_595 |=RLY3_595Pin; 
         
-       // write_595( &dat_595 ,1 );
+       write_595( &dat_595 ,1 );
         
-       // Delay(50000); 
-       // Delay(50000); 
-       // Delay(50000); 
+       Delay(50000); 
+       Delay(50000); 
+       Delay(50000); 
         
-       // dat_595 |= RLY2_595Pin; 
-       // dat_595 &=~RLY3_595Pin; 
+       dat_595 |= RLY2_595Pin; 
+       dat_595 &=~RLY3_595Pin; 
         
-       // dat_595 &=~LED3_595Pin; // 
-       // dat_595 |= LED2_595Pin; //
+       dat_595 &=~LED3_595Pin; // 
+       dat_595 |= LED2_595Pin; //
         
-       // write_595( &dat_595 ,1 );
+       write_595( &dat_595 ,1 );
         
-       // motor_status = motor_down;
-      //  motor_running_status = motor_down;
+       motor_status = motor_down;
+       motor_running_status = motor_down;
         UART_RX_CMD = UART_RX_CMD_motor_down;
       }
       
       if( fuc_dat[3] == motor_stop )//翻转屏停止 
       {
-        //dat_595 &=~RLY2_595Pin;  
-        //dat_595 &=~RLY3_595Pin; 
-        //dat_595 |=  LED2_595Pin; // 
-       // dat_595 |=  LED3_595Pin; // 
-        //write_595( &dat_595 ,1 );
-        //motor_status = motor_stop;  
-       // motor_running_status = motor_stop; 
+        dat_595 |=RLY2_595Pin;  
+        dat_595 |=RLY3_595Pin; 
+        dat_595 |=  LED2_595Pin; // 
+        dat_595 |=  LED3_595Pin; // 
+        write_595( &dat_595 ,1 );
+        motor_status = motor_stop;  
+       motor_running_status = motor_stop; 
        UART_RX_CMD = UART_RX_CMD_motor_stop; 
         
       }   
