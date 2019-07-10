@@ -3,12 +3,12 @@
  * Copyright (C),2014-2019, guoshun Tech. Co., Ltd.
  *
  * @Project:    智能实训台项目
- * @Version:    V 0.2 
+ * @Version:    V 0.21 
  * @Module:     Main
  * @Author:     RanHongLiang
  * @Date:       2019-06-19 17:48:35
  * @Description: 
- *————CMSIS-RTOS
+ *————CMSIS-RTOS,添加全通和全断的处理函数（延时通电，避免电流浪涌）
  *---------------------------------------------------------------------------*/
 
 #define osObjectsPublic // define objects in main module

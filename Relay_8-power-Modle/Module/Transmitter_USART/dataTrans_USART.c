@@ -21,7 +21,7 @@ static uint8 recvbuff[100]={0};
 
 osThreadDef(USARTWireless_Thread,osPriorityNormal,1,1024);
 osThreadDef(UsartRx_Thread,osPriorityNormal,1,512);
-
+void Relay_Set_All(uint8 statusBuff);
 
 /*********************************************************************
  *  crc
@@ -237,6 +237,14 @@ void UsartRx_Thread(const void *argument	)
 							datacount_last = datacount;
 							
 						}
+
+						if(recvbuff[16+recv_tranbuff.data_len] == 0xff
+						 ||recvbuff[16+recv_tranbuff.data_len] == 0)
+						 {
+							  Relay_Set_All(recvbuff[16+recv_tranbuff.data_len]);
+							  //continue;
+						 }
+						
 						
 
 						(Relay1 = recvbuff[16+recv_tranbuff.data_len]>>7);
@@ -268,6 +276,34 @@ void UsartRx_Thread(const void *argument	)
 	}
 	
 }
+
+void Relay_Set_All(uint8 statusBuff)
+{
+	(Relay1 = statusBuff >>7);
+	LED1 = ~Relay1;
+	delay_ms(500);
+	(Relay2 = statusBuff >>6);
+	LED2 = ~Relay2;
+	delay_ms(500);
+	(Relay3 = statusBuff>>5);
+	LED3 = ~Relay3;
+	delay_ms(500);
+	(Relay4 = statusBuff>>4);
+	LED4 = ~Relay4;
+	delay_ms(500);
+	(Relay5 = statusBuff>>3);
+	LED5 = ~Relay5;
+	delay_ms(500);
+	(Relay6 = statusBuff>>2);
+	LED6 = ~Relay6;
+	delay_ms(500);
+	(Relay7 = statusBuff>>1);
+	LED7 = ~Relay7;
+	delay_ms(500);
+	(Relay8 = statusBuff>>0);
+	LED8 = ~Relay8;
+}
+
 ////每次入网成功都要发一个入网状态通知，CMD = 0x03
 void zigbee_status_updata(u8 EXmodID)
 {
@@ -282,7 +318,7 @@ void zigbee_status_updata(u8 EXmodID)
 	memset(sendbuff,0xAA,2);
 	updataTRAN.TYPE_NUM = 0x03;//子模块stm32--->路由器zigbee
 	sendbuff[2] = sendcount++;
-	sendbuff[18] = 0x03;//CMD----->updata
+	sendbuff[18] = 0x02;//CMD----->updata
 	sendbuff[20] = EXmodID;
 
 
@@ -412,7 +448,7 @@ uint8 zigbee_updata(uint8 EXmodID)
 
 	if (up_status)
 		{
-			sendbuff[18] = 0x03;
+			sendbuff[18] = 0x01;
 		}
 	updataTRAN.data_len = 13+16;
 	
