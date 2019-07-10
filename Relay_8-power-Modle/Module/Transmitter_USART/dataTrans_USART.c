@@ -238,8 +238,7 @@ void UsartRx_Thread(const void *argument	)
 							
 						}
 
-						if(recvbuff[16+recv_tranbuff.data_len] == 0xff
-						 ||recvbuff[16+recv_tranbuff.data_len] == 0)
+						if(recvbuff[16+recv_tranbuff.data_len] == 0xff)
 						 {
 							  Relay_Set_All(recvbuff[16+recv_tranbuff.data_len]);
 							  //continue;
@@ -281,25 +280,46 @@ void Relay_Set_All(uint8 statusBuff)
 {
 	(Relay1 = statusBuff >>7);
 	LED1 = ~Relay1;
-	delay_ms(500);
+	if (LED2)
+	{
+		delay_ms(1000);
+	}		
 	(Relay2 = statusBuff >>6);
 	LED2 = ~Relay2;
-	delay_ms(500);
+	if (LED3)
+	{
+		delay_ms(1000);
+	}
 	(Relay3 = statusBuff>>5);
 	LED3 = ~Relay3;
-	delay_ms(500);
+	if (LED4)
+	{
+		delay_ms(1000);
+	}
 	(Relay4 = statusBuff>>4);
 	LED4 = ~Relay4;
-	delay_ms(500);
+	if (LED5)
+	{
+		delay_ms(1000);
+	}
 	(Relay5 = statusBuff>>3);
 	LED5 = ~Relay5;
-	delay_ms(500);
+	if (LED6)
+	{
+		delay_ms(1000);
+	}
 	(Relay6 = statusBuff>>2);
 	LED6 = ~Relay6;
-	delay_ms(500);
+	if (LED7)
+	{
+		delay_ms(1000);
+	}
 	(Relay7 = statusBuff>>1);
 	LED7 = ~Relay7;
-	delay_ms(500);
+	if (LED8)
+	{
+		delay_ms(1000);
+	}
 	(Relay8 = statusBuff>>0);
 	LED8 = ~Relay8;
 }
