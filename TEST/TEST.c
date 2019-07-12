@@ -1,14 +1,18 @@
 #include <stdio.h>
 void big_or_little(void);
-int swap(int *a, int *b)
+int swap(int *real_a, int *real_b)
 {
-	return (*b ^= *a ^= *b ^= *a);
+	int a = *real_a, b = *real_b;
+	(b ^= a ^= b ^= a);
+	*real_a = a;
+	*real_b = b;
+	return (b ^= a ^= b ^= a);
 }
 
 int main(void)
 {
 	int a = 12;
-	int b = 23;
+	int b = 13;
 	swap(&a, &b);
 	printf("this is a test--[%d]--[%d]\n", a, b);
 	big_or_little();
