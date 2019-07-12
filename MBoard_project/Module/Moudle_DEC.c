@@ -1,3 +1,19 @@
+/*---------------------------------------------------------------------------
+ *
+ * Copyright (C),2014-2019, guoshun Tech. Co., Ltd.
+ *
+ * @Project:    智能实训台项目
+ * @Version:    V 0.2 
+ * @Module:     Moudle_DEC
+ * @Author:     RanHongLiang
+ * @Date:       2019-07-12 16:28:22
+ * @Description: 
+ * ————文件内包括底板扩展模块插槽及通讯模块插槽的PCB编码检测进程
+ * 函数，当检测到模块插入时根据不同PCB编码激活对应的驱动进程
+ * 当检查到模块拔出时，终结对应进程；
+ * ---------------------------------------------------------------------------*/
+
+
 #include "Moudle_DEC.h"
 #include "Tips.h"
 //文件内包括底板扩展模块插槽及通讯模块插槽的PCB编码检测进程
@@ -11,7 +27,11 @@ osThreadId tid_MBDEC_Thread;
 osThreadDef(MBDEC_Thread,osPriorityNormal,1,512);
 
 extern ARM_DRIVER_USART Driver_USART1;		//设备驱动库串口一设备声明
-
+/*---------------------------------------------------------------------------
+ * @Description:标准初始化
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void stdDeInit(void){
 
 	TIM_BDTRInitTypeDef TIM_BDTRStruct;
@@ -22,7 +42,11 @@ void stdDeInit(void){
 
 	ADC_DeInit(ADC1);
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:模块初始化
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void MoudleDEC_ioInit(void){		//模块检测脚初始化
 
 	GPIO_InitTypeDef GPIO_InitStructure;
@@ -45,7 +69,11 @@ void MoudleDEC_ioInit(void){		//模块检测脚初始化
 	
 	
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:线程启动
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void MBDEC_Thread(const void *argument){	//循环检测
 	
 	const u16 signel_waitTime = 1500;
@@ -400,7 +428,11 @@ void MBDEC_Thread(const void *argument){	//循环检测
 		//osSignalSet (tid_tips, EVTSIG_SYS_B);
 	}
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:线程启动
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void MoudleDEC_Init(void){	//模块检测进程激活
 	
 	MoudleDEC_ioInit();

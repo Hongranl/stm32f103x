@@ -1,3 +1,16 @@
+/*---------------------------------------------------------------------------
+ *
+ * Copyright (C),2014-2019, guoshun Tech. Co., Ltd.
+ *
+ * @Project:    智能实训台项目
+ * @Version:    V 0.2 
+ * @Module:     tempMS
+ * @Author:     RanHongLiang
+ * @Date:       2019-07-12 15:12:07
+ * @Description: 
+ * ————温湿度检测模块，使用SHT11X系列传感器，采用非标准IIC协议
+ * ---------------------------------------------------------------------------*/
+
 #include "tempMS.h"//温湿度检测驱动进程函数；
 
 extern ARM_DRIVER_USART Driver_USART1;		//设备驱动库串口一设备声明
@@ -21,7 +34,11 @@ void reset(void);
 void sht11_start(void);
 void sendByte(uint8 value);
 uint8 recvByte(uint8 ack);
-
+/*---------------------------------------------------------------------------
+ * @Description: write io 初始化，设置为IO输出模式
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void SHT_WInit(void)
 {
  
@@ -34,7 +51,11 @@ void SHT_WInit(void)
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;		 //IO口速度为50MHz
 	GPIO_Init(GPIOB, &GPIO_InitStructure);					 //根据设定参数初始化GPIOB.
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:read io 初始化，设置为IO输入模式
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void SHT_RInit(void)
 {
  
@@ -48,7 +69,11 @@ void SHT_RInit(void)
 	GPIO_Init(GPIOB, &GPIO_InitStructure);					 //根据设定参数初始化GPIOB.
 }
 
-
+/*---------------------------------------------------------------------------
+ * @Description:转换 绝度温度为--> 摄氏氏度，绝度湿度为-->相对湿度
+ * @Param:      *hum 湿度，*temp 温度
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void convert_shtxx(float * hum, float *temp)
 {
 	const float C1=-4;//-2.0468;           // for 12 Bit RH
@@ -77,20 +102,11 @@ void convert_shtxx(float * hum, float *temp)
 	*hum  = rh_true;              //return humidity[%RH]
 }
 
-
-/**************************************************************************
- *@fn       readTH
- *
- *@brief    read temperature and humidity sensor data.
- *
- *@param    pData-data buffer.
- *          sht11_startIndex- .
- *
- *@return   none
- */
-
-
-
+/*---------------------------------------------------------------------------
+ * @Description:readTH -->read temperature and humidity sensor data.
+ * @Param:      pData-data buffer. pData-data buffer.
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void readTH(uint8 *pData, uint8 *pStartIndex)
 {
 	/*Reading temperature*/
@@ -123,7 +139,11 @@ void readTH(uint8 *pData, uint8 *pStartIndex)
 	*pStartIndex += 2;
 	(void)recvByte(0x0);//crc chksum and nack to sensor, end transfer, throw away
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:sht11-->传感器，传输数据启动CMD
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void sht11_start()
 {
   SHT_DATA_OUT;
@@ -151,7 +171,11 @@ void sht11_start()
 
   SHT_SCK(0);// = 0;
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:sht11-->传感器复位
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void reset()
 //----------------------------------------------------------------------------------
 // communication reset: DATA-line=1 and at least 9 SCK cycles followed by transsht11_start
@@ -183,7 +207,11 @@ void reset()
   sht11_start();                   //transmission sht11_start
 }
 
-
+/*---------------------------------------------------------------------------
+ * @Description:发送1byte数据 1byte=8bit
+ * @Param:      value 数据
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void sendByte(uint8 value)
 {
   uint8 i;
@@ -224,7 +252,11 @@ void sendByte(uint8 value)
   SHT_DATA_OUT;
 }
 
-
+/*---------------------------------------------------------------------------
+ * @Description:接收数据，1 byte
+ * @Param:      一位 ack
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 uint8 recvByte(uint8 ack)
 {
   uint8 i,val = 0;
@@ -263,12 +295,20 @@ uint8 recvByte(uint8 ack)
   SHT_DATA(1);// = 1;                          //release DATA-line
   return val;
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:模块初始化
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void tempMS_Init(void){
 
 	;
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:线程入口
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void tempMS_Thread(const void *argument){
 
 	osEvent  evt;
@@ -377,7 +417,11 @@ void tempMS_Thread(const void *argument){
 		osDelay(10);
 	}
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:线程启动接口API
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void tempMSThread_Active(void){
 
 	static bool memInit_flg = false;

@@ -1,3 +1,16 @@
+/*---------------------------------------------------------------------------
+ *
+ * Copyright (C),2014-2019, guoshun Tech. Co., Ltd.
+ *
+ * @Project:    智能实训台项目
+ * @Version:    V 0.2 
+ * @Module:     sourceCM
+ * @Author:     RanHongLiang
+ * @Date:       2019-07-12 14:56:04
+ * @Description: 
+ * ————智能电表
+ * ---------------------------------------------------------------------------*/
+
 #ifndef SOURCE_CM_H
 #define SOURCE_CM_H
 

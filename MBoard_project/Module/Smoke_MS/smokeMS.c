@@ -32,7 +32,11 @@ osMessageQId  MsgBox_MTsmokeMS;
 osMessageQDef(MsgBox_MTsmokeMS, 2, &smokeMS_MEAS);          // 消息队列定义,用于无线通讯线程向模块线程
 osMessageQId  MsgBox_DPsmokeMS;
 osMessageQDef(MsgBox_DPsmokeMS, 2, &smokeMS_MEAS);          // 消息队列定义，用于模块线程向显示模块线程
-
+/*---------------------------------------------------------------------------
+ * @Description:初始化，电平检测IO
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void smokeMS_DIOinit(void){
 
 	GPIO_InitTypeDef  GPIO_InitStructure;
@@ -44,7 +48,11 @@ void smokeMS_DIOinit(void){
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;		 //IO口速度为50MHz
 	GPIO_Init(GPIOB, &GPIO_InitStructure);					 
 }
-
+/*---------------------------------------------------------------------------
+ * @Description: 初始化ADC io
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void smokeMS_AIOinit(void){
 
 	ADC_InitTypeDef ADC_InitStructure; 
@@ -85,16 +93,22 @@ void smokeMS_AIOinit(void){
  
 //	ADC_SoftwareStartConvCmd(ADC1, ENABLE);		//使能指定的ADC1的软件转换启动功能
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:模块初始化
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void smokeMS_Init(void){
 
 	smokeMS_DIOinit();
 	smokeMS_AIOinit();
 	GPIO_ResetBits(GPIOB,GPIO_Pin_8); 	
 }
-
-//获得ADC值
-//ch:通道值 0~3
+/*---------------------------------------------------------------------------
+ * @Description:对应指定 获得ADC值
+ * @Param:      ch:通道值 0~3
+ * @Return:     ADC值
+ *---------------------------------------------------------------------------*/
 uint16_t smokeGet_Adc(uint8_t ch)   
 {
   	//设置指定ADC的规则组通道，一个序列，采样时间
@@ -106,7 +120,11 @@ uint16_t smokeGet_Adc(uint8_t ch)
 
 	return ADC_GetConversionValue(ADC1);	//返回最近一次ADC1规则组的转换结果
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:对应指定通道 获得多次均值后，ADC值
+ * @Param:      ch:通道值 0~3
+ * @Return:     ADC值
+ *---------------------------------------------------------------------------*/
 uint16_t smokeGet_Adc_Average(uint8_t ch,uint8_t times)
 {
 	u32 temp_val=0;
@@ -119,8 +137,11 @@ uint16_t smokeGet_Adc_Average(uint8_t ch,uint8_t times)
 	}
 	return temp_val/times;
 } 	
-
-//粉尘内置LED时钟为周期10MS，高电平为0.32uS，
+/*---------------------------------------------------------------------------
+ * @Description:子线程启动，注： 粉尘内置LED时钟为周期10MS，高电平为0.32uS，
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void smokeMS_led_Thread(const void *argument)
 {
 	unsigned char i;
@@ -145,7 +166,11 @@ void smokeMS_led_Thread(const void *argument)
 					
 		}
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:主线程，
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void smokeMS_Thread(const void *argument){
 	
 	osEvent  evt;
@@ -240,7 +265,11 @@ void smokeMS_Thread(const void *argument){
 		osDelay(10);
 	}
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:线程启动，API
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void smokeMSThread_Active(void){
 
 	static bool memInit_flg = false;

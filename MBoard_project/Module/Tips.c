@@ -1,3 +1,16 @@
+/*---------------------------------------------------------------------------
+ *
+ * Copyright (C),2014-2019, guoshun Tech. Co., Ltd.
+ *
+ * @Project:    智能实训台项目
+ * @Version:    V 0.2 
+ * @Module:     Tips
+ * @Author:     RanHongLiang
+ * @Date:       2019-07-12 16:31:56
+ * @Description: 
+ * ————文件内包括外部提示文件，包括led提示灯及无源蜂鸣器的驱动函数；
+ * ---------------------------------------------------------------------------*/
+
 #include "Tips.h"//文件内包括外部提示文件，包括led提示灯及无源蜂鸣器的驱动函数；
 #include "Moudle_DEC.h"
 
@@ -22,7 +35,11 @@ const u8 spect[spect_size][8] = {
 LEDstatus volatile led1_last = led1_g;LEDstatus volatile led1_status = led1_g;
 LEDstatus volatile led2_last = led1_r;LEDstatus volatile led2_status = led2_r;
 LEDstatus volatile led3_last = led1_r;LEDstatus volatile led3_status = led3_r;
-
+/*---------------------------------------------------------------------------
+ * @Description:LED状态根据当前网络状态切换
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void led_status_swith(void)
 {
 
@@ -142,7 +159,11 @@ void tips_beep(u8 tones, u16 time, u8 vol){
 		delay_us(tones_base / vol_fa * (vol_fa - vol));
 	}
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:蜂鸣器使能接口
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void beeps(u8 num){
 
 	u8 loop;
@@ -150,7 +171,11 @@ void beeps(u8 num){
 	for(loop = 0;loop < spect_len[num];loop ++)
 		tips_beep(spect[num][loop],100,3);
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:模块初始化
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void tipsInit(void){
 
 	GPIO_InitTypeDef GPIO_InitStructure;
@@ -279,7 +304,11 @@ void LED_Flash(u8 Obj,u16 cycle,bool type,u8 time){
 		default:break;
 	}
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:模块启动处理
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void tipsBoardActive(void){
 
 	const u16 time = 400;
@@ -302,7 +331,11 @@ void tipsBoardActive(void){
 	LED_Breath(OBJ_MSG,time,false);
 	LED_Breath(OBJ_SYS,time,false);
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:模块线程
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void tipsThread(void const *argument){
 	
 	const u16 flash_cycle  = 100;
@@ -389,7 +422,11 @@ void TTask0(void const *argument){
 
 	osDelay(1000);
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:模块启动接口API
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void tipsLEDActive(void) {
 
 	tipsInit();

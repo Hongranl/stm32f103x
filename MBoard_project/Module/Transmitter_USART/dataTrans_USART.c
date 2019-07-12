@@ -1,3 +1,16 @@
+/*---------------------------------------------------------------------------
+ *
+ * Copyright (C),2014-2019, guoshun Tech. Co., Ltd.
+ *
+ * @Project:    智能实训台项目
+ * @Version:    V 0.2 
+ * @Module:     dataTrans_USART
+ * @Author:     RanHongLiang
+ * @Date:       2019-07-12 15:41:53
+ * @Description: 
+ * ————数据传输模块，收发线程，数据处理等
+ * ---------------------------------------------------------------------------*/
+
 #include <dataTrans_USART.h>//数据传输驱动进程函数，包括有wifi及zigbee；
 
 extern ARM_DRIVER_USART Driver_USART2;
@@ -10,7 +23,7 @@ uint8 gb_databuff[50];
 
 static bool online = false;
 static uint16 sendcount = 0;
-volatile bool gb_Exmod_key=false;
+volatile bool gb_Exmod_key=false;//全局，扩展模块，数据改变标志位
 static bool RX_FLG = false; //有效数据获取标志
 static uint8 recvbuff[100]={0};
 
@@ -28,9 +41,11 @@ const u8 dataTransFrameTail[dataTransFrameTail_size + 1] = {
 
 	0x0D,0x0A
 };
-/*********************************************************************
- *  crc
- */
+/*---------------------------------------------------------------------------
+ * @Description: 8bit  crc  校验
+ * @Param:      uint8_t *buf 数据,uint8_t len数据长度
+ * @Return:     校验值
+ *---------------------------------------------------------------------------*/
 uint8_t TRAN_crc8(uint8_t *buf,uint8_t len)
 {
 	uint8_t crc;
@@ -52,7 +67,14 @@ uint8_t TRAN_crc8(uint8_t *buf,uint8_t len)
 	}
 	return crc;
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:数据校验，未使用
+ * @Param:      void *start数据指针, 
+ * 		unsigned int s_len 数据长度, 
+ * 		void *find查找指针,
+ * 		unsigned int f_len查找长度
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void *memmem(void *start, unsigned int s_len, void *find,unsigned int f_len){
 	
 	char *p, *q;
@@ -70,7 +92,11 @@ void *memmem(void *start, unsigned int s_len, void *find,unsigned int f_len){
 	};
 	return(NULL);
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:串口初始化，以及io初始化
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void USART2Wirless_Init(void){
 	
 	GPIO_InitTypeDef GPIO_InitStructure;
@@ -101,7 +127,11 @@ void USART2Wirless_Init(void){
 	
 }
 
-
+/*---------------------------------------------------------------------------
+ * @Description:串口回调，收发事件触发
+ * @Param:      标准的回调函数事件接收，uint32_t event
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void myUSART2_callback(uint32_t event){
 
 	uint32_t TX_mask;
@@ -126,7 +156,11 @@ void myUSART2_callback(uint32_t event){
     osSignalSet(tid_USARTWireless_Thread, 0x02);//接收完成，发送完成signal
   	}
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:未使用
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 bool ATCMD_INPUT(char *CMD,char *REPLY[2],u8 REPLY_LEN[2],u8 times,u16 timeDelay){
 	
 	const u8 dataLen = 100;
@@ -145,7 +179,11 @@ bool ATCMD_INPUT(char *CMD,char *REPLY[2],u8 REPLY_LEN[2],u8 times,u16 timeDelay
 		for(loopa = 0;loopa < 2;loopa ++)if(memmem(dataRXBUF,dataLen,REPLY[loopa],REPLY_LEN[loopa]))return true;
 	}return false;
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:无线模块初始化，ESP8266-AT指令初始化，
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void USART2Wireless_wifiESP8266Init(void){
 
 	const u8 	InitCMDLen = 9;
@@ -214,7 +252,11 @@ void USART2Wireless_wifiESP8266Init(void){
 	
 	beeps(6);
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:地址映射
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 u8 Extension_IDCHG(u8 Addr_in){
 	
 	switch(Addr_in){
@@ -272,6 +314,11 @@ u16 dataTransFrameLoad_TX(u8 bufs[],u8 cmd,u8 Maddr,u8 dats[],u8 datslen){
 	
 	return memp;
 }
+/*---------------------------------------------------------------------------
+ * @Description:串口接收线程--->zigbee无线模块
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void UsartRx_Thread(const void *argument	)
 {
 	uint8 recv_b[100]={0};
@@ -321,8 +368,11 @@ void UsartRx_Thread(const void *argument	)
 	}
 	
 }
-
-//切换zigbee状态：入网 <----> 退网
+/*---------------------------------------------------------------------------
+ * @Description:切换zigbee状态：入网 <----> 退网
+ * @Param:      无
+ * @Return:     返回当前网络状态
+ *---------------------------------------------------------------------------*/
 LEDstatus zigbee_sw(void)
 {
 	uint8 sendbuff[100]={0};
@@ -393,6 +443,11 @@ LEDstatus zigbee_sw(void)
 	
 	return led2_g;
 }
+/*---------------------------------------------------------------------------
+ * @Description:zigbee模块，无线透传， 数据上传
+ * @Param:      模块ID
+ * @Return:     函数状态
+ *---------------------------------------------------------------------------*/
 uint8 zigbee_updata(uint8 EXmodID)
 {
 	uint8 sendbuff[100]={0};
@@ -614,7 +669,11 @@ uint8 zigbee_updata(uint8 EXmodID)
 	
 	return 0;
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:无线模块主线程，负责数据发送，网络状态切换
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void USARTWireless_Thread(const void *argument){
 	
 	osEvent  evt;
@@ -1426,13 +1485,21 @@ void USARTWireless_Thread(const void *argument){
 		delay_ms(10);
 	}
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:模块初始化
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void USART_WirelessInit(void){
 
 	USART2Wirless_Init();
 	
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:无线模块启动
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void wirelessThread_Active(uint8 status){
 	
 	if(status && led2_status == led2_r)

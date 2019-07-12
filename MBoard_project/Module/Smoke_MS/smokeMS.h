@@ -1,3 +1,16 @@
+/*---------------------------------------------------------------------------
+ *
+ * Copyright (C),2014-2019, guoshun Tech. Co., Ltd.
+ *
+ * @Project:    智能实训台项目
+ * @Version:    V 0.2 
+ * @Module:     smokeMS
+ * @Author:     RanHongLiang
+ * @Date:       2019-07-12 14:14:29
+ * @Description: 
+ * ————粉尘检测模块
+ * ---------------------------------------------------------------------------*/
+
 #ifndef SMOKE_MS_H
 #define SMOKE_MS_H
 

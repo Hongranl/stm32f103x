@@ -1,3 +1,16 @@
+/*---------------------------------------------------------------------------
+ *
+ * Copyright (C),2014-2019, guoshun Tech. Co., Ltd.
+ *
+ * @Project:    智能实训台项目
+ * @Version:    V 0.2 
+ * @Module:     speakCM
+ * @Author:     RanHongLiang
+ * @Date:       2019-07-12 14:56:24
+ * @Description: 
+ * ————语音播报模块，暂未使用
+ * ---------------------------------------------------------------------------*/
+
 #include "speakCM.h"//语音播报驱动进程函数；
 
 extern ARM_DRIVER_USART Driver_USART1;		//设备驱动库串口一设备声明
@@ -13,7 +26,11 @@ osMessageQId  MsgBox_MTspeakCM;
 osMessageQDef(MsgBox_MTspeakCM, 2, &speakCM_MEAS);          // 消息队列定义,用于无线通讯线程向模块线程
 osMessageQId  MsgBox_DPspeakCM;
 osMessageQDef(MsgBox_DPspeakCM, 2, &speakCM_MEAS);          // 消息队列定义，用于模块线程向显示模块线程
-
+/*---------------------------------------------------------------------------
+ * @Description:初始化
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void speakCM_Init(void){
 
 	GPIO_InitTypeDef  GPIO_InitStructure;
@@ -28,7 +45,11 @@ void speakCM_Init(void){
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_14 | GPIO_Pin_15;	 
 	GPIO_Init(GPIOB, &GPIO_InitStructure);					 //根据设定参数初始化GPIOB.5	
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:中断
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void NVCdat_in(uint8_t dat){
 
 	uint8_t i;
@@ -56,7 +77,11 @@ void NVCdat_in(uint8_t dat){
 	PA1 = 1;
 	osDelay(50);
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:选择
+ * @Param:      num 次数,vol 音量
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void SPK_Select(uint8_t num,uint8_t vol){
 
 	if(num > 14)return;
@@ -65,7 +90,11 @@ void SPK_Select(uint8_t num,uint8_t vol){
 	//NVCdat_in(0xf2);	//循环播放使能
 	NVCdat_in(num);
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:线程入口
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void speakCM_Thread(const void *argument){
 
 	osEvent  evt;
@@ -151,7 +180,11 @@ void speakCM_Thread(const void *argument){
 		osDelay(10);
 	}
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:线程启动，API
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void speakCMThread_Active(void){
 
 	static bool memInit_flg = false;

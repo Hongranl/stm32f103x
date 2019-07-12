@@ -1,3 +1,16 @@
+/*---------------------------------------------------------------------------
+ *
+ * Copyright (C),2014-2019, guoshun Tech. Co., Ltd.
+ *
+ * @Project:    智能实训台项目
+ * @Version:    V 0.2 
+ * @Module:     speakCM
+ * @Author:     RanHongLiang
+ * @Date:       2019-07-12 15:11:40
+ * @Description: 
+ * ————语音播报
+ * ---------------------------------------------------------------------------*/
+
 #ifndef _SPEAK_CM_H_
 #define _SPEAK_CM_H_
 

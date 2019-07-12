@@ -1,3 +1,16 @@
+/*---------------------------------------------------------------------------
+ *
+ * Copyright (C),2014-2019, guoshun Tech. Co., Ltd.
+ *
+ * @Project:    智能实训台项目
+ * @Version:    V 0.2 
+ * @Module:     Moudle_DEC
+ * @Author:     RanHongLiang
+ * @Date:       2019-07-12 16:30:47
+ * @Description: 
+ * ————扩展模块
+ * ---------------------------------------------------------------------------*/
+
 #ifndef	_MOUDLE_DEC_H_
 #define	_MOUDLE_DEC_H_
 

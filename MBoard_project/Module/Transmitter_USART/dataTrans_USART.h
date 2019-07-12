@@ -1,3 +1,16 @@
+/*---------------------------------------------------------------------------
+ *
+ * Copyright (C),2014-2019, guoshun Tech. Co., Ltd.
+ *
+ * @Project:    智能实训台项目
+ * @Version:    V 0.2 
+ * @Module:     dataTrans_USART
+ * @Author:     RanHongLiang
+ * @Date:       2019-07-12 16:27:15
+ * @Description: 
+ * ————无线传输模块
+ * ---------------------------------------------------------------------------*/
+
 #ifndef DATATRANS_USART_H
 #define DATATRANS_USART_H
 

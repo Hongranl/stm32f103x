@@ -1,3 +1,16 @@
+/*---------------------------------------------------------------------------
+ *
+ * Copyright (C),2014-2019, guoshun Tech. Co., Ltd.
+ *
+ * @Project:    智能实训台项目
+ * @Version:    V 0.2 
+ * @Module:     temple
+ * @Author:     RanHongLiang
+ * @Date:       2019-07-12 15:41:05
+ * @Description: 
+ * ————温度测量模块，未使用
+ * ---------------------------------------------------------------------------*/
+
 #include "templeMS.h"
 
 extern ARM_DRIVER_USART Driver_USART1;		//设备驱动库串口一设备声明
