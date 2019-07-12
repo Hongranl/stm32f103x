@@ -1,3 +1,16 @@
+/*---------------------------------------------------------------------------
+ *
+ * Copyright (C),2014-2019, guoshun Tech. Co., Ltd.
+ *
+ * @Project:    ???????
+ * @Version:    V 0.2 
+ * @Module:     RelaysoutletCM
+ * @Author:     RanHongLiang
+ * @Date:       2019-07-12 10:12:34
+ * @Description: 
+ * ————??????
+ * ---------------------------------------------------------------------------*/
+
 #ifndef RELAYSOUTLET_CM_H
 #define RELAYSOUTLET_CM_H
 

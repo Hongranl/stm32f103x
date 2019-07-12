@@ -1,3 +1,17 @@
+/*---------------------------------------------------------------------------
+ *
+ * Copyright (C),2014-2019, guoshun Tech. Co., Ltd.
+ *
+ * @Project:    智能实训台项目
+ * @Version:    V 0.2 
+ * @Module:     smokeMS
+ * @Author:     RanHongLiang
+ * @Date:       2019-07-12 10:23:58
+ * @Description: 
+ * ————粉尘检测模块，通过粉尘颗粒遮挡光
+ * ---------------------------------------------------------------------------*/
+
+
 #include "smokeMS.h"//粉尘检测驱动进程函数；
 
 extern ARM_DRIVER_USART Driver_USART1;		//设备驱动库串口一设备声明

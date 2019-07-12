@@ -1,3 +1,16 @@
+/*---------------------------------------------------------------------------
+ *
+ * Copyright (C),2014-2019, guoshun Tech. Co., Ltd.
+ *
+ * @Project:    智能实训台项目
+ * @Version:    V 0.2 
+ * @Module:     shakeMS
+ * @Author:     RanHongLiang
+ * @Date:       2019-07-12 10:19:01
+ * @Description: 
+ * ————震动传感器模块
+ * ---------------------------------------------------------------------------*/
+
 #ifndef SHAKE_MS_H
 #define SHAKE_MS_H
 

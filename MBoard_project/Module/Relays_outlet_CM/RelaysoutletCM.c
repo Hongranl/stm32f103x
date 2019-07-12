@@ -37,6 +37,7 @@ static	unsigned char light1_vlue ;
 void RelaysoutletCM_AIOinit(void){
 
 	ADC_InitTypeDef ADC_InitStructure; 
+	//SDIO_STA_DATAEND
 	GPIO_InitTypeDef GPIO_InitStructure;
 
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA | RCC_APB2Periph_ADC1, ENABLE);	  //使能ADC1通道时钟
@@ -118,7 +119,7 @@ uint32_t Get_Adc_Average(uint8_t ch,uint8_t times)
 	return temp_val/times;
 } 	
 /*---------------------------------------------------------------------------
- * @Description:
+ * @Description:模块初始化
  * @Param:      无
  * @Return:     无
  *---------------------------------------------------------------------------*/
@@ -139,7 +140,11 @@ void RelaysoutletCM_Init(void){
 	
 	
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:线程启动
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void RelaysoutletCM_Thread(const void *argument){
 
 	osEvent  evt;
@@ -252,7 +257,11 @@ void RelaysoutletCM_Thread(const void *argument){
 	}
 }
 
-
+/*---------------------------------------------------------------------------
+ * @Description:模块启动API
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void RelaysoutletCMThread_Active(void){
 
 	RelaysCM_Init();

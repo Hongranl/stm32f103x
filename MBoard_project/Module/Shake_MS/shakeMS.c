@@ -1,3 +1,16 @@
+/*---------------------------------------------------------------------------
+ *
+ * Copyright (C),2014-2019, guoshun Tech. Co., Ltd.
+ *
+ * @Project:    智能实训台项目
+ * @Version:    V 0.2 
+ * @Module:     shakeMS
+ * @Author:     RanHongLiang
+ * @Date:       2019-07-12 10:14:07
+ * @Description: 
+ * ————震动传感器,获取一个电平改变，有震动时为高
+ * ---------------------------------------------------------------------------*/
+
 #include "shakeMS.h"//震动传感器检测驱动的进程函数
 
 extern ARM_DRIVER_USART Driver_USART1;		//设备驱动库串口一设备声明
@@ -13,7 +26,11 @@ osMessageQId  MsgBox_MTshakeMS;
 osMessageQDef(MsgBox_MTshakeMS, 2, &shakeMS_MEAS);          // 消息队列定义,用于无线通讯进程向模块进程
 osMessageQId  MsgBox_DPshakeMS;
 osMessageQDef(MsgBox_DPshakeMS, 2, &shakeMS_MEAS);          // 消息队列定义，用于模块进程向显示模块进程
-
+/*---------------------------------------------------------------------------
+ * @Description:初始化IO
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void shakeDIO_Init(void){
 
 	GPIO_InitTypeDef  GPIO_InitStructure;
@@ -25,12 +42,20 @@ void shakeDIO_Init(void){
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;		 //IO口速度为50MHz
 	GPIO_Init(GPIOB, &GPIO_InitStructure);		
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:模块初始化
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void shakeMS_Init(void){
 
 	shakeDIO_Init();
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:线程处理
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void shakeMS_Thread(const void *argument){
 
 	osEvent  evt;
@@ -123,7 +148,11 @@ void shakeMS_Thread(const void *argument){
 		osDelay(10);
 	}
 }
-
+/*---------------------------------------------------------------------------
+ * @Description:模块线程启动API
+ * @Param:      无
+ * @Return:     无
+ *---------------------------------------------------------------------------*/
 void shakeMSThread_Active(void){
 
 	static bool memInit_flg = false;
