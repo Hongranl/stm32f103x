@@ -264,7 +264,9 @@ void UsartRx_Thread(const void *argument	)
 						LED7 = ~Relay7;
 						LED8 = ~Relay8;
 
-						
+						//gb_Exmod_key = true;
+			
+						//osSignalSet(tid_USARTWireless_Thread, 0x03);
 	
 					}
 				}
@@ -338,7 +340,7 @@ void zigbee_status_updata(u8 EXmodID)
 	memset(sendbuff,0xAA,2);
 	updataTRAN.TYPE_NUM = 0x03;//子模块stm32--->路由器zigbee
 	sendbuff[2] = sendcount++;
-	sendbuff[18] = 0x02;//CMD----->updata
+	sendbuff[18] = 0x03;//CMD----->login
 	sendbuff[20] = EXmodID;
 
 
@@ -468,7 +470,7 @@ uint8 zigbee_updata(uint8 EXmodID)
 
 	if (up_status)
 		{
-			sendbuff[18] = 0x01;
+			sendbuff[18] = 0x03;
 		}
 	updataTRAN.data_len = 13+16;
 	
@@ -485,10 +487,6 @@ uint8 zigbee_updata(uint8 EXmodID)
 	Driver_USART5.Send(sendbuff,20+updataTRAN.data_len);//sendbuff,17+2+2+1
 	osSignalWait(0x01, 100);
 
-
-	
-	
-	
 	return 0;
 }
 
