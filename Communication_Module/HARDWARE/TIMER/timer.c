@@ -1,11 +1,11 @@
 #include "global.h"
  
  
-//通用定时器3中断初始化
+//通用定时器2中断初始化
 //这里时钟选择为APB1的2倍，而APB1为36M
 //arr：自动重装值。
 //psc：时钟预分频数
-//这里使用的是定时器3!
+//这里使用的是定时器2!
 void TIM2_Int_Init(u16 arr,u16 psc)
 {
   TIM_TimeBaseInitTypeDef    TIM_TimeBaseStructure;

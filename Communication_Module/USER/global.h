@@ -78,7 +78,8 @@ IR_CAP_struct;
    
  
   /*
-设备种类号	终端安卓机	20
+	设备种类号	
+	终端安卓机	20
 	实训管理器主板	21
 	电源管理器主板	22
 	16路2态3A设故板	23
@@ -101,9 +102,6 @@ IR_CAP_struct;
  
  
 
-extern void  remote_cap_study( void  );
-
-extern void IR_js( void );
 
 extern  IR_CAP_struct   IR_CAP1;
 
